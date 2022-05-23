@@ -34,7 +34,7 @@ class CreateHousesTable extends Migration
             $table->tinyInteger('opzionato')->default(0);
             $table->integer('superficie')->nullable();
             $table->integer('dimensione_camera')->nullable();
-            $table->text('immagine')->default('no_home_icon.png');
+            $table->text('immagine')->default('no_home_icon.jpg');
             
 /*            if (Schema::hasColumn('alloggio', 'opzionato', 0)) {
                 $table->text('immagine')->default('no_home_icon.png');
