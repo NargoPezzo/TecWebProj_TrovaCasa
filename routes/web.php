@@ -24,7 +24,7 @@ Route::view('/chisiamo','chisiamo')
 Route::view('/dovesiamo','dovesiamo')
         ->name('dovesiamo');
 
-Rouge::get('/faq', 'AdminController@showFaq')
+Route::get('/faq', 'AdminController@showFaq')
         ->name('faq');
 
 Route::view('/condizioni','condizioni')
