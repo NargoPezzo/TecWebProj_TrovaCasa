@@ -56,14 +56,8 @@ https://templatemo.com/tm-571-hexashop
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li><a href="offerte.blade.php">Offerte</a></li>
-                            <li><a href="{{ route('chisiamo') }}" title="La nostra azienda">Chi Siamo</a></li>
-                            <li><a href="dovesiamo.blade.php">Dove Siamo</a></li>
-                            <li><a href="contattaci.blade.php">Contattaci</a></li>
-                            <li><a href="faq.blade.php">F.A.Q.</a></li>
-                            <li><a href="condizioni.blade.php">Condizioni</a></li>
-                            <li><a href="login.blade.php">Login / Sign UP</a></li>
+                        <ul>
+                            @include('layouts/navpublic')
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>

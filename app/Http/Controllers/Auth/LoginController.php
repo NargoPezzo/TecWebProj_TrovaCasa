@@ -26,15 +26,33 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected function redirectTo() {        
+        $livello = auth()->utente()->livello;
+        switch ($livello) {
+            case 'admin': return '/admin';
+                break;
+            case 'locatario': return '/locatario';
+                break;
+            case 'locatore': return '/locatore';
+                break;
+            default: return '/';
+        };
+    }
+
+    /**
+     * Override:: Login con 'username' al posto di 'email'.
+     *
+     */
+    public function username() {
+        return 'username';
+    }
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest')->except('logout');
     }
 }
