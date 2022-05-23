@@ -6,5 +6,5 @@
     <li><a href="mailto:info@trovacasa.it" title="Scrivici pure">Contattaci</a></li>
     <li><a href="{{ route('faq') }}" title="Risposte alle domande più comuni">F.A.Q.</a></li>
     <li><a href="{{ route('condizioni') }}" title="Condizioni generali d' uso">Condizioni</a></li>
-    <li><a href="{{ route('login') }}" title="Iscriviti o Accedi">Login / Sign UP</a></li>
+    <li><a href="{{ route('login') }}" title="Iscriviti o Accedi">Login / Sign Up</a></li>
 </ul>  
