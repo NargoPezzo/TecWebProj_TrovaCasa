@@ -27,10 +27,6 @@ TemplateMo 571 Hexashop
 
 https://templatemo.com/tm-571-hexashop
 
-\\Sempre meglio scrivere
-\\ lulic coppanfaccia
-\\bella rafga
--->
     </head>
     
     <body>
