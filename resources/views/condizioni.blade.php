@@ -151,7 +151,26 @@ https://templatemo.com/tm-571-hexashop
                 <p>Riconosci che TrovaCasa si riserva il diritto di disattivare gli annunci che non rispettino le presenti Condizioni Generali.</p>
                 <p>TrovaCasa non sarà responsabile più di quanto non previsto ai sensi delle presenti Condizioni Generali e della normativa applicabile. Il prezzo e le informazioni che appaiono in ciascun annuncio con riferimento agli immobili pubblicati sul Sito o sulle Applicazioni non rappresentano un’offerta commerciale da parte nostra.</p><br>
                 <p><a href="#0">Tornare all’indice&nbsp;↑</a></p>
-            </div>
+            </div><br><br>
+            
+            <div>
+                <h2 id="6">6. Regole per la pubblicazione di annunci</h2><br>
+                <p>Utilizzando i Servizi relativi alla pubblicazione di annunci, ti impegni espressamente a:</p>
+                <ul>
+                    <li>Non pubblicare immagini ripetute o contenenti qualsiasi tipo di marchio, filigrana, logo o testo.</li>
+                    <li>Non pubblicare immagini che non siano rilevanti per l’annuncio (quali, a titolo esemplificativo e non esaustivo, immagini vuote, monumenti, zone di rilevanza turistica o commerciale, animali, persone, affetti meramente personali).</li>
+                    <li>Non pubblicare immobili di tipologia diversa da quella contrattata.</li>
+                    <li>Non pubblicare immobili con una tipologia di operazione differente da quella contrattata.</li>
+                    <li>Non pubblicare immobili uso affitto vacanza o uso turistico.</li>
+                    <li>Non pubblicare annunci che abbiano ad oggetto il trasferimento o la cessione di licenze, autorizzazioni, concessioni e similari.</li>
+                    <li>Non pubblicare prezzi inesatti (come per esempio, indicare che il prezzo include il servizio di uso del garage ed aggiungere il prezzo addizionale di tale servizio nella descrizione dell’immobile).</li>
+                    <li>Non potrai pubblicare annunci “civetta” o inserzioni aventi come contenuto/obiettivo altro rispetto alla vendita o locazione del determinato immobile inserzionato;</li>
+                    <li>Non potrai pubblicare annunci facenti riferimento ad aste giudiziarie in modo illegale o illecito e senza specificare chiaramente che si tratta di inserzioni di immobili all’asta nell’apposita sezione, essendo tenuto a selezionare lo specifico campo di riferimento nella descrizione dell’annuncio;</li>
+                </ul><br>
+                <p><strong>Misure antifrode</strong></p><br>
+                <p>Allo scopo di prevenire l’utilizzo fraudolento dei Servizi, comprendi e accetti che TrovaCasa potrà sospendere gli annunci che contengano materiale sospetto di essere fraudolento o contrario a queste Condizioni Generali. Gli annunci sospesi non saranno visibili sul Sito e sulle Applicazioni fino a quando non saranno ultimate le opportune verifiche.</p><br>
+                <p><a href="#0">Tornare all’indice&nbsp;↑</a></p>
+            </div><br><br>
         </div>
         </div>
 
