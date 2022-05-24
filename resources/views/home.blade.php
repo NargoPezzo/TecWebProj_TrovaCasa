@@ -77,22 +77,66 @@ https://templatemo.com/tm-571-hexashop
             <div class="row">
                 <div class="col-lg-6">
                     <div class="left-content">
-                        <div class="thumb">
-                            <div class="inner-content">
-                                <h4>We Are Hexashop</h4>
-                                <span>Awesome, clean &amp; creative HTML5 Template</span>
-                                <div class="main-border-button">
-                                    <a href="#">Purchase Now!</a>
-                                </div>
-                            </div>
-                            <img src="assets/images/left-banner-image.jpg" alt="">
+                        
+                            <img src="assets/images/home_house_search.jpg" alt="">
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <h4>Sei uno studente fuori sede e stai cercando un'alloggio per te?</h4><br>
+                        <h4>Sei proprietario di un appartamento e vuoi metterlo in affitto?</h4><br>
+                        <span>Sei nel posto giusto!</span>
+                        
+                        
+                       
+                    </div>
+                </div>
             </div>
-        </div>
+        <!<!-- FINO A QUA TUTTO GIUSTO -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        
+                            <img src="assets/images/home_house_search.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        <h4>TrovaCasa è la soluzione giusta per te!</h4><br>
+                        <span>Tante soluzioni: appartamenti e posti letto tutto a portata di un click </span>
+                        
+                        
+                       
+                    </div>
+                </div>
+            </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        
+                            <img src="assets/images/close_contract.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        <h4>Semplice ed efficiente</h4><br>
+                        <span>Trova l'alloggio che più preferisci, contatta il locatore ed il gioco è fatto! </span>
+                        <h4>Non perdere altro tempo, accedi o registrati per usufruire dei servizi!</h4><br>
+                        
+                       
+                    </div>
+                </div>
+            </div>
     </div>
     <!-- ***** Main Banner Area End ***** -->
+    
+    
+   
 
     <!-- ***** Footer Start ***** -->
     <footer>

@@ -105,6 +105,7 @@ https://templatemo.com/tm-571-hexashop
             </div>
         </div>
     </div>
+   </div>
     <!-- ***** About Area Ends ***** -->
 
     
