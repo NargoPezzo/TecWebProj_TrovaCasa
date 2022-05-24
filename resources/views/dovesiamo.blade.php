@@ -92,7 +92,7 @@ https://templatemo.com/tm-571-hexashop
                         <span>All'interno del cuore di ogni studente fuorisede che cerca un alloggio; altrimenti ci puoi trovare nella nostra sede situata presso la facoltà di ingegneria delle Marche, in via Brecce Bianche 12 in provincia di Ancona.</span>
                         
                         <p>Telefono: +39 333 4455667</p>
-                        <p>Email: info@trovacasa.it</p>
+                        <p>Email: <a href="mailto::info@trovacasa.it">info@trovacasa.it</a></p>
                        
                     </div>
                 </div>
