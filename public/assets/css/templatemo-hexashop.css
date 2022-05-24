@@ -68,7 +68,7 @@ html[xmlns] .clearfix {
 ul, li {
   padding: 0;
   margin: 0;
-  list-style-type: circle;
+  list-style-type: none;
 }
 
 header, nav, section, article, aside, footer, hgroup {
