@@ -152,7 +152,8 @@ https://templatemo.com/tm-571-hexashop
                 <p>TrovaCasa non sarà responsabile più di quanto non previsto ai sensi delle presenti Condizioni Generali e della normativa applicabile. Il prezzo e le informazioni che appaiono in ciascun annuncio con riferimento agli immobili pubblicati sul Sito o sulle Applicazioni non rappresentano un’offerta commerciale da parte nostra.</p><br>
                 <p><a href="#0">Tornare all’indice&nbsp;↑</a></p>
             </div>
-            
+        </div>
+        </div>
 
 
     <!-- ***** Footer Start ***** -->
