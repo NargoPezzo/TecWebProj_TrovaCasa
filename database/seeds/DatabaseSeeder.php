@@ -24,21 +24,21 @@ class DatabaseSeeder extends Seeder
             ['id' => 2, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
                 'tipologia' => null, 'n_camere' => 4, 'n_posti_letto_totali' => 6, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
-                'età_min' => '30', 'superficie' => '250']
+                'età_min' => '22', 'superficie' => '250']
         ]);
         
         DB::table('houses')->insert([
-            ['id' => 3, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
-                'tipologia' => null, 'n_camere' => 4, 'n_posti_letto_totali' => 6, 'data_inserimento' => date("Y-m-d H:i:s"),
-                'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
-                'età_min' => '30', 'superficie' => '250']
+            ['id' => 3, 'titolo' => 'Appartamento3', 'prezzo' => 370, 'descrizione' => 'Appartamento situato in periferia, a 10 minuti a piedi dalla fermata del pullman. Presenti due bagni, una cucina e un ampio salone, wi-fi, posto auto',
+                'tipologia' => null, 'n_camere' => 3, 'n_posti_letto_totali' => 5, 'data_inserimento' => date("Y-m-d H:i:s"),
+                'indirizzo' => 'Via Pinocchio, 24', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'M', 
+                'età_min' => '20', 'superficie' => '200','immagine' => 'casa3.jpg']
         ]);
          
         DB::table('houses')->insert([
-            ['id' => 4, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
-                'tipologia' => null, 'n_camere' => 4, 'n_posti_letto_totali' => 6, 'data_inserimento' => date("Y-m-d H:i:s"),
-                'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
-                'età_min' => '30', 'superficie' => '250']
+            ['id' => 4, 'titolo' => 'Appartamento4', 'prezzo' => 200, 'descrizione' => 'Appartamento situato in pieno centro, a 10 minuti di autobus dalla facoltà di Ingegneria . Presente un bagno, una cucina e un salone, wi-fi,asciugatrice',
+                'tipologia' => null, 'n_camere' => 2, 'n_posti_letto_totali' => 2, 'data_inserimento' => date("Y-m-d H:i:s"),
+                'indirizzo' => 'Via Martin Luther King, 6', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => null, 
+                'età_min' => null, 'età_max' => '30', 'superficie' => '70','immagine' => 'casa4.jpg']
         ]);
         
         DB::table('houses')->insert([
@@ -159,11 +159,10 @@ class DatabaseSeeder extends Seeder
         ]);
         
         DB::table('faqs')->insert([
-            ['id' => 1, 'domanda' => 'Domanda 1', 'risposta' => 'Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel, tempor at, varius non, purus. Mauris vitae nisl nec metus placerat consectetuer. Donec ipsum. Proin imperdiet est. Phasellus dapibus semper urna. Pellentesque ornare, orci in consectetuer hendrerit, urna elit eleifend nunc, ut consectetuer nisl felis ac diam. Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem. Phasellus pellentesque. Mauris quam enim, molestie in, rhoncus ut, lobortis a, est.'],
-            ['id' => 2, 'domanda' => 'Domanda 2', 'risposta' => 'Gallia est omnis divisa in partes tres, quarum unam incolunt Belgae, aliam Aquitani, tertiam qui ipsorum lingua Celtae, nostra Galli appellantur. Hi omnes lingua, institutis, legibus inter se differunt. Gallos ab Aquitanis Garumna flumen, a Belgis Matrona et Sequana dividit. Horum omnium fortissimi sunt Belgae, propterea quod a cultu atque humanitate provinciae longissime absunt, minimeque ad eos mercatores saepe commeant atque ea quae ad effeminandos animos pertinent important, proximique sunt Germanis, qui trans Rhenum incolunt, quibuscum continenter bellum gerunt.'],
-            ['id' => 3, 'domanda' => 'Domanda 3', 'risposta' => 'Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel, tempor at, varius non, purus. Mauris vitae nisl nec metus placerat consectetuer. Donec ipsum. Proin imperdiet est. Phasellus dapibus semper urna. Pellentesque ornare, orci in consectetuer hendrerit, urna elit eleifend nunc, ut consectetuer nisl felis ac diam. Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem. Phasellus pellentesque. Mauris quam enim, molestie in, rhoncus ut, lobortis a, est.'],
-            ['id' => 4, 'domanda' => 'Domanda 2', 'risposta' => 'Gallia est omnis divisa in partes tres, quarum unam incolunt Belgae, aliam Aquitani, tertiam qui ipsorum lingua Celtae, nostra Galli appellantur. Hi omnes lingua, institutis, legibus inter se differunt. Gallos ab Aquitanis Garumna flumen, a Belgis Matrona et Sequana dividit. Horum omnium fortissimi sunt Belgae, propterea quod a cultu atque humanitate provinciae longissime absunt, minimeque ad eos mercatores saepe commeant atque ea quae ad effeminandos animos pertinent important, proximique sunt Germanis, qui trans Rhenum incolunt, quibuscum continenter bellum gerunt.'],
-            ['id' => 5, 'domanda' => 'Domanda 3', 'risposta' => 'Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel, tempor at, varius non, purus. Mauris vitae nisl nec metus placerat consectetuer. Donec ipsum. Proin imperdiet est. Phasellus dapibus semper urna. Pellentesque ornare, orci in consectetuer hendrerit, urna elit eleifend nunc, ut consectetuer nisl felis ac diam. Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem. Phasellus pellentesque. Mauris quam enim, molestie in, rhoncus ut, lobortis a, est.'],
+            ['id' => 1, 'domanda' => 'Devo essere registrato per usufruire del vostro sito?', 'risposta' =>'Si, nella home page potrai visualizzare le case, ma se vuoi mettere una inserzione o affittare una casa la registrazione è necessaria.'],
+            ['id' => 2, 'domanda' => 'Come affitto una casa?', 'risposta' =>'É semplicissimo, basta andare nella casa che tu vuoi affittare e cliccare il tasto idoneo.'],
+            ['id' => 3, 'domanda' => 'Come creo un annuncio?', 'risposta' =>'Basta registrarsi come locatore andare nella sezione privata e cliccare il bottone apposito'],
+
             ]);
 /*        
         DB::table('category')->insert([
@@ -178,7 +177,11 @@ class DatabaseSeeder extends Seeder
         DB::table('services')->insert([
             ['id' => 1, 'house_id' => 1, 'nome' => 'Locale ricreativo', 'presente' => 1],
             ['id' => 2, 'house_id' => 1, 'nome' => 'Lavatrice', 'presente' => 1],
-            ['id' => 3, 'house_id' => 1, 'nome' => 'Wifi',  'presente' => 1],
+            ['id' => 3, 'house_id' => 3, 'nome' => 'Wifi',  'presente' => 1],
+            ['id' => 4, 'house_id' => 3, 'nome' => 'Posto Auto',  'presente' => 1],
+            ['id' => 5, 'house_id' => 4, 'nome' => 'Asciugatrice',  'presente' => 1],
+            ['id' => 6, 'house_id' => 4, 'nome' => 'Wifi',  'presente' => 1],
+            ['id' => 7, 'house_id' => 4, 'nome' => 'Lavatrice', 'presente' => 1],
         ]);
  /* 
 
