@@ -151,11 +151,11 @@ class DatabaseSeeder extends Seeder
 
         DB::table('users')->insert([
             ['nome' => 'Admin', 'cognome' => 'Admin', 'età' => 55, 'genere' => 'M', 'email' => 'admin@admin.it', 
-                'cellulare' => '333567890', 'username' => 'adminadmin','password' => 'i4z5zipq', 'livello' => 'admin',],
+                'cellulare' => '333567890', 'username' => 'adminadmin','password' => Hash::make('i4z5zipq'), 'livello' => 'admin',],
             ['nome' => 'Luca', 'cognome' => 'Tore', 'età' => 20, 'genere' => 'M', 'email' => 'loca@loca.it', 
-                'cellulare' => '334567890', 'username' => 'lorelore','password' => 'i4z5zipq', 'livello' => 'locatore',],
+                'cellulare' => '334567890', 'username' => 'lorelore','password' => Hash::make('i4z5zipq'), 'livello' => 'locatore',],
             ['nome' => 'Luca', 'cognome' => 'Tario', 'età' => 69, 'genere' => 'M', 'email' => 'lario@lario.it', 
-                'cellulare' => '335567890', 'username' => 'lariolario','password' => 'i4z5zipq', 'livello' => 'locatario',],
+                'cellulare' => '335567890', 'username' => 'lariolario','password' => Hash::make('i4z5zipq'), 'livello' => 'locatario',],
         ]);
         
         DB::table('faqs')->insert([
