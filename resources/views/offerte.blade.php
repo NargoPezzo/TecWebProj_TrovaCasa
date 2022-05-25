@@ -132,9 +132,10 @@ https://templatemo.com/tm-571-hexashop
         
         
         <div class="container">
+          <div class="row">
           @isset($houses)
             @foreach ($houses as $house)
-            <div class="row">
+            
                 <div class="col-lg-4">
                     <div class="item">
                         <div class="thumb">
@@ -157,7 +158,7 @@ https://templatemo.com/tm-571-hexashop
                         </div>
                     </div>
                 </div>
-            </div>
+            
             @endforeach
 
 
