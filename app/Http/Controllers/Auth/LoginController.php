@@ -27,7 +27,7 @@ class LoginController extends Controller
      * @var string
      */
     protected function redirectTo() {        
-        $livello = auth()->utente()->livello;
+        $livello = auth()->users()->livello;
         switch ($livello) {
             case 'admin': return '/admin';
                 break;
@@ -36,7 +36,7 @@ class LoginController extends Controller
             case 'locatore': return '/locatore';
                 break;
             default: return '/';
-        };
+        }
     }
 
     /**
