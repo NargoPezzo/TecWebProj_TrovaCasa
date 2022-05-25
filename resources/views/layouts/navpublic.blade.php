@@ -16,6 +16,8 @@
     <li><a href="{{ route('login') }}" title="Iscriviti o Accedi">Login / Sign Up</a></li>
 </ul>
 
+<!-- ***** INSERIRE ALTRI COMANDI NAVBAR PER VARI TIPI DI UTENTI ***** -->
+
 <!-- ***** Navbar End ***** -->
 
 <!-- ***** Menu Start ***** -->

@@ -25,6 +25,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        //DEFINIRE I LE REGOLE TRAMITE GATES, prendere da laraProj5
     }
 }
