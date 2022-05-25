@@ -90,11 +90,11 @@ https://templatemo.com/tm-571-hexashop
             
             <div>
                 <h2 id="1">1. Oggetto e Informazioni generali</h2><br>
-                <p>TrovaCasa S.p.a.(in seguito, “<strong>TrovaCasa</strong>” oppure “<strong>noi</strong>”) applica i seguenti termini e condizioni generali di servizio (di seguito le “<strong>Condizioni Generali</strong>”) per disciplinare e regolare:</p>
-                <ol>
+                <p>TrovaCasa S.p.a.(in seguito, “<strong>TrovaCasa</strong>” oppure “<strong>noi</strong>”) applica i seguenti termini e condizioni generali di servizio (di seguito le “<strong>Condizioni Generali</strong>”) per disciplinare e regolare:</p><br>
+                <ul>
                     <li>l’accesso, l’utilizzo, la navigazione e la registrazione sul sito localizzabile con il dominio di riferimento, inclusi i rispettivi sottodomini, che sono di esclusiva proprietà di TrovaCasa; nonché</li>
                     <li>il download e l’utilizzo di qualsiasi informazione, testo, immagine o altro contenuto (di seguito, il “<strong>Contenuto</strong>”), al quale è possibile accedere dal Sito e dalle Applicazioni.</li>
-                </ol><br>
+                </ul><br>
                 <p>Il nostro obiettivo è che tutti gli utenti come te conoscano al meglio come funzionano il Sito, le Applicazioni e il servizio che offriamo. Tra le nostre priorità annoveriamo gli utenti e la fiducia che ci dimostrate utilizzando i nostri servizi. Per questo motivo, vogliamo ripagarvi con una politica di vera trasparenza e semplicità: vi forniremo tutte le informazioni sui nostri servizi in modo chiaro e facilmente comprensibile.</p>
                 <p>Di seguito troverete le Condizioni Generali e gli eventuali altri termini e condizioni dei servizi che costituiscono l’intero contratto tra TrovaCasa e i suoi utenti.</p><br>
                 <p><a href="#0">Tornare all’indice&nbsp;↑</a></p>
@@ -117,14 +117,14 @@ https://templatemo.com/tm-571-hexashop
             
             <div>
                 <h2 id="4">4. Condizioni d’uso e responsabilità del Sito Web e delle App</h2><br>
-                <p>Non potrai effettuare un utilizzo illecito, incorretto o contrario alle diposizioni delle presenti Condizioni Generali o, a seconda dei casi, delle Condizioni Speciali. Per aiutarti nella navigazione del Sito e nell’uso delle nostre Applicazioni, eccoti una lista di cosa puoi o non puoi fare:</p>
+                <p>Non potrai effettuare un utilizzo illecito, incorretto o contrario alle diposizioni delle presenti Condizioni Generali o, a seconda dei casi, delle Condizioni Speciali. Per aiutarti nella navigazione del Sito e nell’uso delle nostre Applicazioni, eccoti una lista di cosa puoi o non puoi fare:</p><br>
                 <p><strong>Puoi:</strong></p>
                 <ul>
                     <li>Accedere e navigare sul Sito e sulle Applicazioni senza doverti registrare, in modo gratuito.</li>
                     <li>Contattare gli annuncianti degli immobili per i quali sei interessato.</li>
                     <li>Inserire annunci di immobili in vendita o in affitto (case, camere da letto, magazzini, edifici, garage, locali, uffici o terreni) che siano di tua proprietà o dei quali sia tu il gestore.</li>
                     <li>Contrattare Servizi Aggiuntivi relativi agli annunci che hai pubblicato o che stai visualizzando sul Sito o sulle Applicazioni.</li>
-                </ul>
+                </ul><br>
                 <p><strong>Non puoi:</strong></p>
                 <ul>
                     <li>Inserire, condividere, diffondere o pubblicare:
@@ -155,7 +155,7 @@ https://templatemo.com/tm-571-hexashop
             
             <div>
                 <h2 id="6">6. Regole per la pubblicazione di annunci</h2><br>
-                <p>Utilizzando i Servizi relativi alla pubblicazione di annunci, ti impegni espressamente a:</p>
+                <p>Utilizzando i Servizi relativi alla pubblicazione di annunci, ti impegni espressamente a:</p><br>
                 <ul>
                     <li>Non pubblicare immagini ripetute o contenenti qualsiasi tipo di marchio, filigrana, logo o testo.</li>
                     <li>Non pubblicare immagini che non siano rilevanti per l’annuncio (quali, a titolo esemplificativo e non esaustivo, immagini vuote, monumenti, zone di rilevanza turistica o commerciale, animali, persone, affetti meramente personali).</li>

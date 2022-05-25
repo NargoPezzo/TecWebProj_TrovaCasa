@@ -75,23 +75,22 @@ https://templatemo.com/tm-571-hexashop
     </div>
     <!-- ***** Main Banner Area End ***** -->
 
+<!--<div><h1>Sezione domande frequenti:</h1></div> -->
     <div class="container">
         @isset($faqs)
-        @foreach ($faqs as $faq)
-        <div class="row">
-                <ul style = "list-style-type: none">
-                    @include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => "ques.gif"]) <br>
-                    <li> <h3>{{ $faq->id }}. {{ $faq->domanda }}</h3><br>
-                    <p>Risposta:    {{ $faq->risposta }}</p><br><br></li>
-                </ul>
-        </div>        
-        @endforeach
+            @foreach ($faqs as $faq)
+                <div class="row">
+                    <ul style = "list-style-type: none">
+                        <li>
+                            <h3>{{ $faq->id }}. {{ $faq->domanda }}</h3><br>
+                            <p>Risposta: {{ $faq->risposta }}</p></li><br><br>
+                            @include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => "ques.gif"])
+                    </ul>
+                </div>        
+            @endforeach
         @endisset()
-  
     </div>
-        
-                    
-        
+
     </section>
     <!-- ***** Products Area Ends ***** -->
 
