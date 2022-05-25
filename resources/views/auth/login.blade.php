@@ -79,17 +79,17 @@ https://templatemo.com/tm-571-hexashop
     <div class="about-us">
         <div class="container">
             <div class="static">
-    <h2><center>Login</center></h2>
-    <p><center>Inserisci le tue credenziali, altrimenti <a  href="{{ route('register') }}">Registrati</a></center></p>
+                <h2><center>Login</center></h2><br>
+                <p><center>Inserisci le tue credenziali, altrimenti <a  href="{{ route('register') }}">Registrati</a></center></p><br>
 
     <div class="container-contact">
         <div class="wrap-contact1">
             {{ Form::open(array('route' => 'login', 'class' => 'contact-form')) }}
             
                        
-             <div  class="wrap-input">
-                {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}
-                {{ Form::text('username', '', ['class' => 'input','id' => 'username']) }}
+             <div>
+                 <center>   {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}
+                            {{ Form::text('username', '', ['class' => 'input','id' => 'username']) }}</center>
                 @if ($errors->first('username'))
                 <ul class="errors">
                     @foreach ($errors->get('username') as $message)
@@ -99,9 +99,9 @@ https://templatemo.com/tm-571-hexashop
                 @endif
             </div>
             
-             <div  class="wrap-input">
-                {{ Form::label('password', 'Password', ['class' => 'label-input']) }}
-                {{ Form::password('password', ['class' => 'input', 'id' => 'password']) }}
+             <div>
+               <center> {{ Form::label('password', 'Password', ['class' => 'label-input']) }}
+                   {{ Form::password('password', ['class' => 'input', 'id' => 'password']) }}</center><br>
                 @if ($errors->first('password'))
                 <ul class="errors">
                     @foreach ($errors->get('password') as $message)
@@ -111,8 +111,8 @@ https://templatemo.com/tm-571-hexashop
                 @endif
             </div>
             
-            <div class="container-form-btn">                
-                {{ Form::submit('Login', ['class' => 'form-btn1']) }}
+            <div>                
+                <center>{{ Form::submit('Login', ['class' => 'form-btn1']) }}</center>
             </div>
             
             {{ Form::close() }}
