@@ -83,7 +83,7 @@ https://templatemo.com/tm-571-hexashop
                     <ul style = "list-style-type: none">
                         <li>
                             <h3>{{ $faq->id }}. {{ $faq->domanda }}</h3><br>
-                            <p>Risposta: {{ $faq->risposta }}</p></li><br><br>
+                            <p><strong>Risposta:</strong> {{ $faq->risposta }}</p></li><br><br>
                             @include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => "ques.gif"])
                     </ul>
                 </div>        
