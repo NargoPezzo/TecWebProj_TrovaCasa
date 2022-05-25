@@ -71,7 +71,7 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-12">
                     <div class="inner-content">
                         <h2>Le nostre Offerte</h2>
-                        <span>Qui puoi vedere tutti i nostri alloggi</span>
+                        <span>Qui puoi vedere gli alloggi che ti mettiamo a disposizione</span>
                     </div>
                 </div>
             </div>

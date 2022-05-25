@@ -59,8 +59,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>La Nostra Missione :D</h2>
-                        <span>Aiutare gli studenti fuori sede a trovare una casa accogliente</span>
+                        <h2>La Nostra Missione</h2>
+                        <span>Sei uno studente fuori sede che cerca casa? Non sei solo!</span>
                     </div>
                 </div>
             </div>
