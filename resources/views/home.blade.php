@@ -27,7 +27,7 @@
     
  
     .fadein { 
-        position:relative; height:500px; width:500px; margin:0 auto;
+        position:relative; height:700px; width:700px; margin:0 auto;
         background: #ebebeb;
         padding: 10px;
     }
@@ -91,7 +91,7 @@
                 <div class="col-lg-5">
                     <div class="left-content">
                         <div class="thumb">
-                            <div class="inner-content">
+                            <!-- <div class="inner-content">
                                 <div style="width:600px;height:200px;overflow:hidden">
                                 <img src="assets/images/logoSoBig.png" alt="">
                                 </div>
@@ -104,7 +104,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             
                             
                             
@@ -112,14 +112,14 @@
                             <?php 
                             // display images from directory
                             // directory path
-                                $dir = "assets/images";
+                                $dir = "../public/images/products/";
 
                                 $scan_dir = scandir($dir);
                                 foreach($scan_dir as $img):
                                         if(in_array($img,array('.','..')))
                                         continue;
                             ?>
-                            <img src="<?php echo $dir.$img ?>" alt="<?php echo $img ?>">
+                            <img src="<?php echo $dir.$img ?>" alt=" <?php echo $img ?> ">
                             <?php endforeach; ?>
                             </div>
                             
