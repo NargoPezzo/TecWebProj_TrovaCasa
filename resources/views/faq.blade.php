@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    
+
 
   <head>
 
@@ -75,43 +77,20 @@ https://templatemo.com/tm-571-hexashop
 
     <div class="container">
         @isset($faqs)
-                @foreach ($faqs as $faq)
+        @foreach ($faqs as $faq)
         <div class="row">
-            
-                
-                <h2>{{ $faq->domanda }}</h2>
-                <p>Risposta:{{ $faq->risposta }}</p>
-                
+                <ul style = "list-style-type: none">
+                    @include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => "ques.gif"]) <br>
+                    <li> <h3>{{ $faq->id }}. {{ $faq->domanda }}</h3><br>
+                    <p>Risposta:    {{ $faq->risposta }}</p><br><br></li>
+                </ul>
         </div>        
         @endforeach
-
-
-  @endisset()
+        @endisset()
   
     </div>
         
-                    <div class="col-lg-12">
-                    <div class="pagination">
-                        <ul>
-                            <li>
-                                <a href="#">1</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-              
+                    
         
     </section>
     <!-- ***** Products Area Ends ***** -->
