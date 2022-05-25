@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use App\Models\Resources\House;
 
 class Offerte {
 
-    public function getAppartamenti() {
+/*    public function getAppartamenti() {
         return House::where('n_camere', '>', 0)
                 ->get();
     }
@@ -21,12 +22,13 @@ class Offerte {
         return House::where('n_camere', 0)
                 -> where('tipologia', 'doppio')
                 -> get();
-    }
+    }*/
     
     public function getAlloggi() {
         $alloggi = House::where('opzionato', 0)
                 -> get();
-        return $alloggi/*->paginate($paged)*/;
+        return $alloggi/*->paginate(9)*/;
         
     }
+    
 }

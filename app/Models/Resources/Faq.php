@@ -4,11 +4,10 @@ namespace App\Models\Resources;
 
 use Illuminate\Database\Eloquent\Model;
 
-class House extends Model
+class Faq extends Model
 {
-    protected $table = 'houses';
+    protected $table = 'faqs';
     protected $primaryKey = 'id';
     protected $guarded = ['id'];
     public $timestamps = false;
-
 }

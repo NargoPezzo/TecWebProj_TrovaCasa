@@ -24,7 +24,7 @@ Route::view('/chisiamo','chisiamo')
 Route::view('/dovesiamo','dovesiamo')
         ->name('dovesiamo');
 
-Route::get('/faq', 'AdminController@showFaq')
+Route::get('/faq', 'PublicController@showFaqs')
         ->name('faq');
 
 Route::view('/condizioni','condizioni')
