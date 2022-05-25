@@ -22,13 +22,33 @@
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
-<!--
 
-TemplateMo 571 Hexashop
+    <style>
+    
+ 
+    .fadein { 
+        position:relative; height:500px; width:500px; margin:0 auto;
+        background: #ebebeb;
+        padding: 10px;
+    }
+    
+    .fadein img{
+        position:absolute;
+        width: calc(96%);
+        height: calc(94%);
+        object-fit: scale-down;
+    }
 
-https://templatemo.com/tm-571-hexashop
-
--->
+    </style>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script>
+        $(function(){
+                $('.fadein img:gt(0)').hide();
+                setInterval(function(){$('.fadein :first-child').fadeOut().next('img').fadeIn().end().appendTo('.fadein');}, 5000);
+        });
+    </script>
+    
     </head>
     
     <body>
@@ -63,20 +83,48 @@ https://templatemo.com/tm-571-hexashop
     <!-- ***** Header Area End ***** -->
 
         <!-- ***** Main Banner Area Start ***** -->
+    
+        
     <div class="main-banner" id="top">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-5">
                     <div class="left-content">
                         <div class="thumb">
                             <div class="inner-content">
-                                <h4>We Are Hexashop</h4>
-                                <span>Awesome, clean &amp; creative HTML5 Template</span>
-                                <div class="main-border-button">
-                                    <a href="#">Purchase Now!</a>
+                                <div style="width:600px;height:200px;overflow:hidden">
+                                <img src="assets/images/logoSoBig.png" alt="">
+                                </div>
+                                <span>Migliaia di inserzioni alla portata di click</span>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        
+                                        <div class="main-border-button">
+                                            <a href="#">Sfoglia il nostro catalogo</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <img src="assets/images/left-banner-image.jpg" alt="">
+                            
+                            
+                            
+                            <div class="fadein">
+                            <?php 
+                            // display images from directory
+                            // directory path
+                                $dir = "assets/images";
+
+                                $scan_dir = scandir($dir);
+                                foreach($scan_dir as $img):
+                                        if(in_array($img,array('.','..')))
+                                        continue;
+                            ?>
+                            <img src="<?php echo $dir.$img ?>" alt="<?php echo $img ?>">
+                            <?php endforeach; ?>
+                            </div>
+                            
+                            
+                            
                         </div>
                     </div>
                 </div>
@@ -86,87 +134,21 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-6">
                     <div class="right-content">
                         <div class="row">
-                            <div class="col-lg-6">
-                                <div class="right-first-image">
-                                    <div class="thumb">
-                                        <div class="inner-content">
-                                            <h4>Women</h4>
-                                            <span>Best Clothes For Women</span>
-                                        </div>
-                                        <div class="hover-content">
-                                            <div class="inner">
-                                                <h4>Women</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
-                                                <div class="main-border-button">
-                                                    <a href="#">Discover More</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img src="assets/images/baner-right-image-01.jpg">
-                                    </div>
-                                </div>
+                            <div class="col-lg-12">
+                                
+                                        <h3>Sei un?</h3>
+                        <span> Il nostro sito ha lo scopo di soddisfare studenti che hanno bisogno di trovare casa e i proprietari che hanno bisogno di pubblicizzare e mettere in vendita i propri immobili e di trovare potenziali locatari.</span>
+                        <div class="quote">
+                           
+                           <h3> "Sto da Dio, ma l' affitto è altino." </h3>
+                            <p>- Luca, 21 anni, che si è affidato a Booking piuttosto che a noi. </p>
+                        </div>
+                        <p>Il nostro sito garantisce le migliori inserzioni per studenti ai prezzi più bassi dell' intera penisola. I contratti sono stipulati in modo rapido ed efficiente. Soddisfatti o rimborsati? Macchè, solo soddisfatti. </p>
+                        
+                                    
                             </div>
                             
-                            <div class="col-lg-6">
-                                <div class="right-first-image">
-                                    <div class="thumb">
-                                        <div class="inner-content">
-                                            <h4>Men</h4>
-                                            <span>Best Clothes For Men</span>
-                                        </div>
-                                        <div class="hover-content">
-                                            <div class="inner">
-                                                <h4>Men</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
-                                                <div class="main-border-button">
-                                                    <a href="#">Discover More</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img src="assets/images/baner-right-image-02.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="right-first-image">
-                                    <div class="thumb">
-                                        <div class="inner-content">
-                                            <h4>Kids</h4>
-                                            <span>Best Clothes For Kids</span>
-                                        </div>
-                                        <div class="hover-content">
-                                            <div class="inner">
-                                                <h4>Kids</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
-                                                <div class="main-border-button">
-                                                    <a href="#">Discover More</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img src="assets/images/baner-right-image-03.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="right-first-image">
-                                    <div class="thumb">
-                                        <div class="inner-content">
-                                            <h4>Accessories</h4>
-                                            <span>Best Trend Accessories</span>
-                                        </div>
-                                        <div class="hover-content">
-                                            <div class="inner">
-                                                <h4>Accessories</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
-                                                <div class="main-border-button">
-                                                    <a href="#">Discover More</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img src="assets/images/baner-right-image-04.jpg">
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
