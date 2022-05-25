@@ -118,7 +118,10 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 
-                                        <h3>Sei un?</h3>
+                                <div>
+                                    <img src="assets/images/LogoBigBlack.png" alt="">
+                                </div>
+                                
                         <span> Il nostro sito ha lo scopo di soddisfare studenti che hanno bisogno di trovare casa e i proprietari che hanno bisogno di pubblicizzare e mettere in vendita i propri immobili e di trovare potenziali locatari.</span>
                         <div class="quote">
                            
