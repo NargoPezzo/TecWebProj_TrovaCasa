@@ -66,7 +66,7 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-12">
                     <div class="inner-content">
                         <h2>Accedi o Registrati</h2>
-                            <span>Speramo che funziona</span> 
+                            <span>Hai solo da guadagnarci</span> 
                     </div>
                 </div>
             </div>

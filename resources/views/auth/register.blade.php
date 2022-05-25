@@ -65,7 +65,7 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-12">
                     <div class="inner-content">
                         <h2>Registrati</h2>
-                            <span>Entra a far parte della community di Clash Royale</span> 
+                            <span>Non sarai più uno dei tanti</span> 
                     </div>
                 </div>
             </div>

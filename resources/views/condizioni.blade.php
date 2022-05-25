@@ -224,4 +224,3 @@ https://templatemo.com/tm-571-hexashop
   </body>
 
 </html>
-
