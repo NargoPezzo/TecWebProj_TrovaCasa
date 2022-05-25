@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             ['id' => 1, 'titolo' => 'Appartamento1', 'prezzo' => 280, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
                 'tipologia' => null, 'n_camere' => 3, 'n_posti_letto_totali' => 3, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Simeoni, 6', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'età_min' => '18', 
-                'superficie' => '150','immagine' => 'app2.jpg']
+                'superficie' => '150','immagine' => 'casa1.jpg']
         ]);
             
         DB::table('houses')->insert([
