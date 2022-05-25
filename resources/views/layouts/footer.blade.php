@@ -7,9 +7,9 @@
                             <img src="assets/images/white-logo.png" alt="hexashop ecommerce templatemo">
                         </div>
                         <ul>
-                            <li><a href="#">Via Brecce Bianche 138, 60131, Ancona, Italia</a></li>
-                            <li><a href="#">info@trovacasa.it</a></li>
-                            <li><a href="#">+39 333 4455667</a></li> 
+                            <li><a href="{{ route('dovesiamo') }}">Via Brecce Bianche 138, 60131, Ancona, Italia</a></li>
+                            <li><a href="mailto::info@trovacasa.it">info@trovacasa.it</a></li>
+                            <!--   <li><a href="#">+39 333 4455667</a></li> da fixare si vede nero si deve vedere bianco --> 
                         </ul>
                     </div></center>
                 
