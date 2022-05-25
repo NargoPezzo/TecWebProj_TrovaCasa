@@ -112,7 +112,7 @@
                             <?php 
                             // display images from directory
                             // directory path
-                                $dir = "../public/images/products/";
+                                $dir = "../public/images/slideshow/";
 
                                 $scan_dir = scandir($dir);
                                 foreach($scan_dir as $img):
