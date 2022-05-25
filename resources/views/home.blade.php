@@ -91,22 +91,6 @@
                 <div class="col-lg-5">
                     <div class="left-content">
                         <div class="thumb">
-                            <!-- <div class="inner-content">
-                                <div style="width:600px;height:200px;overflow:hidden">
-                                <img src="assets/images/logoSoBig.png" alt="">
-                                </div>
-                                <span>Migliaia di inserzioni alla portata di click</span>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        
-                                        <div class="main-border-button">
-                                            <a href="#">Sfoglia il nostro catalogo</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-                            
-                            
                             
                             <div class="fadein">
                             <?php 
@@ -121,9 +105,7 @@
                             ?>
                             <img src="<?php echo $dir.$img ?>" alt=" <?php echo $img ?> ">
                             <?php endforeach; ?>
-                            </div>
-                            
-                            
+                            </div> 
                             
                         </div>
                     </div>
