@@ -1,77 +1,302 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+  <head>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+    <title>TrovaCasa.it - @yield('title', 'Registrati')</title>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+    <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+    <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+<!--
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+TemplateMo 571 Hexashop
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+https://templatemo.com/tm-571-hexashop
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+    </head>
+    
+    <body>
+    
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+    
+    
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                       
+                        @include('layouts/navpublic')
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="page-heading about-page-heading" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="inner-content">
+                        <h2>Registrati</h2>
+                            <span>Entra a far parte della community di Clash Royale</span> 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- ***** Main Banner Area End ***** -->
+    
+
+    <!-- ***** About Area Starts ***** -->
+    <div class="about-us">
+        <div class="container">
+            <div class="static">
+    
+
+    <div class="container-contact">
+        <center><div class="wrap-contact1">
+            {{ Form::open(array('route' => 'register', 'class' => 'contact-form')) }}
+
+            <div  class="wrap-input">
+                {{ Form::label('nome', 'Nome', ['class' => 'label-input']) }}<br>
+                {{ Form::text('nome', '', ['class' => 'input', 'id' => 'nome']) }}
+                @if ($errors->first('nome'))
+                <ul class="errors">
+                    @foreach ($errors->get('nome') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+            </div><br><br>
+
+            <div  class="wrap-input">
+                {{ Form::label('cognome', 'Cognome', ['class' => 'label-input']) }}<br>
+                {{ Form::text('cognome', '', ['class' => 'input', 'id' => 'cognome']) }}
+                @if ($errors->first('cognome'))
+                <ul class="errors">
+                    @foreach ($errors->get('cognome') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+            </div><br><br>
+            
+             <div  class="wrap-input">
+                {{ Form::label('email', 'Email', ['class' => 'label-input']) }}<br>
+                {{ Form::text('email', '', ['class' => 'input','id' => 'email']) }}
+                @if ($errors->first('email'))
+                <ul class="errors">
+                    @foreach ($errors->get('email') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+            </div><br><br>
+            
+             <div  class="wrap-input">
+                {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}<br>
+                {{ Form::text('username', '', ['class' => 'input','id' => 'username']) }}
+                @if ($errors->first('username'))
+                <ul class="errors">
+                    @foreach ($errors->get('username') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+            </div><br><br>
+            
+             <div  class="wrap-input">
+                {{ Form::label('password', 'Password', ['class' => 'label-input']) }}<br>
+                {{ Form::password('password', ['class' => 'input', 'id' => 'password']) }}
+                @if ($errors->first('password'))
+                <ul class="errors">
+                    @foreach ($errors->get('password') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+            </div><br><br>
+
+            <div  class="wrap-input">
+                {{ Form::label('conferma password', 'Conferma password', ['class' => 'label-input']) }}<br>
+                {{ Form::password('conferma password', ['class' => 'input', 'id' => 'conferma password']) }}
+            </div><br><br>
+            
+            <label for="gender">
+                <div class="label-input">
+                    Seleziona sesso: <br>
+                </div>
+            </label>
+            
+             <div class="wrap-input">
+                <input class="wrap-input-input" type="radio" name="genere" id="genereU1" value="U">
+                     <label class="wrap-input-label" for="genereU1">
+                         <div class="label-input">
+                            Uomo 
+                         </div>
+                        </label>
+              </div>
+                    <div class="wrap-input">
+                        <input class="wrap-input-input" type="radio" name="genere" id="genereD1" value="D">
+                            <label class="wrap-input-label" for="genereD1">
+                                <div class="label-input">
+                              Donna
+                                </div>
+                            </label>
+                @if ($errors->first('genere'))
+                <ul class="errors">
+                    @foreach ($errors->get('genere') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+                
+             </div><br><br>
+            
+             <div class="wrap-input">
+                {{ Form::label('età', 'Età', ['class' => 'label-input']) }}<br>
+                {{ Form::text('età', '', ['class' => 'input', 'id' => 'età']) }}
+                @if ($errors->first('età'))
+                <ul class="errors">
+                    @foreach ($errors->get('età') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+                
+            </div><br><br>
+            
+                         <div class="wrap-input">
+                {{ Form::label('cellulare', 'Cellulare', ['class' => 'label-input']) }}<br>
+                {{ Form::text('cellulare', '', ['class' => 'input', 'id' => 'cellulare']) }}
+                @if ($errors->first('cellulare'))
+                <ul class="errors">
+                    @foreach ($errors->get('cellulare') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+                
+            </div><br><br>
+            
+            <label for="livello">
+                <div class="label-input">
+                    Registrati come:<br>
+                </div>
+            </label>
+            
+            <div class="wrap-input">
+                <input class="wrap-input-input" type="radio" name="livello" id="livelloLocatore1" value="Le">
+                     <label class="wrap-input-label" for="livelloLocatore1">
+                         <div class="label-input">
+                            Locatore 
+                         </div>
+                        </label>
+             </div>
+                    <div class="wrap-input">
+                        <input class="wrap-input-input" type="radio" name="livello" id="livelloLocatario1" value="Lo">
+                            <label class="wrap-input-label" for="livelloLocatario1">
+                                <div class="label-input">
+                             Locatario
+                                </div>
+                            </label>
+                @if ($errors->first('genere'))
+                <ul class="errors">
+                    @foreach ($errors->get('genere') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+                
+             </div><br><br>
+            
+            <div class="container-form-btn">                
+                {{ Form::submit('Registrati', ['class' => 'form-btn1']) }}
+            </div>
+            
+            {{ Form::close() }}
+            </div></center>
+    </div>
+
 </div>
-@endsection
+        </div>
+        </div>
+
+
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        @include('layouts/footer')
+    </footer>
+    
+
+    <!-- jQuery -->
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/accordions.js"></script>
+    <script src="assets/js/datepicker.js"></script>
+    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/imgfix.min.js"></script> 
+    <script src="assets/js/slick.js"></script> 
+    <script src="assets/js/lightbox.js"></script> 
+    <script src="assets/js/isotope.js"></script> 
+    
+    <!-- Global Init -->
+    <script src="assets/js/custom.js"></script>
+
+    <script>
+
+        $(function() {
+            var selectedClass = "";
+            $("p").click(function(){
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+              $("."+selectedClass).fadeIn();
+              $("#portfolio").fadeTo(50, 1);
+            }, 500);
+                
+            });
+        });
+
+    </script>
+
+  </body>
+
+</html>
+
