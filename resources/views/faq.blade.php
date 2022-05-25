@@ -74,42 +74,23 @@ https://templatemo.com/tm-571-hexashop
     <!-- ***** Main Banner Area End ***** -->
 
     <div class="container">
-          <div class="row">
-          @isset($houses)
-            @foreach ($houses as $house)
-            
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="offertasingola.php"><i class="fa fa-eye"></i></a></li>
-                                    
-                                </ul>
-                            </div>
-                            
-                            <div class="image">
-                                @include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => $house->immagine]) 
-                            </div>
-                        </div>
-                        <div class="down-content">
-                            <h4 class="title">Alloggio: {{ $house->titolo }}</h4>
-                            <span>Indirizzo: {{ $house->città }}, {{ $house->cap }}, {{ $house->provincia }}, {{ $house->indirizzo}}</span> 
-                            <span>Prezzo:  {{ $house->prezzo }} €</span>
-                            
-                        </div>
-                    </div>
-                </div>
-            
-            @endforeach
-
-
-        @endisset()
+        @isset($faqs)
+                @foreach ($faqs as $faq)
+        <div class="row">
             
                 
+                <h2>{{ $faq->domanda }}</h2>
+                <p>Risposta:{{ $faq->risposta }}</p>
                 
-        </div>
-                <div class="col-lg-12">
+        </div>        
+        @endforeach
+
+
+  @endisset()
+  
+    </div>
+        
+                    <div class="col-lg-12">
                     <div class="pagination">
                         <ul>
                             <li>
