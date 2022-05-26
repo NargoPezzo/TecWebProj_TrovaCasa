@@ -14,6 +14,10 @@ class LocatarioController extends Controller {
     }
 
     public function index() {
+        return view('locatario');
+    }
+    
+    public function indexhome() {
         return view('homelocatario');
     }
 }
