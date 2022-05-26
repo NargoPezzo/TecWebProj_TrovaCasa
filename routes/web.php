@@ -55,6 +55,10 @@ Route::get('/locatario', function () {
     return view('locatario');
 });
 
+Route::get('/homelocatario', function () {
+    return view('homelocatario');
+});
+
 Auth::routes();
 
 /*Route::get('/home', 'HomeController@index')->name('home'); ME L'HA AGGIUNTA IL TERMINALEEEEEEEEEE */
