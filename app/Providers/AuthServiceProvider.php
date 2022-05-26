@@ -21,10 +21,19 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
+    public function boot() {
         $this->registerPolicies();
 
-        //DEFINIRE I LE REGOLE TRAMITE GATES, prendere da laraProj5
+        Gate::define('isAdmin', function ($user) {
+            return $user->hasRole('admin');
+        });
+
+        Gate::define('isLocatore', function ($user) {
+            return $user->hasRole('locatore');
+        });
+
+        Gate::define('isLocatario', function ($user) {
+            return $user->hasRole('locatario');
+        });
     }
 }

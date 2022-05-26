@@ -49,15 +49,12 @@ Route::get('/home', function () {
     return view('home');
 });
 
- 
-
-Route::get('/locatario', function () {
+Route::get('/locatario', function() {
     return view('locatario');
 });
 
-Route::get('/homelocatario', function () {
-    return view('homelocatario');
-});
+Route::get('/homelocatario', 'LocatarioController@index')
+        ->name('homelocatario')->middleware('can:isLocatario');
 
 Auth::routes();
 
