@@ -21,7 +21,7 @@
         <li><a href="{{ route('admin') }}" class="highlight" title="Home Locatore">Home Locatore</a></li>
     @endcan
     @can('isLocatario')
-        <li><a href="{{ route('user') }}" class="highlight" title="Home Locatario">Home Locatario</a></li>
+        <li><a href="{{ route('locatario') }}" class="highlight" title="Home Locatario">Home Locatario</a></li>
     @endcan
     @auth
         <li><a href="" title="Esci dal sito" class="highlight" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>

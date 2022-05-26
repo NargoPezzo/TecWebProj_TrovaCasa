@@ -32,7 +32,7 @@ class LoginController extends Controller
         switch ($livello) {
             case 'admin': return '/homeadmin';
                 break;
-            case 'locatario': return '/homelocatario';
+            case 'locatario': return '/locatario';
                 break;
             case 'locatore': return '/homelocatore';
                 break;

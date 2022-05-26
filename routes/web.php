@@ -49,11 +49,9 @@ Route::get('/home', function () {
     return view('home');
 });
 
-/* ALEX QUAAAAAAAAAA
-Route::view('/homelocatario','locatario')
-        ->name('locatario');*/
+ 
 
-Route::get('/homelocatario', function () {
+Route::get('/locatario', function () {
     return view('locatario');
 });
 

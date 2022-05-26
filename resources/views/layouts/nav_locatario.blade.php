@@ -7,9 +7,9 @@
 
 <!-- ***** Navbar Start ***** -->
 <ul class='nav'>
-    <li><a href="{{ route('homelocatario') }}" title="Va alla Home del Locatario">Torna alla home</a></li>
-    <li><a href="{{ route('catalog1') }}" title="Va alle chat">Sezione messaggistica</a></li>
-    <li><a href="{{ route('user') }}" title="Modificare dati personali">Modifica dati utente</a></li>
+    <li><a href="{{ route('chisiamo') }}" title="Va alla Home del Locatario">Torna alla home</a></li>
+    <li><a href="{{ route('chisiamo') }}" title="Va alle chat">Sezione messaggistica</a></li>
+    <li><a href="{{ route('chisiamo') }}" title="Modificare dati personali">Modifica dati utente</a></li>
     @auth
         <li><a href="" class="highlight" title="Esci dal sito" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
