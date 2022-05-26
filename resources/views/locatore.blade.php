@@ -125,7 +125,7 @@
                         <span> Il nostro sito ha lo scopo di soddisfare studenti che hanno bisogno di trovare casa e i proprietari che hanno bisogno di pubblicizzare e mettere in vendita i propri immobili e di trovare potenziali locatari.</span>
                         <div class="quote">
                            
-                           <h3> "Sto da Dio, ma l' affitto è altino." </h3>
+                           <h3> "BENVENUTO LOCATORE" </h3>
                             <p>- Luca, 21 anni, che si è affidato a Booking piuttosto che a noi. </p>
                         </div>
                         <p>Il nostro sito garantisce le migliori inserzioni per studenti ai prezzi più bassi dell' intera penisola. I contratti sono stipulati in modo rapido ed efficiente. Soddisfatti o rimborsati? Macchè, solo soddisfatti. </p>
