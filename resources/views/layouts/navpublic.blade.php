@@ -13,6 +13,7 @@
     <li><a href="mailto:info@trovacasa.it" title="Scrivici pure">Contattaci</a></li>
     <li><a href="{{ route('faq') }}" title="Risposte alle domande più comuni">F.A.Q.</a></li>
     <li><a href="{{ route('condizioni') }}" title="Condizioni generali d' uso">Condizioni</a></li>
+    
     @can('isAdmin')
         <li><a href="{{ route('admin') }}" class="highlight" title="Home Admin">Home Admin</a></li>
     @endcan
