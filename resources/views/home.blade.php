@@ -114,15 +114,25 @@
         <!-- Finisce Lo Slideshow con le foto -->
                 <div class="about-us">
                     
-                        <div class="col-lg-6">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div>
-                                        <img src="assets/images/LogoBigBlack.png" alt="">
-                                    </div>
-                                </div>   
-                            </div>    
-                        </div>
+                        
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class=" right-content">
+                                <img src="assets/images/LogoBigBlack.png" alt="">
+                                <h4>Benvenuto, giovane avventuriero!</h4>
+                                <span> Sei uno studente in cerca di un tranquillo alloggio per conseguire la tua carriera universitaria?
+                                    <br> Great!
+                                    <br> Hai uno o più appartamenti da affittare di fretta e furia?
+                                    <br> Giusto così, il tempo è denaro!</span>
+                                <span> Allora ti trovi nel posto giusto! Sfoglia pure il nostro catalogo con oltre migliaia di inserzioni da tutta Italia. 
+                                    <br> E quando sei pronto per lo step successivo, crea pure un account gratuito con cui poter filtrare, prenotare un affitto o metterne in vendita uno.</span>
+                                <span> Ti auguriamo un accogliente soggiorno nel nostro portale. <br></span>
+                                <span><i> -il team di TrovaCasa.it</i></span>
+                            </div>
+                        </div>   
+                    </div>    
+                        
+                    
                 </div>
             </div>
         </div>
