@@ -87,9 +87,9 @@ https://templatemo.com/tm-571-hexashop
             {{ Form::open(array('route' => 'login', 'class' => 'contact-form')) }}
             
                        
-             <div>
-                 <center>   {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}
-                            {{ Form::text('username', '', ['class' => 'input','id' => 'username']) }}</center>
+            <center> <div>
+                            {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}
+                            {{ Form::text('username', '', ['class' => 'input','id' => 'username']) }}
                 @if ($errors->first('username'))
                 <ul class="errors">
                     @foreach ($errors->get('username') as $message)
@@ -97,11 +97,11 @@ https://templatemo.com/tm-571-hexashop
                     @endforeach
                 </ul>
                 @endif
-            </div>
+            </div></center>
             
-             <div>
-               <center> {{ Form::label('password', 'Password', ['class' => 'label-input']) }}
-                   {{ Form::password('password', ['class' => 'input', 'id' => 'password']) }}</center><br>
+             <center><div>
+                    {{ Form::label('password', 'Password', ['class' => 'label-input']) }}
+                    {{ Form::password('password', ['class' => 'input', 'id' => 'password']) }}<br>
                 @if ($errors->first('password'))
                 <ul class="errors">
                     @foreach ($errors->get('password') as $message)
@@ -109,11 +109,11 @@ https://templatemo.com/tm-571-hexashop
                     @endforeach
                 </ul>
                 @endif
-            </div>
+            </div></center>
             
-            <div>                
-                <center>{{ Form::submit('Login', ['class' => 'form-btn1']) }}</center>
-            </div>
+            <center><div>                
+                {{ Form::submit('Login', ['class' => 'form-btn1']) }}
+            </div></center>
             
             {{ Form::close() }}
         </div>

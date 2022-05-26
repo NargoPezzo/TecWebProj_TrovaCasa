@@ -48,6 +48,9 @@ Route::post('register', 'Auth\RegisterController@register');
 Route::get('/home', function () {
     return view('home');
 });
+Route::get('/homelocatario', function () {
+    return view('locatario');
+});
 Auth::routes();
 
 /*Route::get('/home', 'HomeController@index')->name('home'); ME L'HA AGGIUNTA IL TERMINALEEEEEEEEEE */
