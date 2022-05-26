@@ -13,14 +13,14 @@
     <li><a href="mailto:info@trovacasa.it" title="Scrivici pure">Contattaci</a></li>
     <li><a href="{{ route('faq') }}" title="Risposte alle domande più comuni">F.A.Q.</a></li>
     <li><a href="{{ route('condizioni') }}" title="Condizioni generali d' uso">Condizioni</a></li>
- //   @can('isAdmin')
+    @can('isAdmin')
         <li><a href="{{ route('admin') }}" class="highlight" title="Home Admin">Home Admin</a></li>
     @endcan
- //   @can('isAdmin')
-        <li><a href="{{ route('admin') }}" class="highlight" title="Home Admin">Home Admin</a></li>
+    @can('isLocatore')
+        <li><a href="{{ route('admin') }}" class="highlight" title="Home Locatore">Home Locatore</a></li>
     @endcan
-//    @can('isUser')
-        <li><a href="{{ route('user') }}" class="highlight" title="Home User">Home User</a></li>
+    @can('isLocatario')
+        <li><a href="{{ route('user') }}" class="highlight" title="Home Locatario">Home Locatario</a></li>
     @endcan
     @auth
         <li><a href="" title="Esci dal sito" class="highlight" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
