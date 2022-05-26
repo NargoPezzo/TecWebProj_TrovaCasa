@@ -7,7 +7,7 @@
 
 <!-- ***** Navbar Start ***** -->
 <ul class='nav'>
-    <li><a href="{{ route('locatario') }}" title="Va alla Home del Locatario">Torna alla home</a></li>
+    <li><a href="{{ route('homelocatario') }}" title="Va alla Home del Locatario">Torna alla home</a></li>
     <li><a href="{{ route('catalog1') }}" title="Va alle chat">Sezione messaggistica</a></li>
     <li><a href="{{ route('user') }}" title="Modificare dati personali">Modifica dati utente</a></li>
     @auth

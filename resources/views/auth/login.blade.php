@@ -86,7 +86,7 @@ https://templatemo.com/tm-571-hexashop
         <div class="wrap-contact1">
             {{ Form::open(array('route' => 'login', 'class' => 'contact-form')) }}
             
-                       
+            
             <center> <div>
                             {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}
                             {{ Form::text('username', '', ['class' => 'input','id' => 'username']) }}
