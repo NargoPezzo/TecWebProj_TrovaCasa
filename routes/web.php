@@ -62,6 +62,11 @@ Route::get('/locatore', 'LocatoreController@index')
 Route::get('/homelocatore', 'LocatoreController@indexhome')
         ->name('homelocatore')->middleware('can:isLocatore');
 
+Route::get('/admin', 'AdminController@index') 
+        ->name('admin')->middleware('can:isAdmin');
+
+Route::get('/homeadmin', 'AdminController@indexhome')
+        ->name('homeadmin')->middleware('can:isAdmin');
 /*
 Route::get('/offertelocatario', 'LocatarioController@indexoffertelocatario')   POTREBBE ESSERE INUTILE
         ->name('offertelocatario')->middleware('can:isLocatario');  */

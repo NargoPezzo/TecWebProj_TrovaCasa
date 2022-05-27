@@ -146,7 +146,7 @@ https://templatemo.com/tm-571-hexashop
 
             <div  class="wrap-input">
                 {{ Form::label('conferma password', 'Conferma password', ['class' => 'label-input']) }}<br>
-                {{ Form::password('conferma password', ['class' => 'input', 'id' => 'conferma password']) }}
+                {{ Form::password('password_confirmation', ['class' => 'input', 'id' => 'conferma password']) }}
             </div><br><br>
             
             <label for="gender">

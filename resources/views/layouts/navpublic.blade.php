@@ -8,15 +8,14 @@
 <!-- ***** Navbar Start ***** -->
 <ul class='nav'>
     @can('isAdmin')
-        <li><a href="{{ route('chisiamo') }}" class="highlight" title="Sfrutta le tue funzionalità">Home Admin</a></li>
+        <li><a href="{{ route('homeadmin') }}" class="highlight" title="Sfrutta le tue funzionalità">Home Admin</a></li>
     @endcan
     @can('isLocatore')
-        <li><a href="{{ route('chisiamo') }}" class="highlight" title="Sfrutta le tue funzionalità">Home Locatore</a></li>
+        <li><a href="{{ route('homelocatore') }}" class="highlight" title="Sfrutta le tue funzionalità">Home Locatore</a></li>
     @endcan
     @can('isLocatario')
         <li><a href="{{ route('homelocatario') }}" class="highlight" title="Sfrutta le tue funzionalità">Home Locatario</a></li>
     @endcan
-    
     <li><a href="{{ route('offerte') }}" title="Il nostro catalogo">Offerte</a></li>
     <li><a href="{{ route('chisiamo') }}" title="La nostra azienda">Chi Siamo</a></li>
     <li><a href="{{ route('dovesiamo') }}" title="Dove potete trovarci">Dove Siamo</a></li>

@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'nome' => ['required', 'string', 'max:255'],
             'cognome' => ['required', 'string', 'max:255'],
             'età' => ['required', 'int'],
-            'genere' => ['required', 'char'],
+            'genere' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], //campo unico
             'cellulare' => ['required', 'string', 'max:255', 'unique:users'],
             'username' => ['required', 'string', 'min:8', 'unique:users'],
@@ -76,7 +76,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'username' => $data['username'],
             'password' => Hash::make($data['password']),
-            'cellulare' => $data ['numero'],
+            'cellulare' => $data ['cellulare'],
             'genere' => $data ['genere'],
             'livello' => $data ['livello'],
             'età' => $data['età'],]);

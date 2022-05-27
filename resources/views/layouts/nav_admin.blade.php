@@ -1,5 +1,5 @@
 <!-- ***** Logo Start ***** -->
-<a href="{{ url('home') }}" class="logo">
+<a href="{{ url('admin') }}" class="logo">
     <img src="assets/images/logo.png">
                             
 </a>
@@ -9,10 +9,10 @@
 <ul class='nav'>
     <!-- MODIFICARE ROTTE!!! -->
     <li><a href="{{ route('admin') }}" title="Va alla Home dell'Admin">Torna alla home</a></li>
-    <li><a href="{{ route('') }}" title="Visualizza le statistiche">Statistiche</a></li>
-    <li><a href="{{ route('newproduct') }}" title="Inserisci nuova FAQ">Inserisci FAQ</a></li>
-    <li><a href="{{ route('newproduct') }}" title="Modifica le FAQ">Modifica FAQ</a></li>
-    <li><a href="{{ route('newproduct') }}" title="Elimina le FAQ">Elimina FAQ</a></li>
+    <li><a href="{{ route('chisiamo') }}" title="Visualizza le statistiche">Statistiche</a></li>
+    <li><a href="{{ route('chisiamo') }}" title="Inserisci nuova FAQ">Inserisci FAQ</a></li>
+    <li><a href="{{ route('chisiamo') }}" title="Modifica le FAQ">Modifica FAQ</a></li>
+    <li><a href="{{ route('chisiamo') }}" title="Elimina le FAQ">Elimina FAQ</a></li>
     @auth
         <li><a href="" class="highlight" title="Esci dal sito" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

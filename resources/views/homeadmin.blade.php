@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>TrovaCasa.it - @yield('title', 'Home Admin')</title>
+    <title>TrovaCasa.it - @yield('title', 'Home Locatario')</title>
 
 
     <!-- Additional CSS Files -->
@@ -72,7 +72,7 @@
                     <nav class="main-nav">
                         
                         <ul>
-                            @include('layouts/navpublic')
+                            @include('layouts/nav_admin')
                         </ul>        
                         
                     </nav>
@@ -125,7 +125,7 @@
                         <span> Il nostro sito ha lo scopo di soddisfare studenti che hanno bisogno di trovare casa e i proprietari che hanno bisogno di pubblicizzare e mettere in vendita i propri immobili e di trovare potenziali locatari.</span>
                         <div class="quote">
                            
-                           <h3> "BENVENUTO ADMIN SUPREMO" </h3>
+                           <h3> "HOME ADMIN" </h3>
                             <p>- Luca, 21 anni, che si è affidato a Booking piuttosto che a noi. </p>
                         </div>
                         <p>Il nostro sito garantisce le migliori inserzioni per studenti ai prezzi più bassi dell' intera penisola. I contratti sono stipulati in modo rapido ed efficiente. Soddisfatti o rimborsati? Macchè, solo soddisfatti. </p>
@@ -168,7 +168,7 @@
     <script src="assets/js/isotope.js"></script> 
     
     <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
+   <script src="assets/js/custom.js"></script>
 
     <script>
 

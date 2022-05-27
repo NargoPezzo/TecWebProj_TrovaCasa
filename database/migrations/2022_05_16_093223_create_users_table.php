@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('username',20)->unique();
             $table->string('password');
             $table->string('livello',10)->default('utente');
+            $table->timestamps();  
             $table->rememberToken(); // "ricordami"
         });
     }
