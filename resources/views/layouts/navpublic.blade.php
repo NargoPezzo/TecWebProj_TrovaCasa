@@ -16,7 +16,14 @@
     @can('isLocatario')
         <li><a href="{{ route('homelocatario') }}" class="highlight" title="Sfrutta le tue funzionalità">Home Locatario</a></li>
     @endcan
+    
+    @guest
     <li><a href="{{ route('offerte') }}" title="Il nostro catalogo">Offerte</a></li>
+    @endguest
+    
+    @can('isLocatario')
+        <li><a href="{{ route('offertelocatario') }}" class="highlight" title="Offerte Riservate">Offerte Locatario</a></li>
+    @endcan
     <li><a href="{{ route('chisiamo') }}" title="La nostra azienda">Chi Siamo</a></li>
     <li><a href="{{ route('dovesiamo') }}" title="Dove potete trovarci">Dove Siamo</a></li>
     <li><a href="mailto:info@trovacasa.it" title="Scrivici pure">Contattaci</a></li>

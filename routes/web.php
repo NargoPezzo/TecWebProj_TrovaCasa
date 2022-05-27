@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get('/offerte', 'PublicController@showOfferte')
         ->name('offerte');
+
                 
 Route::view('/chisiamo','chisiamo')
         ->name('chisiamo');
@@ -55,6 +56,9 @@ Route::get('/locatario', 'LocatarioController@index')
 
 Route::get('/homelocatario', 'LocatarioController@indexhome')
         ->name('homelocatario')->middleware('can:isLocatario');
+
+Route::get('/offertelocatario', 'LocatarioController@indexoffertelocatario')
+        ->name('offertelocatario')->middleware('can:isLocatario');
 
 Auth::routes();
 

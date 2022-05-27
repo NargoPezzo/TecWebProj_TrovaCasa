@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>TrovaCasa.it - @yield('title', 'Offerte')</title>
+    <title>TrovaCasa.it - @yield('title', 'Offerte Locatario')</title>
 
 
     <!-- Additional CSS Files -->
@@ -51,7 +51,7 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-12">
                     <nav class="main-nav">
                         <ul>
-                            @include('layouts/navpublic')
+                            @include('layouts/nav_locatario')
                         </ul>
                        
                         
@@ -70,7 +70,7 @@ https://templatemo.com/tm-571-hexashop
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>Le nostre Offerte</h2>
+                        <h2>Le nostre Offerte dedicate al locatario</h2>
                         <span>Qui puoi vedere gli alloggi che ti mettiamo a disposizione</span>
                     </div>
                 </div>
@@ -139,7 +139,12 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-4">
                     <div class="item">
                         <div class="thumb">
-                            
+                            <div class="hover-content">
+                                <ul>
+                                    <li><a href="offertasingola.php"><i class="fa fa-eye"></i></a></li>
+                                    
+                                </ul>
+                            </div>
                             
                             <div class="image">
                                 @include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => $house->immagine]) 
