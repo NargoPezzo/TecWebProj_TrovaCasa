@@ -158,6 +158,8 @@ class DatabaseSeeder extends Seeder
                 'cellulare' => '335567890', 'username' => 'lariolario','password' => Hash::make('i4z5zipq'), 'livello' => 'locatario',],
             ['nome' => 'Alex', 'cognome' => 'Alex', 'età' => 69, 'genere' => 'M', 'email' => 'lari@lario.it', 
                 'cellulare' => '335567891', 'username' => 'alexalex','password' => Hash::make('alexalex'), 'livello' => 'locatario',],
+            ['nome' => 'Elia', 'cognome' => 'Elia', 'età' => 69, 'genere' => 'M', 'email' => 'lar@lario.it', 
+                'cellulare' => '335567892', 'username' => 'eliaelia','password' => Hash::make('eliaelia'), 'livello' => 'locatore',],
         ]);
         
         DB::table('faqs')->insert([
