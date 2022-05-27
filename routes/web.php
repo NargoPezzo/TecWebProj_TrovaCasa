@@ -57,8 +57,9 @@ Route::get('/locatario', 'LocatarioController@index')
 Route::get('/homelocatario', 'LocatarioController@indexhome')
         ->name('homelocatario')->middleware('can:isLocatario');
 
-Route::get('/offertelocatario', 'LocatarioController@indexoffertelocatario')
-        ->name('offertelocatario')->middleware('can:isLocatario');
+/*
+Route::get('/offertelocatario', 'LocatarioController@indexoffertelocatario')   POTREBBE ESSERE INUTILE
+        ->name('offertelocatario')->middleware('can:isLocatario');  */
 
 Auth::routes();
 

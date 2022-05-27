@@ -21,7 +21,7 @@ class LocatarioController extends Controller {
         return view('homelocatario');
     }
     
-    public function indexoffertelocatario() {
+   /* public function indexoffertelocatario() {   POTREBBE ESSERE INUTILE
         return view('offertelocatario');
-    }
+    } */
 }

@@ -139,7 +139,14 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-4">
                     <div class="item">
                         <div class="thumb">
-                            
+                            @can('isLocatario')
+                            <div class="hover-content">
+                                <ul>
+                                    <li><a href="offertasingola.php"><i class="fa fa-eye"></i></a></li>
+                                    
+                                </ul>
+                            </div>
+                            @endcan
                             
                             <div class="image">
                                 @include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => $house->immagine]) 
