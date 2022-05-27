@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="assets/css/lightbox.css">
 <!--
 
-TemplateMo 571 Hexashop
+TemplateMo 571 Hexashop push prova
 
 https://templatemo.com/tm-571-hexashop
 
