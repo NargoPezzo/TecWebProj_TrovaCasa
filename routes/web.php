@@ -46,36 +46,44 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')
 
 Route::post('register', 'Auth\RegisterController@register');
 
+//Rotte per la modifica
+
+Route::view('/modificautente','modificautente')
+        ->name('modificautente');
+
+//Route::get('/editaccount', 'Auth\EditController@editAccount')
+      //  ->name('editaccount');
+//Route::post('/editaccount', 'Auth\EditController@saveAccount')
+        //->name('editaccount.save');
+
 Route::get('/home', function () {
     return view('home');
 });
-
+//Rotte Locatario
 Route::get('/locatario', 'LocatarioController@index') 
         ->name('locatario')->middleware('can:isLocatario');
 
 Route::get('/homelocatario', 'LocatarioController@indexhome')
         ->name('homelocatario')->middleware('can:isLocatario');
-
+//Rotte Locatore
 Route::get('/locatore', 'LocatoreController@index') 
         ->name('locatore')->middleware('can:isLocatore');
 
 Route::get('/homelocatore', 'LocatoreController@indexhome')
         ->name('homelocatore')->middleware('can:isLocatore');
-
+//Rotte Admin
 Route::get('/admin', 'AdminController@index') 
         ->name('admin')->middleware('can:isAdmin');
 
 Route::get('/homeadmin', 'AdminController@indexhome')
         ->name('homeadmin')->middleware('can:isAdmin');
-
+// Rotte Offerta
 Route::get('/offertasingola/{id}', 'PublicController@showOfferta')   /*AGGIUNTA IO DA PROVARE PER PRODOTTO SINGOLO*/
         ->name('offertasingola');
 
 /*
 Route::get('/offertelocatario', 'LocatarioController@indexoffertelocatario')   POTREBBE ESSERE INUTILE
         ->name('offertelocatario')->middleware('can:isLocatario');  */
-Route::view('/modificautente','modificautente')
-        ->name('modificautente');
 
 Auth::routes();
 

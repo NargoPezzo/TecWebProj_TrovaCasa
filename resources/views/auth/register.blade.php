@@ -81,6 +81,7 @@ https://templatemo.com/tm-571-hexashop
     
 
     <div class="container-contact">
+        <p> Possiedi già un account? <a href="{{ route('login') }}"> Accedi </a> </p>
         <center><div class="wrap-contact1">
             {{ Form::open(array('route' => 'register', 'class' => 'contact-form')) }}
 
@@ -249,7 +250,7 @@ https://templatemo.com/tm-571-hexashop
             {{ Form::close() }}
             </div></center>
     </div>
-
+ 
 </div>
         </div>
         </div>
