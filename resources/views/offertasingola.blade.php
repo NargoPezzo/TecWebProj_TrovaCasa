@@ -88,51 +88,63 @@ https://templatemo.com/tm-571-hexashop
                     <img src="assets/images/single-product-02.jpg" alt="">
                 </div>
             </div>
+            </div>
+                    @if($alloggi->opzionato == 0)
+                    <p>@include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => 'green_button.png']) </p>
+                    <span>Alloggio libero: cosa aspetti?</span> <br><br>
+                    @endif
+                    @if($alloggi->opzionato == 1)
+                    <p>@include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => 'red_button.png']) </p>
+                    <span>Alloggio già occupato...</span> <br><br>
+                    @endif
             <div class="col-lg-4">
                 <div class="right-content">
                     <h4 class="title">Alloggio: {{ $alloggi->titolo }}</h4>
-                    <span class="price">$75.00</span>
-                    <ul class="stars">
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                    </ul>
                     <div class="image">
                                 @include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => $alloggi->immagine]) 
-                    </div>
+                    
 TUTTE LE CARATTERISTICHE DELL'ALLOGGIO:
+
                     <span>Prezzo:  {{ $alloggi->prezzo }} €</span><br><br>
 
                     <span>Descrizione:  {{ $alloggi->descrizione }} </span> <br><br>
+                    
 @if($alloggi->tipologia == 'appartamento')         
                     <span>Numero di camere totali nell'appartamento:  {{ $alloggi->n_camere }} </span> <br><br>
 @endif
+
 @if($alloggi->tipologia == 'posto letto')  
                     <span>Numero di posti letto nella stanza:  {{ $alloggi->n_posti_letto_totali }} </span> <br><br>
 @endif
+
                     <span>Data di inserimento:  {{ $alloggi->data_inserimento }} </span> <br><br>
+                    
 @if ($alloggi->data_min != null)
                     <span>Disponibile da:  {{ $alloggi->data_min }} </span> <br><br>
 @endif
+
 @if ($alloggi->data_max != null)
                     <span>Disponibile fino a:  {{ $alloggi->data_max }} </span> <br><br>
 @endif
+
                     <span>Indirizzo: {{ $alloggi->città }}, {{ $alloggi->cap }}, {{ $alloggi->provincia }}, {{ $alloggi->indirizzo}}</span><br><br>
+
 @if ($alloggi->genere != null)
                     <span>Si accettano solo @if ($alloggi->genere == 'F') ragazze @endif @if ($alloggi->genere == 'M') ragazzi @endif.</span><br><br>
 @endif
+
 @if ($alloggi->età_min != null)
                     <span>Età minima richiesta:  {{ $alloggi->età_min }} </span> <br><br>
 @endif
+
 @if ($alloggi->età_max != null)
                     <span>Età massima richiesta:  {{ $alloggi->età_max }} </span> <br><br>
 @endif
-opzionato? if not -> bottone verde (libero) if yes -> occupato
+
 @if($alloggi->tipologia == 'appartamento')   
                     <span>Superficie totale dell'appartamento:  {{ $alloggi->superficie }} mq</span> <br><br>
 @endif
+
 @if($alloggi->tipologia == 'posto letto')  
                     <span>Superficie della camera:  {{ $alloggi->superficie }} mq</span> <br><br>
 @endif
