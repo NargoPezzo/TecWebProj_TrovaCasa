@@ -91,58 +91,59 @@ https://templatemo.com/tm-571-hexashop
                         <h4 class="title">Alloggio: {{ $alloggi->titolo }}</h4>
 
 
-                            <span>Prezzo:  {{ $alloggi->prezzo }} €</span>
+                            
 
-                            <span>Descrizione:  {{ $alloggi->descrizione }} </span> 
+                        <span><b>Descrizione:</b>  {{ $alloggi->descrizione }} </span> 
 
                         @if($alloggi->tipologia == 'appartamento')         
-                            <span>Numero di camere totali nell'appartamento:  {{ $alloggi->n_camere }} </span> 
+                            <span><b>Numero di camere totali nell'appartamento:</b>  {{ $alloggi->n_camere }} </span> 
                         @endif
 
                         @if($alloggi->tipologia == 'posto letto')  
-                            <span>Numero di posti letto nella stanza:  {{ $alloggi->n_posti_letto_totali }} </span>
+                            <span><b>Numero di posti letto nella stanza:</b>  {{ $alloggi->n_posti_letto_totali }} </span>
                         @endif
 
-                            <span>Data di inserimento:  {{ $alloggi->data_inserimento }} </span> 
+                            <span><b>Data di inserimento:</b>  {{ $alloggi->data_inserimento }} </span> 
 
                         @if ($alloggi->data_min != null)
-                            <span>Disponibile da:  {{ $alloggi->data_min }} </span> <
+                            <span><b>Disponibile da:</b>  {{ $alloggi->data_min }} </span> <
                         @endif
 
                         @if ($alloggi->data_max != null)
-                            <span>Disponibile fino a:  {{ $alloggi->data_max }} </span> 
+                            <span><b>Disponibile fino a:</b>  {{ $alloggi->data_max }} </span> 
                         @endif
 
-                            <span>Indirizzo: {{ $alloggi->città }}, {{ $alloggi->cap }}, {{ $alloggi->provincia }}, {{ $alloggi->indirizzo}}</span>
+                            <span><b>Indirizzo:</b> {{ $alloggi->città }}, {{ $alloggi->cap }}, {{ $alloggi->provincia }}, {{ $alloggi->indirizzo}}</span>
 
                         @if ($alloggi->genere != null)
-                            <span>Si accettano solo @if ($alloggi->genere == 'F') ragazze @endif @if ($alloggi->genere == 'M') ragazzi @endif.</span>
+                            <span><b>Si accettano solo @if ($alloggi->genere == 'F') ragazze @endif @if ($alloggi->genere == 'M') ragazzi @endif.</b></span>
                         @endif
 
                         @if ($alloggi->età_min != null)
-                            <span>Età minima richiesta:  {{ $alloggi->età_min }} </span> 
+                            <span><b>Età minima richiesta:  {{ $alloggi->età_min }} </b></span> 
                         @endif
 
                         @if ($alloggi->età_max != null)
-                            <span>Età massima richiesta:  {{ $alloggi->età_max }} </span> 
+                            <span><b>Età massima richiesta:  {{ $alloggi->età_max }} </b></span> 
                         @endif
 
                         @if($alloggi->tipologia == 'appartamento')   
-                            <span>Superficie totale dell'appartamento:  {{ $alloggi->superficie }} mq</span> 
+                            <span><b>Superficie totale dell'appartamento:</b>  {{ $alloggi->superficie }} mq</span> 
                         @endif
 
                         @if($alloggi->tipologia == 'posto letto')  
-                            <span>Superficie della camera:  {{ $alloggi->superficie }} mq</span> 
+                            <span><b>Superficie della camera:</b>  {{ $alloggi->superficie }} mq</span> 
                         @endif
+                        <span><b>Prezzo:</b>  {{ $alloggi->prezzo }} €</span>
                         
                         @if($alloggi->opzionato == 0)
-                         <p>@include('helpers/buttonimg', ['attrs' => 'imagefrm', 'imgFile' => 'green_button.png']) </p>
-                        <span>Alloggio libero: cosa aspetti?</span>
-                        @endif
-                        @if($alloggi->opzionato == 1)
-                        <p>@include('helpers/buttonimg', ['attrs' => 'imagefrm', 'imgFile' => 'red_button.png']) </p>
-                        <span>Alloggio già occupato...</span> 
-                        @endif
+                    <p>@include('helpers/buttonimg', ['attrs' => 'imagefrm', 'imgFile' => 'green_button.png']) </p>
+                    <span>Alloggio libero: cosa aspetti?</span>
+                    @endif
+                    @if($alloggi->opzionato == 1)
+                    <p>@include('helpers/buttonimg', ['attrs' => 'imagefrm', 'imgFile' => 'red_button.png']) </p>
+                    <span>Alloggio già occupato...</span> 
+                    @endif
 
 
 
@@ -211,4 +212,8 @@ https://templatemo.com/tm-571-hexashop
 
     </script>
 
-  </body>
+    </body>
+    
+    
+    
+</html>
