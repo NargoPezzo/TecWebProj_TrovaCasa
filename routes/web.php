@@ -18,7 +18,6 @@ Route::get('/', function () {
 Route::get('/offerte', 'PublicController@showOfferte')
         ->name('offerte');
 
-                
 Route::view('/chisiamo','chisiamo')
         ->name('chisiamo');
 

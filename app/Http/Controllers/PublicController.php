@@ -21,7 +21,7 @@ class PublicController extends Controller {
     
     public function showOfferte() {
         
-/*        //Appartamenti
+/*      //Appartamenti
         $appartamenti = $this->_offerteModel->getAppartamenti();
         
         //Posti Letto Singoli
