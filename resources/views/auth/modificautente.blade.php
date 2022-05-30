@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>TrovaCasa.it - @yield('title', 'Modifica Dati')</title>
+    <title>TrovaCasa.it - @yield('title', 'Modifica Dati Utente')</title>
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
@@ -75,17 +75,36 @@ https://templatemo.com/tm-571-hexashop
     <!-- ***** Main Banner Area End ***** -->
 
     <!-- ***** About Area Starts ***** -->
+    
     <div class="about-us">
         <div class="contact-us">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
- @section('content')
-                <div class="account_box">
-    <h2> Modifica </h2>
+
+                <div class="wrap-input">
+    <h2> Modifica qui i tuoi dati:</h2>
     {{ Form::model($user, array('route' => 'modificautente.save', 'id' => 'editform')) }}
     @csrf 
     <br>
+    <br>
+    <p>Nome:</p><br>
+    {{ Form::text('nome', null, ['placeholder' => 'Nome', 'id' => 'nome']) }}
+    <div id='error_nome' class="errormsg"></div>
+    <br>
+    <p>Cognome:</p><br>
+    {{ Form::text('cognome', null, ['placeholder' => 'Cognome', 'id' => 'cognome']) }}
+    <div id='error_cognome' class="errormsg"></div>
+    <br>
+    <p>Età:</p><br>
+    {{ Form::text('età', null, ['placeholder' => 'età', 'id' => 'età']) }}
+    <div id='error_età' class="errormsg"></div>
+    <br>
+    <p>Modifica username:</p><br>
+    {{ Form::text('username', null, ['placeholder' => 'età', 'id' => 'età']) }}
+    <div id='error_età' class="errormsg"></div>
+    <br>
+    <p>Modifica password:</p><br>
     {{ Form::password('oldpassword', ['placeholder' => 'Vecchia password', 'id' => 'oldpassword']) }}
     <div id='error_oldpassword' class="errormsg"></div>
     <br>
@@ -94,28 +113,13 @@ https://templatemo.com/tm-571-hexashop
     <br>
     {{ Form::password('password_confirmation', ['placeholder' => 'Conferma Password', 'id' => 'password_confirmation']) }}
     <br>
-    {{ Form::text('nome', null, ['placeholder' => 'Nome', 'id' => 'nome']) }}
-    <div id='error_nome' class="errormsg"></div>
-    <br>
-    {{ Form::text('cognome', null, ['placeholder' => 'Cognome', 'id' => 'cognome']) }}
-    <div id='error_cognome' class="errormsg"></div>
-    <br>
-    {{ Form::text('età', null, ['placeholder' => 'età', 'id' => 'età']) }}
-    <div id='error_età' class="errormsg"></div>
-    <br>
-        {{ Form::text('username', null, ['placeholder' => 'età', 'id' => 'età']) }}
-    <div id='error_età' class="errormsg"></div>
-    <br>
-    
     <div id='error_msg' class="errormsg"></div>
-
-
     <br>
     {{ Form::submit('Modifica', ['id' => 'adduser']) }}
     <br>
     {{ Form::close() }}
 </div>
-@endsection
+
                       
                     </div>
                 </div>
