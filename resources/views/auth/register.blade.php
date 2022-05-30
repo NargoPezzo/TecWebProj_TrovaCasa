@@ -214,10 +214,10 @@ https://templatemo.com/tm-571-hexashop
             </label>
             
             <div class="wrap-input">
-                <input class="wrap-input-input" type="radio" name="livello" id="livelloLocatore1" value="locatore">
+                <input class="wrap-input-input" type="radio" name="livello" id="livelloLocatore1" value="locatore" checked>
                      <label class="wrap-input-label" for="livelloLocatore1">
                          <div class="label-input">
-                            Locatore 
+                            Locatario
                          </div>
                         </label>
              </div>
@@ -225,7 +225,7 @@ https://templatemo.com/tm-571-hexashop
                         <input class="wrap-input-input" type="radio" name="livello" id="livelloLocatario1" value="locatario">
                             <label class="wrap-input-label" for="livelloLocatario1">
                                 <div class="label-input">
-                             Locatario
+                             Locatore
                                 </div>
                             </label>
                 @if ($errors->first('genere'))
@@ -240,14 +240,9 @@ https://templatemo.com/tm-571-hexashop
             
             <div class="container-form-btn">                
                 {{ Form::submit('Registrati', ['class' => 'form-btn1']) }}
+                {{ Form::close() }}
+                <button type="reset">Reset</button>
             </div><br><br>
-             
-             <div class="container-form-btn">
-           
-            <button type="reset">PULISCI TUTTO</button>
-            </div>
-            
-            {{ Form::close() }}
             </div></center>
     </div>
  

@@ -136,13 +136,13 @@ https://templatemo.com/tm-571-hexashop
                         @endif
                         
                         @if($alloggi->opzionato == 0)
-                    <p>@include('helpers/buttonimg', ['attrs' => 'imagefrm', 'imgFile' => 'green_button.png']) </p>
-                    <span>Alloggio libero: cosa aspetti?</span>
-                    @endif
-                    @if($alloggi->opzionato == 1)
-                    <p>@include('helpers/buttonimg', ['attrs' => 'imagefrm', 'imgFile' => 'red_button.png']) </p>
-                    <span>Alloggio già occupato...</span> 
-                    @endif
+                         <p>@include('helpers/buttonimg', ['attrs' => 'imagefrm', 'imgFile' => 'green_button.png']) </p>
+                        <span>Alloggio libero: cosa aspetti?</span>
+                        @endif
+                        @if($alloggi->opzionato == 1)
+                        <p>@include('helpers/buttonimg', ['attrs' => 'imagefrm', 'imgFile' => 'red_button.png']) </p>
+                        <span>Alloggio già occupato...</span> 
+                        @endif
 
 
 
