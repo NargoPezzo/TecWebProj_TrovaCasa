@@ -23,7 +23,7 @@
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
 
-    @include('layouts/slideshow_function')
+    @include('layouts/slideshow')
     
     </head>
     
