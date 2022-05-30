@@ -80,7 +80,7 @@ https://templatemo.com/tm-571-hexashop
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-
+                    
                       
                     </div>
                 </div>

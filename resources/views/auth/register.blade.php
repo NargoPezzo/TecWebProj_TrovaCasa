@@ -239,6 +239,11 @@ https://templatemo.com/tm-571-hexashop
             
             <div class="container-form-btn">                
                 {{ Form::submit('Registrati', ['class' => 'form-btn1']) }}
+            </div><br><br>
+             
+             <div class="container-form-btn">
+           
+            <button type="reset">PULISCI TUTTO</button>
             </div>
             
             {{ Form::close() }}
@@ -248,6 +253,7 @@ https://templatemo.com/tm-571-hexashop
 </div>
         </div>
         </div>
+
 
 
     <!-- ***** Footer Start ***** -->
