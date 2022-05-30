@@ -5,17 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Offerte;
 use App\Models\Resources\House;
 use App\Models\Faqs;
-use App\Models\Servizi;
+use App\Models\Resources\Servizio;
 
 class PublicController extends Controller {
     
     protected $_offerteModel;
-    protected $_serviziModel;
+   
     protected $_faqsModel;
 
     public function __construct() {
         $this->_offerteModel = new Offerte;
-        $this->_serviziModel = new Servizi;
+        
         $this->_faqsModel = new Faqs;
     }
     
@@ -41,7 +41,8 @@ class PublicController extends Controller {
       if(House::where('id', $id)->exists())
       {
           $alloggi = House::find($id);
-          return view('offertasingola', ['alloggi' =>$alloggi]);
+          $servizi = Servizio::where('house_id',$id)->get();
+          return view('offertasingola', ['alloggi' =>$alloggi, 'servizi' => $servizi]);
       }
       else{
           return redirect('/offerte')->with('status','The link was broken');
@@ -49,14 +50,7 @@ class PublicController extends Controller {
      
     }
     
-    public function showServizi() {
-        
-        //Servizi
-        $servizi = $this->_serviziModel->getServizi();
-        
-        return view('offertasingola')
-                        ->with('servizi', $servizi);
-    }
+    
     
     
     public function showFaqs() {

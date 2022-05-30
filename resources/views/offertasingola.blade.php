@@ -86,8 +86,10 @@ https://templatemo.com/tm-571-hexashop
                         @include('helpers/singleproductimg', ['attrs' => 'imagefrm', 'imgFile' => $alloggi->immagine])
                     </div>
                 </div>
+                
                 <div class="col-lg-6">
                     <div class="right-content">
+                        
                         <h4 class="title">Alloggio: {{ $alloggi->titolo }}</h4>
 
 
@@ -146,17 +148,29 @@ https://templatemo.com/tm-571-hexashop
                     @endif
 
 
-
-
-
-
-
-                        </div>
-
                     </div>
-                
-                
+
+                </div>
             
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        
+                        <h4 class="title">Servizi Offerti:</h4>
+                        
+                        @isset ($servizi)
+                        @foreach ($servizi as $servizio)
+                        @if(is_null($servizi)) 
+                        
+                            <span><b>Descrizione:</b>  {{ $servizio->nome }} </span>
+                      
+                        
+                        @else 
+                        <p>Nessun Servizio disponibile</p>
+                        
+                         @endif
+                         @endforeach
+                        
+                        @endisset()
             
         
         </div> 
