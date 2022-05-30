@@ -100,10 +100,7 @@ https://templatemo.com/tm-571-hexashop
     {{ Form::text('età', null, ['placeholder' => 'età', 'id' => 'età']) }}
     <div id='error_età' class="errormsg"></div>
     <br>
-    <p>Modifica username:</p><br>
-    {{ Form::text('username', null, ['placeholder' => 'età', 'id' => 'età']) }}
-    <div id='error_età' class="errormsg"></div>
-    <br>
+
     <p>Modifica password:</p><br>
     {{ Form::password('oldpassword', ['placeholder' => 'Vecchia password', 'id' => 'oldpassword']) }}
     <div id='error_oldpassword' class="errormsg"></div>
