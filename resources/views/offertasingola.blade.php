@@ -157,16 +157,15 @@ https://templatemo.com/tm-571-hexashop
                         
                         <h4 class="title">Servizi Offerti:</h4>
                         
-                        @isset ($servizi)
-                        @if(!empty($servizio)) 
+                        
+                        @if($servizi->isNotEmpty())
                         @foreach ($servizi as $servizio)
                             <span><b>Descrizione:</b>  {{ $servizio->nome }} </span>
-                         @endforeach
+                        @endforeach
                         @else 
-                        <p>Nessun Servizio disponibile</p>
-                         @endif
+                            <p>Nessun Servizio disponibile</p>
+                        @endif
                         
-                        @endisset()
             
         
         </div> 
