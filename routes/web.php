@@ -51,10 +51,10 @@ Route::post('register', 'Auth\RegisterController@register');
 Route::view('/modificautente','modificautente')
         ->name('modificautente');
 
-//Route::get('/editaccount', 'Auth\EditController@editAccount')
-      //  ->name('editaccount');
-//Route::post('/editaccount', 'Auth\EditController@saveAccount')
-        //->name('editaccount.save');
+Route::get('/modificautente', 'Auth\ModificaUtenteController@editAccount')
+        ->name('modificautente');
+Route::post('/modificautente', 'Auth\ModificaUtenteController@saveAccount')
+        ->name('modificautente.save');
 
 Route::get('/home', function () {
     return view('home');

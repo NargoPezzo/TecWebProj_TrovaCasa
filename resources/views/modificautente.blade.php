@@ -83,8 +83,8 @@ https://templatemo.com/tm-571-hexashop
  @section('content')
                 <div class="account_box">
     <h2> Modifica </h2>
-    {{ Form::model($user, array('route' => 'editaccount.save', 'id' => 'editform')) }}
-  <!-- @csrf NON HO IDEA A COSA SERVE E SE FUNZIONA -->
+    {{ Form::model($user, array('route' => 'modificautente.save', 'id' => 'editform')) }}
+    @csrf 
     <br>
     {{ Form::password('oldpassword', ['placeholder' => 'Vecchia password', 'id' => 'oldpassword']) }}
     <div id='error_oldpassword' class="errormsg"></div>
@@ -103,18 +103,9 @@ https://templatemo.com/tm-571-hexashop
     {{ Form::text('età', null, ['placeholder' => 'età', 'id' => 'età']) }}
     <div id='error_età' class="errormsg"></div>
     <br>
-        {{ Form::text('età', null, ['placeholder' => 'età', 'id' => 'età']) }}
+        {{ Form::text('username', null, ['placeholder' => 'età', 'id' => 'età']) }}
     <div id='error_età' class="errormsg"></div>
     <br>
-            {{ Form::text('', null, ['placeholder' => 'età', 'id' => 'età']) }}
-    <div id='error_età' class="errormsg"></div>
-    <br>
-            {{ Form::text('età', null, ['placeholder' => 'età', 'id' => 'età']) }}
-    <div id='error_età' class="errormsg"></div>
-    <br>
-    
-    
-    
     
     <div id='error_msg' class="errormsg"></div>
 
