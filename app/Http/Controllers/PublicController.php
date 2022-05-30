@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Offerte;
 use App\Models\Faqs;
+use App\Models\Resources\House;
 
 class PublicController extends Controller {
     
@@ -30,7 +31,19 @@ class PublicController extends Controller {
         
         return view('offerte')
                         ->with('houses', $alloggi);
-    }       
+    }
+    
+     public function showOfferta($id) {
+      if(House::where('id', $id)->exists())
+      {
+          $alloggi = House::find($id);
+          return view('offertasingola.alloggi', ['alloggi' =>$alloggi]);
+      }
+      else{
+          return redirect('/')->with('status','The link was broken');
+      }
+     
+     }
     public function showFaqs() {
         
         //Faqs

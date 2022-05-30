@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>TrovaCasa.it - @yield('title', 'Nome dell'offerta')</title>
+    <title>TrovaCasa.it - @yield('title', '$house->titolo')</title>
 
 
     <!-- Additional CSS Files -->
@@ -78,7 +78,7 @@ https://templatemo.com/tm-571-hexashop
     <!-- ***** Main Banner Area End ***** -->
 
 
-    <!-- ***** Product Area Starts ***** -->
+    <!-- ***** Product Area Starts ***** 
     <section class="section" id="product">
         <div class="container">
             <div class="row">

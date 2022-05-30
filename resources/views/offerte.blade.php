@@ -142,7 +142,7 @@ https://templatemo.com/tm-571-hexashop
                             @can('isLocatario')
                             <div class="hover-content">
                                 <ul>
-                                    <li><a href="offertasingola"><i class="fa fa-eye"></i></a></li>
+                                    <li><a href="{{url('offertasingola/'.$house->id)}}"><i class="fa fa-eye"></i></a></li>
                                     
                                 </ul>
                             </div>
