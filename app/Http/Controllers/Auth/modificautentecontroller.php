@@ -42,10 +42,10 @@ class EditController extends Controller {
 
         $user->nome = $validated['nome'];
         $user->cognome = $validated['cognome'];
-        $user->residenza = $validated['residenza'];
-        $user->email = $validated['email'];
-        $user->data_nasc = $validated['data_nasc'];
-        $user->occupazione = $validated['occupazione'];
+        $user->età = $validated['età'];
+        $user->genere = $validated['genere'];
+        $user->username = $validated['username'];
+        $user->livello = $validated['livello'];
 
         $user->save();
 

@@ -84,9 +84,7 @@ https://templatemo.com/tm-571-hexashop
                 <div class="account_box">
     <h2> Modifica </h2>
     {{ Form::model($user, array('route' => 'editaccount.save', 'id' => 'editform')) }}
-    @csrf
-    {{ Form::text('email', null, ['placeholder' => 'Email', 'id' => 'email']) }}
-    <div id='error_email' class="errormsg"></div>
+  <!-- @csrf NON HO IDEA A COSA SERVE E SE FUNZIONA -->
     <br>
     {{ Form::password('oldpassword', ['placeholder' => 'Vecchia password', 'id' => 'oldpassword']) }}
     <div id='error_oldpassword' class="errormsg"></div>
@@ -102,19 +100,24 @@ https://templatemo.com/tm-571-hexashop
     {{ Form::text('cognome', null, ['placeholder' => 'Cognome', 'id' => 'cognome']) }}
     <div id='error_cognome' class="errormsg"></div>
     <br>
-    {{ Form::text('residenza', null, ['placeholder' => 'Indirizzo di residenza', 'id' => 'residenza']) }}
-    <div id='error_residenza' class="errormsg"></div>
+    {{ Form::text('età', null, ['placeholder' => 'età', 'id' => 'età']) }}
+    <div id='error_età' class="errormsg"></div>
     <br>
+        {{ Form::text('età', null, ['placeholder' => 'età', 'id' => 'età']) }}
+    <div id='error_età' class="errormsg"></div>
+    <br>
+            {{ Form::text('', null, ['placeholder' => 'età', 'id' => 'età']) }}
+    <div id='error_età' class="errormsg"></div>
+    <br>
+            {{ Form::text('età', null, ['placeholder' => 'età', 'id' => 'età']) }}
+    <div id='error_età' class="errormsg"></div>
+    <br>
+    
+    
+    
+    
     <div id='error_msg' class="errormsg"></div>
-    <div class="date_job">
-        {{ Form::date('data_nasc', null, ['placeholder' => 'Data di nascita', 'id' => 'data_nasc']) }}
-        {{ Form::select('occupazione', ['Studente' => 'Studente', 'Operaio' => 'Operaio', 'Libero professionista' => 'Libero professionista', 
-										'Pubblica sicurezza' => 'Pubblica Sicurezza', 'Medico' => 'Medico', 'Impiegato' => 'Impiegato',
-										'Insegnante' => 'Insegnante'], null, ['placeholder' => 'Professione','id' => 'occupazione']) }}
-        <div id='error_data_nasc' class="errormsg"></div>
-        <br>
-        <div id='error_occupazione' class="errormsg"></div>
-    </div>
+
 
     <br>
     {{ Form::submit('Modifica', ['id' => 'adduser']) }}
