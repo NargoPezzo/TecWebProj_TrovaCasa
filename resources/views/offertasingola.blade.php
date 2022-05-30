@@ -87,67 +87,67 @@ https://templatemo.com/tm-571-hexashop
                 </div>
             </div>
             </div>
-                    
-            <div class="col-lg-4">
-                <div class="right-content">
-                    <h4 class="title">Alloggio: {{ $alloggi->titolo }}</h4>
-                     
-                    
-                        <span>Prezzo:  {{ $alloggi->prezzo }} €</span>
-
-                        <span>Descrizione:  {{ $alloggi->descrizione }} </span> 
-                    
-                    @if($alloggi->tipologia == 'appartamento')         
-                        <span>Numero di camere totali nell'appartamento:  {{ $alloggi->n_camere }} </span> 
-                    @endif
-
-                    @if($alloggi->tipologia == 'posto letto')  
-                        <span>Numero di posti letto nella stanza:  {{ $alloggi->n_posti_letto_totali }} </span>
-                    @endif
-
-                        <span>Data di inserimento:  {{ $alloggi->data_inserimento }} </span> 
-                    
-                    @if ($alloggi->data_min != null)
-                        <span>Disponibile da:  {{ $alloggi->data_min }} </span> <
-                    @endif
-
-                    @if ($alloggi->data_max != null)
-                        <span>Disponibile fino a:  {{ $alloggi->data_max }} </span> 
-                    @endif
-
-                        <span>Indirizzo: {{ $alloggi->città }}, {{ $alloggi->cap }}, {{ $alloggi->provincia }}, {{ $alloggi->indirizzo}}</span>
-
-                    @if ($alloggi->genere != null)
-                        <span>Si accettano solo @if ($alloggi->genere == 'F') ragazze @endif @if ($alloggi->genere == 'M') ragazzi @endif.</span>
-                    @endif
-
-                    @if ($alloggi->età_min != null)
-                        <span>Età minima richiesta:  {{ $alloggi->età_min }} </span> 
-                    @endif
-
-                    @if ($alloggi->età_max != null)
-                        <span>Età massima richiesta:  {{ $alloggi->età_max }} </span> 
-                    @endif
-
-                    @if($alloggi->tipologia == 'appartamento')   
-                        <span>Superficie totale dell'appartamento:  {{ $alloggi->superficie }} mq</span> 
-                    @endif
-
-                    @if($alloggi->tipologia == 'posto letto')  
-                        <span>Superficie della camera:  {{ $alloggi->superficie }} mq</span> 
-                    @endif
+            <div class="row">  
+                <div class="col-lg-4">
+                    <div class="right-content">
+                        <h4 class="title">Alloggio: {{ $alloggi->titolo }}</h4>
 
 
+                            <span>Prezzo:  {{ $alloggi->prezzo }} €</span>
+
+                            <span>Descrizione:  {{ $alloggi->descrizione }} </span> 
+
+                        @if($alloggi->tipologia == 'appartamento')         
+                            <span>Numero di camere totali nell'appartamento:  {{ $alloggi->n_camere }} </span> 
+                        @endif
+
+                        @if($alloggi->tipologia == 'posto letto')  
+                            <span>Numero di posti letto nella stanza:  {{ $alloggi->n_posti_letto_totali }} </span>
+                        @endif
+
+                            <span>Data di inserimento:  {{ $alloggi->data_inserimento }} </span> 
+
+                        @if ($alloggi->data_min != null)
+                            <span>Disponibile da:  {{ $alloggi->data_min }} </span> <
+                        @endif
+
+                        @if ($alloggi->data_max != null)
+                            <span>Disponibile fino a:  {{ $alloggi->data_max }} </span> 
+                        @endif
+
+                            <span>Indirizzo: {{ $alloggi->città }}, {{ $alloggi->cap }}, {{ $alloggi->provincia }}, {{ $alloggi->indirizzo}}</span>
+
+                        @if ($alloggi->genere != null)
+                            <span>Si accettano solo @if ($alloggi->genere == 'F') ragazze @endif @if ($alloggi->genere == 'M') ragazzi @endif.</span>
+                        @endif
+
+                        @if ($alloggi->età_min != null)
+                            <span>Età minima richiesta:  {{ $alloggi->età_min }} </span> 
+                        @endif
+
+                        @if ($alloggi->età_max != null)
+                            <span>Età massima richiesta:  {{ $alloggi->età_max }} </span> 
+                        @endif
+
+                        @if($alloggi->tipologia == 'appartamento')   
+                            <span>Superficie totale dell'appartamento:  {{ $alloggi->superficie }} mq</span> 
+                        @endif
+
+                        @if($alloggi->tipologia == 'posto letto')  
+                            <span>Superficie della camera:  {{ $alloggi->superficie }} mq</span> 
+                        @endif
 
 
 
-        
-                        
-                        
+
+
+
+
+
+                        </div>
+
                     </div>
-                    
-                </div>
-            
+            </div>
             
         @if($alloggi->opzionato == 0)
                     <p>@include('helpers/buttonimg', ['attrs' => 'imagefrm', 'imgFile' => 'green_button.png']) </p>

@@ -112,8 +112,6 @@
                 
         <!-- Finisce Lo Slideshow con le foto -->
                 <div class="about-us">
-                    
-                        
                     <div class="row">
                         <div class="col-lg-12">
                             <div class=" right-content">
