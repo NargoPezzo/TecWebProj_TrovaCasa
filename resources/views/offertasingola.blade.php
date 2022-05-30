@@ -78,7 +78,7 @@ https://templatemo.com/tm-571-hexashop
     <!-- ***** Main Banner Area End ***** -->
 
 
-    <!-- ***** Product Area Starts ***** 
+    <!-- ***** Product Area Starts ***** -->
     <section class="section" id="product">
         <div class="container">
             <div class="row">

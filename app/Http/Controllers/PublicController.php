@@ -37,7 +37,7 @@ class PublicController extends Controller {
       if(House::where('id', $id)->exists())
       {
           $alloggi = House::find($id);
-          return view('offertasingola.alloggi', ['alloggi' =>$alloggi]);
+          return view('offertasingola', ['alloggi' =>$alloggi]);
       }
       else{
           return redirect('/')->with('status','The link was broken');

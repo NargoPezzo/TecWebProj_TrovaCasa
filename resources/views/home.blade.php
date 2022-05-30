@@ -82,9 +82,8 @@
     </header>
     <!-- ***** Header Area End ***** -->
 
-        <!-- ***** Main Banner Area Start ***** -->
+    <!-- ***** Main Banner Area Start ***** -->
     
-        
     <div class="main-banner" id="top">
         <div class="container-fluid">
             <div class="row">
@@ -131,14 +130,167 @@
                             </div>
                         </div>   
                     </div>    
-                        
-                    
                 </div>
             </div>
         </div>
     </div>
     <!-- ***** Main Banner Area End ***** -->
+    
+    
+    
+    @can('isLocatario')
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        
+                        <ul>
+                            @include('layouts/navpublic')
+                        </ul>        
+                        
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
 
+        <!-- ***** Main Banner Area Start ***** -->
+    
+        
+    <div class="main-banner" id="top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="left-content">
+                        <div class="thumb">
+                            
+                            <div class="fadein">
+                            <?php 
+                            // display images from directory
+                            // directory path
+                                $dir = "../public/images/slideshow/";
+
+                                $scan_dir = scandir($dir);
+                                foreach($scan_dir as $img):
+                                        if(in_array($img,array('.','..')))
+                                        continue;
+                            ?>
+                            <img src="<?php echo $dir.$img ?>" alt=" <?php echo $img ?> ">
+                            <?php endforeach; ?>
+                            </div> 
+                            
+                        </div>
+                    </div>
+                </div>
+                
+        <!-- FINISCE LA FOTO GIGANTE -->
+        
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                
+                                <div>
+                                    <img src="assets/images/LogoBigBlack.png" alt="">
+                                </div>
+                                
+                        <span> Il nostro sito ha lo scopo di soddisfare studenti che hanno bisogno di trovare casa e i proprietari che hanno bisogno di pubblicizzare e mettere in vendita i propri immobili e di trovare potenziali locatari.</span>
+                        <div class="quote">
+                           
+                           <h3> "BENVENUTO LOCATARIO" </h3>            
+                                    
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+    @endcan
+    
+    @can('isLocatore')
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        
+                        <ul>
+                            @include('layouts/navpublic')
+                        </ul>        
+                        
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+        <!-- ***** Main Banner Area Start ***** -->
+    
+        
+    <div class="main-banner" id="top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="left-content">
+                        <div class="thumb">
+                            
+                            <div class="fadein">
+                            <?php 
+                            // display images from directory
+                            // directory path
+                                $dir = "../public/images/slideshow/";
+
+                                $scan_dir = scandir($dir);
+                                foreach($scan_dir as $img):
+                                        if(in_array($img,array('.','..')))
+                                        continue;
+                            ?>
+                            <img src="<?php echo $dir.$img ?>" alt=" <?php echo $img ?> ">
+                            <?php endforeach; ?>
+                            </div> 
+                            
+                        </div>
+                    </div>
+                </div>
+                
+        <!-- FINISCE LA FOTO GIGANTE -->
+        
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                
+                                <div>
+                                    <img src="assets/images/LogoBigBlack.png" alt="">
+                                </div>
+                                
+                        <span> Il nostro sito ha lo scopo di soddisfare studenti che hanno bisogno di trovare casa e i proprietari che hanno bisogno di pubblicizzare e mettere in vendita i propri immobili e di trovare potenziali locatari.</span>
+                        <div class="quote">
+                           
+                           <h3> "BENVENUTO LOCATORE" </h3>                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+    
+    @endcan
+    
+    @can('isAdmin')
+    @endcan
+    
     <!-- ***** Footer Start ***** -->
     <footer>
         @include('layouts/footer')

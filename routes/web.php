@@ -68,7 +68,7 @@ Route::get('/admin', 'AdminController@index')
 Route::get('/homeadmin', 'AdminController@indexhome')
         ->name('homeadmin')->middleware('can:isAdmin');
 
-Route::get('offerte/{id}', 'PublicController@showOfferta')   /*AGGIUNTA IO DA PROVARE PER PRODOTTO SINGOLO*/
+Route::get('offertasingola/{id}', 'PublicController@showOfferta')   /*AGGIUNTA IO DA PROVARE PER PRODOTTO SINGOLO*/
         ->name('offertasingola');
         
 /*
