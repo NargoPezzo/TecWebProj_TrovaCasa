@@ -1,6 +1,6 @@
 <!-- ***** Logo Start ***** -->
 <a href="{{ url('home') }}" class="logo">
-    <img src="assets/images/logo.png">
+    <img src="{{ asset('assets/images/logo.png')}}">
                             
 </a>
 <!-- ***** Logo End ***** -->
