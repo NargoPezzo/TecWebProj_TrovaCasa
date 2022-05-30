@@ -154,7 +154,6 @@ https://templatemo.com/tm-571-hexashop
                             <h4 class="title">Alloggio: {{ $house->titolo }}</h4>
                             <span>Indirizzo: {{ $house->città }}, {{ $house->cap }}, {{ $house->provincia }}, {{ $house->indirizzo}}</span> 
                             <span>Prezzo:  {{ $house->prezzo }} €</span>
-                            
                         </div>
                     </div>
                 </div>

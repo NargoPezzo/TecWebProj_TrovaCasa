@@ -50,47 +50,17 @@ https://templatemo.com/tm-571-hexashop
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
-                            <img src="assets/images/logo.png">
-                        </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li class="scroll-to-section"><a href="index.html" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="index.html">Men's</a></li>
-                            <li class="scroll-to-section"><a href="index.html">Women's</a></li>
-                            <li class="scroll-to-section"><a href="index.html">Kid's</a></li>
-                            <li class="submenu">
-                                <a href="javascript:;">Pages</a>
-                                <ul>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="products.html">Products</a></li>
-                                    <li><a href="single-product.html">Single Product</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                </ul>
-                            </li>
-                            <li class="submenu">
-                                <a href="javascript:;">Features</a>
-                                <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a rel="nofollow" href="https://templatemo.com/page/4" target="_blank">Template Page 4</a></li>
-                                </ul>
-                            </li>
-                            <li class="scroll-to-section"><a href="index.html">Explore</a></li>
-                        </ul>        
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
+                        <ul>
+                            @include('layouts/navpublic')
+                        </ul>
+                       
+                        
                     </nav>
                 </div>
             </div>
         </div>
-    </header> 
-    <!-- ***** Header Area End ***** --> 
+    </header>
+    <!-- ***** Header Area End ***** -->
 
     <!-- ***** Main Banner Area Start ***** -->
     <div class="page-heading" id="top">
@@ -129,43 +99,38 @@ https://templatemo.com/tm-571-hexashop
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
                     </ul>
-foto
                     <div class="image">
                                 @include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => $alloggi->immagine]) 
                     </div>
-prezzo
+TUTTE LE CARATTERISTICHE DELL'ALLOGGIO:
                     <span>Prezzo:  {{ $alloggi->prezzo }} €</span><br><br>
 
-descrizione
                     <span>Descrizione:  {{ $alloggi->descrizione }} </span> <br><br>
-n camere
 @if($alloggi->tipologia == 'appartamento')         
                     <span>Numero di camere totali nell'appartamento:  {{ $alloggi->n_camere }} </span> <br><br>
 @endif
-n posti letto tot
 @if($alloggi->tipologia == 'posto letto')  
                     <span>Numero di posti letto nella stanza:  {{ $alloggi->n_posti_letto_totali }} </span> <br><br>
 @endif
-data inserimento
                     <span>Data di inserimento:  {{ $alloggi->data_inserimento }} </span> <br><br>
-if
-data min
-data max
-endif
-indirizzo
-cap
-citta
-provincia
-if
-genere
-endif
-if
-etamin
-etamax
-endif
+@if ($alloggi->data_min != null)
+                    <span>Disponibile da:  {{ $alloggi->data_min }} </span> <br><br>
+@endif
+@if ($alloggi->data_max != null)
+                    <span>Disponibile fino a:  {{ $alloggi->data_max }} </span> <br><br>
+@endif
+                    <span>Indirizzo: {{ $alloggi->città }}, {{ $alloggi->cap }}, {{ $alloggi->provincia }}, {{ $alloggi->indirizzo}}</span><br><br>
+@if ($alloggi->genere != null)
+                    <span>Si accettano solo @if ($alloggi->genere == 'F') ragazze @endif @if ($alloggi->genere == 'M') ragazzi @endif.</span><br><br>
+@endif
+@if ($alloggi->età_min != null)
+                    <span>Età minima richiesta:  {{ $alloggi->età_min }} </span> <br><br>
+@endif
+@if ($alloggi->età_max != null)
+                    <span>Età massima richiesta:  {{ $alloggi->età_max }} </span> <br><br>
+@endif
 opzionato? if not -> bottone verde (libero) if yes -> occupato
-superficie
-@if($alloggi->tipologia == 'appartamento')         
+@if($alloggi->tipologia == 'appartamento')   
                     <span>Superficie totale dell'appartamento:  {{ $alloggi->superficie }} mq</span> <br><br>
 @endif
 @if($alloggi->tipologia == 'posto letto')  
