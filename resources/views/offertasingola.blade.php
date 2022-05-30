@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>Hexashop - Product Detail Page</title>
+    <title>TrovaCasa.it - @yield('title', 'Visualizza singola offerta')</title>
 
 
     <!-- Additional CSS Files -->
@@ -107,7 +107,7 @@ https://templatemo.com/tm-571-hexashop
     </div>
     <!-- ***** Main Banner Area End ***** -->
 
-
+@isset ($alloggi)
     <!-- ***** Product Area Starts ***** -->
     <section class="section" id="product">
         <div class="container">
@@ -120,7 +120,7 @@ https://templatemo.com/tm-571-hexashop
             </div>
             <div class="col-lg-4">
                 <div class="right-content">
-                    <h4>New Green Jacket</h4>
+                    <h4 class="title">Alloggio: {{ $alloggi->titolo }}</h4>
                     <span class="price">$75.00</span>
                     <ul class="stars">
                         <li><i class="fa fa-star"></i></li>
@@ -213,6 +213,7 @@ https://templatemo.com/tm-571-hexashop
         </div>
     </footer>
     
+@endisset()
 
     <!-- jQuery -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>
