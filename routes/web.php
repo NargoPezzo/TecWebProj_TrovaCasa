@@ -74,6 +74,8 @@ Route::get('offertasingola/{id}', 'PublicController@showOfferta')   /*AGGIUNTA I
 /*
 Route::get('/offertelocatario', 'LocatarioController@indexoffertelocatario')   POTREBBE ESSERE INUTILE
         ->name('offertelocatario')->middleware('can:isLocatario');  */
+Route::view('/modificautente','modificautente')
+        ->name('modificautente');
 
 Auth::routes();
 
