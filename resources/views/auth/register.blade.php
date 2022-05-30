@@ -156,7 +156,7 @@ https://templatemo.com/tm-571-hexashop
             </label>
             
              <div class="wrap-input">
-                <input class="wrap-input-input" type="radio" name="genere" id="genereU1" value="U">
+                <input class="wrap-input-input" type="radio" name="genere" id="genereU1" value="M">
                      <label class="wrap-input-label" for="genereU1">
                          <div class="label-input">
                             Uomo 
@@ -164,7 +164,7 @@ https://templatemo.com/tm-571-hexashop
                         </label>
               </div>
                     <div class="wrap-input">
-                        <input class="wrap-input-input" type="radio" name="genere" id="genereD1" value="D">
+                        <input class="wrap-input-input" type="radio" name="genere" id="genereD1" value="F">
                             <label class="wrap-input-label" for="genereD1">
                                 <div class="label-input">
                               Donna
@@ -213,7 +213,7 @@ https://templatemo.com/tm-571-hexashop
             </label>
             
             <div class="wrap-input">
-                <input class="wrap-input-input" type="radio" name="livello" id="livelloLocatore1" value="Le">
+                <input class="wrap-input-input" type="radio" name="livello" id="livelloLocatore1" value="locatore">
                      <label class="wrap-input-label" for="livelloLocatore1">
                          <div class="label-input">
                             Locatore 
@@ -221,7 +221,7 @@ https://templatemo.com/tm-571-hexashop
                         </label>
              </div>
                     <div class="wrap-input">
-                        <input class="wrap-input-input" type="radio" name="livello" id="livelloLocatario1" value="Lo">
+                        <input class="wrap-input-input" type="radio" name="livello" id="livelloLocatario1" value="locatario">
                             <label class="wrap-input-label" for="livelloLocatario1">
                                 <div class="label-input">
                              Locatario
