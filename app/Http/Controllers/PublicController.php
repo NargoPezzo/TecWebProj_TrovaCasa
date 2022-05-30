@@ -33,17 +33,18 @@ class PublicController extends Controller {
                         ->with('houses', $alloggi);
     }
     
-     public function showOfferta($id) {
+    public function showOfferta($id) {
       if(House::where('id', $id)->exists())
       {
           $alloggi = House::find($id);
           return view('offertasingola', ['alloggi' =>$alloggi]);
       }
       else{
-          return redirect('/')->with('status','The link was broken');
+          return redirect('/offerte')->with('status','The link was broken');
       }
      
-     }
+    }
+     
     public function showFaqs() {
         
         //Faqs

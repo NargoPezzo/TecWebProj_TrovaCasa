@@ -18,7 +18,7 @@ class CreateHousesTable extends Migration
             $table->string('titolo');
             $table->float('prezzo');
             $table->string('descrizione',2500);
-            $table->string('tipologia')->nullable();
+            $table->string('tipologia');
             $table->tinyInteger('n_camere');
             $table->tinyInteger('n_posti_letto_totali');
             $table->dateTimeTz('data_inserimento');
@@ -32,8 +32,7 @@ class CreateHousesTable extends Migration
             $table->integer('età_min')->nullable();
             $table->integer('età_max')->nullable();
             $table->tinyInteger('opzionato')->default(0);
-            $table->integer('superficie')->nullable();
-            $table->integer('dimensione_camera')->nullable();
+            $table->integer('superficie');
             $table->text('immagine')->default('no_home_icon.jpg');
             
 /*            if (Schema::hasColumn('alloggio', 'opzionato', 0)) {

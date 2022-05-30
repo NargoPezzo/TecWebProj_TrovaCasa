@@ -129,6 +129,53 @@ https://templatemo.com/tm-571-hexashop
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
                     </ul>
+foto
+                    <div class="image">
+                                @include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => $alloggi->immagine]) 
+                    </div>
+prezzo
+                    <span>Prezzo:  {{ $alloggi->prezzo }} €</span><br><br>
+
+descrizione
+                    <span>Descrizione:  {{ $alloggi->descrizione }} </span> <br><br>
+n camere
+@if($alloggi->tipologia == 'appartamento')         
+                    <span>Numero di camere totali nell'appartamento:  {{ $alloggi->n_camere }} </span> <br><br>
+@endif
+n posti letto tot
+@if($alloggi->tipologia == 'posto letto')  
+                    <span>Numero di posti letto nella stanza:  {{ $alloggi->n_posti_letto_totali }} </span> <br><br>
+@endif
+data inserimento
+                    <span>Data di inserimento:  {{ $alloggi->data_inserimento }} </span> <br><br>
+if
+data min
+data max
+endif
+indirizzo
+cap
+citta
+provincia
+if
+genere
+endif
+if
+etamin
+etamax
+endif
+opzionato? if not -> bottone verde (libero) if yes -> occupato
+superficie
+@if($alloggi->tipologia == 'appartamento')         
+                    <span>Superficie totale dell'appartamento:  {{ $alloggi->superficie }} mq</span> <br><br>
+@endif
+@if($alloggi->tipologia == 'posto letto')  
+                    <span>Superficie della camera:  {{ $alloggi->superficie }} mq</span> <br><br>
+@endif
+
++ SERVIZI LEGATI ALL'ALLOGGIO!!
+
+
+
                     <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod kon tempor incididunt ut labore.</span>
                     <div class="quote">
                         <i class="fa fa-quote-left"></i><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuski smod.</p>

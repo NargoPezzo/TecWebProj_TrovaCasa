@@ -70,7 +70,7 @@ Route::get('/homeadmin', 'AdminController@indexhome')
 
 Route::get('offertasingola/{id}', 'PublicController@showOfferta')   /*AGGIUNTA IO DA PROVARE PER PRODOTTO SINGOLO*/
         ->name('offertasingola');
-        
+
 /*
 Route::get('/offertelocatario', 'LocatarioController@indexoffertelocatario')   POTREBBE ESSERE INUTILE
         ->name('offertelocatario')->middleware('can:isLocatario');  */

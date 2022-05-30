@@ -117,14 +117,14 @@ class DatabaseSeeder extends Seeder
                 'età_min' => '30', 'superficie' => '250','immagine' => 'casa15.jpg']
         ]);
         DB::table('houses')->insert([
-            ['id' => 15, 'titolo' => 'Posto Letto Singolo', 'prezzo' => 480, 'descrizione' => 'Posto Letto situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
-                'tipologia' => 'posto letto', 'n_camere' => null, 'n_posti_letto_totali' => 1, 'data_inserimento' => date("Y-m-d H:i:s"),
+            ['id' => 16, 'titolo' => 'Posto Letto Singolo', 'prezzo' => 480, 'descrizione' => 'Posto Letto situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
+                'tipologia' => 'posto letto', 'n_camere' => 1, 'n_posti_letto_totali' => 1, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
                 'età_min' => '30', 'superficie' => '250','immagine' => 'casa15.jpg']
         ]);
         DB::table('houses')->insert([
-            ['id' => 15, 'titolo' => 'Posto Letto Doppio', 'prezzo' => 480, 'descrizione' => 'Posto Letto situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
-                'tipologia' => 'posto letto', 'n_camere' => 4, 'n_posti_letto_totali' => 6, 'data_inserimento' => date("Y-m-d H:i:s"),
+            ['id' => 17, 'titolo' => 'Posto Letto Doppio', 'prezzo' => 480, 'descrizione' => 'Posto Letto situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
+                'tipologia' => 'posto letto', 'n_camere' => 1, 'n_posti_letto_totali' => 2, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
                 'età_min' => '30', 'superficie' => '250','immagine' => 'casa15.jpg']
         ]);

@@ -143,11 +143,9 @@ https://templatemo.com/tm-571-hexashop
                             <div class="hover-content">
                                 <ul>
                                     <li><a href="{{url('offertasingola/'.$house->id)}}"><i class="fa fa-eye"></i></a></li>
-                                    
                                 </ul>
                             </div>
                             @endcan
-                            
                             <div class="image">
                                 @include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => $house->immagine]) 
                             </div>
