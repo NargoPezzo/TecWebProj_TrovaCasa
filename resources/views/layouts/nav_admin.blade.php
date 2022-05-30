@@ -10,9 +10,19 @@
     <!-- MODIFICARE ROTTE!!! -->
     <li><a href="{{ route('admin') }}" title="Va alla Home dell'Admin">Torna alla home</a></li>
     <li><a href="{{ route('chisiamo') }}" title="Visualizza le statistiche">Statistiche</a></li>
-    <li><a href="{{ route('chisiamo') }}" title="Inserisci nuova FAQ">Inserisci FAQ</a></li>
-    <li><a href="{{ route('chisiamo') }}" title="Modifica le FAQ">Modifica FAQ</a></li>
-    <li><a href="{{ route('chisiamo') }}" title="Elimina le FAQ">Elimina FAQ</a></li>
+                            <li class="submenu">
+                                <a href="javascript:;">F.A.Q</a>
+                                <ul>
+                                    <li><a href="{{ route('chisiamo') }}" title="Inserisci nuova FAQ">Inserisci FAQ</a></li>
+                                    <li><a href="{{ route('chisiamo') }}" title="Modifica le FAQ">Modifica FAQ</a></li>
+                                    <li><a href="{{ route('chisiamo') }}" title="Elimina le FAQ">Elimina FAQ</a></li>
+                                    
+                                    
+                                </ul>
+                            </li>
+    
+    
+    
     @auth
         <li><a href="" class="highlight" title="Esci dal sito" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

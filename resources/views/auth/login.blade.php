@@ -105,7 +105,7 @@ https://templatemo.com/tm-571-hexashop
                 @if ($errors->first('password'))
                 <ul class="errors">
                     @foreach ($errors->get('password') as $message)
-                    <li>{{ $message }}</li>
+                    <center><li>{{ $message }}</li></center>
                     @endforeach
                 </ul>
                 @endif
