@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
   <head>
 
@@ -89,8 +89,8 @@ https://templatemo.com/tm-571-hexashop
                 </div>
             </div>
         </div>
-    </header>
-    <!-- ***** Header Area End ***** -->
+    </header> 
+    <!-- ***** Header Area End ***** --> 
 
     <!-- ***** Main Banner Area Start ***** -->
     <div class="page-heading" id="top">
