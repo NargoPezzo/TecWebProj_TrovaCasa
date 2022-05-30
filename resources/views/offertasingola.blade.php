@@ -61,119 +61,104 @@ https://templatemo.com/tm-571-hexashop
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-
+@isset ($alloggi)
     <!-- ***** Main Banner Area Start ***** -->
     <div class="page-heading" id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>Single Product Page</h2>
-                        <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span>
+                        <h2>{{ $alloggi->titolo }}</h2>
+                        <span>{{ $alloggi->città }}, {{ $alloggi->cap }}, {{ $alloggi->provincia }}, {{ $alloggi->indirizzo}}</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- ***** Main Banner Area End ***** -->
-   @isset ($alloggi)
+  
     <!-- ***** Product Area Starts ***** -->
     <section class="section" id="product">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
-                <div class="left-images">
-                    <img src="assets/images/single-product-01.jpg" alt="">
-                    <img src="assets/images/single-product-02.jpg" alt="">
+                <div class="col-lg-6">
+                    <div class="left-images">
+                        @include('helpers/singleproductimg', ['attrs' => 'imagefrm', 'imgFile' => $alloggi->immagine])
+                    </div>
                 </div>
-            </div>
-            </div>
-                    @if($alloggi->opzionato == 0)
-                    <p>@include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => 'green_button.png']) </p>
-                    <span>Alloggio libero: cosa aspetti?</span> <br><br>
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <h4 class="title">Alloggio: {{ $alloggi->titolo }}</h4>
+
+
+                            <span>Prezzo:  {{ $alloggi->prezzo }} €</span>
+
+                            <span>Descrizione:  {{ $alloggi->descrizione }} </span> 
+
+                        @if($alloggi->tipologia == 'appartamento')         
+                            <span>Numero di camere totali nell'appartamento:  {{ $alloggi->n_camere }} </span> 
+                        @endif
+
+                        @if($alloggi->tipologia == 'posto letto')  
+                            <span>Numero di posti letto nella stanza:  {{ $alloggi->n_posti_letto_totali }} </span>
+                        @endif
+
+                            <span>Data di inserimento:  {{ $alloggi->data_inserimento }} </span> 
+
+                        @if ($alloggi->data_min != null)
+                            <span>Disponibile da:  {{ $alloggi->data_min }} </span> <
+                        @endif
+
+                        @if ($alloggi->data_max != null)
+                            <span>Disponibile fino a:  {{ $alloggi->data_max }} </span> 
+                        @endif
+
+                            <span>Indirizzo: {{ $alloggi->città }}, {{ $alloggi->cap }}, {{ $alloggi->provincia }}, {{ $alloggi->indirizzo}}</span>
+
+                        @if ($alloggi->genere != null)
+                            <span>Si accettano solo @if ($alloggi->genere == 'F') ragazze @endif @if ($alloggi->genere == 'M') ragazzi @endif.</span>
+                        @endif
+
+                        @if ($alloggi->età_min != null)
+                            <span>Età minima richiesta:  {{ $alloggi->età_min }} </span> 
+                        @endif
+
+                        @if ($alloggi->età_max != null)
+                            <span>Età massima richiesta:  {{ $alloggi->età_max }} </span> 
+                        @endif
+
+                        @if($alloggi->tipologia == 'appartamento')   
+                            <span>Superficie totale dell'appartamento:  {{ $alloggi->superficie }} mq</span> 
+                        @endif
+
+                        @if($alloggi->tipologia == 'posto letto')  
+                            <span>Superficie della camera:  {{ $alloggi->superficie }} mq</span> 
+                        @endif
+                        
+                        @if($alloggi->opzionato == 0)
+                    <p>@include('helpers/buttonimg', ['attrs' => 'imagefrm', 'imgFile' => 'green_button.png']) </p>
+                    <span>Alloggio libero: cosa aspetti?</span>
                     @endif
                     @if($alloggi->opzionato == 1)
-                    <p>@include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => 'red_button.png']) </p>
-                    <span>Alloggio già occupato...</span> <br><br>
+                    <p>@include('helpers/buttonimg', ['attrs' => 'imagefrm', 'imgFile' => 'red_button.png']) </p>
+                    <span>Alloggio già occupato...</span> 
                     @endif
-            <div class="col-lg-4">
-                <div class="right-content">
-                    <h4 class="title">Alloggio: {{ $alloggi->titolo }}</h4>
-                    <div class="image">
-                                @include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => $alloggi->immagine]) 
-                    
-TUTTE LE CARATTERISTICHE DELL'ALLOGGIO:
-
-                    <span>Prezzo:  {{ $alloggi->prezzo }} €</span><br><br>
-
-                    <span>Descrizione:  {{ $alloggi->descrizione }} </span> <br><br>
-                    
-@if($alloggi->tipologia == 'appartamento')         
-                    <span>Numero di camere totali nell'appartamento:  {{ $alloggi->n_camere }} </span> <br><br>
-@endif
-
-@if($alloggi->tipologia == 'posto letto')  
-                    <span>Numero di posti letto nella stanza:  {{ $alloggi->n_posti_letto_totali }} </span> <br><br>
-@endif
-
-                    <span>Data di inserimento:  {{ $alloggi->data_inserimento }} </span> <br><br>
-                    
-@if ($alloggi->data_min != null)
-                    <span>Disponibile da:  {{ $alloggi->data_min }} </span> <br><br>
-@endif
-
-@if ($alloggi->data_max != null)
-                    <span>Disponibile fino a:  {{ $alloggi->data_max }} </span> <br><br>
-@endif
-
-                    <span>Indirizzo: {{ $alloggi->città }}, {{ $alloggi->cap }}, {{ $alloggi->provincia }}, {{ $alloggi->indirizzo}}</span><br><br>
-
-@if ($alloggi->genere != null)
-                    <span>Si accettano solo @if ($alloggi->genere == 'F') ragazze @endif @if ($alloggi->genere == 'M') ragazzi @endif.</span><br><br>
-@endif
-
-@if ($alloggi->età_min != null)
-                    <span>Età minima richiesta:  {{ $alloggi->età_min }} </span> <br><br>
-@endif
-
-@if ($alloggi->età_max != null)
-                    <span>Età massima richiesta:  {{ $alloggi->età_max }} </span> <br><br>
-@endif
-
-@if($alloggi->tipologia == 'appartamento')   
-                    <span>Superficie totale dell'appartamento:  {{ $alloggi->superficie }} mq</span> <br><br>
-@endif
-
-@if($alloggi->tipologia == 'posto letto')  
-                    <span>Superficie della camera:  {{ $alloggi->superficie }} mq</span> <br><br>
-@endif
-
-+ SERVIZI LEGATI ALL'ALLOGGIO!!
 
 
 
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod kon tempor incididunt ut labore.</span>
-                    <div class="quote">
-                        <i class="fa fa-quote-left"></i><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuski smod.</p>
-                    </div>
-                    <div class="quantity-content">
-                        <div class="left-content">
-                            <h6>No. of Orders</h6>
+
+
+
+
                         </div>
-                        <div class="right-content">
-                            <div class="quantity buttons_added">
-                                <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
-                            </div>
-                        </div>
+
                     </div>
-                    <div class="total">
-                        <h4>Total: $210.00</h4>
-                        <div class="main-border-button"><a href="#">Add To Cart</a></div>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>
+                
+                
+            
+            
+        
+        </div> 
     </section>
     <!-- ***** Product Area Ends ***** -->
     
