@@ -3,18 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Offerte;
-use App\Models\Faqs;
 use App\Models\Resources\House;
+use App\Models\Faqs;
+use App\Models\Servizi;
 
 class PublicController extends Controller {
     
     protected $_offerteModel;
+    protected $_serviziModel;
     protected $_faqsModel;
-    
+
     public function __construct() {
         $this->_offerteModel = new Offerte;
+        $this->_serviziModel = new Servizi;
         $this->_faqsModel = new Faqs;
     }
+    
     public function showOfferte() {
         
 /*        //Appartamenti
@@ -45,7 +49,16 @@ class PublicController extends Controller {
      
     }
     
-     
+    public function showServizi() {
+        
+        //Servizi
+        $servizi = $this->_serviziModel->getServizi();
+        
+        return view('offertasingola')
+                        ->with('servizi', $servizi);
+    }
+    
+    
     public function showFaqs() {
         
         //Faqs
