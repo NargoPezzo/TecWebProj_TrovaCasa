@@ -13,16 +13,16 @@ use App\Http\Requests\EditUserRequest;
 use Illuminate\Http\Exceptions\HttpResponseException; //response json
 use Symfony\Component\HttpFoundation\Response;
 
-class EditController extends Controller {
+class ModificaUtenteController extends Controller {
 
     public function __construct() {
-        $this->middleware('can:isUser');
+        $this->middleware('auth');
     }
 
     public function editAccount() {
 
         $user = Auth::user();
-        return view('auth.edit')
+        return view('auth.modificautente')
                         ->with('user', $user);
     }
 
@@ -32,11 +32,10 @@ class EditController extends Controller {
 
         $validated = $request->validated();
 
-
         if ($request['oldpassword'] != null && $validated['password'] != null) {
             if (Hash::check($request['oldpassword'], $user->password)) {
                 $user->password = Hash::make($validated['password']);
-            } else
+            } else {
                 throw new HttpResponseException(response('{"oldpassword":["Password errata!"]}', Response::HTTP_UNPROCESSABLE_ENTITY));
         }
 
@@ -46,12 +45,13 @@ class EditController extends Controller {
         $user->genere = $validated['genere'];
         $user->username = $validated['username'];
         $user->livello = $validated['livello'];
-
+        
         $user->save();
 
         return response()->json(['redirect' => route('home')]);
+        }
+
     }
 
+
 }
-
-
