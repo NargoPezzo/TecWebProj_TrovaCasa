@@ -4,7 +4,7 @@
                 
                 <center><div class="first-item">
                         <div class="logo">
-                            <img src="assets/images/white-logo.png" alt="hexashop ecommerce templatemo">
+                            <img src="{{ asset('assets/images/white-logo.png')}}" alt="hexashop ecommerce templatemo">
                         </div>
                         <ul>
                             <li><a href="{{ route('dovesiamo') }}">Via Brecce Bianche 138, 60131, Ancona, Italia</a></li>
