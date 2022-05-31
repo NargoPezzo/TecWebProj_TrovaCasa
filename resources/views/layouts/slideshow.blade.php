@@ -3,7 +3,7 @@
     body {font-family:Arial, Helvetica, sans-serif; font-size:12px;}
  
     .fadein { 
-        position:relative; height:600px; width:600px; margin:0 auto;
+        position:relative; height:700px; width:700px; margin:0 auto;
         background: #ebebeb;
         padding: 10px;
     }
