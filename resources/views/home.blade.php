@@ -86,11 +86,13 @@
                         </div>
                     </div>
                 </div>
+                <!-- Finisce Lo Slideshow con le foto -->
                 
-        <!-- Finisce Lo Slideshow con le foto -->
-                <div class="about-us">
+@guest                
+        
+                
                     
-                        
+                        <div class="about-us">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class=" right-content">
@@ -107,11 +109,95 @@
                             </div>
                         </div>   
                     </div>    
+                    </div>                
+                
+@endguest
+
+@can('isLocatore')
+<div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                
+                                <div>
+                                    <img src="assets/images/LogoBigBlack.png" alt="">
+                                </div>
+                                
+                        <span> Il nostro sito ha lo scopo di soddisfare studenti che hanno bisogno di trovare casa e i proprietari che hanno bisogno di pubblicizzare e mettere in vendita i propri immobili e di trovare potenziali locatari.</span>
+                        <div class="quote">
+                           
+                           <h3> "BENVENUTO LOCATORE" </h3>
+                            <p>- Luca, 21 anni, che si è affidato a Booking piuttosto che a noi. </p>
+                        </div>
+                        <p>Il nostro sito garantisce le migliori inserzioni per studenti ai prezzi più bassi dell' intera penisola. I contratti sono stipulati in modo rapido ed efficiente. Soddisfatti o rimborsati? Macchè, solo soddisfatti. </p>
                         
-                    
+                                    
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
                 </div>
-            </div>
+@endcan
+
+@can('isLocatario')
+<div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                
+                                <div>
+                                    <img src="assets/images/LogoBigBlack.png" alt="">
+                                </div>
+                                
+                        <span> Il nostro sito ha lo scopo di soddisfare studenti che hanno bisogno di trovare casa e i proprietari che hanno bisogno di pubblicizzare e mettere in vendita i propri immobili e di trovare potenziali locatari.</span>
+                        <div class="quote">
+                           
+                           <h3> "BENVENUTO LOCATARIO" </h3>
+                            <p>- Luca, 21 anni, che si è affidato a Booking piuttosto che a noi. </p>
+                        </div>
+                        <p>Il nostro sito garantisce le migliori inserzioni per studenti ai prezzi più bassi dell' intera penisola. I contratti sono stipulati in modo rapido ed efficiente. Soddisfatti o rimborsati? Macchè, solo soddisfatti. </p>
+                        
+                                    
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+@endcan
+
+@can('isAdmin')
+<div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                
+                                <div>
+                                    <img src="assets/images/LogoBigBlack.png" alt="">
+                                </div>
+                                
+                        <span> Il nostro sito ha lo scopo di soddisfare studenti che hanno bisogno di trovare casa e i proprietari che hanno bisogno di pubblicizzare e mettere in vendita i propri immobili e di trovare potenziali locatari.</span>
+                        <div class="quote">
+                           
+                           <h3> "BENVENUTO ADMIN SUPREMO" </h3>
+                            <p>- Luca, 21 anni, che si è affidato a Booking piuttosto che a noi. </p>
+                        </div>
+                        <p>Il nostro sito garantisce le migliori inserzioni per studenti ai prezzi più bassi dell' intera penisola. I contratti sono stipulati in modo rapido ed efficiente. Soddisfatti o rimborsati? Macchè, solo soddisfatti. </p>
+                        
+                                    
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+@endcan
+
+
+            
         </div>
+    </div>
     </div>
     <!-- ***** Main Banner Area End ***** -->
 

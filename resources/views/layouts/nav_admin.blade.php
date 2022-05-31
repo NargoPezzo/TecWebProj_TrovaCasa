@@ -1,5 +1,5 @@
 <!-- ***** Logo Start ***** -->
-<a href="{{ url('admin') }}" class="logo">
+<a href="{{ url('/home') }}" class="logo">
     <img src="assets/images/logo.png">
                             
 </a>
@@ -8,7 +8,7 @@
 <!-- ***** Navbar Start ***** -->
 <ul class='nav'>
     <!-- MODIFICARE ROTTE!!! -->
-    <li><a href="{{ route('admin') }}" title="Va alla Home dell'Admin">Torna alla home</a></li>
+    <li><a href="{{ route('home') }}" title="Va alla Home dell'Admin">Torna alla home</a></li>
     <li><a href="{{ route('chisiamo') }}" title="Visualizza le statistiche">Statistiche</a></li>
                             <li class="submenu">
                                 <a href="javascript:;">F.A.Q</a>

@@ -47,7 +47,6 @@ Route::post('register', 'Auth\RegisterController@register');
 
 
 //Rotte per la modifica
-
 Route::get('/modificalocatario', 'Auth\ModificaLocatarioController@editAccount')
         ->name('modificalocatario');
 
@@ -64,13 +63,12 @@ Route::post('/modificalocatore', 'Auth\ModificaLocatoreController@saveAccount')
 
 
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::view('/home', 'home')
+        ->name('home');
 
 //Rotte Locatario
-Route::get('/locatario', 'LocatarioController@index') 
-        ->name('locatario')->middleware('can:isLocatario');
+/*Route::get('/locatario', 'LocatarioController@index') 
+        ->name('locatario')->middleware('can:isLocatario');*/
 
 Route::get('/homelocatario', 'LocatarioController@indexhome')
         ->name('homelocatario')->middleware('can:isLocatario');

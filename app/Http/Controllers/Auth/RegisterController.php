@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'età' => ['required', 'int'],
             'genere' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], //campo unico
-            'cellulare' => ['required', 'int', 'max:255', 'unique:users'],
+            'cellulare' => ['required', 'int', 'unique:users'],
             'username' => ['required', 'string', 'min:8', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'], //campo soggetto a conferma
             'livello' => ['required', 'string']

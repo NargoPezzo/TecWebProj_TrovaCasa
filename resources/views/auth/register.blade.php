@@ -182,7 +182,7 @@ https://templatemo.com/tm-571-hexashop -->
                 {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}<br>
                 {{ Form::text('username', '', ['class' => 'input','id' => 'username']) }}
                 @if ($errors->first('username'))
-                <ul class="errors">
+                <ul style = 'list-style-type: square', class="errors">
                     @foreach ($errors->get('username') as $message)
                     <li>{{ $message }}</li>
                     @endforeach
@@ -275,16 +275,16 @@ https://templatemo.com/tm-571-hexashop -->
                 <input class="wrap-input-input" type="radio" name="livello" id="livelloLocatore1" value="locatore" checked>
                      <label class="wrap-input-label" for="livelloLocatore1">
                          <div class="label-input">
-                            Locatario
+                                    Locatore
                          </div>
                         </label>
-                </div>
-                    <div class="wrap-input">
+            </div>
+            <div class="wrap-input">
                         <input class="wrap-input-input" type="radio" name="livello" id="livelloLocatario1" value="locatario">
                             <label class="wrap-input-label" for="livelloLocatario1">
                                 <div class="label-input">
-                             Locatore
-                                </div>
+                                    Locatario
+            </div>
                 </label>
                 @if ($errors->first('genere'))
                 <ul class="errors">
@@ -299,7 +299,7 @@ https://templatemo.com/tm-571-hexashop -->
             <div class="container-form-btn">                
                 {{ Form::submit('Registrati', ['class' => 'form-btn1']) }}
                 {{ Form::close() }}
-                <button type="reset">Reset</button>
+            <button type="reset">Reset</button>
             </div><br><br>
             </div></center>
     </div>

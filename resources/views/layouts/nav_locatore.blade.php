@@ -1,5 +1,5 @@
 <!-- ***** Logo Start ***** -->
-<a href="{{ url('locatore') }}" class="logo">
+<a href="{{ url('/home') }}" class="logo">
     <img src="assets/images/logo.png">
                             
 </a>
@@ -7,7 +7,7 @@
 
 <!-- ***** Navbar Start ***** -->
 <ul class='nav'>
-    <li><a href="{{ route('locatore') }}" title="Va alla Home del Locatore">Torna alla home</a></li>
+    <li><a href="{{ route('home') }}" title="Va alla Home del Locatore">Torna alla home</a></li>
     
     
                             <li class="submenu">
