@@ -45,12 +45,24 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')
 
 Route::post('register', 'Auth\RegisterController@register');
 
-//Rotte per la modifica
-Route::get('/modificautente', 'Auth\ModificaUtenteController@editAccount')
-        ->name('modificautente');
 
-Route::post('/modificautente', 'Auth\ModificaUtenteController@saveAccount')
-        ->name('modificautente.save');
+//Rotte per la modifica
+
+Route::get('/modificalocatario', 'Auth\ModificaLocatarioController@editAccount')
+        ->name('modificalocatario');
+
+Route::post('/modificalocatario', 'Auth\ModificaLocatarioController@saveAccount')
+        ->name('modificalocatario.save');
+
+
+
+Route::get('/modificalocatore', 'Auth\ModificaLocatoreController@editAccount')
+        ->name('modificalocatore');
+
+Route::post('/modificalocatore', 'Auth\ModificaLocatoreController@saveAccount')
+        ->name('modificalocatore.save');
+
+
 
 Route::get('/home', function () {
     return view('home');

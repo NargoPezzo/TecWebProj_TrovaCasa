@@ -84,7 +84,12 @@ https://templatemo.com/tm-571-hexashop
 
                 <div class="wrap-input">
     <h2> Modifica qui i tuoi dati:</h2>
-    {{ Form::model($user, array('route' => 'modificautente.save', 'id' => 'editform')) }}
+    @if ($user->livello == 'locatario')
+        {{ Form::model($user, array('route' => 'modificalocatario.save', 'id' => 'editform')) }}
+    @else{
+        {{ Form::model($user, array('route' => 'modificalocatore.save', 'id' => 'editform')) }}
+           }
+    @endif
     @csrf 
     <br>
     <br>
