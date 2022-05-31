@@ -34,8 +34,7 @@ class ModificaUtenteRequest extends FormRequest {
             'nome' => ['required', 'string', 'max:255'],
             'cognome' => ['required', 'string', 'max:255'],
             'età' => ['required', 'int'],
-
-           
+  
         ];
     }
 

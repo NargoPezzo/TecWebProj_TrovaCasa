@@ -16,7 +16,8 @@ use Symfony\Component\HttpFoundation\Response;
 class ModificaUtenteController extends Controller {
 
     public function __construct() {
-        $this->middleware('auth');
+        $this->middleware('can:isLocatore');
+        $this->middleware('can:isLocatario');
     }
 
     public function editAccount() {
@@ -45,8 +46,10 @@ class ModificaUtenteController extends Controller {
         $user->età = $validated['età'];
 
         $user->save();
-
-        return response()->json(['redirect' => route('dovesiamo')]);
+        
+        if ($user->livello == 'locatario'){   
+                 return redirect()->route('homelocatario');
+        }  
     }
 
 }

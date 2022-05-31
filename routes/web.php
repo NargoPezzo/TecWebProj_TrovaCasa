@@ -45,7 +45,7 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')
 
 Route::post('register', 'Auth\RegisterController@register');
 
-//Rotte per la modiFICA
+//Rotte per la modifica
 Route::get('/modificautente', 'Auth\ModificaUtenteController@editAccount')
         ->name('modificautente');
 
