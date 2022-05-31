@@ -25,7 +25,7 @@
                                 <ul>
                                     <li><a href="{{ route('chisiamo') }}" title="Lista delle richieste ricevute">Visualizza Richieste</a></li>
                                     <li><a href="{{ route('chisiamo') }}" title="Modificare dati personali">Sezione messaggistica</a></li>
-                                    <li><a href="{{ route('chisiamo') }}" title="Modificare dati personali">Modifica dati utente</a></li>
+                                    <li><a href="{{ route('modificautente') }}" title="Modificare dati personali">Modifica dati utente</a></li>
                                     @auth
                                     <li><a href="" class="highlight" title="Esci dal sito" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
