@@ -150,10 +150,10 @@ https://templatemo.com/tm-571-hexashop
 
                     </div>
 
-                </div>
+                </div><br><br>
             
                 <div class="col-lg-6">
-                    <div class="right-content">
+                    <div class="left-content">
                         
                         <h4 class="title">Servizi Offerti:</h4><br>
                         
@@ -170,14 +170,12 @@ https://templatemo.com/tm-571-hexashop
                         @else 
                             <p>Nessun Servizio disponibile</p>
                         @endif
-                        
+                        <br><br>
                     </div>
                 </div>
-                
-                
-                <div class="col-lg-6">
-                    <div class="right-content">
-                        <div class="col-lg-12">
+                <div >
+                    <div class="left-content">
+                        <div class="col-lg-12"><br><br>
                             <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Opziona Alloggio</a>
                             <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Messaggia il Locatario</a>
                         </div>

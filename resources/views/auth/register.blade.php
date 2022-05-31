@@ -25,7 +25,64 @@
 
 TemplateMo 571 Hexashop
 
-https://templatemo.com/tm-571-hexashop
+https://templatemo.com/tm-571-hexashop -->
+<!--
+<style>
+            ._error {
+                background-color: #f3e4e4;
+                border: solid 2px #ff0000;
+            }
+</style>
+<script type="text/javascript">
+            $(function () {
+                $(':input').on('change', function (event) {
+                    var element = $(this);
+                    element.removeClass('_error');
+                    switch (element.attr('id')) {
+                        case 'name':
+                            var pattern = /^([A-Za-z0-9_\-\.\@])+$/;
+                            if (!pattern.test(element.val())) {
+                                element.addClass('_error');
+                            }
+                            break;
+                        case '_passwd':
+                            if (element.val().length < 6) {
+                                element.addClass('_error');
+                            }
+                            break;
+                        case 'email':
+                            var pattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,6})$/;
+                            if (!pattern.test(element.val())) {
+                                element.addClass('_error');
+                            }
+                            break;
+                    }
+                    ;
+                });
+
+                $('form').on('submit', function (event) {
+                    $(':input').trigger('change');
+                    if ($(':input').filter('[class*=_error]').length != 0) {
+                        return false;
+                    }
+                    ;
+                });
+            });
+        </script>-->
+<script type="text/javascript" src="resources/js/app.js"></script>
+  <!-- Custom styles -->
+  <style>
+    #form label.error {
+        color: red;
+        font-weight: bold;
+    }
+     
+    .main {
+        width: 600px;
+        margin: 0 auto;
+    }
+  </style>
+    </head>
 
     </head>
     
@@ -143,6 +200,7 @@ https://templatemo.com/tm-571-hexashop
                     @endforeach
                 </ul>
                 @endif
+                
             </div><br><br>
 
             <div  class="wrap-input">
@@ -220,14 +278,14 @@ https://templatemo.com/tm-571-hexashop
                             Locatario
                          </div>
                         </label>
-             </div>
+                </div>
                     <div class="wrap-input">
                         <input class="wrap-input-input" type="radio" name="livello" id="livelloLocatario1" value="locatario">
                             <label class="wrap-input-label" for="livelloLocatario1">
                                 <div class="label-input">
                              Locatore
                                 </div>
-                            </label>
+                </label>
                 @if ($errors->first('genere'))
                 <ul class="errors">
                     @foreach ($errors->get('genere') as $message)
@@ -245,7 +303,7 @@ https://templatemo.com/tm-571-hexashop
             </div><br><br>
             </div></center>
     </div>
- 
+                
 </div>
         </div>
         </div>
