@@ -25,8 +25,8 @@ class Offerte {
     }*/
     
     public function getAlloggi() {
-        $alloggi = House::all();
-        return $alloggi/*->paginate(9)*/;
+        $alloggi = House::paginate(6);
+        return $alloggi;
         
     }
     
