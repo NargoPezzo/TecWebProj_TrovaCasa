@@ -2,16 +2,7 @@
     <div class="col-lg-12">
         <div class="pagination">
             <ul>
-                
-                @if ($paginator->onFirstPage())
-                <li class="active">
-                @else
-                <li>
-                @endif
-                <a href="{{ $paginator->url(1) }}">1</a>
-                </li>
-                
-                for 
+
                 @if ($paginator->onFirstPage())
                 <li class="active">
                 @else
@@ -44,9 +35,11 @@
                 <a href="{{ $paginator->url(4) }}">4</a>
                 </li>
                 
+                @if ($paginator->hasMorePages())
                 <li>
-                    <a href="#">></a>
+                    <a href="{{ $paginator->lastPage() }}">></a>
                 </li>
+                @endif
             </ul>
         </div>
     </div>

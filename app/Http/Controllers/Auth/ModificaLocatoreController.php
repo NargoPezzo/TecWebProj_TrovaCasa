@@ -13,12 +13,14 @@ use App\Http\Request\ModificaUtenteRequest;
 use Illuminate\Http\Exceptions\HttpResponseException; //response json
 use Symfony\Component\HttpFoundation\Response;
 
-class ModificaUtenteController extends Controller {
+class ModificaLocatoreController extends Controller {
 
     public function __construct() {
+       
         $this->middleware('can:isLocatore');
-        $this->middleware('can:isLocatario');
+       
     }
+    
 
     public function editAccount() {
 
@@ -47,9 +49,9 @@ class ModificaUtenteController extends Controller {
 
         $user->save();
         
-        if ($user->livello == 'locatario'){   
-                 return redirect()->route('homelocatario');
-        }  
+          
+                 return redirect()->route('homelocatore');
+        
     }
 
 }
