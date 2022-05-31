@@ -155,20 +155,34 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-6">
                     <div class="right-content">
                         
-                        <h4 class="title">Servizi Offerti:</h4>
+                        <h4 class="title">Servizi Offerti:</h4><br>
                         
                         
                         @if($servizi->isNotEmpty())
                         @foreach ($servizi as $servizio)
-                            <span><b>Descrizione:</b>  {{ $servizio->nome }} </span>
+                        <ul>
+                            <li>
+                                <a>{{ $servizio->nome }}</a>
+                            </li>
+                        </ul>
+                            
                         @endforeach
                         @else 
                             <p>Nessun Servizio disponibile</p>
                         @endif
                         
-            
-        
-        </div> 
+                    </div>
+                </div>
+                
+                
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="col-lg-12">
+                            <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Opziona Alloggio</a>
+                            <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Messaggia il Locatario</a>
+                        </div>
+                    </div>
+                </div>    
     </section>
     <!-- ***** Product Area Ends ***** -->
     
