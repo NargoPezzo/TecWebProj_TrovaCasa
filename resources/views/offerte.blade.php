@@ -127,40 +127,17 @@ https://templatemo.com/tm-571-hexashop
             
             @endforeach
             
-        @include('pagination.paginator', ['paginator' => $houses])
-
+            @include('pagination.paginator', ['paginator' => $houses])
+            
 
         @endisset()
             
             
   
-    </section>       
-        <!--       
-        </div>
-                <div class="col-lg-12">
-                    <div class="pagination">
-                        <ul>
-                            <li>
-                                <a href="#">1</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+           
               
-        -->   
-    
+          </div>   
+    </section>
     <!-- ***** Products Area Ends ***** -->
     
     <!-- ***** Footer Start ***** -->
