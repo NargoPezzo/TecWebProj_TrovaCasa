@@ -17,3 +17,6 @@ class House extends Model
         'superficie', 'immagine',
     ];
 }
+
+
+/* METTERE VINCOLO SU CHIAVE ESTERNA PER LOCATORE_ID*/

@@ -24,7 +24,9 @@ class NuovoAlloggioRequest extends FormRequest {
      * @return array
      */
     public function rules() {
+        \Illuminate\Support\Facades\Log::info('nella richiesta');
         return [
+            
             'locatoreId' => 'required',
             'titolo' => 'required|string|max:50',
             'prezzo' => 'required|numeric|min:0',

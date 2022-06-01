@@ -26,9 +26,13 @@ class LocatoreController extends Controller {
     }
     
     public function addAlloggio() {
-        $alloggi = $this->_locatoreModel->getAlloggi()/*->pluck('name', 'catId')*/;
+        $locatore_id = Auth::id();
+        $alloggi = $this->_locatoreModel->getAlloggi($locatore_id)/*->pluck('name', 'catId')*/;
+        Log::info($alloggi);
+        Log::info($locatore_id);
         return view('alloggi.inseriscialloggio')
-                        ->with('houses', $alloggi);
+                        ->with('houses', $alloggi)
+                        ->with('locatoreId', $locatore_id);
     }
     
     public function storeAlloggio(NuovoAlloggioRequest $request) {
@@ -37,6 +41,7 @@ class LocatoreController extends Controller {
         if ($request->hasFile('immagine')) {
             $image = $request->file('immagine');
             $imageName = $image->getClientOriginalName();
+            Log::info($imageName);
         } else {
             $imageName = NULL;
         }

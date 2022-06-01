@@ -42,16 +42,6 @@ class User extends Authenticatable {
         return in_array($this->livello, $livello);
     }
     
-    public function getId() {
-        $id = (array)$id;
-        return in_array($this->id, $id);
-    }
     
-    public function getAlloggi() {
-        if ($this->livello == 'locatore') {
-            $id = getId();
-            return House::where('locatore_id', $id)->get();
-        }
-    }
     
 }

@@ -6,8 +6,8 @@ namespace app\Models;
  use App\User;
 
 class Locatore extends User {
-    /*public function getAlloggi() {
-        $id = getId();
-        return House::where('locatore_id', $id)->get();
-    }*/
+    public function getAlloggi($locatore_id) {
+        
+        return House::where('locatore_id', $locatore_id)->get();
+    }
 }

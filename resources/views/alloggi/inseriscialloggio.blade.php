@@ -106,7 +106,21 @@ https://templatemo.com/tm-571-hexashop -->
                                 </ul>
                                 @endif
                             </div>
-
+                            
+                            <div  class="wrap-input  rs1-wrap-input">
+                                {{ Form::label('locatoreId', 'ID', ['class' => 'label-input']) }}
+                                {{ Form::text('locatoreId', '', ['class' => 'input', 'id' => 'locatoreId']) }}
+                             
+                                @if ($errors->first('locatoreId'))
+                                <ul class="errors">
+                                    @foreach ($errors->get('locatoreId') as $message)
+                                    <li>{{ $message }}</li>
+                                    @endforeach
+                                </ul>
+                                @endif
+                            </div>
+                            
+                                    
                             <div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('tipologia', 'Tipologia', ['class' => 'label-input']) }}
                                 {{ Form::select('tipologia', ['appartamento' => 'Appartamento', 'posto_letto_singolo' => 'Posto letto (singolo)', 'posto_letto_doppio' => 'Posto letto (doppio)'], ['class' => 'input','id' => 'tipologia']) }}
