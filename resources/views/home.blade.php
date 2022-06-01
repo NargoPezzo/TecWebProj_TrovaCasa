@@ -29,9 +29,18 @@
             
     .fadein { 
         position:relative; height:700px; width:700px; margin:0 auto;
-        
         padding: 10px;
     }
+    
+    @media (-webkit-device-pixel-ratio: 1.25) {
+  * {
+    .fadein { 
+        position:relative; height:200px; width:200px; margin:0 auto;
+        padding: 10px;
+        }
+    }
+    }
+    
     
     .fadein img{
         position:absolute;
