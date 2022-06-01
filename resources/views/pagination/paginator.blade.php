@@ -3,41 +3,19 @@
         <div class="pagination">
             <ul>
 
-                @if ($paginator->onFirstPage())
-                <li class="active">
-                @else
+                @if (!$paginator->onFirstPage())
                 <li>
-                @endif
-                <a href="{{ $paginator->url(1) }}">1</a>
+                    <a href="{{ $paginator->previousPageUrl() }}"><</a>
                 </li>
-                
-                @if ($paginator->currentPage() == 2)
-                <li class="active">
-                @else
-                <li>
                 @endif
-                <a href="{{ $paginator->url(2) }}">2</a>
-                </li>
                 
-                @if ($paginator->currentPage() == 3)
                 <li class="active">
-                @else
-                <li>
-                @endif
-                <a href="{{ $paginator->url(3) }}">3</a>
-                </li>
-                
-                @if ($paginator->currentPage() == 4)
-                <li class="active">
-                @else
-                <li>
-                @endif
-                <a href="{{ $paginator->url(4) }}">4</a>
+                    <a> {{ $paginator->currentPage() }} </a>
                 </li>
                 
                 @if ($paginator->hasMorePages())
                 <li>
-                    <a href="{{ $paginator->lastPage() }}">></a>
+                    <a href="{{ $paginator->nextPageUrl() }}">></a>
                 </li>
                 @endif
             </ul>

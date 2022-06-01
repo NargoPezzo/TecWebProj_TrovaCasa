@@ -7,6 +7,6 @@
         }
 
 @endphp
-<div style="width:300px;height:300px;overflow:hidden">
-    <img src="{{ asset('images/products/' . $imgFile) }}" {!! $attrs !!}>
+<div style="width:300px;height:250px;overflow:hidden">
+    <img src="{{ asset('images/products/' . $imgFile) }}" style="height:100%" {!! $attrs !!}>
     </div>
