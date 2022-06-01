@@ -250,7 +250,7 @@ https://templatemo.com/tm-571-hexashop -->
                             </div>-->
             
                             <div class="container-form-btn">                
-                                {{ Form::submit('Aggiungi Alloggio', ['class' => 'form-btn1']) }}
+                            {{ Form::submit('Aggiungi Alloggio', ['class' => 'form-btn1']) }}
                             {{ Form::close() }}
                             <button type="reset">Reset</button>
                             </div>

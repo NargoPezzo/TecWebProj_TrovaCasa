@@ -6,6 +6,7 @@ use App\Models\Resources\House;
 use App\Models\Locatore;
 use App\User;
 use App\Http\Request\NuovoAlloggioRequest;
+use Illuminate\Support\Facades\Log;
 
 class LocatoreController extends Controller {
 
@@ -32,6 +33,7 @@ class LocatoreController extends Controller {
     
     public function storeAlloggio(NuovoAlloggioRequest $request) {
 
+        Log::info('prova');
         if ($request->hasFile('immagine')) {
             $image = $request->file('immagine');
             $imageName = $image->getClientOriginalName();
@@ -48,6 +50,8 @@ class LocatoreController extends Controller {
             $destinationPath = public_path() . '/images/products';
             $image->move($destinationPath, $imageName);
         };
+        
+        
 
         return redirect()->action('LocatoreController@indexhome');
     }
