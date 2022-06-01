@@ -11,119 +11,135 @@ class DatabaseSeeder extends Seeder
      */
     
     public function run() {
+        
+        DB::table('users')->insert([
+            ['nome' => 'Admin', 'cognome' => 'Admin', 'età' => 55, 'genere' => 'M', 'email' => 'admin@admin.it', 
+                'cellulare' => '333567890', 'username' => 'adminadmin','password' => Hash::make('i4z5zipq'), 'livello' => 'admin',], //password criptata in phpmyadmin
+            ['nome' => 'Luca', 'cognome' => 'Tore', 'età' => 20, 'genere' => 'M', 'email' => 'loca@loca.it', 
+                'cellulare' => '334567890', 'username' => 'lorelore','password' => Hash::make('i4z5zipq'), 'livello' => 'locatore',],
+            ['nome' => 'Luca', 'cognome' => 'Tario', 'età' => 69, 'genere' => 'M', 'email' => 'lario@lario.it', 
+                'cellulare' => '335567890', 'username' => 'lariolario','password' => Hash::make('i4z5zipq'), 'livello' => 'locatario',],
+            ['nome' => 'Alex', 'cognome' => 'Alex', 'età' => 69, 'genere' => 'M', 'email' => 'lari@lario.it', 
+                'cellulare' => '335567891', 'username' => 'alexalex','password' => Hash::make('alexalex'), 'livello' => 'locatario',],
+            ['nome' => 'Elia', 'cognome' => 'Elia', 'età' => 69, 'genere' => 'M', 'email' => 'lar@lario.it', 
+                'cellulare' => '335567892', 'username' => 'eliaelia','password' => Hash::make('eliaelia'), 'livello' => 'locatore',],
+            ['nome' => 'Tommi', 'cognome' => 'Tommi', 'età' => 69, 'genere' => 'M', 'email' => 'la@lario.it', 
+                'cellulare' => '335567893', 'username' => 'tommitommi','password' => Hash::make('tommitommi'), 'livello' => 'admin',],
+        ]);
+        
 
         DB::table('houses')->insert([
-            ['id' => 1, 'titolo' => 'Appartamento1', 'prezzo' => 280, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
+            ['id' => 1, 'locatore_id' => 6, 'titolo' => 'Appartamento1', 'prezzo' => 280, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
                 'tipologia' => 'appartamento', 'n_camere' => 3, 'n_posti_letto_totali' => 3, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Simeoni, 6', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'età_min' => '18', 
                 'superficie' => '150','immagine' => 'casa1.jpg']
         ]);
             
         DB::table('houses')->insert([
-            ['id' => 2, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
+            ['id' => 2, 'locatore_id' => 5, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
                 'tipologia' => 'appartamento', 'n_camere' => 4, 'n_posti_letto_totali' => 6, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
                 'età_min' => '22', 'superficie' => '250']
         ]);
         
         DB::table('houses')->insert([
-            ['id' => 3, 'titolo' => 'Appartamento3', 'prezzo' => 370, 'descrizione' => 'Appartamento situato in periferia, a 10 minuti a piedi dalla fermata del pullman. Presenti due bagni, una cucina e un ampio salone, wi-fi, posto auto',
+            ['id' => 3, 'locatore_id' => 5, 'locatore_id' => 5, 'titolo' => 'Appartamento3', 'prezzo' => 370, 'descrizione' => 'Appartamento situato in periferia, a 10 minuti a piedi dalla fermata del pullman. Presenti due bagni, una cucina e un ampio salone, wi-fi, posto auto',
                 'tipologia' => 'appartamento', 'n_camere' => 3, 'n_posti_letto_totali' => 5, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Pinocchio, 24', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'M', 
                 'età_min' => '20', 'superficie' => '200','immagine' => 'casa3.jpg']
         ]);
          
         DB::table('houses')->insert([
-            ['id' => 4, 'titolo' => 'Appartamento4', 'prezzo' => 200, 'descrizione' => 'Appartamento situato in pieno centro, a 10 minuti di autobus dalla facoltà di Ingegneria . Presente un bagno, una cucina e un salone, wi-fi,asciugatrice',
+            ['id' => 4, 'locatore_id' => 5, 'titolo' => 'Appartamento4', 'prezzo' => 200, 'descrizione' => 'Appartamento situato in pieno centro, a 10 minuti di autobus dalla facoltà di Ingegneria . Presente un bagno, una cucina e un salone, wi-fi,asciugatrice',
                 'tipologia' => 'appartamento', 'n_camere' => 2, 'n_posti_letto_totali' => 2, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Martin Luther King, 6', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => null, 
                 'età_min' => null, 'età_max' => '30', 'superficie' => '70','immagine' => 'casa4.jpg']
         ]);
         
         DB::table('houses')->insert([
-            ['id' => 5, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
+            ['id' => 5, 'locatore_id' => 5, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
                 'tipologia' => 'appartamento', 'n_camere' => 4, 'n_posti_letto_totali' => 6, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
                 'età_min' => '30', 'superficie' => '250','immagine' => 'casa5.jpg']
         ]);
         
         DB::table('houses')->insert([
-            ['id' => 6, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
+            ['id' => 6, 'locatore_id' => 5, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
                 'tipologia' => 'appartamento', 'n_camere' => 4, 'n_posti_letto_totali' => 6, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
                 'età_min' => '30', 'superficie' => '250','immagine' => 'casa6.jpg']
         ]);
         
         DB::table('houses')->insert([
-            ['id' => 7, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
+            ['id' => 7, 'locatore_id' => 5, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
                 'tipologia' => 'appartamento', 'n_camere' => 4, 'n_posti_letto_totali' => 6, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
                 'età_min' => '30', 'superficie' => '250','immagine' => 'casa7.jpg']
         ]);
         
         DB::table('houses')->insert([
-            ['id' => 8, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
+            ['id' => 8, 'locatore_id' => 5, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
                 'tipologia' => 'appartamento', 'n_camere' => 4, 'n_posti_letto_totali' => 6, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
                 'età_min' => '30', 'superficie' => '250','immagine' => 'casa8.jpg']
         ]);
         
         DB::table('houses')->insert([
-            ['id' => 9, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
+            ['id' => 9, 'locatore_id' => 5, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
                 'tipologia' => 'appartamento', 'n_camere' => 4, 'n_posti_letto_totali' => 6, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
                 'età_min' => '30', 'superficie' => '250','immagine' => 'casa9.jpg']
         ]);
         
         DB::table('houses')->insert([
-            ['id' => 10, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
+            ['id' => 10, 'locatore_id' => 5, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
                 'tipologia' => 'appartamento', 'n_camere' => 4, 'n_posti_letto_totali' => 6, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
                 'età_min' => '30', 'superficie' => '250','immagine' => 'casa10.jpg']
         ]);
         
         DB::table('houses')->insert([
-            ['id' => 11, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
+            ['id' => 11, 'locatore_id' => 5, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
                 'tipologia' => 'appartamento', 'n_camere' => 4, 'n_posti_letto_totali' => 6, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
                 'età_min' => '30', 'superficie' => '250','immagine' => 'casa11.jpg']
         ]);
         
         DB::table('houses')->insert([
-            ['id' => 12, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
+            ['id' => 12, 'locatore_id' => 5, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
                 'tipologia' => 'appartamento', 'n_camere' => 4, 'n_posti_letto_totali' => 6, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
                 'età_min' => '30', 'superficie' => '250','immagine' => 'casa12.jpg']
         ]);
         
         DB::table('houses')->insert([
-            ['id' => 13, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
+            ['id' => 13, 'locatore_id' => 5, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
                 'tipologia' => 'appartamento', 'n_camere' => 4, 'n_posti_letto_totali' => 6, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
                 'età_min' => '30', 'superficie' => '250','immagine' => 'casa13.jpg']
         ]);
         
         DB::table('houses')->insert([
-            ['id' => 14, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
+            ['id' => 14, 'locatore_id' => 5, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
                 'tipologia' => 'appartamento', 'n_camere' => 4, 'n_posti_letto_totali' => 6, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
                 'età_min' => '30', 'superficie' => '250','immagine' => 'casa14.jpg']
         ]);
         
         DB::table('houses')->insert([
-            ['id' => 15, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
+            ['id' => 15, 'locatore_id' => 5, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
                 'tipologia' => 'appartamento', 'n_camere' => 4, 'n_posti_letto_totali' => 6, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
                 'età_min' => '30', 'superficie' => '250','immagine' => 'casa15.jpg']
         ]);
         DB::table('houses')->insert([
-            ['id' => 16, 'titolo' => 'Posto Letto Singolo', 'prezzo' => 480, 'descrizione' => 'Posto Letto situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
+            ['id' => 16, 'locatore_id' => 5, 'titolo' => 'Posto Letto Singolo', 'prezzo' => 480, 'descrizione' => 'Posto Letto situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
                 'tipologia' => 'posto letto', 'n_camere' => 1, 'n_posti_letto_totali' => 1, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
                 'età_min' => '30', 'superficie' => '250','immagine' => 'casa15.jpg']
         ]);
         DB::table('houses')->insert([
-            ['id' => 17, 'titolo' => 'Posto Letto Doppio', 'prezzo' => 480, 'descrizione' => 'Posto Letto situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
+            ['id' => 17, 'locatore_id' => 5, 'titolo' => 'Posto Letto Doppio', 'prezzo' => 480, 'descrizione' => 'Posto Letto situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
                 'tipologia' => 'posto letto', 'n_camere' => 1, 'n_posti_letto_totali' => 2, 'data_inserimento' => date("Y-m-d H:i:s"),
                 'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
                 'età_min' => '30', 'superficie' => '250','immagine' => 'casa15.jpg']
@@ -159,21 +175,6 @@ class DatabaseSeeder extends Seeder
                 'descShort' => 'Caratteristiche HardDisk4', 'descLong' => self::DESCPROD,
                 'price' => 78.66, 'discountPerc' => 7, 'discounted' => 01, 'image' => 'Ukraine.gif']
         ]);*/
-
-        DB::table('users')->insert([
-            ['nome' => 'Admin', 'cognome' => 'Admin', 'età' => 55, 'genere' => 'M', 'email' => 'admin@admin.it', 
-                'cellulare' => '333567890', 'username' => 'adminadmin','password' => Hash::make('i4z5zipq'), 'livello' => 'admin',], //password criptata in phpmyadmin
-            ['nome' => 'Luca', 'cognome' => 'Tore', 'età' => 20, 'genere' => 'M', 'email' => 'loca@loca.it', 
-                'cellulare' => '334567890', 'username' => 'lorelore','password' => Hash::make('i4z5zipq'), 'livello' => 'locatore',],
-            ['nome' => 'Luca', 'cognome' => 'Tario', 'età' => 69, 'genere' => 'M', 'email' => 'lario@lario.it', 
-                'cellulare' => '335567890', 'username' => 'lariolario','password' => Hash::make('i4z5zipq'), 'livello' => 'locatario',],
-            ['nome' => 'Alex', 'cognome' => 'Alex', 'età' => 69, 'genere' => 'M', 'email' => 'lari@lario.it', 
-                'cellulare' => '335567891', 'username' => 'alexalex','password' => Hash::make('alexalex'), 'livello' => 'locatario',],
-            ['nome' => 'Elia', 'cognome' => 'Elia', 'età' => 69, 'genere' => 'M', 'email' => 'lar@lario.it', 
-                'cellulare' => '335567892', 'username' => 'eliaelia','password' => Hash::make('eliaelia'), 'livello' => 'locatore',],
-            ['nome' => 'Tommi', 'cognome' => 'Tommi', 'età' => 69, 'genere' => 'M', 'email' => 'la@lario.it', 
-                'cellulare' => '335567893', 'username' => 'tommitommi','password' => Hash::make('tommitommi'), 'livello' => 'admin',],
-        ]);
         
         DB::table('faqs')->insert([
             ['id' => 1, 'domanda' => 'Di cosa tratta questo sito?', 'risposta' =>"Il nostro sito è classificabile come un sito dedicato agli annunci d'affitto"],

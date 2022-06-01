@@ -15,6 +15,8 @@ class CreateHousesTable extends Migration
     {
         Schema::create('houses', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
+            $table->unsignedBigInteger('locatore_id')->index();
+            $table->foreign('locatore_id')->references('id')->on('users');
             $table->string('titolo');
             $table->float('prezzo');
             $table->string('descrizione',2500);
@@ -34,6 +36,7 @@ class CreateHousesTable extends Migration
             $table->tinyInteger('opzionato')->default(0);
             $table->integer('superficie');
             $table->text('immagine')->default('no_home_icon.jpg');
+            
             
 /*            if (Schema::hasColumn('alloggio', 'opzionato', 0)) {
                 $table->text('immagine')->default('no_home_icon.png');

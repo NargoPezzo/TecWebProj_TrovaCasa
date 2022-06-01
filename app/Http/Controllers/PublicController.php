@@ -50,9 +50,6 @@ class PublicController extends Controller {
      
     }
     
-    
-    
-    
     public function showFaqs() {
         
         //Faqs

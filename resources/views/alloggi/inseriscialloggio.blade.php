@@ -26,49 +26,7 @@
 TemplateMo 571 Hexashop
 
 https://templatemo.com/tm-571-hexashop -->
-<!--
-<style>
-            ._error {
-                background-color: #f3e4e4;
-                border: solid 2px #ff0000;
-            }
-</style>
-<script type="text/javascript">
-            $(function () {
-                $(':input').on('change', function (event) {
-                    var element = $(this);
-                    element.removeClass('_error');
-                    switch (element.attr('id')) {
-                        case 'name':
-                            var pattern = /^([A-Za-z0-9_\-\.\@])+$/;
-                            if (!pattern.test(element.val())) {
-                                element.addClass('_error');
-                            }
-                            break;
-                        case '_passwd':
-                            if (element.val().length < 6) {
-                                element.addClass('_error');
-                            }
-                            break;
-                        case 'email':
-                            var pattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,6})$/;
-                            if (!pattern.test(element.val())) {
-                                element.addClass('_error');
-                            }
-                            break;
-                    }
-                    ;
-                });
 
-                $('form').on('submit', function (event) {
-                    $(':input').trigger('change');
-                    if ($(':input').filter('[class*=_error]').length != 0) {
-                        return false;
-                    }
-                    ;
-                });
-            });
-        </script>-->
 <script type="text/javascript" src="resources/js/app.js"></script>
   <!-- Custom styles -->
   <style>
@@ -136,13 +94,13 @@ https://templatemo.com/tm-571-hexashop -->
             <div class="static">
                    <div class="container-contact">
                         <div class="wrap-contact">
-                            {{ Form::open(array('route' => 'newproduct.store', 'id' => 'addproduct', 'files' => true, 'class' => 'contact-form')) }}
+                            {{ Form::open(array('route' => 'inseriscialloggio.store', 'id' => 'inseriscialloggio', 'files' => true, 'class' => 'contact-form')) }}
                             <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('name', 'Nome Prodotto', ['class' => 'label-input']) }}
-                                {{ Form::text('name', '', ['class' => 'input', 'id' => 'name']) }}
-                                @if ($errors->first('name'))
+                                {{ Form::label('titolo', 'Titolo', ['class' => 'label-input']) }}
+                                {{ Form::text('titolo', '', ['class' => 'input', 'id' => 'titolo']) }}
+                                @if ($errors->first('titolo'))
                                 <ul class="errors">
-                                    @foreach ($errors->get('name') as $message)
+                                    @foreach ($errors->get('titolo') as $message)
                                     <li>{{ $message }}</li>
                                     @endforeach
                                 </ul>
@@ -150,16 +108,16 @@ https://templatemo.com/tm-571-hexashop -->
                             </div>
 
                             <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('catId', 'Categoria', ['class' => 'label-input']) }}
-                                {{ Form::select('catId', $cats, '', ['class' => 'input','id' => 'catId']) }}
+                                {{ Form::label('tipologia', 'Tipologia', ['class' => 'label-input']) }}
+                                {{ Form::text('tipologia', '', ['class' => 'input','id' => 'tipologia']) }}
                             </div>
 
                             <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('image', 'Immagine', ['class' => 'label-input']) }}
-                                {{ Form::file('image', ['class' => 'input', 'id' => 'image']) }}
-                                @if ($errors->first('image'))
+                                {{ Form::label('immagine', 'Immagine', ['class' => 'label-input']) }}
+                                {{ Form::file('immagine', ['class' => 'input', 'id' => 'immagine']) }}
+                                @if ($errors->first('immagine'))
                                 <ul class="errors">
-                                    @foreach ($errors->get('image') as $message)
+                                    @foreach ($errors->get('immagine') as $message)
                                     <li>{{ $message }}</li>
                                     @endforeach
                                 </ul>
@@ -167,11 +125,11 @@ https://templatemo.com/tm-571-hexashop -->
                             </div>
 
                             <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('descShort', 'Descrizione Breve', ['class' => 'label-input']) }}
-                                {{ Form::text('descShort', '', ['class' => 'input', 'id' => 'descShort']) }}
-                                @if ($errors->first('descShort'))
+                                {{ Form::label('descrizione', 'Descrizione ', ['class' => 'label-input']) }}
+                                {{ Form::textarea('descrizione', '', ['class' => 'input', 'id' => 'descrizione']) }}
+                                @if ($errors->first('descrizione'))
                                 <ul class="errors">
-                                    @foreach ($errors->get('descShort') as $message)
+                                    @foreach ($errors->get('descrizione') as $message)
                                     <li>{{ $message }}</li>
                                     @endforeach
                                 </ul>
@@ -179,18 +137,18 @@ https://templatemo.com/tm-571-hexashop -->
                             </div>
 
                             <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('price', 'Prezzo', ['class' => 'label-input']) }}
-                                {{ Form::text('price', '', ['class' => 'input', 'id' => 'price']) }}
-                                @if ($errors->first('price'))
+                                {{ Form::label('prezzo', 'Prezzo', ['class' => 'label-input']) }}
+                                {{ Form::text('prezzo', '', ['class' => 'input', 'id' => 'prezzo']) }}
+                                @if ($errors->first('prezzo'))
                                 <ul class="errors">
-                                    @foreach ($errors->get('price') as $message)
+                                    @foreach ($errors->get('prezzo') as $message)
                                     <li>{{ $message }}</li>
                                     @endforeach
                                 </ul>
                                 @endif
                             </div>
 
-                            <div  class="wrap-input  rs1-wrap-input">
+                            <!--<div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('discountPerc', 'Sconto (%)', ['class' => 'label-input']) }}
                                 {{ Form::text('discountPerc', '', ['class' => 'input', 'id' => 'discountPerc']) }}
                                 @if ($errors->first('discountPerc'))
@@ -200,27 +158,15 @@ https://templatemo.com/tm-571-hexashop -->
                                     @endforeach
                                 </ul>
                                 @endif
-                            </div>
+                            </div>-->
 
                             <div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('discounted', 'In Sconto', ['class' => 'label-input']) }}
                                 {{ Form::select('discounted', ['1' => 'Si', '0' => 'No'], 1, ['class' => 'input','id' => 'discounted']) }}
                             </div>
-
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('descLong', 'Descrizione Estesa', ['class' => 'label-input']) }}
-                                {{ Form::textarea('descLong', '', ['class' => 'input', 'id' => 'descLong', 'rows' => 2]) }}
-                                @if ($errors->first('descLong'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('descLong') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div>
             
                             <div class="container-form-btn">                
-                                {{ Form::submit('Aggiungi Prodotto', ['class' => 'form-btn1']) }}
+                                {{ Form::submit('Aggiungi Alloggio', ['class' => 'form-btn1']) }}
                             </div>
             
                             {{ Form::close() }}

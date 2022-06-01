@@ -92,13 +92,16 @@ Route::get('/offertasingola/{id}', 'PublicController@showOfferta')
         ->name('offertasingola');
 
 // Rotte per l'alloggio
-Route::get('/nuovoalloggio', 'LocatoreController@add')
-        ->name('nuovoalloggio');
+Route::get('/inseriscialloggio', 'LocatoreController@addAlloggio')
+        ->name('inseriscialloggio');
 
-Route::get('/eliminaalloggio', 'LocatoreController@destroy')
+Route::post('/inseriscialloggio', 'LocatoreController@storeAlloggio')
+        ->name('inseriscialloggio.store');
+
+Route::get('/eliminaalloggio', 'LocatoreController@destroyAlloggio')
         ->name('eliminaalloggio');
 
-Route::get('/modificaalloggio', 'LocatoreController@edit')
+Route::get('/modificaalloggio', 'LocatoreController@editAlloggio')
         ->name('modificaalloggio');
 
 /*
