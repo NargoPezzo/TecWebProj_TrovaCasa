@@ -25,7 +25,7 @@ class NuovoAlloggioRequest extends FormRequest {
      */
     public function rules() {
         return [
-            //'locatoreId' => 'required',
+            'locatoreId' => 'required',
             'titolo' => 'required|string|max:50',
             'prezzo' => 'required|numeric|min:0',
             'descrizione' => 'string|max:2500',
@@ -33,9 +33,9 @@ class NuovoAlloggioRequest extends FormRequest {
             'n_camere' => 'required|int',
             'n_posti_letto_totali' => 'required|int',
             'indirizzo' => 'required|string|max:255',
-            'cap' => 'required|numeric|maxlength:5',
+            'cap' => 'required|numeric|max:5',
             'città' => 'required|string|max:255',
-            'provincia' => 'required|string|maxlength:2',
+            'provincia' => 'required|string|max:2',
             'superficie' => 'required|int',
             'immagine' => 'image|max:1024',
         ];

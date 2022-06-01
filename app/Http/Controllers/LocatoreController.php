@@ -25,7 +25,7 @@ class LocatoreController extends Controller {
     
     public function addAlloggio() {
         $alloggi = $this->_locatoreModel->getAlloggi('id')/*->pluck('name', 'catId')*/;
-        return view('alloggi.inseriscialloggio')
+        return view('homelocatore')
                         ->with('houses', $alloggi);
     }
     

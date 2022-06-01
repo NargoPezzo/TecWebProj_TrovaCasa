@@ -147,6 +147,90 @@ https://templatemo.com/tm-571-hexashop -->
                                 </ul>
                                 @endif
                             </div>
+                            
+                            <div  class="wrap-input  rs1-wrap-input">
+                                {{ Form::label('n_camere', 'Numero Camere', ['class' => 'label-input']) }}
+                                {{ Form::text('n_camere', '', ['class' => 'input', 'id' => 'n_camere']) }}
+                                @if ($errors->first('n_camere'))
+                                <ul class="errors">
+                                    @foreach ($errors->get('n_camere') as $message)
+                                    <li>{{ $message }}</li>
+                                    @endforeach
+                                </ul>
+                                @endif
+                            </div>
+                            
+                            <div  class="wrap-input  rs1-wrap-input">
+                                {{ Form::label('n_posti_letto_totali', 'Numero Posti Letto Totali', ['class' => 'label-input']) }}
+                                {{ Form::text('n_posti_letto_totali', '', ['class' => 'input', 'id' => 'n_posti_letto_totali']) }}
+                                @if ($errors->first('n_posti_letto_totali'))
+                                <ul class="errors">
+                                    @foreach ($errors->get('n_posti_letto_totali') as $message)
+                                    <li>{{ $message }}</li>
+                                    @endforeach
+                                </ul>
+                                @endif
+                            </div>
+                            
+                            <div  class="wrap-input  rs1-wrap-input">
+                                {{ Form::label('indirizzo', 'Indirizzo', ['class' => 'label-input']) }}
+                                {{ Form::text('indirizzo', '', ['class' => 'input', 'id' => 'indirizzo']) }}
+                                @if ($errors->first('indirizzo'))
+                                <ul class="errors">
+                                    @foreach ($errors->get('indirizzo') as $message)
+                                    <li>{{ $message }}</li>
+                                    @endforeach
+                                </ul>
+                                @endif
+                            </div>
+                            
+                            <div  class="wrap-input  rs1-wrap-input">
+                                {{ Form::label('cap', 'CAP', ['class' => 'label-input']) }}
+                                {{ Form::text('cap', '', ['class' => 'input', 'id' => 'cap']) }}
+                                @if ($errors->first('cap'))
+                                <ul class="errors">
+                                    @foreach ($errors->get('cap') as $message)
+                                    <li>{{ $message }}</li>
+                                    @endforeach
+                                </ul>
+                                @endif
+                            </div>
+                            
+                            <div  class="wrap-input  rs1-wrap-input">
+                                {{ Form::label('città', 'Citta', ['class' => 'label-input']) }}
+                                {{ Form::text('città', '', ['class' => 'input', 'id' => 'città']) }}
+                                @if ($errors->first('città'))
+                                <ul class="errors">
+                                    @foreach ($errors->get('città') as $message)
+                                    <li>{{ $message }}</li>
+                                    @endforeach
+                                </ul>
+                                @endif
+                            </div>
+                            
+                            <div  class="wrap-input  rs1-wrap-input">
+                                {{ Form::label('provincia', 'Provincia', ['class' => 'label-input']) }}
+                                {{ Form::text('provincia', '', ['class' => 'input', 'id' => 'provincia']) }}
+                                @if ($errors->first('provincia'))
+                                <ul class="errors">
+                                    @foreach ($errors->get('provincia') as $message)
+                                    <li>{{ $message }}</li>
+                                    @endforeach
+                                </ul>
+                                @endif
+                            </div>
+                            
+                            <div  class="wrap-input  rs1-wrap-input">
+                                {{ Form::label('superficie', 'Superficie', ['class' => 'label-input']) }}
+                                {{ Form::text('superficie', '', ['class' => 'input', 'id' => 'superficie']) }}
+                                @if ($errors->first('superficie'))
+                                <ul class="errors">
+                                    @foreach ($errors->get('superficie') as $message)
+                                    <li>{{ $message }}</li>
+                                    @endforeach
+                                </ul>
+                                @endif
+                            </div>
 
                             <!--<div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('discountPerc', 'Sconto (%)', ['class' => 'label-input']) }}
