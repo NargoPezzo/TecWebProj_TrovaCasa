@@ -166,7 +166,7 @@ https://templatemo.com/tm-571-hexashop -->
                 @endif
             </div><br><br>
             
-             <div  class="wrap-input">
+            <div  class="wrap-input">
                 {{ Form::label('email', 'Email', ['class' => 'label-input']) }}<br>
                 {{ Form::text('email', '', ['class' => 'input','id' => 'email']) }}
                 @if ($errors->first('email'))
@@ -178,7 +178,7 @@ https://templatemo.com/tm-571-hexashop -->
                 @endif
             </div><br><br>
             
-             <div  class="wrap-input">
+            <div  class="wrap-input">
                 {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}<br>
                 {{ Form::text('username', '', ['class' => 'input','id' => 'username']) }}
                 @if ($errors->first('username'))
@@ -190,7 +190,7 @@ https://templatemo.com/tm-571-hexashop -->
                 @endif
             </div><br><br>
             
-             <div  class="wrap-input">
+            <div  class="wrap-input">
                 {{ Form::label('password', 'Password', ['class' => 'label-input']) }}<br>
                 {{ Form::password('password', ['class' => 'input', 'id' => 'password']) }}
                 @if ($errors->first('password'))
@@ -214,21 +214,22 @@ https://templatemo.com/tm-571-hexashop -->
                 </div>
             </label>
             
-             <div class="wrap-input">
+            <div class="wrap-input">
                 <input class="wrap-input-input" type="radio" name="genere" id="genereU1" value="M">
-                     <label class="wrap-input-label" for="genereU1">
-                         <div class="label-input">
-                            Uomo 
-                         </div>
-                        </label>
-              </div>
-                    <div class="wrap-input">
-                        <input class="wrap-input-input" type="radio" name="genere" id="genereD1" value="F">
-                            <label class="wrap-input-label" for="genereD1">
-                                <div class="label-input">
-                              Donna
-                                </div>
-                            </label>
+                    <label class="wrap-input-label" for="genereU1">
+                        <div class="label-input">
+                        Uomo 
+                        </div>
+                    </label>
+            </div>
+                 
+            <div class="wrap-input">
+                <input class="wrap-input-input" type="radio" name="genere" id="genereD1" value="F">
+                    <label class="wrap-input-label" for="genereD1">
+                        <div class="label-input">
+                        Donna
+                        </div>
+                    </label>
                 @if ($errors->first('genere'))
                 <ul class="errors">
                     @foreach ($errors->get('genere') as $message)
@@ -237,9 +238,9 @@ https://templatemo.com/tm-571-hexashop -->
                 </ul>
                 @endif
                 
-             </div><br><br>
+            </div><br><br>
             
-             <div class="wrap-input">
+            <div class="wrap-input">
                 {{ Form::label('età', 'Età', ['class' => 'label-input']) }}<br>
                 {{ Form::text('età', '', ['class' => 'input', 'id' => 'età']) }}
                 @if ($errors->first('età'))
@@ -249,10 +250,9 @@ https://templatemo.com/tm-571-hexashop -->
                     @endforeach
                 </ul>
                 @endif
-                
             </div><br><br>
             
-                         <div class="wrap-input">
+            <div class="wrap-input">
                 {{ Form::label('cellulare', 'Cellulare', ['class' => 'label-input']) }}<br>
                 {{ Form::text('cellulare', '', ['class' => 'input', 'id' => 'cellulare']) }}
                 @if ($errors->first('cellulare'))
@@ -262,7 +262,6 @@ https://templatemo.com/tm-571-hexashop -->
                     @endforeach
                 </ul>
                 @endif
-                
             </div><br><br>
             
             <label for="livello">
@@ -273,19 +272,20 @@ https://templatemo.com/tm-571-hexashop -->
             
             <div class="wrap-input">
                 <input class="wrap-input-input" type="radio" name="livello" id="livelloLocatore1" value="locatore" checked>
-                     <label class="wrap-input-label" for="livelloLocatore1">
-                         <div class="label-input">
-                                    Locatore
-                         </div>
-                        </label>
+                    <label class="wrap-input-label" for="livelloLocatore1">
+                        <div class="label-input">
+                        Locatore
+                        </div>
+                    </label>
             </div>
+            
             <div class="wrap-input">
-                        <input class="wrap-input-input" type="radio" name="livello" id="livelloLocatario1" value="locatario">
-                            <label class="wrap-input-label" for="livelloLocatario1">
-                                <div class="label-input">
-                                    Locatario
-            </div>
-                </label>
+                <input class="wrap-input-input" type="radio" name="livello" id="livelloLocatario1" value="locatario">
+                    <label class="wrap-input-label" for="livelloLocatario1">
+                        <div class="label-input">
+                        Locatario
+                        </div>
+                    </label>
                 @if ($errors->first('genere'))
                 <ul class="errors">
                     @foreach ($errors->get('genere') as $message)
@@ -294,19 +294,19 @@ https://templatemo.com/tm-571-hexashop -->
                 </ul>
                 @endif
                 
-             </div><br><br>
+            </div><br><br>
             
             <div class="container-form-btn">                
                 {{ Form::submit('Registrati', ['class' => 'form-btn1']) }}
                 {{ Form::close() }}
             <button type="reset">Reset</button>
             </div><br><br>
-            </div></center>
+            
+                </div></center>
     </div>
-                
-</div>
+            </div>
         </div>
-        </div>
+    </div>
 
 
 
