@@ -91,6 +91,16 @@ Route::get('/homeadmin', 'AdminController@indexhome')
 Route::get('/offertasingola/{id}', 'PublicController@showOfferta')   
         ->name('offertasingola');
 
+// Rotte per l'alloggio
+Route::get('/nuovoalloggio', 'LocatoreController@add')
+        ->name('nuovoalloggio');
+
+Route::get('/eliminaalloggio', 'LocatoreController@destroy')
+        ->name('eliminaalloggio');
+
+Route::get('/modificaalloggio', 'LocatoreController@edit')
+        ->name('modificaalloggio');
+
 /*
 Route::get('/offertelocatario', 'LocatarioController@indexoffertelocatario')   POTREBBE ESSERE INUTILE
         ->name('offertelocatario')->middleware('can:isLocatario');  */
