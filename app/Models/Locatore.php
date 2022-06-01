@@ -3,10 +3,11 @@
 namespace app\Models;
 
  use App\Models\Resources\House;
-// use App\Models\Resources\Product;
+ use App\User;
 
-class Locatore {
-    public function getAlloggi($id) {
+class Locatore extends User {
+    /*public function getAlloggi() {
+        $id = getId();
         return House::where('locatore_id', $id)->get();
-    }
+    }*/
 }
