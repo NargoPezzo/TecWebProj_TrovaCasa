@@ -4,6 +4,7 @@ namespace app\Http\Controllers;
 
 use App\Models\Resources\House;
 use App\Models\Locatore;
+use App\User;
 use App\Http\Request\NuovoAlloggioRequest;
 
 class LocatoreController extends Controller {
@@ -24,8 +25,8 @@ class LocatoreController extends Controller {
     }
     
     public function addAlloggio() {
-        $alloggi = $this->_locatoreModel->getAlloggi('id')/*->pluck('name', 'catId')*/;
-        return view('homelocatore')
+        $alloggi = $this->_locatoreModel->getAlloggi()/*->pluck('name', 'catId')*/;
+        return view('alloggi.inseriscialloggio')
                         ->with('houses', $alloggi);
     }
     
