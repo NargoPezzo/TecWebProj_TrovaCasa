@@ -80,7 +80,7 @@ https://templatemo.com/tm-571-hexashop -->
                 <div class="col-lg-12">
                     <div class="inner-content">
                         <h2>Inserisci alloggio</h2>
-                            <span>Metti in affitto un alloggio</span> 
+                            <span>P.S.: "Lorem ipsum dolor..." non è accetto</span> 
                     </div>
                 </div>
             </div>
@@ -109,7 +109,7 @@ https://templatemo.com/tm-571-hexashop -->
 
                             <div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('tipologia', 'Tipologia', ['class' => 'label-input']) }}
-                                {{ Form::text('tipologia', '', ['class' => 'input','id' => 'tipologia']) }}
+                                {{ Form::select('tipologia', ['appartamento' => 'Appartamento', 'posto_letto_singolo' => 'Posto letto (singolo)', 'posto_letto_doppio' => 'Posto letto (doppio)'], ['class' => 'input','id' => 'tipologia']) }}
                             </div>
 
                             <div  class="wrap-input  rs1-wrap-input">
@@ -138,7 +138,7 @@ https://templatemo.com/tm-571-hexashop -->
 
                             <div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('prezzo', 'Prezzo', ['class' => 'label-input']) }}
-                                {{ Form::text('prezzo', '', ['class' => 'input', 'id' => 'prezzo']) }}
+                                {{ Form::text('prezzo', '', ['class' => 'input', 'id' => 'prezzo']) }}€ al mese
                                 @if ($errors->first('prezzo'))
                                 <ul class="errors">
                                     @foreach ($errors->get('prezzo') as $message)
@@ -158,18 +158,18 @@ https://templatemo.com/tm-571-hexashop -->
                                     @endforeach
                                 </ul>
                                 @endif
-                            </div>-->
+                            </div>
 
                             <div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('discounted', 'In Sconto', ['class' => 'label-input']) }}
                                 {{ Form::select('discounted', ['1' => 'Si', '0' => 'No'], 1, ['class' => 'input','id' => 'discounted']) }}
-                            </div>
+                            </div>-->
             
                             <div class="container-form-btn">                
                                 {{ Form::submit('Aggiungi Alloggio', ['class' => 'form-btn1']) }}
-                            </div>
-            
                             {{ Form::close() }}
+                            <button type="reset">Reset</button>
+                            </div>
                         </div>
                     </div>
             </div>

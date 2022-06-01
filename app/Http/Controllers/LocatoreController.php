@@ -4,6 +4,7 @@ namespace app\Http\Controllers;
 
 use App\Models\Resources\House;
 use App\Models\Locatore;
+use App\Http\Request\NuovoAlloggioRequest;
 
 class LocatoreController extends Controller {
 
@@ -28,26 +29,26 @@ class LocatoreController extends Controller {
                         ->with('houses', $alloggi);
     }
     
-    public function storeProduct(NewProductRequest $request) {
+    public function storeAlloggio(NuovoAlloggioRequest $request) {
 
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
+        if ($request->hasFile('immagine')) {
+            $image = $request->file('immagine');
             $imageName = $image->getClientOriginalName();
         } else {
             $imageName = NULL;
         }
 
-        $product = new Product;
-        $product->fill($request->validated());
-        $product->image = $imageName;
-        $product->save();
+        $house = new House;
+        $house->fill($request->validated());
+        $house->immagine = $imageName;
+        $house->save();
 
         if (!is_null($imageName)) {
             $destinationPath = public_path() . '/images/products';
             $image->move($destinationPath, $imageName);
         };
 
-        return redirect()->action('AdminController@index');
+        return redirect()->action('LocatoreController@indexhome');
     }
 
     
@@ -60,7 +61,7 @@ class LocatoreController extends Controller {
     public function destroyAlloggio($id) {
         $houses = House::find($id);
         $houses -> delete();
-        session() -> flash('message', 'Eliminazione effettuata con sussesso!');
+        session() -> flash('message', 'Eliminazione effettuata con successo!');
         
         /*House::destroy($id);
         return redirect()->route("");*/

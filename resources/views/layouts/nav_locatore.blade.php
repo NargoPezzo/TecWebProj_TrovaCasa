@@ -13,7 +13,7 @@
                             <li class="submenu">
                                 <a href="javascript:;">Alloggio</a>
                                 <ul>
-                                    <li><a href="{{ route('chisiamo') }}" title="Inserisci un alloggio">Inserisci Alloggio</a></li>
+                                    <li><a href="{{ route('inseriscialloggio') }}" title="Inserisci un alloggio">Inserisci Alloggio</a></li>
                                     <li><a href="{{ route('chisiamo') }}" title="Modifica un alloggio">Modifica Alloggio</a></li>
                                     <li><a href="{{ route('chisiamo') }}" title="Elimina un alloggio">Elimina Alloggio</a></li>
                                     
