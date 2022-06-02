@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
   <head>
 
@@ -9,8 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>TrovaCasa.it - @yield('title', 'Offerte')</title>
-
+    <title>TrovaCasa.it - @yield('title', 'Dove Siamo')</title>
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
@@ -50,10 +49,8 @@ https://templatemo.com/tm-571-hexashop
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
-                        <ul>
-                            @include('layouts/navpublic')
-                        </ul>
-                       
+                        
+                        @include('layouts/navpublic')
                         
                     </nav>
                 </div>
@@ -61,49 +58,15 @@ https://templatemo.com/tm-571-hexashop
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-    
-
 
     <!-- ***** Main Banner Area Start ***** -->
-    <div class="page-heading" id="top">
+<div class="about-us">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="inner-content">
-                        <h2>Le nostre Offerte</h2>
-                        <span>Qui puoi vedere gli alloggi che ti mettiamo a disposizione</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ***** Main Banner Area End ***** -->
-    
+            <div class="static">
     
 
-
-
-    <!-- ***** Products Area Starts ***** -->
-    <section class="section" id="products">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-heading">
-                        <h2>Le nostre offerte</h2>
-                        <span>Controlla qui cosa c'è disponibile</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-        <div class="container">
-
-@can('isLocatario')
     <div class="container-contact">
         <center><div class="wrap-contact1">
-                <b> FILTRI: </b>
     
         <div class="wrap-input">
             <input class="wrap-input-input" type="checkbox" value="" id="localericreativo">
@@ -150,50 +113,15 @@ https://templatemo.com/tm-571-hexashop
             
                 </div></center>
     </div>
+            </div>
+        </div>
+</div>
+    <!-- ***** About Area Ends ***** -->
 
-
-            @endcan
-          <div class="row">
-          @isset($houses)
-            @foreach ($houses as $house)
-            
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            @can('isLocatario')
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="{{url('offertasingola/'.$house->id)}}"><i class="fa fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                            @endcan
-                            <div class="image">
-                                @include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => $house->immagine]) 
-                            </div>
-                        </div>
-                        <div class="down-content">
-                            <h4 class="title">Alloggio: {{ $house->titolo }}</h4>
-                            <span>Indirizzo: {{ $house->città }}, {{ $house->cap }}, {{ $house->provincia }}, {{ $house->indirizzo}}</span> 
-                            <span>Prezzo:  {{ $house->prezzo }} €</span>
-                        </div>
-                    </div>
-                </div>
-            
-            @endforeach
-            
-            @include('pagination.paginator', ['paginator' => $houses])
-            
-
-        @endisset()
-            
-            
-  
-           
-              
-          </div>   
-    </section>
-    <!-- ***** Products Area Ends ***** -->
     
+
+    
+
     <!-- ***** Footer Start ***** -->
     <footer>
        @include('layouts/footer')
@@ -242,5 +170,4 @@ https://templatemo.com/tm-571-hexashop
 
   </body>
 
-
-
+</html>

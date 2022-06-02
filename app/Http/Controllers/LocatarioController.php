@@ -24,4 +24,5 @@ class LocatarioController extends Controller {
    /* public function indexoffertelocatario() {   POTREBBE ESSERE INUTILE
         return view('offertelocatario');
     } */
+    
 }
