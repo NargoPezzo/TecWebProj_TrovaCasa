@@ -28,18 +28,11 @@
     
             
     .fadein { 
-        position:relative; height:700px; width:700px; margin:0 auto;
+        position:relative; height:500px; width:500px; margin:0 auto;
         padding: 10px;
     }
     
-    @media (-webkit-device-pixel-ratio: 1.25) {
-  * {
-    .fadein { 
-        position:relative; height:200px; width:200px; margin:0 auto;
-        padding: 10px;
-        }
-    }
-    }
+    
     
     
     .fadein img{
@@ -98,7 +91,7 @@
     <div class="main-banner" id="top">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-5">
+                <div class="col-lg-4">
                     <div class="left-content">
                         <div class="thumb">
                             
