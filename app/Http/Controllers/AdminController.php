@@ -25,7 +25,8 @@ class AdminController extends Controller {
     
     public function createFaq()
     {
-        $faqs = Faq::all();
+        $faqs = new Faqs();
+        $faqs->getFaqs();
         return view('faqs.inseriscifaq', compact ('faqs'));
     }
 
