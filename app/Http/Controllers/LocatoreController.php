@@ -109,9 +109,9 @@ class LocatoreController extends Controller {
                         ->with('cats', $prodCats);
     }*/
 
-    public function destroyAlloggio($id) {
-        $houses = House::find($id);
-        $houses -> delete();
+    public function deleteAlloggio($id) {
+        $alloggio = House::find($id);
+        $alloggio -> delete();
         session() -> flash('message', 'Eliminazione effettuata con successo!');
         
         /*House::destroy($id);

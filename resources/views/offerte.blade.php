@@ -175,6 +175,12 @@ https://templatemo.com/tm-571-hexashop
                             <h4 class="title">Alloggio: {{ $house->titolo }}</h4>
                             <span>Indirizzo: {{ $house->città }}, {{ $house->cap }}, {{ $house->provincia }}, {{ $house->indirizzo}}</span> 
                             <span>Prezzo:  {{ $house->prezzo }} €</span>
+                            
+                            @can('isLocatore')
+                            <a href="{{route('chisiamo',['product_slug'=>$house->slug])}}"><i class="fa fa-edit fa-2x text-info"></i></a>
+                            <a href="{{route('offerte')}}" onclick="confirm('Sei sicuro di voler eliminare questo alloggio?') || event.stopImmediatePropagation()" style="margin-left:10px;" wire:click.prevent="deleteAlloggio({{$house->id}})"><i class="fa fa-times fa-2x text-danger"></i></a>
+                            @endcan
+                            
                         </div>
                     </div>
                 </div>

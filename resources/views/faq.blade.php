@@ -85,10 +85,9 @@ https://templatemo.com/tm-571-hexashop
                             <h3>{{ $faq->id }}. {{ $faq->domanda }}</h3><br> 
                             <p><strong>Risposta:</strong> {{ $faq->risposta }}</p></li><br>
                             
-                                
                             @can('isAdmin')
-                            <a href="{{route('modificafaq',['product_slug'=>$faq->slug])}}"><i class="fa fa-edit fa-2x text-info"></i></a>
-                            <a href="#" onclick="confirm('Are you sure, you want to delete this faq?') || event.stopImmediatePropagation()" style="margin-left:10px;" wire:click.prevent="eliminafaq({{$faq->id}})"><i class="fa fa-times fa-2x text-danger"></i></a>
+                            <a href="{{route('chisiamo',['product_slug'=>$faq->slug])}}"><i class="fa fa-edit fa-2x text-info"></i></a>
+                            <a href="{{route('faq')}}" onclick="confirm('Sei sicuro di voler eliminare questa F.A.Q.?') || event.stopImmediatePropagation()" style="margin-left:10px;" wire:click.prevent="deleteFaq({{$faq->id}})"><i class="fa fa-times fa-2x text-danger"></i></a>
                             @endcan
                             
                             <br>

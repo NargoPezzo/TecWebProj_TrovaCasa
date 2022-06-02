@@ -16,7 +16,7 @@ class CreateHousesTable extends Migration
         Schema::create('houses', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->unsignedBigInteger('locatore_id')->index();
-            $table->foreign('locatore_id')->references('id')->on('users');
+            $table->foreign('locatore_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('titolo');
             $table->float('prezzo');
             $table->string('descrizione',2500);
