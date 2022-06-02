@@ -35,7 +35,7 @@ class CreateHousesTable extends Migration
             $table->integer('età_max')->nullable();
             $table->tinyInteger('opzionato')->default(0);
             $table->integer('superficie');
-            $table->text('immagine')->default('no_home_icon.jpg');
+            $table->text('immagine')->nullable()->default('no_home_icon.jpg');
             
             
 /*            if (Schema::hasColumn('alloggio', 'opzionato', 0)) {
