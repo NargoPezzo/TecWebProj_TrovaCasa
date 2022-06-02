@@ -3,6 +3,7 @@
 namespace App\Models\Resources;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Faqs;
 
 class Faq extends Model
 {
@@ -10,4 +11,7 @@ class Faq extends Model
     protected $primaryKey = 'id';
     protected $guarded = ['id'];
     public $timestamps = false;
+    
+    protected $fillable=['domanda','risposta'];
+
 }

@@ -104,6 +104,19 @@ Route::get('/eliminaalloggio', 'LocatoreController@destroyAlloggio')
 Route::get('/modificaalloggio', 'LocatoreController@editAlloggio')
         ->name('modificaalloggio');
 
+// Rotte per le faq
+Route::get('/inseriscifaq', 'AdminController@createFaq')
+        ->name('inseriscifaq');
+
+Route::post('/inseriscifaq', 'AdminController@storeFaq')
+        ->name('inseriscifaq.store');
+
+Route::get('/eliminafaq', 'AdminController@deleteFaq')
+        ->name('eliminafaq');
+
+Route::get('/modificafaq', 'AdminController@editFaq')
+        ->name('modificafaq');
+
 /*
 Route::get('/offertelocatario', 'LocatarioController@indexoffertelocatario')   POTREBBE ESSERE INUTILE
         ->name('offertelocatario')->middleware('can:isLocatario');  */

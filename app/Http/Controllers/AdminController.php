@@ -3,6 +3,8 @@
 namespace app\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Resources\Faq;
+use App\Models\Faqs;
 
 class AdminController extends Controller {
 
@@ -20,4 +22,32 @@ class AdminController extends Controller {
     public function indexhome() {
         return view('homeadmin');
     }
+    
+    public function createFaq()
+    {
+        $faqs = Faq::all();
+        return view('faqs.inseriscifaq', compact ('faqs'));
+    }
+
+
+    public function storeFaq(Request $request)
+    {
+
+        $this->validate($request,[
+           'domanda'=>'required|string|max:500',
+           'risposta'=>'required|string|max:10000',
+        ]);
+
+        $faqs = new Faq();
+
+        $faqs ->domanda = $request->input('domanda');
+        $faqs ->risposta = $request->input('risposta');
+        
+        $faqs ->save();
+        Session::flash('flash_message', 'Faq inserita con successo!');
+        return redirect()->back()->with('success', 'Service Successfully Added');
+      
+    }
+    
+    //editFaq
 }
