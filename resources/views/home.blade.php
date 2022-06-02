@@ -188,7 +188,7 @@
                         <div class="col-lg-12">
                             <div class=" right-content">
                                 <img src="assets/images/LogoBigBlack.png" alt="">
-                                <h4>Benvenuto, Locatario.</h4>
+                                <h4>Benvenuto, Admin supremo.</h4>
                                 <span> Sei uno studente in cerca di un tranquillo alloggio per conseguire la tua carriera universitaria?
                                     <br> Great!
                                     <br> Hai uno o più appartamenti da affittare di fretta e furia?

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Resources\House;
+use Illuminate\Support\Facades\Auth;
 
 class Offerte {
 
@@ -27,7 +28,11 @@ class Offerte {
     public function getAlloggi() {
         $alloggi = House::paginate(6);
         return $alloggi;
-        
     }
     
+    public function getMyAlloggi() {
+        $locatore_id = Auth::id();
+        $alloggi = House::where('locatore_id', $locatore_id) -> get();
+        return $alloggi;
+    }
 }

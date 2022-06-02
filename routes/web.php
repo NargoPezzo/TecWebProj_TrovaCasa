@@ -92,7 +92,7 @@ Route::get('/offertasingola/{id}', 'PublicController@showOfferta')
         ->name('offertasingola');
 
 // Rotte per l'alloggio
-Route::get('/inseriscialloggio', 'LocatoreController@addAlloggio')
+Route::get('/inseriscialloggio', 'LocatoreController@createAlloggio')
         ->name('inseriscialloggio');
 
 Route::post('/inseriscialloggio', 'LocatoreController@storeAlloggio')

@@ -26,10 +26,7 @@ class NuovaFaqRequest extends FormRequest {
     public function rules() {
         \Illuminate\Support\Facades\Log::info('nella richiesta della faq');
         return [
-            
-            
             'domanda' => 'required|string|max:50',
-            
             'risposta' => 'string|max:2500',
             
         ];

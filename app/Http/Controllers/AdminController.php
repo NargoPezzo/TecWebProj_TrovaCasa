@@ -18,7 +18,7 @@ class AdminController extends Controller {
     }
 
     public function index() {
-        return view('homeadmin');
+        return view('home');
     }
     
     public function indexhome() {
@@ -37,14 +37,10 @@ class AdminController extends Controller {
     public function storeFaq(NuovaFaqRequest $request)
     {
 
-       
-
         $faq = new Faq;
         $faq->fill($request->validated());
         
         $faq->save();
-
-       
 
         return redirect()->action('AdminController@index');
     }

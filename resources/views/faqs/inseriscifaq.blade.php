@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>TrovaCasa.it - @yield('title', 'Registrati')</title>
+    <title>TrovaCasa.it - @yield('title', 'Inserisci F.A.Q.')</title>
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
@@ -121,8 +121,8 @@ https://templatemo.com/tm-571-hexashop -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>Registrati</h2>
-                            <span>Non sarai più uno dei tanti</span> 
+                        <h2>Inserisci F.A.Q.</h2>
+                            <span>Occorre una risposta ad ogni domanda</span> 
                     </div>
                 </div>
             </div>
