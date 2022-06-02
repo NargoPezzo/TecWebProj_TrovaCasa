@@ -44,8 +44,17 @@ class AdminController extends Controller {
 
         return redirect()->action('AdminController@index');
     }
-      
-    }
     
-    //editFaq
-
+    public function editFaq()
+    {
+        
+        $faqs = getFaqs();
+        
+        if ($faqs->isEmpty())
+            return view('faqs.modificafaq');
+        else {
+            return view('faqs.modificafaq')
+                            ->with('faqs', $faqs);
+        }
+    }
+}

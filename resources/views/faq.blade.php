@@ -82,8 +82,16 @@ https://templatemo.com/tm-571-hexashop
                 <div class="row">
                     <ul style = "list-style-type: none">
                         <li>
-                            <h3>{{ $faq->id }}. {{ $faq->domanda }}</h3><br>
-                            <p><strong>Risposta:</strong> {{ $faq->risposta }}</p></li><br><br>
+                            <h3>{{ $faq->id }}. {{ $faq->domanda }}</h3><br> 
+                            <p><strong>Risposta:</strong> {{ $faq->risposta }}</p></li><br>
+                            
+                                
+                            @can('isAdmin')
+                            <a href="{{route('modificafaq',['product_slug'=>$faq->slug])}}"><i class="fa fa-edit fa-2x text-info"></i></a>
+                            <a href="#" onclick="confirm('Are you sure, you want to delete this faq?') || event.stopImmediatePropagation()" style="margin-left:10px;" wire:click.prevent="eliminafaq({{$faq->id}})"><i class="fa fa-times fa-2x text-danger"></i></a>
+                            @endcan
+                            
+                            <br>
                             @include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => "ques.gif"])
                     </ul>
                 </div>        
@@ -91,7 +99,6 @@ https://templatemo.com/tm-571-hexashop
         @endisset()
     </div>
 
-    </section>
     <!-- ***** Products Area Ends ***** -->
 
 

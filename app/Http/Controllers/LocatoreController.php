@@ -32,13 +32,7 @@ class LocatoreController extends Controller {
     
     public function createAlloggio() {
         $alloggi = new Offerte();
-        $servizi = new Servizi();
-        return view('alloggi.inseriscialloggio')
-                    ->with('servizi', $servizi);
-
-        
-        
-
+        return view('alloggi.inseriscialloggio');
     }
     
     public function storeAlloggio(NuovoAlloggioRequest $request) {
