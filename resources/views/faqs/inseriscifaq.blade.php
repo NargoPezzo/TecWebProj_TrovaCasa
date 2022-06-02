@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>TrovaCasa.it - @yield('title', 'Inserisci Faq')</title>
+    <title>TrovaCasa.it - @yield('title', 'Registrati')</title>
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
@@ -26,7 +26,49 @@
 TemplateMo 571 Hexashop
 
 https://templatemo.com/tm-571-hexashop -->
+<!--
+<style>
+            ._error {
+                background-color: #f3e4e4;
+                border: solid 2px #ff0000;
+            }
+</style>
+<script type="text/javascript">
+            $(function () {
+                $(':input').on('change', function (event) {
+                    var element = $(this);
+                    element.removeClass('_error');
+                    switch (element.attr('id')) {
+                        case 'name':
+                            var pattern = /^([A-Za-z0-9_\-\.\@])+$/;
+                            if (!pattern.test(element.val())) {
+                                element.addClass('_error');
+                            }
+                            break;
+                        case '_passwd':
+                            if (element.val().length < 6) {
+                                element.addClass('_error');
+                            }
+                            break;
+                        case 'email':
+                            var pattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,6})$/;
+                            if (!pattern.test(element.val())) {
+                                element.addClass('_error');
+                            }
+                            break;
+                    }
+                    ;
+                });
 
+                $('form').on('submit', function (event) {
+                    $(':input').trigger('change');
+                    if ($(':input').filter('[class*=_error]').length != 0) {
+                        return false;
+                    }
+                    ;
+                });
+            });
+        </script>-->
 <script type="text/javascript" src="resources/js/app.js"></script>
   <!-- Custom styles -->
   <style>
@@ -72,15 +114,15 @@ https://templatemo.com/tm-571-hexashop -->
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-    
+
     <!-- ***** Main Banner Area Start ***** -->
     <div class="page-heading about-page-heading" id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>Inserisci FAQ</h2>
-                            <span>Ci occorre una risposta ad ogni domanda</span> 
+                        <h2>Registrati</h2>
+                            <span>Non sarai più uno dei tanti</span> 
                     </div>
                 </div>
             </div>
@@ -88,195 +130,62 @@ https://templatemo.com/tm-571-hexashop -->
     </div>
     <!-- ***** Main Banner Area End ***** -->
     
+
     <!-- ***** About Area Starts ***** -->
     <div class="about-us">
         <div class="container">
             <div class="static">
-                   <div class="container-contact">
-                        <div class="wrap-contact">
-                            
-                            {{ Form::hidden('invisible', 'secret', array('id' => 'locatore_id')) }}
-                            
-                            {{ Form::open(array('route' => 'inseriscialloggio.store', 'id' => 'houses', 'files' => true, 'class' => 'contact-form')) }}
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('titolo', 'Titolo', ['class' => 'label-input']) }}
-                                {{ Form::text('titolo', '', ['class' => 'input', 'id' => 'titolo']) }}
-                                @if ($errors->first('titolo'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('titolo') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div>
-                            
-                            <!--<div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('locatoreId', 'ID', ['class' => 'label-input']) }}
-                                {{ Form::text('locatoreId', '', ['class' => 'input', 'id' => 'locatoreId']) }}
-                             
-                                @if ($errors->first('locatoreId'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('locatoreId') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div>-->
-                            
-                                    
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('tipologia', 'Tipologia', ['class' => 'label-input']) }}
-                                {{ Form::select('tipologia', ['appartamento' => 'Appartamento', 'posto_letto_singolo' => 'Posto letto (singolo)', 'posto_letto_doppio' => 'Posto letto (doppio)'], ['class' => 'input','id' => 'tipologia']) }}
-                            </div>
+    
 
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('immagine', 'Immagine', ['class' => 'label-input']) }}
-                                {{ Form::file('immagine', ['class' => 'input', 'id' => 'immagine']) }}
-                                @if ($errors->first('immagine'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('immagine') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div>
+    <div class="container-contact">
+       
+        <center><div class="wrap-contact1">
+            {{ Form::open(array('route' => 'inseriscifaq.store', 'class' => 'contact-form')) }}
 
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('descrizione', 'Descrizione ', ['class' => 'label-input']) }}
-                                {{ Form::textarea('descrizione', '', ['class' => 'input', 'id' => 'descrizione']) }}
-                                @if ($errors->first('descrizione'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('descrizione') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div>
+            <div  class="wrap-input">
+                {{ Form::label('domanda', 'Domanda', ['class' => 'label-input']) }}<br>
+                {{ Form::textarea('domanda', '', ['class' => 'input', 'id' => 'domanda']) }}
+                @if ($errors->first('domanda'))
+                <ul class="errors">
+                    @foreach ($errors->get('domanda') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+            </div><br><br>
 
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('prezzo', 'Prezzo', ['class' => 'label-input']) }}
-                                {{ Form::text('prezzo', '', ['class' => 'input', 'id' => 'prezzo']) }}€ al mese
-                                @if ($errors->first('prezzo'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('prezzo') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div>
-                            
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('n_camere', 'Numero Camere', ['class' => 'label-input']) }}
-                                {{ Form::text('n_camere', '', ['class' => 'input', 'id' => 'n_camere']) }}
-                                @if ($errors->first('n_camere'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('n_camere') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div>
-                            
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('n_posti_letto_totali', 'Numero Posti Letto Totali', ['class' => 'label-input']) }}
-                                {{ Form::text('n_posti_letto_totali', '', ['class' => 'input', 'id' => 'n_posti_letto_totali']) }}
-                                @if ($errors->first('n_posti_letto_totali'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('n_posti_letto_totali') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div>
-                            
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('indirizzo', 'Indirizzo', ['class' => 'label-input']) }}
-                                {{ Form::text('indirizzo', '', ['class' => 'input', 'id' => 'indirizzo']) }}
-                                @if ($errors->first('indirizzo'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('indirizzo') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div>
-                            
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('cap', 'CAP', ['class' => 'label-input']) }}
-                                {{ Form::text('cap', '', ['class' => 'input', 'id' => 'cap']) }}
-                                @if ($errors->first('cap'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('cap') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div>
-                            
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('città', 'Citta', ['class' => 'label-input']) }}
-                                {{ Form::text('città', '', ['class' => 'input', 'id' => 'città']) }}
-                                @if ($errors->first('città'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('città') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div>
-                            
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('provincia', 'Provincia', ['class' => 'label-input']) }}
-                                {{ Form::text('provincia', '', ['class' => 'input', 'id' => 'provincia']) }}
-                                @if ($errors->first('provincia'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('provincia') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div>
-                            
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('superficie', 'Superficie', ['class' => 'label-input']) }}
-                                {{ Form::text('superficie', '', ['class' => 'input', 'id' => 'superficie']) }}
-                                @if ($errors->first('superficie'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('superficie') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div>
-
-                            <!--<div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('discountPerc', 'Sconto (%)', ['class' => 'label-input']) }}
-                                {{ Form::text('discountPerc', '', ['class' => 'input', 'id' => 'discountPerc']) }}
-                                @if ($errors->first('discountPerc'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('discountPerc') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div>
-
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('discounted', 'In Sconto', ['class' => 'label-input']) }}
-                                {{ Form::select('discounted', ['1' => 'Si', '0' => 'No'], 1, ['class' => 'input','id' => 'discounted']) }}
-                            </div>-->
+            <div  class="wrap-input">
+                {{ Form::label('risposta', 'Risposta', ['class' => 'label-input']) }}<br>
+                {{ Form::textarea('risposta', '', ['class' => 'input', 'id' => 'risposta']) }}
+                @if ($errors->first('risposta'))
+                <ul class="errors">
+                    @foreach ($errors->get('risposta') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+            </div><br><br>
             
-                            <div class="container-form-btn">                
-                            {{ Form::submit('Aggiungi Alloggio', ['class' => 'form-btn1']) }}
-                            {{ Form::close() }}
-                            <button type="reset">Reset</button>
-                            </div>
-                        </div>
-                    </div>
+            
+            
+            
+            
+            
+            
+            <div class="container-form-btn">                
+                {{ Form::submit('Inserisci Faq', ['class' => 'form-btn1']) }}
+                {{ Form::close() }}
+            <button type="reset">Reset</button>
+            </div><br><br>
+            
+                </div></center>
+    </div>
             </div>
         </div>
     </div>
-    
+
+
+
     <!-- ***** Footer Start ***** -->
     <footer>
         @include('layouts/footer')

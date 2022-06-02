@@ -5,6 +5,8 @@ namespace app\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Resources\Faq;
 use App\Models\Faqs;
+use App\Http\Request\NuovaFaqRequest;
+
 
 class AdminController extends Controller {
 
@@ -16,7 +18,7 @@ class AdminController extends Controller {
     }
 
     public function index() {
-        return view('home');
+        return view('homeadmin');
     }
     
     public function indexhome() {
@@ -27,28 +29,27 @@ class AdminController extends Controller {
     {
         $faqs = new Faqs();
         $faqs->getFaqs();
-        return view('faqs.inseriscifaq', compact ('faqs'));
+        return view('faqs.inseriscifaq')
+                ->with('faqs', $faqs);
     }
 
 
-    public function storeFaq(Request $request)
+    public function storeFaq(NuovaFaqRequest $request)
     {
 
-        $this->validate($request,[
-           'domanda'=>'required|string|max:500',
-           'risposta'=>'required|string|max:10000',
-        ]);
+       
 
-        $faqs = new Faq();
-
-        $faqs ->domanda = $request->input('domanda');
-        $faqs ->risposta = $request->input('risposta');
+        $faq = new Faq;
+        $faq->fill($request->validated());
         
-        $faqs ->save();
-        Session::flash('flash_message', 'Faq inserita con successo!');
-        return redirect()->back()->with('success', 'Service Successfully Added');
+        $faq->save();
+
+       
+
+        return redirect()->action('AdminController@index');
+    }
       
     }
     
     //editFaq
-}
+
