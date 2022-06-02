@@ -4,6 +4,7 @@ namespace app\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Resources\House;
+use App\Models\Resources\Servizio;
 use App\Models\Locatore;
 use App\User;
 use App\Http\Request\NuovoAlloggioRequest;
@@ -61,7 +62,11 @@ class LocatoreController extends Controller {
             $destinationPath = public_path() . '/images/products';
             $image->move($destinationPath, $imageName);
         }
-
+        
+        $servizio = new Servizio();
+        $servizio->fill($request->validated());
+        $servizio->save();
+        
         return redirect()->action('LocatoreController@index');
         
         
