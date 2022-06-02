@@ -55,8 +55,8 @@ class LocatoreController extends Controller {
         $alloggio->immagine = $imageName;
         
         
-        //$category = Category::find([3, 4]); al posto di 3,4 carico l'array che viene dal form
-       // $product->categories()->attach($category);
+        //$servizi = Services::find([3, 4]); al posto di 3,4 carico l'array che viene dal form
+       // $alloggio->servizi()->attach($servizi);
         $alloggio->save();
 
         if (!is_null($imageName)) {
