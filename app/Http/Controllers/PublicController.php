@@ -5,18 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Offerte;
 use App\Models\Resources\House;
 use App\Models\Faqs;
-use App\Models\Resources\Servizio;
+use App\Models\Resources\Services;
 
 class PublicController extends Controller {
     
     protected $_offerteModel;
    
     protected $_faqsModel;
+    
+    protected $_houseModel;
 
     public function __construct() {
         $this->_offerteModel = new Offerte;
         
         $this->_faqsModel = new Faqs;
+        
+        $this->_houseModel = new House;
     }
     
     public function showOfferte() {
@@ -40,8 +44,9 @@ class PublicController extends Controller {
     public function showOfferta($id) {
       if(House::where('id', $id)->exists())
       {
-          $alloggi = House::find($id);
-          $servizi = Servizio::where('house_id',$id)->get();
+          $alloggi = House::find($id);  // creare metodo nel model house così richiamo solo metodo 
+          
+          $servizi = $this->_houseModel->servizi();
           return view('offertasingola', ['alloggi' =>$alloggi, 'servizi' => $servizi]);
       }
       else{

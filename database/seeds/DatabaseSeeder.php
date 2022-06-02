@@ -204,11 +204,11 @@ class DatabaseSeeder extends Seeder
         ]);
         
         DB::table('house_services')->insert([
-            ['house_id' => 1,  'service_id' => 1,],
-            ['house_id' => 2,  'service_id' => 2,],
-            ['house_id' => 3,  'service_id' => 3, ],
-            ['house_id' => 4,  'service_id' => 3,  ],
-            ['house_id' => 5,  'service_id' => 4, ],
+            ['house_id' => 1,  'services_id' => 1,],
+            ['house_id' => 2,  'services_id' => 2,],
+            ['house_id' => 3,  'services_id' => 3, ],
+            ['house_id' => 4,  'services_id' => 3,  ],
+            ['house_id' => 5,  'services_id' => 4, ],
            
         ]);
  /* 

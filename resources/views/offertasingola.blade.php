@@ -158,8 +158,8 @@ https://templatemo.com/tm-571-hexashop
                         <h4 class="title">Servizi Offerti:</h4><br>
                         
                         
-                        @if($servizi->isNotEmpty())
-                        @foreach ($servizi as $servizio)
+                        @if($alloggi->servizi->isNotEmpty())
+                        @foreach ($alloggi->servizi as $servizio)
                         <ul>
                             <li>
                                 <a>{{ $servizio->nome }}</a>

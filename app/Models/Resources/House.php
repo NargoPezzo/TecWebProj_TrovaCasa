@@ -4,6 +4,8 @@ namespace App\Models\Resources;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use App\Models\HouseServices;
+use App\Models\Resources\Services;
 
 class House extends Model
 {
@@ -26,7 +28,7 @@ class House extends Model
     // Realazione One-To-Many con Servizi
     public function servizi() {
         
-        return $this->hasMany(Servizio::class, 'house_id', 'id');
+        return $this->belongsToMany(Services::class);
     }
     
   /*  public function locatore() {
