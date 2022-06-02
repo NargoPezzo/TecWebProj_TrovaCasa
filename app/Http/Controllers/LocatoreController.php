@@ -2,6 +2,7 @@
 
 namespace app\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Resources\House;
 use App\Models\Locatore;
 use App\User;
@@ -29,22 +30,14 @@ class LocatoreController extends Controller {
     
     public function createAlloggio() {
         $alloggi = new Offerte();
-        $alloggi -> getMyAlloggi();
-        return view('alloggi.inseriscialloggio')
-                ->with('houses', $alloggi);
+        return view('alloggi.inseriscialloggio');
+
         
         
-/*        $locatore_id = Auth::id();
-        $alloggi = $this->_locatoreModel->getAlloggi($locatore_id)/*->pluck('name', 'catId');
-        Log::info($alloggi);
-        Log::info($locatore_id);
-        return view('alloggi.inseriscialloggio')
-                        ->with('houses', $alloggi)
-                        ->with('locatoreId', $locatore_id);*/
+
     }
     
     public function storeAlloggio(NuovoAlloggioRequest $request) {
-        
          if ($request->hasFile('immagine')) {
             $image = $request->file('immagine');
             $imageName = $image->getClientOriginalName();
@@ -53,15 +46,18 @@ class LocatoreController extends Controller {
         }
 
         $alloggio = new House();
+        $alloggio->locatore_id = Auth::id();
+        $alloggio->data_inserimento= Carbon::now();
         $alloggio->fill($request->validated());
-        $alloggio->locatore()->associate(\Auth::User()); // relate post to current user
+
         $alloggio->immagine = $imageName;
+
         $alloggio->save();
 
         if (!is_null($imageName)) {
             $destinationPath = public_path() . '/images/products';
             $image->move($destinationPath, $imageName);
-        };
+        }
 
         return redirect()->action('LocatoreController@index');
         

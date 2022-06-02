@@ -95,7 +95,6 @@ https://templatemo.com/tm-571-hexashop -->
                    <div class="container-contact">
                         <div class="wrap-contact">
                             
-                            {{ Form::hidden('invisible', 'secret', array('id' => 'locatore_id')) }}
                             
                             {{ Form::open(array('route' => 'inseriscialloggio.store', 'id' => 'houses', 'files' => true, 'class' => 'contact-form')) }}
                             <div  class="wrap-input  rs1-wrap-input">
