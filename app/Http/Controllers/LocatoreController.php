@@ -7,6 +7,7 @@ use App\Models\Locatore;
 use App\User;
 use App\Http\Request\NuovoAlloggioRequest;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class LocatoreController extends Controller {
 
@@ -36,8 +37,11 @@ class LocatoreController extends Controller {
     }
     
     public function storeAlloggio(NuovoAlloggioRequest $request) {
-
-        Log::info('prova');
+        
+        $request->locatore_id = Auth::User()->id;
+        
+        Log::info('$request');
+        
         if ($request->hasFile('immagine')) {
             $image = $request->file('immagine');
             $imageName = $image->getClientOriginalName();
@@ -45,23 +49,27 @@ class LocatoreController extends Controller {
         } else {
             $imageName = NULL;
         }
-
-        $house = new House;
-        $house->fill($request->validated());
-        $house->immagine = $imageName;
-        $house->save();
-
+        
+         
+        $inputs = $request->all();
+       
+        $alloggi = House::Create($inputs);
+        
+        $alloggi->immagine = $imageName;
+        $alloggi->save();
+        
         if (!is_null($imageName)) {
             $destinationPath = public_path() . '/images/products';
             $image->move($destinationPath, $imageName);
-        };
-        
-        
+        }
 
         return redirect()->action('LocatoreController@indexhome');
+
+        
+        
     }
 
-    
+
 /*    public function editAlloggio() {
         $prodCats = $this->_adminModel->getProdsCats()->pluck('name', 'catId');
         return view('product.insert')

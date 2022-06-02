@@ -94,7 +94,10 @@ https://templatemo.com/tm-571-hexashop -->
             <div class="static">
                    <div class="container-contact">
                         <div class="wrap-contact">
-                            {{ Form::open(array('route' => 'inseriscialloggio.store', 'id' => 'inseriscialloggio', 'files' => true, 'class' => 'contact-form')) }}
+                            
+                            {{ Form::hidden('invisible', 'secret', array('id' => 'locatore_id')) }}
+                            
+                            {{ Form::open(array('route' => 'inseriscialloggio.store', 'id' => 'houses', 'files' => true, 'class' => 'contact-form')) }}
                             <div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('titolo', 'Titolo', ['class' => 'label-input']) }}
                                 {{ Form::text('titolo', '', ['class' => 'input', 'id' => 'titolo']) }}
@@ -107,7 +110,7 @@ https://templatemo.com/tm-571-hexashop -->
                                 @endif
                             </div>
                             
-                            <div  class="wrap-input  rs1-wrap-input">
+                            <!--<div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('locatoreId', 'ID', ['class' => 'label-input']) }}
                                 {{ Form::text('locatoreId', '', ['class' => 'input', 'id' => 'locatoreId']) }}
                              
@@ -118,7 +121,7 @@ https://templatemo.com/tm-571-hexashop -->
                                     @endforeach
                                 </ul>
                                 @endif
-                            </div>
+                            </div>-->
                             
                                     
                             <div  class="wrap-input  rs1-wrap-input">

@@ -16,6 +16,12 @@ class House extends Model
         'età_min', 'età_max', 'genere', 'data_min', 'data_max', 'indirizzo', 'cap', 'città', 'provincia', 
         'superficie', 'immagine',
     ];
+
+    // Realazione One-To-One con User
+    public function hasALocatore() {
+        return $this->hasOne(User::class, 'id', 'locatore_id');
+    }
+     
 }
 
 
