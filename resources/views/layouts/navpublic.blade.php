@@ -22,9 +22,8 @@
     <li class="submenu">
         <a href="javascript:;">F.A.Q</a>
             <ul>
-                <li><a href="{{ route('inseriscifaq') }}" title="Inserisci nuova FAQ">Inserisci FAQ</a></li>
-                <li><a href="{{ route('chisiamo') }}" title="Modifica le FAQ">Modifica FAQ</a></li>
-                <li><a href="{{ route('chisiamo') }}" title="Elimina le FAQ">Elimina FAQ</a></li>
+                <li><a href="{{ route('chisiamo') }}" title="Modifica le FAQ">Inserisci Nuova FAQ</a></li>
+                <li><a href="{{ route('chisiamo') }}" title="Elimina le FAQ">Gestisci/Visualizza FAQ</a></li>
             </ul>
     </li>
    
@@ -38,9 +37,10 @@
         <li class="submenu">
             <a href="javascript:;">Alloggio</a>
             <ul>
+                <li><a href="{{ route('chisiamo') }}" title="Lista delle richieste ricevute">Visualizza Richieste</a></li>
                 <li><a href="{{ route('inseriscialloggio') }}" title="Inserisci un alloggio">Inserisci Alloggio</a></li>
-                <li><a href="{{ route('chisiamo') }}" title="Modifica un alloggio">Modifica Alloggio</a></li>
-                <li><a href="{{ route('chisiamo') }}" title="Elimina un alloggio">Elimina Alloggio</a></li>
+                <li><a href="{{ route('chisiamo') }}" title="Gestisci Alloggi">Gestisci Alloggi</a></li>
+                
             </ul>
         </li>
     @endcan    
@@ -50,7 +50,7 @@
             <a href="javascript:;">Account</a>
                 <ul>
                     @can('isLocatore')
-                    <li><a href="{{ route('chisiamo') }}" title="Lista delle richieste ricevute">Visualizza Richieste</a></li>
+                    
                     <li><a href="{{ route('modificalocatore') }}" title="Modificare dati personali">Modifica dati utente</a></li>
                     @endcan
                     
@@ -80,4 +80,3 @@
     <span>Menu</span>
 </a>
 
-<!-- ***** Menu End ***** -->
