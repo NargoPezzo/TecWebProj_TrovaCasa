@@ -57,4 +57,12 @@ class AdminController extends Controller {
                             ->with('faqs', $faqs);
         }
     }
+    
+    public function deleteFaq($id)
+    {
+        $faq = Faq::find($id);
+        $faq->delete();
+        session()->flash('message', 'La F.A.Q. è stata eliminata con successo');
+
+    }
 }

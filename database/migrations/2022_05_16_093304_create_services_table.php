@@ -16,7 +16,7 @@ class CreateServicesTable extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->unsignedBigInteger('house_id')->index();
-            $table->foreign('house_id')->references('id')->on('houses');
+            $table->foreign('house_id')->references('id')->on('houses')->onDelete('cascade');
             $table->string('nome', 30);
             $table->boolean('presente');
         });
