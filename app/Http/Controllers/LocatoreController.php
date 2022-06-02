@@ -10,6 +10,7 @@ use App\Http\Request\NuovoAlloggioRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Offerte;
+use App\Models\Servizi;
 
 class LocatoreController extends Controller {
 
@@ -30,7 +31,9 @@ class LocatoreController extends Controller {
     
     public function createAlloggio() {
         $alloggi = new Offerte();
-        return view('alloggi.inseriscialloggio');
+        $servizi = new Servizi();
+        return view('alloggi.inseriscialloggio')
+                    ->with('servizi', $servizi);
 
         
         

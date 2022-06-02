@@ -19,15 +19,20 @@ class House extends Model
     ];
 
     // Realazione One-To-One con User
-    public function hasALocatore() {
+    public function locatore() {
         
         return $this->hasOne(User::class, 'id', 'locatore_id');
     }
+    // Realazione One-To-Many con Servizi
+    public function servizi() {
+        
+        return $this->hasMany(Servizio::class, 'house_id', 'id');
+    }
     
-    public function locatore() {
+  /*  public function locatore() {
         
     return $this->belongsTo(User::Class, 'locatore_id'); // specify the column which stores the author in posts table
-}
+}*/
      
 }
 

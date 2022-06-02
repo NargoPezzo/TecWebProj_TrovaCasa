@@ -11,4 +11,5 @@ class Servizio extends Model
     protected $guarded = ['id'];
     public $timestamps = false;
     
+    protected $fillable=['house_id', 'nome','presente'];
 }
