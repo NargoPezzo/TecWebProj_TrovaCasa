@@ -17,11 +17,13 @@ class LocatoreController extends Controller {
 
     protected $_locatoreModel;
     protected $_seviceModel;
+    protected $_alloggioModel;
 
     public function __construct() {
         $this->middleware('can:isLocatore');
         $this->_locatoreModel = new Locatore;
         $this->_seviceModel = new Services;
+        $this->_alloggioModel = new House;
     }
 
     public function index() {
@@ -30,6 +32,13 @@ class LocatoreController extends Controller {
     
     public function indexhome() {
         return view('homelocatore');
+    }
+    
+    public function getMyAlloggi() {
+        $id = Auth::id();
+        $alloggi = House::where('locatore_id', $id) -> get();
+        return view('alloggi.gestiscialloggi')
+                    ->with('houses', $alloggi);
     }
     
     public function createAlloggio() {
@@ -105,6 +114,8 @@ class LocatoreController extends Controller {
         
         
     }
+    
+    
 
 
 /*    public function editAlloggio() {
@@ -113,12 +124,23 @@ class LocatoreController extends Controller {
                         ->with('cats', $prodCats);
     }*/
 
-    public function deleteAlloggio($id) {
-        $alloggio = House::find($id);
+    public function deleteAlloggio($id)  {
+        
+        $alloggio = $this->_alloggioModel->getSingleHouse(urldecode($id));
+        
+        //$alloggio = House::find($id);
         $alloggio -> delete();
         session() -> flash('message', 'Eliminazione effettuata con successo!');
-        
+        return redirect()->route('gestiscialloggi');
         /*House::destroy($id);
         return redirect()->route("");*/
+    }
+    
+    public function deleteFaq($id)
+    {
+        $faq = $this->_faqsModel->getSingleFaq(urldecode($id));
+        $faq->delete();
+        session() -> flash('message', 'Eliminazione effettuata con successo!');
+        return redirect()->route('faq');
     }
 }

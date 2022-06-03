@@ -53,8 +53,6 @@ Route::get('/modificalocatario', 'Auth\ModificaLocatarioController@editAccount')
 Route::post('/modificalocatario', 'Auth\ModificaLocatarioController@saveAccount')
         ->name('modificalocatario.save');
 
-
-
 Route::get('/modificalocatore', 'Auth\ModificaLocatoreController@editAccount')
         ->name('modificalocatore');
 
@@ -98,10 +96,10 @@ Route::get('/inseriscialloggio', 'LocatoreController@createAlloggio')
 Route::post('/inseriscialloggio', 'LocatoreController@storeAlloggio')
         ->name('inseriscialloggio.store');
 
-Route::view('/gestiscialloggi', 'alloggi.gestiscialloggi')
-        ->name('gestiscialloggi');
+Route::get('/gestiscialloggi', 'LocatoreController@getMyAlloggi')
+        ->name('gestiscialloggi')->middleware('can:isLocatore');
 
-Route::get('/eliminaalloggio', 'LocatoreController@destroyAlloggio')
+Route::get('eliminaalloggio/{id}', 'LocatoreController@deleteAlloggio')
         ->name('eliminaalloggio');
 
 Route::get('/modificaalloggio', 'LocatoreController@editAlloggio')

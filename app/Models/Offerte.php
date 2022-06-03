@@ -30,9 +30,5 @@ class Offerte {
         return $alloggi;
     }
     
-    public function getMyAlloggi() {
-        $locatore_id = Auth::id();
-        $alloggi = House::where('locatore_id', $locatore_id) -> get();
-        return $alloggi;
-    }
+    
 }

@@ -14,7 +14,7 @@ class House extends Model
     protected $guarded = ['id'];
     public $timestamps = false;
 
-     protected $fillable = [
+    protected $fillable = [
         'titolo', 'locatore_id', 'prezzo', 'descrizione', 'tipologia', 'n_camere', 'n_posti_letto_totali',
         'età_min', 'età_max', 'genere', 'data_min', 'data_max', 'indirizzo', 'cap', 'città', 'provincia', 
         'superficie',
@@ -31,12 +31,13 @@ class House extends Model
         return $this->belongsToMany(Services::class);
     }
     
+    public function getSingleHouse ($id) {
+        return House::where('id', $id)->first();
+    }
+    
   /*  public function locatore() {
         
     return $this->belongsTo(User::Class, 'locatore_id'); // specify the column which stores the author in posts table
 }*/
      
 }
-
-
-/* METTERE VINCOLO SU CHIAVE ESTERNA PER LOCATORE_ID */

@@ -98,7 +98,7 @@ https://templatemo.com/tm-571-hexashop
         
         
         
-  
+        <div class="container">
           <div class="row">
           @isset($houses)
             @foreach ($houses as $house)
@@ -106,7 +106,7 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-4">
                     <div class="item">
                         <div class="thumb">
-                            @can('isLocatario')
+                            @can('isLocatore') <!--OCCHIELLO: modificaAlloggio?-->
                             <div class="hover-content">
                                 <ul>
                                     <li><a href="{{url('offertasingola/'.$house->id)}}"><i class="fa fa-eye"></i></a></li>
@@ -122,18 +122,21 @@ https://templatemo.com/tm-571-hexashop
                             <span>Indirizzo: {{ $house->città }}, {{ $house->cap }}, {{ $house->provincia }}, {{ $house->indirizzo}}</span> 
                             <span>Prezzo:  {{ $house->prezzo }} €</span>
                             
-                            @can('isLocatore')
+                            @php
+                            $id = urlencode($house->id);
+                            @endphp
+                            
                             <a href="{{route('chisiamo',['product_slug'=>$house->slug])}}"><i class="fa fa-edit fa-2x text-info"></i></a>
                             <a onclick="if (confirm('Vuoi eliminarlo definitivamente?')) {
-                                location.href = '{{route('deletefaq', [$id])}}'; }"><i class="fa fa-times fa-2x text-danger"></i></a>                            
-                            @endcan
+                                location.href = '{{route('eliminaalloggio', [$id])}}'; }"><i class="fa fa-times fa-2x text-danger"></i></a>                            
+                            
                         </div>
                     </div>
                 </div>
             
             @endforeach
             
-            @include('pagination.paginator', ['paginator' => $houses])
+            <!-- DA RIMETTERE PAGINATOR(NON FUNZIONAVA)-->
             
 
         @endisset()

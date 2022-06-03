@@ -63,9 +63,10 @@ class AdminController extends Controller {
     
     public function deleteFaq($id)
     {
-        
         $faq = $this->_faqsModel->getSingleFaq(urldecode($id));
         $faq->delete();
+        session() -> flash('message', 'Eliminazione effettuata con successo!');
         return redirect()->route('faq');
+        
     }
 }

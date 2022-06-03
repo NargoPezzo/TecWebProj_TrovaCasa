@@ -173,6 +173,7 @@ https://templatemo.com/tm-571-hexashop
                         <br><br>
                     </div>
                 </div>
+                @can('isLocatario')
                 <div >
                     <div class="left-content">
                         <div class="col-lg-12"><br><br>
@@ -181,6 +182,7 @@ https://templatemo.com/tm-571-hexashop
                         </div>
                     </div>
                 </div>    
+                @endcan
     </section>
     <!-- ***** Product Area Ends ***** -->
     
