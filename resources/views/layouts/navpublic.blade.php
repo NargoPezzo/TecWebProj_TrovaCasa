@@ -22,7 +22,7 @@
     <li class="submenu">
         <a href="javascript:;">F.A.Q</a>
             <ul>
-                <li><a href="{{ route('faq') }}" title="Inserisci FAQ">Inserisci Nuova FAQ</a></li>
+                <li><a href="{{ route('inseriscifaq') }}" title="Inserisci FAQ">Inserisci Nuova FAQ</a></li>
                 <li><a href="{{ route('faq') }}" title="Gestisci FAQ">Gestisci/Visualizza FAQ</a></li>
             </ul>
     </li>
@@ -39,7 +39,7 @@
             <ul>
                 <li><a href="{{ route('chisiamo') }}" title="Lista delle richieste ricevute">Visualizza Richieste</a></li>
                 <li><a href="{{ route('inseriscialloggio') }}" title="Inserisci un alloggio">Inserisci Alloggio</a></li>
-                <li><a href="{{ route('chisiamo') }}" title="Gestisci Alloggi">Gestisci Alloggi</a></li>
+                <li><a href="{{ route('gestiscialloggi') }}" title="Gestisci Alloggi">Gestisci Alloggi</a></li>
                 
             </ul>
         </li>

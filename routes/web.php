@@ -98,6 +98,9 @@ Route::get('/inseriscialloggio', 'LocatoreController@createAlloggio')
 Route::post('/inseriscialloggio', 'LocatoreController@storeAlloggio')
         ->name('inseriscialloggio.store');
 
+Route::view('/gestiscialloggi', 'alloggi.gestiscialloggi')
+        ->name('gestiscialloggi');
+
 Route::get('/eliminaalloggio', 'LocatoreController@destroyAlloggio')
         ->name('eliminaalloggio');
 
@@ -111,7 +114,7 @@ Route::get('/inseriscifaq', 'AdminController@createFaq')
 Route::post('/inseriscifaq', 'AdminController@storeFaq')
         ->name('inseriscifaq.store');
 
-Route::get('/eliminafaq', 'AdminController@deleteFaq')
+Route::get("eliminafaq/{id}", 'AdminController@deleteFaq')
         ->name('eliminafaq');
 
 Route::get('/modificafaq', 'AdminController@editFaq')

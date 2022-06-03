@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>TrovaCasa.it - @yield('title', 'Offerte')</title>
+    <title>TrovaCasa.it - @yield('title', 'Le tue offerte')</title>
 
 
     <!-- Additional CSS Files -->
@@ -70,8 +70,8 @@ https://templatemo.com/tm-571-hexashop
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>Le nostre Offerte</h2>
-                        <span>Qui puoi vedere gli alloggi che ti mettiamo a disposizione</span>
+                        <h2>Le tue Offerte</h2>
+                        <span>Qui puoi vedere gli alloggi che hai messo a disposizione</span>
                     </div>
                 </div>
             </div>
@@ -89,7 +89,7 @@ https://templatemo.com/tm-571-hexashop
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-heading">
-                        <h2>Le nostre offerte</h2>
+                        <h2>Le tue offerte</h2>
                         <span>Controlla qui cosa c'è disponibile</span>
                     </div>
                 </div>
@@ -98,61 +98,7 @@ https://templatemo.com/tm-571-hexashop
         
         
         
-        <div class="container">
-
-@can('isLocatario')
-    <div class="container-contact">
-        <center><div class="wrap-contact1">
-                <b> FILTRI: </b>
-    
-        <div class="wrap-input">
-            <input class="wrap-input-input" type="checkbox" value="" id="localericreativo">
-                <label class="wrap-input-label" for="localericreativo">
-                Locale Ricreativo
-                </label>
-        </div>
-            
-        <div class="wrap-input">
-            <input class="wrap-inputi-nput" type="checkbox" value="" id="lavatrice">
-                <label class="wrap-input-label" for="lavatrice">
-                Lavatrice
-                </label>
-        </div>
-
-        <div class="wrap-input">
-            <input class="wrap-inputi-nput" type="checkbox" value="" id="wifi">
-                <label class="wrap-input-label" for="wifi">
-                Wifi
-                </label>
-        </div>
-
-        <div class="wrap-input">
-            <input class="wrap-inputi-nput" type="checkbox" value="" id="postoauto">
-                <label class="wrap-input-label" for="postoauto">
-                Posto Auto
-                </label>
-        </div>
-
-        <div class="wrap-input">
-            <input class="wrap-inputi-nput" type="checkbox" value="" id="asciugatrice">
-                <label class="wrap-input-label" for="asciugatrice">
-                Asciugatrice
-                </label>
-        </div> 
-            
-        <div class="wrap-input">
-            <input class="wrap-inputi-nput" type="checkbox" value="" id="angolostudio">
-                <label class="wrap-input-label" for="angolostudio">
-                Angolo Studio
-                </label>
-        </div>             
-            
-            
-                </div></center>
-    </div>
-
-
-            @endcan
+  
           <div class="row">
           @isset($houses)
             @foreach ($houses as $house)
@@ -176,6 +122,11 @@ https://templatemo.com/tm-571-hexashop
                             <span>Indirizzo: {{ $house->città }}, {{ $house->cap }}, {{ $house->provincia }}, {{ $house->indirizzo}}</span> 
                             <span>Prezzo:  {{ $house->prezzo }} €</span>
                             
+                            @can('isLocatore')
+                            <a href="{{route('chisiamo',['product_slug'=>$house->slug])}}"><i class="fa fa-edit fa-2x text-info"></i></a>
+                            <a onclick="if (confirm('Vuoi eliminarlo definitivamente?')) {
+                                location.href = '{{route('deletefaq', [$id])}}'; }"><i class="fa fa-times fa-2x text-danger"></i></a>                            
+                            @endcan
                         </div>
                     </div>
                 </div>

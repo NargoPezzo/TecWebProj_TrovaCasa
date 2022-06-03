@@ -44,7 +44,7 @@ class AdminController extends Controller {
         $faq->fill($request->validated());
         
         $faq->save();
-
+        //return view('faq');
         return redirect()->action('AdminController@index');
     }
     
@@ -61,17 +61,11 @@ class AdminController extends Controller {
         }
     }
     
-    public function deleteFaqqqq($id)
-    {
-        $faq = Faq::find($id);
-        $faq->delete();
-        session()->flash('message', 'La F.A.Q. è stata eliminata con successo');
-    }
-    
     public function deleteFaq($id)
-        {
-            $faq = $this->_faqsModel->getSingleFaq(urldecode(id));
-            $faq->delete();
-            return redirect()->route('home');
-        }
+    {
+        
+        $faq = $this->_faqsModel->getSingleFaq(urldecode($id));
+        $faq->delete();
+        return redirect()->route('faq');
+    }
 }

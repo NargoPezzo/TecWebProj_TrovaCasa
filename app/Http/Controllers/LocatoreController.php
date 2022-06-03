@@ -16,7 +16,6 @@ use App\Models\Offerte;
 class LocatoreController extends Controller {
 
     protected $_locatoreModel;
-    
     protected $_seviceModel;
 
     public function __construct() {

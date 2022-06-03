@@ -82,12 +82,16 @@ https://templatemo.com/tm-571-hexashop
                 <div class="row">
                     <ul style = "list-style-type: none">
                         <li>
-                            <h3>{{ $faq->id }}. {{ $faq->domanda }}</h3><br> 
+                            <h3><strong>Domanda:</strong> {{ $faq->domanda }}</h3><br> 
                             <p><strong>Risposta:</strong> {{ $faq->risposta }}</p></li><br>
                             
                             @can('isAdmin')
-                            <a href="{{route('chisiamo',['product_slug'=>$faq->slug])}}"><i class="fa fa-edit fa-2x text-info"></i></a>
-                            <a href="{{route('faq')}}" onclick="confirm('Sei sicuro di voler eliminare questa F.A.Q.?') || event.stopImmediatePropagation()" style="margin-left:10px;" wire:click.prevent="deletFaq({{$faq->id}})"><i class="fa fa-times fa-2x text-danger"></i></a>
+                            @php
+                            $id = urlencode($faq->id);
+                            @endphp
+                            <a href="{{route('chisiamo',['product_slug'=>$faq->slug])}}"><i class="fa fa-edit fa-2x text-info"></i></a>                            
+                            <a onclick="if (confirm('Eliminare la FAQ definitivamente?')) {
+                                location.href = '{{route('eliminafaq', [$id])}}'; }"><i class="fa fa-times fa-2x text-danger"></i></a>
                             @endcan
                             
                             <br>
@@ -97,6 +101,42 @@ https://templatemo.com/tm-571-hexashop
             @endforeach
         @endisset()
     </div>
+
+
+        <section>
+            <h3>Modifica FAQ</h3>
+            <?php
+            $i = 0;
+            ?>
+            @foreach($faqs as $faq)
+            <!--{{ Form::open(array('route' => 'modificafaq','method'=>'post', 'class' => 'contact-form', 'id' => 'form'.$i)) }}
+            {{Form::hidden('vecchiadomanda', $faq->domanda)}}
+            <div class="faq-element">-->
+                <div class="wrap-contact1">
+                    {{ Form::text('domanda', $faq->domanda, ['class' => 'input','id' => 'domanda', 'style'=>'font-weight: bold;width:50em','disabled'=>'disabled','required' => '']) }}
+                </div>
+                <div class="wrap-contact1">
+                    {{ Form::textarea('risposta', $faq->risposta, ['class' => 'input','id' => 'risposta', 'disabled'=>'disabled', 'rows'=>'5', 'style'=>'width:58em','required' => '']) }}
+                </div>
+                <div style="display:inline-flex">
+                    <div class="pencil_item faq" title="Modifica FAQ">
+                        <img id="pencil" name="pencil" class="pencil action_item_clickable"
+                            src="{{asset('css/themes/images/pencil.png')}}" alt="modifica FAQ">
+                        <p id="pencil_text"><b>Modifica la FAQ</b></p>
+                    </div> 
+                </div>
+            </div>
+            <input id="salva" hidden type="submit" class="button clickable" value="Salva">
+            <input type='reset' id='annulla' hidden class="button clickable" value="Annulla">
+            {{ Form::close() }}
+            <hr size="3" color="black" style="height:0.2px" />
+            <?php $i = $i + 1; ?>
+            @endforeach
+            
+            {{ Form::close() }}
+        </section>
+</section>
+
 
     <!-- ***** Products Area Ends ***** -->
 
