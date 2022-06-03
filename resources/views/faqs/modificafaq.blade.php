@@ -139,24 +139,7 @@ https://templatemo.com/tm-571-hexashop -->
                 <div class="col-lg-6">
             
             
-                <div class="wrap-input">
-    <h2> Modifica qui la faq:</h2>
-    {{ Form::model($faq, array('route' => 'modificafaq.save', 'id' => 'editform')) }}
-    @csrf 
-    <br>
-    <br>
-    <p>Domanda:</p>
-    {{ Form::textarea('domanda', null, ['placeholder' => 'Domanda', 'id' => 'domanda']) }}
-    <div id='error_domanda' class="errormsg"></div>
-    <br>
-    <p>Risposta:</p>
-    {{ Form::textarea('risposta', null, ['placeholder' =>  'Risposta', 'id' => 'risposta']) }}
-    <div id='error_risposta' class="errormsg"></div>
-    <br>
-    {{ Form::submit('Modifica', ['id' => 'addform']) }}
-    <br>
-    {{ Form::close() }}
-</div>
+                
 
                 
                     </div>
