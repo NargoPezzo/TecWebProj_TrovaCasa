@@ -11,19 +11,23 @@ use App\Http\Request\NuovoAlloggioRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Offerte;
+use App\Models\HouseServices;
+use App\Models\Resources\HouseService;
 
 
 class LocatoreController extends Controller {
 
     protected $_locatoreModel;
-    protected $_seviceModel;
+    protected $_serviceModel;
     protected $_alloggioModel;
+    protected $_houseservicesModel;
 
     public function __construct() {
         $this->middleware('can:isLocatore');
         $this->_locatoreModel = new Locatore;
-        $this->_seviceModel = new Services;
+        $this->_serviceModel = new Services;
         $this->_alloggioModel = new House;
+        $this->_houseservicesModel = new HouseServices;
     }
 
     public function index() {
@@ -42,7 +46,7 @@ class LocatoreController extends Controller {
     }
     
     public function createAlloggio() {
-        $servizi = $this->_seviceModel->getServizi();
+        $servizi = $this->_serviceModel->getServizi();
         return view('alloggi.inseriscialloggio')
                     ->with('servizi', $servizi);
     }
@@ -62,17 +66,26 @@ class LocatoreController extends Controller {
 
         $alloggio->immagine = $imageName;
         
-        
-        //$servizi = Services::find([3, 4]); al posto di 3,4 carico l'array che viene dal form
-       // $alloggio->servizi()->attach($servizi);
         $alloggio->save();
+        Log::info($alloggio);
+        
+        
+        
+        foreach($request->servizi as $servizio){
+            $houseservice = new HouseService();
+            $houseservice->house_id = $this->_locatoreModel->lastAlloggio();
+            $houseservice->services_id = $this->_serviceModel->servizioIdByName($servizio);
+            $houseservice->save();
+            Log::info($houseservice);
+       
+        }
 
         if (!is_null($imageName)) {
             $destinationPath = public_path() . '/images/products';
             $image->move($destinationPath, $imageName);
         }
         
-        ;
+        
         
         return redirect()->action('LocatoreController@index');
         

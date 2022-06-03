@@ -10,4 +10,10 @@ class Locatore extends User {
         
         return House::where('locatore_id', $locatore_id)->get();
     }
+    
+    public function lastAlloggio(){
+        
+        $maxValue = House::max('id');
+        return $maxValue;
+    }
 }

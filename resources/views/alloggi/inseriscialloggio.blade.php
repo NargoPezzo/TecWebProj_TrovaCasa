@@ -248,14 +248,19 @@ https://templatemo.com/tm-571-hexashop -->
                                 @endif
                             </div>
                             
-                            @foreach($servizi as $servizio)
-                            <div class="wrap-input">
-                                <input class="wrap-input-input" type="checkbox" value="" id="{{ $servizio->id }}">
-                                <label class="wrap-input-label" for="{{ $servizio->id }}">
-                                    {{ $servizio->nome }}
-                                </label>
-                             </div>
-                            @endforeach
+                            <form action="/checkbox-example" method="POST">
+        @csrf
+        
+        
+        <label>Which Fruit Do you Like</label><br/>
+        <input type="checkbox" name="servizi[]" value="Lavatrice"> Lavatrice<br/>
+        <input type="checkbox" name="servizi[]" value="Asciugatrice"> Asciugatrice <br/>
+        <input type="checkbox" name="servizi[]" value="Wifi"> Wifi <br/>
+        <input type="checkbox" name="servizi[]" value="Posto Auto"> Posto Auto <br/>
+        <input type="checkbox" name="servizi[]" value="Locale Ricreativo"> Locale Ricreativo <br/><br/>
+        
+        <button type="submit">Submit</button>
+    </form>
 
                             <!--<div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('discountPerc', 'Sconto (%)', ['class' => 'label-input']) }}
