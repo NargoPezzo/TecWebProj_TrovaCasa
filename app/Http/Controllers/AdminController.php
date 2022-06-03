@@ -63,6 +63,5 @@ class AdminController extends Controller {
         $faq = Faq::find($id);
         $faq->delete();
         session()->flash('message', 'La F.A.Q. è stata eliminata con successo');
-
     }
 }
