@@ -12,7 +12,7 @@
     <title>TrovaCasa.it - @yield('title', 'Offerte')</title>
 
 
-    <!-- Additional CSS Files -->
+    <!-- Additional CSS Files ciaoooo-->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
