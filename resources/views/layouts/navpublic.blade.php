@@ -23,7 +23,7 @@
         <a href="javascript:;">F.A.Q</a>
             <ul>
                 <li><a href="{{ route('faq') }}" title="Inserisci FAQ">Inserisci Nuova FAQ</a></li>
-                <li><a href="{{ route('chisiamo') }}" title="Gestisci FAQ">Gestisci/Visualizza FAQ</a></li>
+                <li><a href="{{ route('faq') }}" title="Gestisci FAQ">Gestisci/Visualizza FAQ</a></li>
             </ul>
     </li>
    

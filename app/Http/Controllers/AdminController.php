@@ -3,6 +3,7 @@
 namespace app\Http\Controllers;
 
 use App\Models\Admin;
+use Illuminate\Http\Request;
 use App\Models\Resources\Faq;
 use App\Models\Faqs;
 use App\Http\Request\NuovaFaqRequest;
@@ -11,9 +12,11 @@ use App\Http\Request\NuovaFaqRequest;
 class AdminController extends Controller {
 
  //   protected $_adminModel;
+    protected $_faqsModel;
 
     public function __construct() {
         $this->middleware('can:isAdmin');
+        $this->_faqsModel = new Faqs;
 //        $this->_adminModel = new Admin;
     }
 
@@ -58,10 +61,17 @@ class AdminController extends Controller {
         }
     }
     
-    public function deleteFaq($id)
+    public function deleteFaqqqq($id)
     {
         $faq = Faq::find($id);
         $faq->delete();
         session()->flash('message', 'La F.A.Q. è stata eliminata con successo');
     }
+    
+    public function deleteFaq($id)
+        {
+            $faq = $this->_faqsModel->getSingleFaq(urldecode(id));
+            $faq->delete();
+            return redirect()->route('home');
+        }
 }

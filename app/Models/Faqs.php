@@ -11,4 +11,8 @@ class Faqs extends Model
         $faqs = Faq::all();
         return $faqs;
     }
+    
+    public function getSingleFaq ($id) {
+        return Faq::where('id', $id)->first();
+    }
 }
