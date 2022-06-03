@@ -89,9 +89,9 @@ https://templatemo.com/tm-571-hexashop
                             @php
                             $id = urlencode($faq->id);
                             @endphp
-                            <a href="{{route('chisiamo',['product_slug'=>$faq->slug])}}"><i class="fa fa-edit fa-2x text-info"></i></a>                            
+                            <a href='{{route('modificafaq', [$faq->id])}}'><i class="fa fa-edit fa-2x text-info"></i></a>                            
                             <a onclick="if (confirm('Eliminare la FAQ definitivamente?')) {
-                                location.href = '{{route('eliminafaq', [$id])}}'; }"><i class="fa fa-times fa-2x text-danger"></i></a>
+                                href = '{{route('eliminafaq', [$id])}}'; }"><i class="fa fa-times fa-2x text-danger"></i></a>
                             @endcan
                             
                             <br>
@@ -103,15 +103,14 @@ https://templatemo.com/tm-571-hexashop
     </div>
 
 
-        <section>
-            <h3>Modifica FAQ</h3>
+        <h3>Modifica FAQ</h3>
             <?php
             $i = 0;
             ?>
             @foreach($faqs as $faq)
-            <!--{{ Form::open(array('route' => 'modificafaq','method'=>'post', 'class' => 'contact-form', 'id' => 'form'.$i)) }}
+            {{ Form::open(array('route' => 'chisiamo','method'=>'post', 'class' => 'contact-form', 'id' => 'form'.$i)) }}
             {{Form::hidden('vecchiadomanda', $faq->domanda)}}
-            <div class="faq-element">-->
+            <div class="faq-element">
                 <div class="wrap-contact1">
                     {{ Form::text('domanda', $faq->domanda, ['class' => 'input','id' => 'domanda', 'style'=>'font-weight: bold;width:50em','disabled'=>'disabled','required' => '']) }}
                 </div>
@@ -123,7 +122,8 @@ https://templatemo.com/tm-571-hexashop
                         <img id="pencil" name="pencil" class="pencil action_item_clickable"
                             src="{{asset('css/themes/images/pencil.png')}}" alt="modifica FAQ">
                         <p id="pencil_text"><b>Modifica la FAQ</b></p>
-                    </div> 
+                    </div>
+                   
                 </div>
             </div>
             <input id="salva" hidden type="submit" class="button clickable" value="Salva">
@@ -132,10 +132,6 @@ https://templatemo.com/tm-571-hexashop
             <hr size="3" color="black" style="height:0.2px" />
             <?php $i = $i + 1; ?>
             @endforeach
-            
-            {{ Form::close() }}
-        </section>
-</section>
 
 
     <!-- ***** Products Area Ends ***** -->

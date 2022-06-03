@@ -66,6 +66,9 @@ class LocatoreController extends Controller {
 
         $alloggio->immagine = $imageName;
         
+        
+        //$servizi = Services::find([3, 4]); al posto di 3,4 carico l'array che viene dal form
+        // $alloggio->servizi()->attach($servizi);
         $alloggio->save();
         Log::info($alloggio);
         

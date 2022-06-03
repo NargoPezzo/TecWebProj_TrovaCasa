@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Resources\Faq;
 use App\Models\Faqs;
 use App\Http\Request\NuovaFaqRequest;
+use App\Http\Request\ModificaFaqRequest;
 
 
 class AdminController extends Controller {
@@ -48,7 +49,44 @@ class AdminController extends Controller {
         return redirect()->action('AdminController@index');
     }
     
-    public function editFaq()
+    public function editFaq($faq) {
+        
+        return view('faqs.modificafaq')
+                        ->with('faq', $faq);
+    }
+    
+
+    public function editFaqqq(ModificaFaqRequest $request)
+    {
+        $faq = Faq::find($request->route('id'));
+        $faq->domanda = $request->domanda;
+        $faq->risposta = $request->risposta;
+        $faq->save();
+        return redirect()->route('faq');
+    }
+    
+    
+    public function saveFaq(ModificaFaqRequest $request) {
+
+        //$user = Auth::user();
+        
+        //$faq = $this->_faqsModel->getSingleFaq($request->(id));
+
+        $validated = ($request->validated());
+        $faq->domanda = $validated['domanda'];
+        $faq->risposta = $validated['risposta'];
+        
+
+        //$faq->fill($request->validated());
+
+        $faq->save();
+                return redirect()->route('faq');
+        
+    }
+    
+    
+    
+/*    public function editFaq()
     {
         
         $faqs = getFaqs();
@@ -59,7 +97,7 @@ class AdminController extends Controller {
             return view('faqs.modificafaq')
                             ->with('faqs', $faqs);
         }
-    }
+    }*/
     
     public function deleteFaq($id)
     {

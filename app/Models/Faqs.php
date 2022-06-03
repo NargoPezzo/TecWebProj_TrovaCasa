@@ -15,4 +15,5 @@ class Faqs extends Model
     public function getSingleFaq ($id) {
         return Faq::where('id', $id)->first();
     }
+    
 }
