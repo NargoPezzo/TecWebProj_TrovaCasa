@@ -90,7 +90,7 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-12">
                     <div class="section-heading">
                         <h2>Le tue offerte</h2>
-                        <span>Controlla qui cosa c'è disponibile</span>
+                        <span>Clicca su un'immagine per visualizzare le richieste ricevute</span>
                     </div>
                 </div>
             </div>

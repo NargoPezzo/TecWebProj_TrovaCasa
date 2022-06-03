@@ -90,7 +90,9 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-12">
                     <div class="section-heading">
                         <h2>Le nostre offerte</h2>
-                        <span>Controlla qui cosa c'è disponibile</span>
+                        @can('isLocatario')
+                        <span>Clicca su un'immagine per visualizzarne i dettagli</span>
+                        @endcan
                     </div>
                 </div>
             </div>

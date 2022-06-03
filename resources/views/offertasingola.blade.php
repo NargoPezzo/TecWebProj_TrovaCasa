@@ -183,6 +183,11 @@ https://templatemo.com/tm-571-hexashop
                     </div>
                 </div>    
                 @endcan
+                
+                @can('isLocatore')
+                 <!-- RICHIESTE RICEVUTE -->
+                @endcan
+                
     </section>
     <!-- ***** Product Area Ends ***** -->
     
