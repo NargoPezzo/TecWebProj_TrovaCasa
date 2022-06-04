@@ -4,6 +4,7 @@ namespace app\Http\Controllers;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use App\User;
 use App\Models\Resources\Faq;
 use App\Models\Faqs;
 use App\Http\Request\NuovaFaqRequest;
@@ -51,9 +52,6 @@ class AdminController extends Controller {
     }
     
     public function editFaq(ModificaFaqRequest $request) {
-        
-       
-       
 
         $faq = $this->_faqsModel->getSingleFaq($request->id);
         $faq->domanda = $request->domanda;

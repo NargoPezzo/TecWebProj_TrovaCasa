@@ -97,7 +97,7 @@ https://templatemo.com/tm-571-hexashop -->
 
 <!--<div><h1>Sezione domande frequenti:</h1></div> -->
     <div class="container">
-        @isset($faqs)
+        @isset($faqs) 
             @foreach ($faqs as $faq)
                 <div class="row">
                     <ul style = "list-style-type: none">
@@ -110,20 +110,17 @@ https://templatemo.com/tm-571-hexashop -->
                             @php
                             $id = urlencode($faq->id);
                             @endphp
-                            
-                            <?php
-                            $i = 0;
-                            ?>
-                            
-                            <a id="Mybtn"><i class="fa fa-edit fa-2x"></i></a>
+                                                
+                            <a id="Mybtn"><i class="fa fa-edit fa-2x text-info"></i></a>
                             
                             
                             <a onclick="if (confirm('Eliminare la FAQ definitivamente?')) {
                                 href = '{{route('eliminafaq', [$id])}}'; }"><i class="fa fa-times fa-2x text-danger"></i></a>
-                                 
+
                                 
                                 {{ Form::model($faq, array('route' => 'modificafaq', 'class' => 'contact-form', 'id' => 'form')) }}
-                                {{Form::hidden('id', $faq->id)}}
+                                {{ Form::hidden('id', $faq->id) }}
+                                <p id="pencil_text"><b>Modifica la FAQ</b></p>
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
                                         <label>Nuova domanda:</label>
@@ -136,33 +133,24 @@ https://templatemo.com/tm-571-hexashop -->
                                         {{ Form::text('risposta', $faq->risposta, ['class' => 'input','id' => 'domanda', 'style'=>'font-weight: bold;width:50em', 'required' => '']) }}
                                         </div>
                                     </div>
-                                            {{ Form::submit('Modifica', ['id' => 'adduser']) }}
-                                    <p id="pencil_text"><b>Modifica la FAQ</b></p>
-                    </div>
-                                                        </div>
+                                {{ Form::submit('Modifica', ['id' => 'editfaq']) }}
 
                                 {{ Form::close() }}
                                  
                                  
-                                <form id="MyForm" action="AdminController@editFaq" method="post">
-                                    <label>Nuova domanda:</label>
-                                    <input type="textarea" name="domanda" placeholder="..."/><br>
-                                    <label>Nuova risposta:</label>
-                                    <input type="textarea" name="risposta" placeholder="..."/><br>
-                                    <input type="button" class="btn btn-default" name="submit" value="Modifica"/>
-                                </form>
+                                
                                 
                                 @endcan
                             
                             <br>
                             @include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => "ques.gif"])
                     </ul>
-                </div>        
+                       
             @endforeach
         @endisset()
-    </div>
 
-
+</div>
+                                                        </div>
 
     </body>
 

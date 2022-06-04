@@ -8,6 +8,7 @@ use App\Models\Resources\Services;
 use App\Models\Locatore;
 use App\User;
 use App\Http\Request\NuovoAlloggioRequest;
+use App\Http\Request\ModificaAlloggioRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Offerte;
@@ -137,11 +138,27 @@ class LocatoreController extends Controller {
     
 
 
-/*    public function editAlloggio() {
-        $prodCats = $this->_adminModel->getProdsCats()->pluck('name', 'catId');
-        return view('product.insert')
-                        ->with('cats', $prodCats);
-    }*/
+public function editAlloggio(ModificaAlloggioRequest $request) {
+        
+        $alloggio = $this->_alloggioModel->getSingleHouse($request->id);
+        $alloggio->titolo = $request->titolo;
+        $alloggio->prezzo = $request->prezzo;
+        $alloggio->descrizione = $request->descrizione;
+        $alloggio->tipologia = $request->tipologia;
+        $alloggio->n_camere = $request->n_camere;
+        $alloggio->n_posti_letto_totali = $request->n_posti_letto_totali;
+        $alloggio->indirizzo = $request->indirizzo;
+        $alloggio->cap = $request->cap;
+        $alloggio->città = $request->città;
+        $alloggio->provincia = $request->provincia;
+        $alloggio->superficie = $request->superficie;
+         
+            //'immagine' => 'image|max:1024',
+            //"servizi"    => '',
+        $alloggio->save();
+        return redirect()->route('gestiscialloggi');
+        
+    }
 
     public function deleteAlloggio($id)  {
         

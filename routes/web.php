@@ -101,8 +101,8 @@ Route::get('/gestiscialloggi', 'LocatoreController@getMyAlloggi')
 Route::get('eliminaalloggio/{id}', 'LocatoreController@deleteAlloggio')
         ->name('eliminaalloggio');
 
-Route::get('/modificaalloggio', 'LocatoreController@editAlloggio')
-        ->name('modificaalloggio');
+Route::post('modificaalloggio', 'LocatoreController@editAlloggio')
+        ->name('modificaalloggio')->middleware('can:isLocatore');
 
 // Rotte per le faq
 Route::get('/inseriscifaq', 'AdminController@createFaq')
