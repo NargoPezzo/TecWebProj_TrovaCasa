@@ -197,18 +197,18 @@ class DatabaseSeeder extends Seeder
         DB::table('services')->insert([
             ['id' => 1,  'nome' => 'Locale ricreativo'],
             ['id' => 2,  'nome' => 'Lavatrice'],
-            ['id' => 3,  'nome' => 'Wifi', ],
-            ['id' => 4,  'nome' => 'Posto Auto',  ],
-            ['id' => 5,  'nome' => 'Asciugatrice', ],
+            ['id' => 3,  'nome' => 'Wifi'],
+            ['id' => 4,  'nome' => 'Posto Auto'],
+            ['id' => 5,  'nome' => 'Asciugatrice'],
            
         ]);
         
         DB::table('house_services')->insert([
             ['house_id' => 1,  'services_id' => 1,],
             ['house_id' => 2,  'services_id' => 2,],
-            ['house_id' => 3,  'services_id' => 3, ],
-            ['house_id' => 4,  'services_id' => 3,  ],
-            ['house_id' => 5,  'services_id' => 4, ],
+            ['house_id' => 3,  'services_id' => 3,],
+            ['house_id' => 4,  'services_id' => 3,],
+            ['house_id' => 5,  'services_id' => 4,],
            
         ]);
  /* 

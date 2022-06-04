@@ -40,7 +40,8 @@ class LocatoreController extends Controller {
     
     public function getMyAlloggi() {
         $id = Auth::id();
-        $alloggi = House::where('locatore_id', $id) -> get();
+    //  $alloggi = House::where('locatore_id', $id) -> get();
+        $alloggi=$this->_locatoreModel->getAlloggi($id);
         return view('alloggi.gestiscialloggi')
                     ->with('houses', $alloggi);
     }
@@ -70,16 +71,18 @@ class LocatoreController extends Controller {
         //$servizi = Services::find([3, 4]); al posto di 3,4 carico l'array che viene dal form
         // $alloggio->servizi()->attach($servizi);
         $alloggio->save();
-        Log::info($alloggio);
+    
         
         
         
         foreach($request->servizi as $servizio){
+          
             $houseservice = new HouseService();
             $houseservice->house_id = $this->_locatoreModel->lastAlloggio();
-            $houseservice->services_id = $this->_serviceModel->servizioIdByName($servizio);
+            $houseservice->services_id = $this->_serviceModel->servizioIdByName($servizio)->id;
+             Log::info($houseservice);
             $houseservice->save();
-            Log::info($houseservice);
+  
        
         }
 

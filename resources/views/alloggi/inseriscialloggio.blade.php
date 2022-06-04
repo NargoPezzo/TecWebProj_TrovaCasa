@@ -86,7 +86,7 @@ https://templatemo.com/tm-571-hexashop -->
             </div>
         </div>
     </div>
-    <!-- ***** Main Banner Area End ***** -->
+    <!-- ***** Main Banner Area End form poi si passa alla request poi al controller e dentro al controller si richiama una funzione del model passandogli i filtri che stanno nella form***** -->
     
     <!-- ***** About Area Starts ***** -->
     <div class="about-us">
@@ -96,7 +96,7 @@ https://templatemo.com/tm-571-hexashop -->
                         <div class="wrap-contact">
                             
                             
-                            {{ Form::open(array('route' => 'inseriscialloggio.store', 'id' => 'houses', 'files' => true, 'class' => 'contact-form')) }}
+                        {{ Form::open(array('route' => 'inseriscialloggio.store', 'id' => 'houses', 'files' => true, 'class' => 'contact-form')) }}
                             <div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('titolo', 'Titolo', ['class' => 'label-input']) }}
                                 {{ Form::text('titolo', '', ['class' => 'input', 'id' => 'titolo']) }}
@@ -248,19 +248,17 @@ https://templatemo.com/tm-571-hexashop -->
                                 @endif
                             </div>
                             
-                            <form action="/checkbox-example" method="POST">
-        @csrf
-        
-        
-        <label>Which Fruit Do you Like</label><br/>
+    
+
+        <label>Filtri</label><br/>
         <input type="checkbox" name="servizi[]" value="Lavatrice"> Lavatrice<br/>
         <input type="checkbox" name="servizi[]" value="Asciugatrice"> Asciugatrice <br/>
         <input type="checkbox" name="servizi[]" value="Wifi"> Wifi <br/>
         <input type="checkbox" name="servizi[]" value="Posto Auto"> Posto Auto <br/>
         <input type="checkbox" name="servizi[]" value="Locale Ricreativo"> Locale Ricreativo <br/><br/>
         
-        <button type="submit">Submit</button>
-    </form>
+  
+    
 
                             <!--<div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('discountPerc', 'Sconto (%)', ['class' => 'label-input']) }}

@@ -8,7 +8,7 @@ namespace app\Models;
 class Locatore extends User {
     public function getAlloggi($locatore_id) {
         
-        return House::where('locatore_id', $locatore_id)->get();
+        return House::where('locatore_id', $locatore_id)->paginate(9);
     }
     
     public function lastAlloggio(){

@@ -136,7 +136,7 @@ https://templatemo.com/tm-571-hexashop
             
             @endforeach
             
-            <!-- DA RIMETTERE PAGINATOR(NON FUNZIONAVA)-->
+                @include('pagination.paginator', ['paginator' => $houses])
             
 
         @endisset()

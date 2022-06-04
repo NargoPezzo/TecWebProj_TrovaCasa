@@ -18,7 +18,7 @@ class Services extends Model
         return $servizi;
     }
     public function servizioIdByName($nome){
-        $servizioid = Services::select('id')->where(["nome"=>$nome])->get();
+        $servizioid = Services::select('id')->where(["nome"=>$nome])->first();
         return $servizioid;
         
     }
