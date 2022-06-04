@@ -48,9 +48,8 @@ class ModificaLocatarioController extends Controller {
         $user->età = $validated['età'];
 
         $user->save();
-        
-          
-                 return redirect()->route('homelocatario');
+
+            return redirect()->route('homelocatario');
         
     }
 

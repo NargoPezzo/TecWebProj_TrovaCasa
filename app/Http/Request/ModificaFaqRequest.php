@@ -27,10 +27,10 @@ class ModificaFaqRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'id' => '',
+            
             'domanda' => ['string','max:500'],
             'risposta' => ['string', 'max:100000'],
-
+            'id' => ''
         ];
     }
 

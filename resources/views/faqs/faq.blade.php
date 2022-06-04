@@ -4,6 +4,25 @@
 
 
   <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <style>
+        #form{
+            display: none;
+            width: 1000px;
+            border: 1px solid #ccc;
+            padding: 14px;
+            background: #ececec;
+        }	
+       </style>
+
+        <script>
+            $(document).ready(function(){
+              $('#Mybtn').click(function(){
+                $('#form').toggle();
+              });
+            });
+        </script>
+
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,7 +46,7 @@
 
 TemplateMo 571 Hexashop
 
-https://templatemo.com/tm-571-hexashop
+https://templatemo.com/tm-571-hexashop -->
 
     </head>
     
@@ -74,6 +93,7 @@ https://templatemo.com/tm-571-hexashop
         </div>
     </div>
     <!-- ***** Main Banner Area End ***** -->
+   
 
 <!--<div><h1>Sezione domande frequenti:</h1></div> -->
     <div class="container">
@@ -86,13 +106,53 @@ https://templatemo.com/tm-571-hexashop
                             <p><strong>Risposta:</strong> {{ $faq->risposta }}</p></li><br>
                             
                             @can('isAdmin')
+                            
                             @php
                             $id = urlencode($faq->id);
                             @endphp
-                                                        
+                            
+                            <?php
+                            $i = 0;
+                            ?>
+                            
+                            <a id="Mybtn"><i class="fa fa-edit fa-2x"></i></a>
+                            
+                            
                             <a onclick="if (confirm('Eliminare la FAQ definitivamente?')) {
                                 href = '{{route('eliminafaq', [$id])}}'; }"><i class="fa fa-times fa-2x text-danger"></i></a>
-                            @endcan
+                                 
+                                
+                                {{ Form::model($faq, array('route' => 'modificafaq', 'class' => 'contact-form', 'id' => 'form')) }}
+                                {{Form::hidden('id', $faq->id)}}
+                                    <div class="faq-element">
+                                        <div class="wrap-contact1">
+                                        <label>Nuova domanda:</label>
+                                        {{ Form::text('domanda', $faq->domanda, ['class' => 'input','id' => 'domanda', 'style'=>'font-weight: bold;width:50em', 'required' => '']) }}
+                                        </div>
+                                    </div>
+                                <div class="faq-element">
+                                        <div class="wrap-contact1">
+                                        <label>Nuova risposta:</label>
+                                        {{ Form::text('risposta', $faq->risposta, ['class' => 'input','id' => 'domanda', 'style'=>'font-weight: bold;width:50em', 'required' => '']) }}
+                                        </div>
+                                    </div>
+                                            {{ Form::submit('Modifica', ['id' => 'adduser']) }}
+                                    <p id="pencil_text"><b>Modifica la FAQ</b></p>
+                    </div>
+                                                        </div>
+
+                                {{ Form::close() }}
+                                 
+                                 
+                                <form id="MyForm" action="AdminController@editFaq" method="post">
+                                    <label>Nuova domanda:</label>
+                                    <input type="textarea" name="domanda" placeholder="..."/><br>
+                                    <label>Nuova risposta:</label>
+                                    <input type="textarea" name="risposta" placeholder="..."/><br>
+                                    <input type="button" class="btn btn-default" name="submit" value="Modifica"/>
+                                </form>
+                                
+                                @endcan
                             
                             <br>
                             @include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => "ques.gif"])
@@ -103,7 +163,8 @@ https://templatemo.com/tm-571-hexashop
     </div>
 
 
-        
+
+    </body>
 
 
     <!-- ***** Products Area Ends ***** -->

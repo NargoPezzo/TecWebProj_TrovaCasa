@@ -13,5 +13,10 @@ class Faq extends Model
     public $timestamps = false;
     
     protected $fillable=['domanda','risposta'];
+    
+    
+    public function getSingleFaq ($id) {
+        return Faq::find($id)->get();
+    }
 
 }

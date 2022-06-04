@@ -60,7 +60,7 @@ class PublicController extends Controller {
         //Faqs
         $faqs = $this->_faqsModel->getFaqs();
         
-        return view('faq')
+        return view('faqs.faq')
                         ->with('faqs', $faqs);
     }
 }

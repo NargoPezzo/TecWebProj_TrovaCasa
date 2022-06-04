@@ -114,20 +114,12 @@ Route::post('/inseriscifaq', 'AdminController@storeFaq')
 Route::get("eliminafaq/{id}", 'AdminController@deleteFaq')
         ->name('eliminafaq');
 
-Route::get('/modificafaq','AdminController@editFaq')
-        ->name('modificafaq');
-
-Route::post('modificafaq', 'AdminController@saveFaq')
-        ->name('modificafaq.save');
-
-/*Route::get('/modificafaq', 'AdminController@editFaq')
-        ->name('modificafaq');
-
-/*Route::post('modificafaq/{id}', 'AdminController@saveFaq')
-        ->name('modificafaq.save');
-
 Route::post('modificafaq', 'AdminController@editFaq')
-        ->name('modificafaq')->middleware('can:isAdmin');*/
+        ->name('modificafaq')->middleware('can:isAdmin');
+
+/*Route::post('/modificafaq', 'AdminController@saveFaq')
+        ->name('modificafaq.save')->middleware('can:isAdmin');
+*/
 
 /*
 Route::get('/offertelocatario', 'LocatarioController@indexoffertelocatario')   POTREBBE ESSERE INUTILE

@@ -18,6 +18,7 @@ class AdminController extends Controller {
     public function __construct() {
         $this->middleware('can:isAdmin');
         $this->_faqsModel = new Faqs;
+        $this->_faqModel = new Faq;
 //        $this->_adminModel = new Admin;
     }
 
@@ -49,6 +50,34 @@ class AdminController extends Controller {
         return redirect()->action('AdminController@index');
     }
     
+    public function editFaq(ModificaFaqRequest $request) {
+        
+       
+       
+
+        $faq = $this->_faqsModel->getSingleFaq($request->id);
+        $faq->domanda = $request->domanda;
+        $faq->risposta = $request->risposta;
+        $faq->save();
+        return redirect()->route('faq');
+        
+    }
+    
+    public function saveFaq(ModificaFaqRequest $request) {
+
+        //$faq = $this->_faqModel->getSingleFaq($request->domanda);
+        $faq = getSingleFaq($request->id);
+
+        $validated = $request->validated();
+
+
+        $faq->domanda = $validated->domanda;
+        $faq->risposta = $validated->risposta;
+        $faq->save();
+
+            return redirect()->route('faq');
+        
+    }
     
     
     public function deleteFaq($id)
