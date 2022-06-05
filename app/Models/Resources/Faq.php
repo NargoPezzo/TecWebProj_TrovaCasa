@@ -15,8 +15,8 @@ class Faq extends Model
     protected $fillable=['domanda','risposta'];
     
     
-    public function getSingleFaq ($id) {
-        return Faq::find($id)->get();
+    public function getSingleFaq ($id){
+        return Faq::where('id', $id)->first();
     }
 
 }

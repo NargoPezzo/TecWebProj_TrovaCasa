@@ -13,6 +13,6 @@ class Faqs extends Model
     }
     
     public function getSingleFaq ($id){
-        return Faq::find($id)->first();
+        return Faq::where('id', $id)->first();
     }
 }

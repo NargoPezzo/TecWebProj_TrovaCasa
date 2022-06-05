@@ -6,7 +6,7 @@
   <head>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <style>
-        #form{
+        #Myform{
             display: none;
             width: 1000px;
             border: 1px solid #ccc;
@@ -18,9 +18,10 @@
         <script>
             $(document).ready(function(){
               $('#Mybtn').click(function(){
-                $('#form').toggle();
+                $('.contact-form, #Myform').slideToggle();
               });
             });
+            
         </script>
 
 
@@ -97,29 +98,28 @@ https://templatemo.com/tm-571-hexashop -->
 
 <!--<div><h1>Sezione domande frequenti:</h1></div> -->
     <div class="container">
+        
         @isset($faqs) 
             @foreach ($faqs as $faq)
+                @php
+                $id = urlencode($faq->id);
+                @endphp
+                
                 <div class="row">
                     <ul style = "list-style-type: none">
                         <li>
+                            
                             <h3><strong>Domanda:</strong> {{ $faq->domanda }}</h3><br> 
-                            <p><strong>Risposta:</strong> {{ $faq->risposta }}</p></li><br>
-                            
-                            @can('isAdmin')
-                            
-                            @php
-                            $id = urlencode($faq->id);
-                            @endphp
-                                                
-                            <a id="Mybtn"><i class="fa fa-edit fa-2x text-info"></i></a>
-                            
-                            
+                            <p><strong>Risposta:</strong> {{ $faq->risposta }}
+                                @can('isAdmin') 
                             <a onclick="if (confirm('Eliminare la FAQ definitivamente?')) {
-                                href = '{{route('eliminafaq', [$id])}}'; }"><i class="fa fa-times fa-2x text-danger"></i></a>
-
-                                
-                                {{ Form::model($faq, array('route' => 'modificafaq', 'class' => 'contact-form', 'id' => 'form')) }}
-                                {{ Form::hidden('id', $faq->id) }}
+                                href = '{{route('eliminafaq', [$id])}}'; }"><i class="fa fa-times fa-2x text-danger"></i></a> 
+                                @endcan
+                            </p></li>
+                           
+                            
+                                {{ Form::model($faq, array('route' => 'modificafaq', 'class' => 'contact-form', 'id' => 'Myform')) }}
+                                {{ Form::hidden('id', $faq->id) }}<br>
                                 <p id="pencil_text"><b>Modifica la FAQ</b></p>
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
@@ -133,23 +133,19 @@ https://templatemo.com/tm-571-hexashop -->
                                         {{ Form::text('risposta', $faq->risposta, ['class' => 'input','id' => 'domanda', 'style'=>'font-weight: bold;width:50em', 'required' => '']) }}
                                         </div>
                                     </div>
-                                {{ Form::submit('Modifica', ['id' => 'editfaq']) }}
-
+                                {{ Form::submit('Modifica', ['id' => 'form']) }}
                                 {{ Form::close() }}
-                                 
-                                 
+
                                 
-                                
-                                @endcan
                             
                             <br>
                             @include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => "ques.gif"])
                     </ul>
-                       
+                      </div> 
             @endforeach
         @endisset()
 
-</div>
+
                                                         </div>
 
     </body>

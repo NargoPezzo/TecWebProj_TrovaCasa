@@ -5,7 +5,7 @@
       
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <style>
-        #form{
+        #Myform{
             display: none;
             width: 1000px;
             border: 1px solid #ccc;
@@ -17,7 +17,7 @@
         <script>
             $(document).ready(function(){
               $('#Mybtn').click(function(){
-                $('#form').toggle();
+                $('.contact-form, #Myform').slideToggle();
               });
             });
         </script>
@@ -103,13 +103,17 @@ https://templatemo.com/tm-571-hexashop
 
 
     <!-- ***** Products Area Starts ***** -->
+    
     <section class="section" id="products">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-heading">
-                        <h2>Le tue offerte</h2>
-                        <span>Clicca su un'immagine per visualizzare le richieste ricevute</span>
+                        <h2>Le tue offerte</h2><br>
+                        <span>Clicca su un'immagine per visualizzare le richieste ricevute</span><br>
+                             <a id="Mybtn"><i class="fa fa-edit fa-2x text-info"></i></a>
+                            <span>Clicca qui per modificare gli alloggi, oppure clicca sul tasto apposito per eliminarne uno.</span><br>
+
                     </div>
                 </div>
             </div>
@@ -118,14 +122,15 @@ https://templatemo.com/tm-571-hexashop
         
         
         <div class="container">
-          <div class="row">
           @isset($houses)
             @foreach ($houses as $house)
-            
+            @php
+                $id = urlencode($house->id);
+            @endphp
                 <div class="col-lg-4">
                     <div class="item">
                         <div class="thumb">
-                            @can('isLocatore') <!--OCCHIELLO: modificaAlloggio?-->
+                            @can('isLocatore') <!--OCCHIELLO: visualizza richieste?-->
                             <div class="hover-content">
                                 <ul>
                                     <li><a href="{{url('offertasingola/'.$house->id)}}"><i class="fa fa-eye"></i></a></li>
@@ -140,18 +145,17 @@ https://templatemo.com/tm-571-hexashop
                             <h4 class="title">Alloggio: {{ $house->titolo }}</h4>
                             <span>Indirizzo: {{ $house->città }}, {{ $house->cap }}, {{ $house->provincia }}, {{ $house->indirizzo}}</span> 
                             <span>Prezzo:  {{ $house->prezzo }} €</span>
+                            <div class =" right-content">
                             
-                            @php
-                            $id = urlencode($house->id);
-                            @endphp
-                            
-                            <a id="Mybtn"><i class="fa fa-edit fa-2x text-info"></i></a>
 
                             <a onclick="if (confirm('Vuoi eliminarlo definitivamente?')) {
                                 location.href = '{{route('eliminaalloggio', [$id])}}'; }"><i class="fa fa-times fa-2x text-danger"></i></a>                            
                             
+                                </div><!-- comment -->
+                        </div>
+                        </div>
                             
-                            {{ Form::model($house, array('route' => 'modificaalloggio', 'class' => 'contact-form', 'id' => 'form')) }}
+                            {{ Form::model($house, array('route' => 'modificaalloggio', 'class' => 'contact-form', 'id' => 'Myform')) }}
                                 {{Form::hidden('id', $house->id)}}
                                 <p id="pencil_text"><b>Modifica i dati del tuo alloggio</b></p>
                                     <div class="faq-element">
@@ -239,14 +243,15 @@ https://templatemo.com/tm-571-hexashop
                                         </div>
                                     </div>
                                     
-                                            {{ Form::submit('Modifica', ['id' => 'adduser']) }}
-                                    
-                    </div>
-                                                        </div>
-
+                                {{ Form::submit('Modifica', ['id' => 'adduser']) }}
                                 {{ Form::close() }}
-                        </div>
+                                
+                                <br><br><br>
+                                </div>
+                        
                     @endcan
+                            
+                            
             
             @endforeach
             
@@ -254,13 +259,15 @@ https://templatemo.com/tm-571-hexashop
             
 
         @endisset()
+        
+        
             
             </div>
-                </div>
+              
   
            
               
-          </div>   
+            
     </section>
     <!-- ***** Products Area Ends ***** -->
     

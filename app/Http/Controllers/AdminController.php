@@ -48,12 +48,12 @@ class AdminController extends Controller {
         
         $faq->save();
         //return view('faq');
-        return redirect()->action('AdminController@index');
+        return redirect()->route('faq');
     }
     
     public function editFaq(ModificaFaqRequest $request) {
 
-        $faq = $this->_faqsModel->getSingleFaq($request->id);
+        $faq = $this->_faqModel->getSingleFaq($request->id);
         $faq->domanda = $request->domanda;
         $faq->risposta = $request->risposta;
         $faq->save();
@@ -63,8 +63,8 @@ class AdminController extends Controller {
     
     public function saveFaq(ModificaFaqRequest $request) {
 
-        //$faq = $this->_faqModel->getSingleFaq($request->domanda);
-        $faq = getSingleFaq($request->id);
+        $faq = $this->_faqModel->getSingleFaq($request->id);
+        //$faq = getSingleFaq($request->id);
 
         $validated = $request->validated();
 
