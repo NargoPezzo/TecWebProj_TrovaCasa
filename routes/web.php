@@ -18,6 +18,9 @@ Route::get('/', function () {
 Route::get('/offerte', 'PublicController@showOfferte')
         ->name('offerte');
 
+Route::post('/offerte', 'PublicController@showOfferteFiltrate')
+        ->name('offerte.search');
+
 Route::view('/chisiamo','chisiamo')
         ->name('chisiamo');
 
@@ -117,9 +120,6 @@ Route::get("eliminafaq/{id}", 'AdminController@deleteFaq')
 Route::post('modificafaq', 'AdminController@editFaq')
         ->name('modificafaq')->middleware('can:isAdmin');
 
-/*Route::post('/modificafaq', 'AdminController@saveFaq')
-        ->name('modificafaq.save')->middleware('can:isAdmin');
-*/
 
 /*
 Route::get('/offertelocatario', 'LocatarioController@indexoffertelocatario')   POTREBBE ESSERE INUTILE

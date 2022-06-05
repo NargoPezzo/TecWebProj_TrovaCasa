@@ -2,6 +2,51 @@
 <html lang="en">
 
   <head>
+      <script>
+    window.onload = function () {
+        document.getElementById("tip").value =
+                "<?php
+                    if (old('tip')!=null) {
+                         echo old('tip');
+                    } else {
+                         echo isset($_POST['tip']) ? $_POST['tip'] : '';
+                    }
+                ?>";
+    document.getElementById("org").value =
+
+            "<?php
+                    if (old('org')!=null) {
+                         echo old('org');
+                    } else {
+                         echo isset($_POST['org']) ? $_POST['org'] : '';
+                    }
+                ?>";
+    document.getElementById("month").value =
+            "<?php
+                    if (old('month')!=null) {
+                         echo old('month');
+                    } else {
+                         echo isset($_POST['month']) ? $_POST['month'] : '';
+                    }
+                ?>";
+    document.getElementById("year").value =
+            "<?php
+                    if (old('year')!=null) {
+                         echo old('year');
+                    } else {
+                         echo isset($_POST['year']) ? $_POST['year'] : '';
+                    }
+                ?>";
+    document.getElementById("desc").value =
+            "<?php
+                    if (old('desc')!=null) {
+                         echo old('desc');
+                    } else {
+                         echo isset($_POST['desc']) ? $_POST['desc'] : '';
+                    }
+                ?>";
+    };
+</script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -103,6 +148,52 @@ https://templatemo.com/tm-571-hexashop
         <div class="container">
 
 @can('isLocatario')
+
+<section>
+        <div class="outer_search">
+            <div>
+                <p style="padding:20px;float:left">
+                    <b>Ricerca<br>avanzata</b>
+                </p>
+            </div>
+
+            <form method="post" id="search" name="search" enctype="multipart/form-data"
+                action="{{route('offerte.search')}}">
+                @csrf
+                <span class="search">
+                    <label for="tip" class="control">Tipologia</label>
+                    <select name="tip" id="tip">
+                        @foreach ($tipologie as $tipologia)
+                        <option>{{$tipologia}}</option>
+                        @endforeach
+                    </select>
+                </span>
+               
+                <input type="submit" class="btn btn-inverse" style="vertical-align: super" value="Cerca">
+                @if ($errors->first('tipologia'))
+                <ul class="errors">
+                    @foreach ($errors->get('tipologia') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+                @if ($errors->first('month'))
+                <ul class="errors">
+                    @foreach ($errors->get('month') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+            </form>
+
+        </div>
+    </section>
+
+
+
+
+
+
     <div class="container-contact">
         <center><div class="wrap-contact1">
                 <b> FILTRI: </b>

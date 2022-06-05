@@ -6,6 +6,7 @@ use App\Models\Offerte;
 use App\Models\Resources\House;
 use App\Models\Faqs;
 use App\Models\Resources\Services;
+use App\Http\Request\RicercaOfferteRequest;
 
 class PublicController extends Controller {
     
@@ -34,11 +35,30 @@ class PublicController extends Controller {
         //Posti Letto Doppi
         $postiLettoDoppi = $this->_offerteModel->getPostiLettoDoppi();*/
         
-        //Alloggi
-        $alloggi = $this->_offerteModel->getAlloggi();
         
+        $tipologie = $this->_houseModel->getTipologiaList();
+        $alloggi = $this->_offerteModel->getAlloggi();
         return view('offerte')
-                        ->with('houses', $alloggi);
+                        ->with('houses', $alloggi)->with('tipologie', $tipologie);
+    }
+    
+    public function showOfferteFiltrate(RicercaOfferteRequest $request) {
+        
+        $tipologie = $this->_houseModel->getTipologiaList();
+        /*$regions = $this->eventsList->getRegionList();
+        $months = $this->eventsList->getMonthList();
+        $events = $this->eventsList->getEventsFiltered($request->year, $request->month, $request->reg,
+                $request->org, $request->desc);
+        $EventsOnSales = array();
+        foreach ($events as $event){
+           $EventsOnSales[$event->id] = $this->eventsList->checkOnSale($event);
+        }
+        return view('list')->with('events', $events)->with('regions', $regions)->with('organizzatori', $organizzatori)
+                ->with('months', $months)->with('OnSales', $EventsOnSales);
+*/
+        $alloggi = $this->_offerteModel->getHousesFiltered($request->tip);
+        
+        return view('offerte')->with('houses', $alloggi)->with('tipologie', $tipologie);
     }
     
     public function showOfferta($id) {
