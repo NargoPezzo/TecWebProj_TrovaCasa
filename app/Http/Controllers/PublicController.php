@@ -8,6 +8,7 @@ use App\Models\Faqs;
 use App\Models\Resources\Services;
 use App\Http\Request\RicercaOfferteRequest;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class PublicController extends Controller {
     
@@ -48,8 +49,9 @@ class PublicController extends Controller {
         $tipologie = $this->_houseModel->getTipologiaList();
         $prezzomin = $request->prezzomin;
         $prezzomax = $request->prezzomax;
-        $data_min = strtotime($request->data_min);
-        $data_max = strtotime($request->data_max);
+        $data_min = $request->data_min;
+        $data_max = $request->data_max;
+        //$superficie = $request->superficie;
         /*$regions = $this->eventsList->getRegionList();
         $months = $this->eventsList->getMonthList();
         $events = $this->eventsList->getEventsFiltered($request->year, $request->month, $request->reg,
@@ -61,8 +63,10 @@ class PublicController extends Controller {
         return view('list')->with('events', $events)->with('regions', $regions)->with('organizzatori', $organizzatori)
                 ->with('months', $months)->with('OnSales', $EventsOnSales);
 */
+        Log::info($data_min);
+        Log::info($data_max);
         
-        $alloggi = $this->_offerteModel->getHousesFiltered($request->tip, $prezzomin, $prezzomax, $data_min, $data_max);
+        $alloggi = $this->_offerteModel->getHousesFiltered($request->tip, $prezzomin, $prezzomax, $data_min, $data_max /*$superficie*/);
         
         return view('offerte')->with('houses', $alloggi)->with('tipologie', $tipologie)->with('prezzomin', $prezzomin)->with('prezzomax', $prezzomax)
                 ->with('data_min', $data_min)->with('data_max', $data_max);

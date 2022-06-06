@@ -31,10 +31,10 @@ class CreateHousesTable extends Migration
             $table->string('città');
             $table->char('provincia',2);
             $table->char('genere')->nullable();
-            $table->integer('età_min')->nullable();
-            $table->integer('età_max')->nullable();
+            $table->integer('età_min')->unsigned()->nullable();
+            $table->integer('età_max')->unsigned()->nullable();
             $table->tinyInteger('opzionato')->default(0);
-            $table->integer('superficie');
+            $table->integer('superficie')->unsigned();
             $table->text('immagine')->nullable()->default('no_home_icon.jpg');
             
             

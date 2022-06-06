@@ -29,7 +29,8 @@ class RicercaOfferteRequest extends FormRequest {
             'prezzomin' => '',
             'prezzomax' => '',
             'data_min' => 'date',
-            'data_max' => 'date|before_or_equal:data_min',
+            'data_max' => 'date',
+            //'superficie' => 'int',
             //'titolo' => 'string|max:50',
             /*'prezzo' => 'numeric|min:0',
             //'descrizione' => 'string|max:2500',
@@ -39,7 +40,7 @@ class RicercaOfferteRequest extends FormRequest {
             'città' => 'string|max:255|required_with:indirizzo',
             'cap' => 'numeric|max:5',
             'provincia' => 'string|max:2',
-            'superficie' => 'int',
+            
             'immagine' => 'image|max:1024',
             "servizi"    => "array|min:1",*/
         ];

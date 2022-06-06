@@ -97,11 +97,10 @@ https://templatemo.com/tm-571-hexashop
 
                         <span><b>Descrizione:</b>  {{ $alloggi->descrizione }} </span> 
 
-                        @if($alloggi->tipologia == 'appartamento')         
+                        @if($alloggi->tipologia == 'Appartamento')         
                             <span><b>Numero di camere totali nell'appartamento:</b>  {{ $alloggi->n_camere }} </span> 
-                        @endif
 
-                        @if($alloggi->tipologia == 'posto letto')  
+                        @elseif($alloggi->tipologia == 'Posto letto singolo' || $alloggi->tipologia == 'Posto letto doppio')  
                             <span><b>Numero di posti letto nella stanza:</b>  {{ $alloggi->n_posti_letto_totali }} </span>
                         @endif
 
@@ -129,11 +128,10 @@ https://templatemo.com/tm-571-hexashop
                             <span><b>Età massima richiesta:  {{ $alloggi->età_max }} </b></span> 
                         @endif
 
-                        @if($alloggi->tipologia == 'appartamento')   
+                        @if($alloggi->tipologia == 'Appartamento')   
                             <span><b>Superficie totale dell'appartamento:</b>  {{ $alloggi->superficie }} mq</span> 
-                        @endif
-
-                        @if($alloggi->tipologia == 'posto letto')  
+                       
+                        @elseif($alloggi->tipologia == 'Posto letto singolo' || $alloggi->tipologia == 'Posto letto doppio')  
                             <span><b>Superficie della camera:</b>  {{ $alloggi->superficie }} mq</span> 
                         @endif
                         <span><b>Prezzo:</b>  {{ $alloggi->prezzo }} €</span>

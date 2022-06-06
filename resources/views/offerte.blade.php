@@ -2,7 +2,8 @@
 <html lang="en">
 
   <head>
-      <script>
+
+<script>
     window.onload = function () {
         document.getElementById("tip").value =
                 "<?php
@@ -170,7 +171,9 @@ https://templatemo.com/tm-571-hexashop
 
 @can('isLocatario')
 
-<section>
+@section ('content')
+<section class="main-content">
+    <section>
         <div class="outer_search">
             <div>
                 <p style="padding:20px;float:left">
@@ -182,7 +185,7 @@ https://templatemo.com/tm-571-hexashop
                 action="{{route('offerte.search')}}">
                 @csrf
                 <span class="search">
-                    <label for="tip" class="control">Tipologia</label>
+                    <label for='tip' class="control">Tipologia</label>
                     <select name="tip" id="tip">
                         @foreach ($tipologie as $tipologia)
                         <option>{{$tipologia}}</option>
@@ -192,7 +195,7 @@ https://templatemo.com/tm-571-hexashop
                 <br>
                 <span class="search">
                    <label for='prezzomin' class="control">Prezzo min</label>
-                   <input name ="prezzomin" id="prezzomin" type="range" min="0" max="1000" step="25"
+                   <input name ="prezzomin" id="prezzomin" type="range" value="10" min="0" max="1000" step="25"
                    oninput="this.nextElementSibling.value = this.value">
                     <output></output>
                     @isset($prezzomin)
@@ -201,7 +204,7 @@ https://templatemo.com/tm-571-hexashop
                 </span>
                 <span class="search">
                     <label for='prezzomax' class="control">Prezzo max</label>
-                   <input name ="prezzomax" id="prezzomax" type="range" min="0" max="1000" step="25"
+                   <input name ="prezzomax" id="prezzomax" type="range" value="1000" min="0" max="3000" step="25"
                    oninput="this.nextElementSibling.value = this.value">
                     <output></output>
                     @isset($prezzomax)
@@ -211,22 +214,23 @@ https://templatemo.com/tm-571-hexashop
                 <br>
                 <span class="search">
                    <label for='data_min' class="control">Data min</label>
-                   <input name ="data_min" id="data_min" type="date"
+                   <input name ="data_min" id="data_min" type="date" value="01-01-2000"
                    oninput="this.nextElementSibling.value = this.value">
+                   <output></output>
                     @isset($data_min)
                         <option>{{$data_min}}</option>
                     @endisset
                 </span>
                 <span class="search">
                     <label for='data_max' class="control">Data max</label>
-                   <input name ="data_max" id="data_max" type="date"
-                   oninput="this.nextElementSibling.value = this.value">
+                   <input name ="data_max" id="data_max" type="date" value="01-01-3000"
+                   oninput="this.nextElementSibling.value = this.value" >
                     @isset($data_max)
                         <option>{{$data_max}}</option>
                     @endisset
                 </span>
                 <br>
-                <input type="submit" class="btn btn" style="vertical-align: super" value="Cerca">
+                <input type="submit" class="btn btn-inverse" style="vertical-align: super" value="Cerca">
                 @if ($errors->first('tipologia'))
                 <ul class="errors">
                     @foreach ($errors->get('tipologia') as $message)
@@ -235,14 +239,8 @@ https://templatemo.com/tm-571-hexashop
                 </ul>
                 @endif
             </form>
-
         </div>
     </section>
-
-
-
-
-
 
     <div class="container-contact">
         <center><div class="wrap-contact1">
@@ -293,8 +291,6 @@ https://templatemo.com/tm-571-hexashop
             
                 </div></center>
     </div>
-
-
             @endcan
           <div class="row">
           @isset($houses)
