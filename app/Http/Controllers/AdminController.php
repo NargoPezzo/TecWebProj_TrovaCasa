@@ -10,6 +10,8 @@ use App\Models\Faqs;
 use App\Http\Request\NuovaFaqRequest;
 use App\Http\Request\ModificaFaqRequest;
 
+use App\Models\Rented;
+
 
 class AdminController extends Controller {
 
@@ -87,3 +89,33 @@ class AdminController extends Controller {
         
     }
 }
+
+
+public function getStats(Request $request){
+        $this->_accomodations = new Alloggio;
+        $this->requested = new Rented;
+        $tipo = $request->input('type');
+        $data_inizio = $request->input('start-date');
+        $data_fine = $request->input('end-date');
+
+        if (!is_null($data_fine) and !is_null($data_inizio)){
+            $request->validate([
+                'start-date' => 'date_format:Y-m-d|before:tomorrow',
+                'end-date' => 'date_format:Y-m-d|after:start-date'  
+            ]);
+                $count_rent = $this->_accomodations->make_stats($tipo, $data_inizio, $data_fine);
+                $count_request = $this->_accomodations->make_stats3($tipo, $data_inizio, $data_fine);
+                $count_assigned = $this->requested->make_stats2($tipo, $data_inizio, $data_fine);            
+        }
+        else{
+            $count_rent = $this->_accomodations->make_stats($tipo, $data_inizio, $data_fine);
+            $count_request = $this->_accomodations->make_stats3($tipo, $data_inizio, $data_fine);
+            $count_assigned = $this->requested->make_stats2($tipo, $data_inizio, $data_fine);
+        }
+        return view('admin.statistics')->with('count_rent',$count_rent)->with('count_request',$count_request)->with('count_assigned',$count_assigned);
+    }
+    
+public function statistics()
+    {
+        return view('admin.statistics');
+    }

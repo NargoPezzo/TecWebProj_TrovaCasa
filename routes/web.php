@@ -87,6 +87,12 @@ Route::get('/admin', 'AdminController@index')
 Route::get('/homeadmin', 'AdminController@indexhome')
         ->name('homeadmin')->middleware('can:isAdmin');
 
+Route::get('/admin/stats', "AdminController@statistics")
+        ->name('admin.stats');
+
+Route::get('/admin/stats/search', "AdminController@getStats")
+        ->name('admin.stats.search');
+
 // Rotte Offerta singola
 Route::get('/offertasingola/{id}', 'PublicController@showOfferta')   
         ->name('offertasingola');

@@ -50,6 +50,11 @@ class House extends Model
         return $houses;
     }
     
+        public function getAlloggiByDate($number=9){
+        $houses = House::orderby('created_at', 'desc')->paginate($number);
+        return $houses;
+    }
+    
   /*  public function locatore() {
         
     return $this->belongsTo(User::Class, 'locatore_id'); // specify the column which stores the author in posts table
