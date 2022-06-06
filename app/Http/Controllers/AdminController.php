@@ -89,10 +89,10 @@ class AdminController extends Controller {
         return redirect()->route('faq');
         
     }
-}
 
 
-public function getStats(Request $tipologia){
+
+    public function getStats(Request $tipologia){
         $this->_alloggi = new House;
         $this->_opzionati = new Opzionato;
         $tipo = $tipologia->input('type');// BOHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
@@ -119,4 +119,6 @@ public function getStats(Request $tipologia){
 public function statistics()
     {
         return view('admin.statistics');
+    }
+    
     }
