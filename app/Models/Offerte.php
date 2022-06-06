@@ -64,7 +64,7 @@ class Offerte {
                 case "prezzomax":
                     $queryFilters[] = ["prezzo", "<=", $prezzomax];
                     break;
-                case "data_min":
+                /*case "data_min":
                     $queryFilters[] = ["data_min", "LIKE", "%" . strval($data_min) . "%"];
                     break;
                 case "data_max":
@@ -97,12 +97,11 @@ class Offerte {
         }
 
         //Caso in cui sia presente almeno un filtro
-        else {
+        {
             $houses = House::where($queryFilters)/*->whereDate('data', '>=', $this->today)*/;
         }
 
         return $houses->paginate(9);
     }
-    
     
 }
