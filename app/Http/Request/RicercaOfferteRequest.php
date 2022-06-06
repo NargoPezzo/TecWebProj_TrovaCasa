@@ -28,6 +28,8 @@ class RicercaOfferteRequest extends FormRequest {
             'tip' => '',
             'prezzomin' => '',
             'prezzomax' => '',
+            'data_min' => 'date',
+            'data_max' => 'date|before_or_equal:data_min',
             //'titolo' => 'string|max:50',
             /*'prezzo' => 'numeric|min:0',
             //'descrizione' => 'string|max:2500',

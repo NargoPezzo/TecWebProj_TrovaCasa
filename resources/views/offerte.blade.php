@@ -28,6 +28,22 @@
                          echo isset($_POST['prezzomax']) ? $_POST['prezzomax'] : '';
                     }
                 ?>";
+    document.getElementById("data_min").value =
+            "<?php
+                    if (old('data_min')!=null) {
+                         echo old('data_min');
+                    } else {
+                         echo isset($_POST['data_min']) ? $_POST['data_min'] : '';
+                    }
+                ?>";
+    document.getElementById("data_max").value =
+            "<?php
+                    if (old('data_max')!=null) {
+                         echo old('data_max');
+                    } else {
+                         echo isset($_POST['data_max']) ? $_POST['data_max'] : '';
+                    }
+                ?>";
     document.getElementById("month").value =
             "<?php
                     if (old('month')!=null) {
@@ -173,11 +189,12 @@ https://templatemo.com/tm-571-hexashop
                         @endforeach
                     </select>
                 </span>
+                <br>
                 <span class="search">
                    <label for='prezzomin' class="control">Prezzo min</label>
                    <input name ="prezzomin" id="prezzomin" type="range" min="0" max="1000" step="25"
                    oninput="this.nextElementSibling.value = this.value">
-                    <output>400</output>
+                    <output></output>
                     @isset($prezzomin)
                         <option>{{$prezzomin}}</option>
                     @endisset
@@ -186,12 +203,30 @@ https://templatemo.com/tm-571-hexashop
                     <label for='prezzomax' class="control">Prezzo max</label>
                    <input name ="prezzomax" id="prezzomax" type="range" min="0" max="1000" step="25"
                    oninput="this.nextElementSibling.value = this.value">
-                    <output>400</output>
+                    <output></output>
                     @isset($prezzomax)
                         <option>{{$prezzomax}}</option>
                     @endisset
                 </span>
-                <input type="submit" class="btn btn-inverse" style="vertical-align: super" value="Cerca">
+                <br>
+                <span class="search">
+                   <label for='data_min' class="control">Data min</label>
+                   <input name ="data_min" id="data_min" type="date"
+                   oninput="this.nextElementSibling.value = this.value">
+                    @isset($data_min)
+                        <option>{{$data_min}}</option>
+                    @endisset
+                </span>
+                <span class="search">
+                    <label for='data_max' class="control">Data max</label>
+                   <input name ="data_max" id="data_max" type="date"
+                   oninput="this.nextElementSibling.value = this.value">
+                    @isset($data_max)
+                        <option>{{$data_max}}</option>
+                    @endisset
+                </span>
+                <br>
+                <input type="submit" class="btn btn" style="vertical-align: super" value="Cerca">
                 @if ($errors->first('tipologia'))
                 <ul class="errors">
                     @foreach ($errors->get('tipologia') as $message)

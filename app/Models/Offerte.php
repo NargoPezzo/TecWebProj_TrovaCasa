@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Resources\House;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Resources\Services;
+use Carbon\Carbon;
 
 class Offerte {
 
@@ -31,12 +32,14 @@ class Offerte {
         return $alloggi;
     }
     
-    public function getHousesFiltered($tipologia = null, $prezzomin = null, $prezzomax = null/*$anno = null, $mese = null, $regione = null, $organizzazione = null, $descrizione = null*/) {
+    public function getHousesFiltered($tipologia = null, $prezzomin = null, $prezzomax = null, $data_min = null, $data_max = null/*$anno = null, $mese = null, $regione = null, $organizzazione = null, $descrizione = null*/) {
         /*$data = null;
         if ((isset($anno)) && (isset($mese))) {
             $data = $anno . '-' . $this->chooseMonthNumber($mese);
         }*/
-        $filters = array("tipologia" => $tipologia, "prezzomin" => $prezzomin, "prezzomax" => $prezzomax /*data" => $data, "regione" => $regione, "organizzazione" => $organizzazione, "descrizione" => $descrizione*/);
+        $today = Carbon::now()->toDateString();
+        
+        $filters = array("tipologia" => $tipologia, "prezzomin" => $prezzomin, "prezzomax" => $prezzomax, "data_min" => $data_min, "data_max" => $data_max /*data" => $data, "regione" => $regione, "organizzazione" => $organizzazione, "descrizione" => $descrizione*/);
 
         //Controllo quali filtri sono stati settati
         foreach ($filters as $key => $value) {
@@ -57,6 +60,12 @@ class Offerte {
                     break;
                 case "prezzomax":
                     $queryFilters[] = ["prezzo", "<", $prezzomax];
+                    break;
+                case "data_min":
+                    $queryFilters[] = ["data_min", ">=", $data_min];
+                    break;
+                case "data_max":
+                    $queryFilters[] = ["data_max", "<=", $data_max];
                     break;
                 /*case "data":
                     $queryFilters[] = ["data", "LIKE", "%" . strval($data) . "%"];

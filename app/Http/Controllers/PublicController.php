@@ -7,6 +7,7 @@ use App\Models\Resources\House;
 use App\Models\Faqs;
 use App\Models\Resources\Services;
 use App\Http\Request\RicercaOfferteRequest;
+use Carbon\Carbon;
 
 class PublicController extends Controller {
     
@@ -47,6 +48,8 @@ class PublicController extends Controller {
         $tipologie = $this->_houseModel->getTipologiaList();
         $prezzomin = $request->prezzomin;
         $prezzomax = $request->prezzomax;
+        $data_min = strtotime($request->data_min);
+        $data_max = strtotime($request->data_max);
         /*$regions = $this->eventsList->getRegionList();
         $months = $this->eventsList->getMonthList();
         $events = $this->eventsList->getEventsFiltered($request->year, $request->month, $request->reg,
@@ -59,9 +62,10 @@ class PublicController extends Controller {
                 ->with('months', $months)->with('OnSales', $EventsOnSales);
 */
         
-        $alloggi = $this->_offerteModel->getHousesFiltered($request->tip, $prezzomin, $prezzomax);
+        $alloggi = $this->_offerteModel->getHousesFiltered($request->tip, $prezzomin, $prezzomax, $data_min, $data_max);
         
-        return view('offerte')->with('houses', $alloggi)->with('tipologie', $tipologie)->with('prezzomin', $prezzomin)->with('prezzomax', $prezzomax);
+        return view('offerte')->with('houses', $alloggi)->with('tipologie', $tipologie)->with('prezzomin', $prezzomin)->with('prezzomax', $prezzomax)
+                ->with('data_min', $data_min)->with('data_max', $data_max);
     }
     
     public function showOfferta($id) {
@@ -75,7 +79,6 @@ class PublicController extends Controller {
       else{
           return redirect('/offerte')->with('status','The link was broken');
       }
-     
     }
     
     public function showFaqs() {

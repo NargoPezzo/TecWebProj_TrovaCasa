@@ -31,21 +31,21 @@ class DatabaseSeeder extends Seeder
         DB::table('houses')->insert([
             ['id' => 1, 'locatore_id' => 6, 'titolo' => 'Appartamento1', 'prezzo' => 280, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
                 'tipologia' => 'Appartamento', 'n_camere' => 3, 'n_posti_letto_totali' => 3, 'data_inserimento' => date("Y-m-d H:i:s"),
-                'indirizzo' => 'Via Simeoni, 6', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'età_min' => '18', 
+                'data_min' => '2020-01-01', 'data_max' => '2023-01-01','indirizzo' => 'Via Simeoni, 6', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'età_min' => '18', 
                 'superficie' => '150','immagine' => 'casa1.jpg']
         ]);
             
         DB::table('houses')->insert([
             ['id' => 2, 'locatore_id' => 5, 'titolo' => 'Appartamento2', 'prezzo' => 480, 'descrizione' => 'Appartamento situato in pieno centro, 250m dalla fermata principale del pullman, a 2 minuti a piedi da piazza Cavour. Presenti due bagni, una cucina e un ampio salone',
                 'tipologia' => 'Appartamento', 'n_camere' => 4, 'n_posti_letto_totali' => 6, 'data_inserimento' => date("Y-m-d H:i:s"),
-                'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
+                'data_min' => '2020-01-01', 'indirizzo' => 'Via Marcelletta, 17', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'F', 
                 'età_min' => '22', 'superficie' => '250']
         ]);
         
         DB::table('houses')->insert([
             ['id' => 3, 'locatore_id' => 5, 'locatore_id' => 5, 'titolo' => 'Appartamento3', 'prezzo' => 370, 'descrizione' => 'Appartamento situato in periferia, a 10 minuti a piedi dalla fermata del pullman. Presenti due bagni, una cucina e un ampio salone, wi-fi, posto auto',
                 'tipologia' => 'Appartamento', 'n_camere' => 3, 'n_posti_letto_totali' => 5, 'data_inserimento' => date("Y-m-d H:i:s"),
-                'indirizzo' => 'Via Pinocchio, 24', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'M', 
+                'data_max' => '2023-01-01', 'indirizzo' => 'Via Pinocchio, 24', 'cap' => '60121','città' => 'Ancona', 'provincia' => 'AN', 'genere' => 'M', 
                 'età_min' => '20', 'superficie' => '200','immagine' => 'casa3.jpg']
         ]);
          
