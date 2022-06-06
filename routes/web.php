@@ -70,8 +70,8 @@ Route::view('/home', 'home')
 /*Route::get('/locatario', 'LocatarioController@index') 
         ->name('locatario')->middleware('can:isLocatario');*/
 
-Route::get('/homelocatario', 'LocatarioController@indexhome')
-        ->name('homelocatario')->middleware('can:isLocatario');
+/*Route::get('/homelocatario', 'LocatarioController@indexhome')
+        ->name('homelocatario')->middleware('can:isLocatario');*/
 
 //Rotte Locatore
 Route::get('/locatore', 'LocatoreController@index') 

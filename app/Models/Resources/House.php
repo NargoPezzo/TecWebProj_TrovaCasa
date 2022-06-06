@@ -50,8 +50,8 @@ class House extends Model
         return $houses;
     }
     
-        public function getAlloggiByDate($number=9){
-        $houses = House::orderby('created_at', 'desc')->paginate($number);
+        public function getAlloggiByDate(){
+        $houses = House::orderby('data_inserimento', 'desc')->paginate(9);
         return $houses;
     }
     

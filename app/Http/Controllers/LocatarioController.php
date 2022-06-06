@@ -1,6 +1,7 @@
 <?php
 
 namespace app\Http\Controllers;
+use App\Models\Resources\House;
 
 //use App\Models\Admin;
 
@@ -14,12 +15,13 @@ class LocatarioController extends Controller {
     }
 
     public function index() {
-        return view('home');
+        $this->_houseModel = new House;
+        $alloggi = $this->_houseModel->getAlloggiByDate();
+                return view('home')
+                ->with('alloggi', $alloggi);
     }
     
-    public function indexhome() {
-        return view('homelocatario');
-    }
+    
     
    /* public function indexoffertelocatario() {   POTREBBE ESSERE INUTILE
         return view('offertelocatario');
