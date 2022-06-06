@@ -55,7 +55,7 @@
                     @endcan
                     
                     @can('isLocatario')
-                    <li><a href="{{ route('modificalocatore') }}" title="Modificare dati personali">Modifica dati utente</a></li>
+                    <li><a href="{{ route('modificalocatario') }}" title="Modificare dati personali">Modifica dati utente</a></li>
                     @endcan
                     
                     @cannot('isAdmin')

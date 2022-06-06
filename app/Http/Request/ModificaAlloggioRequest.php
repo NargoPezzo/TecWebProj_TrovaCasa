@@ -35,7 +35,7 @@ class ModificaAlloggioRequest extends FormRequest {
             'n_camere' => 'int',
             'n_posti_letto_totali' => 'int',
             'indirizzo' => 'string|max:255',
-            'cap' => 'numeric|max:5',
+            'cap' => 'numeric',
             'città' => 'string|max:255',
             'provincia' => 'string|max:2',
             'superficie' => 'int',

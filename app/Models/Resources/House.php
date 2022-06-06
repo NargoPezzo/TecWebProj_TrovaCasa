@@ -45,16 +45,21 @@ class House extends Model
         return $houses;
     }
     
+    public function getHousesByPrezzo ($prezzomin, $prezzomax) {
+        $houses = House::where('tipologia', $tipologia);
+        return $houses;
+    }
+    
   /*  public function locatore() {
         
     return $this->belongsTo(User::Class, 'locatore_id'); // specify the column which stores the author in posts table
 }*/
-    public function getHousesFiltered($tipologia = null/*$anno = null, $mese = null, $regione = null, $organizzazione = null, $descrizione = null*/) {
+    public function getHousesFiltered($tipologia = null, $prezzomin = null, $prezzomax = null/*$anno = null, $mese = null, $regione = null, $organizzazione = null, $descrizione = null*/) {
         /*$data = null;
         if ((isset($anno)) && (isset($mese))) {
             $data = $anno . '-' . $this->chooseMonthNumber($mese);
         }*/
-        $filters = array("tipologia" => $tipologia/*"data" => $data, "regione" => $regione, "organizzazione" => $organizzazione, "descrizione" => $descrizione*/);
+        $filters = array("tipologia" => $tipologia, "prezzomin" => $prezzomin, "prezzomax" => $prezzomax /*data" => $data, "regione" => $regione, "organizzazione" => $organizzazione, "descrizione" => $descrizione*/);
 
         //Controllo quali filtri sono stati settati
         foreach ($filters as $key => $value) {
@@ -69,6 +74,12 @@ class House extends Model
             switch ($key) {
                 case "tipologia":
                     $queryFilters[] = ["tipologia", "LIKE", strval($tipologia)];
+                    break;
+                case "prezzomin":
+                    $queryFilters[] = ["prezzo", ">", $prezzomin];
+                    break;
+                case "prezzomax":
+                    $queryFilters[] = ["prezzo", "<", $prezzomax];
                     break;
                 /*case "data":
                     $queryFilters[] = ["data", "LIKE", "%" . strval($data) . "%"];

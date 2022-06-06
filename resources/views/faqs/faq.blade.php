@@ -21,7 +21,6 @@
                 $('.contact-form, #Myform').slideToggle();
               });
             });
-            
         </script>
 
 
@@ -97,6 +96,19 @@ https://templatemo.com/tm-571-hexashop -->
    
 
 <!--<div><h1>Sezione domande frequenti:</h1></div> -->
+@can('isAdmin') 
+<section class="section" id="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                             <a id="Mybtn"><i class="fa fa-edit fa-2x text-info"></i></a>
+                            <span>Clicca qui per modificare le F.A.Q., oppure clicca sul tasto apposito per eliminarne una.</span><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endcan
     <div class="container">
         
         @isset($faqs) 
@@ -116,7 +128,7 @@ https://templatemo.com/tm-571-hexashop -->
                                 href = '{{route('eliminafaq', [$id])}}'; }"><i class="fa fa-times fa-2x text-danger"></i></a> 
                                 @endcan
                             </p></li>
-                           
+                            
                             
                                 {{ Form::model($faq, array('route' => 'modificafaq', 'class' => 'contact-form', 'id' => 'Myform')) }}
                                 {{ Form::hidden('id', $faq->id) }}<br>

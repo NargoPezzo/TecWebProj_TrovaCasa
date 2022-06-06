@@ -31,12 +31,12 @@ class Offerte {
         return $alloggi;
     }
     
-    public function getHousesFiltered($tipologia = null/*$anno = null, $mese = null, $regione = null, $organizzazione = null, $descrizione = null*/) {
+    public function getHousesFiltered($tipologia = null, $prezzomin = null, $prezzomax = null/*$anno = null, $mese = null, $regione = null, $organizzazione = null, $descrizione = null*/) {
         /*$data = null;
         if ((isset($anno)) && (isset($mese))) {
             $data = $anno . '-' . $this->chooseMonthNumber($mese);
         }*/
-        $filters = array("tipologia" => $tipologia/*"data" => $data, "regione" => $regione, "organizzazione" => $organizzazione, "descrizione" => $descrizione*/);
+        $filters = array("tipologia" => $tipologia, "prezzomin" => $prezzomin, "prezzomax" => $prezzomax /*data" => $data, "regione" => $regione, "organizzazione" => $organizzazione, "descrizione" => $descrizione*/);
 
         //Controllo quali filtri sono stati settati
         foreach ($filters as $key => $value) {
@@ -51,6 +51,12 @@ class Offerte {
             switch ($key) {
                 case "tipologia":
                     $queryFilters[] = ["tipologia", "LIKE", strval($tipologia)];
+                    break;
+                case "prezzomin":
+                    $queryFilters[] = ["prezzo", ">", $prezzomin];
+                    break;
+                case "prezzomax":
+                    $queryFilters[] = ["prezzo", "<", $prezzomax];
                     break;
                 /*case "data":
                     $queryFilters[] = ["data", "LIKE", "%" . strval($data) . "%"];
@@ -70,7 +76,7 @@ class Offerte {
 
         //Controllo se non è presente alcun filtro
         if (empty($queryFilters)) {
-            $houses = House::where('id', '>', 0)->orderBy('id');
+            $houses = House::where('id', 4)->orderBy('id');
         }
 
         //Caso in cui sia presente almeno un filtro

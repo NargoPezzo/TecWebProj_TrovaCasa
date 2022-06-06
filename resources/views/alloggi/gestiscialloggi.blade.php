@@ -113,7 +113,6 @@ https://templatemo.com/tm-571-hexashop
                         <span>Clicca su un'immagine per visualizzare le richieste ricevute</span><br>
                              <a id="Mybtn"><i class="fa fa-edit fa-2x text-info"></i></a>
                             <span>Clicca qui per modificare gli alloggi, oppure clicca sul tasto apposito per eliminarne uno.</span><br>
-
                     </div>
                 </div>
             </div>

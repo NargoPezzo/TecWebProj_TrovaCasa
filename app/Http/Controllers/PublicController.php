@@ -45,6 +45,8 @@ class PublicController extends Controller {
     public function showOfferteFiltrate(RicercaOfferteRequest $request) {
         
         $tipologie = $this->_houseModel->getTipologiaList();
+        $prezzomin = $request->prezzomin;
+        $prezzomax = $request->prezzomax;
         /*$regions = $this->eventsList->getRegionList();
         $months = $this->eventsList->getMonthList();
         $events = $this->eventsList->getEventsFiltered($request->year, $request->month, $request->reg,
@@ -56,9 +58,10 @@ class PublicController extends Controller {
         return view('list')->with('events', $events)->with('regions', $regions)->with('organizzatori', $organizzatori)
                 ->with('months', $months)->with('OnSales', $EventsOnSales);
 */
-        $alloggi = $this->_offerteModel->getHousesFiltered($request->tip);
         
-        return view('offerte')->with('houses', $alloggi)->with('tipologie', $tipologie);
+        $alloggi = $this->_offerteModel->getHousesFiltered($request->tip, $prezzomin, $prezzomax);
+        
+        return view('offerte')->with('houses', $alloggi)->with('tipologie', $tipologie)->with('prezzomin', $prezzomin)->with('prezzomax', $prezzomax);
     }
     
     public function showOfferta($id) {
