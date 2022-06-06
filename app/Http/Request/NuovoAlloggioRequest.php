@@ -33,7 +33,7 @@ class NuovoAlloggioRequest extends FormRequest {
             'n_camere' => 'required|int',
             'n_posti_letto_totali' => 'required|int',
             'indirizzo' => 'required|string|max:255',
-            'cap' => 'required|numeric|max:5',
+            'cap' => 'required|numeric',
             'città' => 'required|string|max:255',
             'provincia' => 'required|string|max:2',
             'superficie' => 'required|int',

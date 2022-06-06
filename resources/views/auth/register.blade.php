@@ -179,7 +179,7 @@ https://templatemo.com/tm-571-hexashop -->
             </div><br><br>
             
             <div  class="wrap-input">
-                {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}<br>
+                {{ Form::label('username', 'Nome Utente (min 8 caratteri)', ['class' => 'label-input']) }}<br>
                 {{ Form::text('username', '', ['class' => 'input','id' => 'username']) }}
                 @if ($errors->first('username'))
                 <ul style = 'list-style-type: square', class="errors">
