@@ -65,8 +65,8 @@ https://templatemo.com/tm-571-hexashop
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>Dove Siamo</h2>
-                        <span>Nel cuore degli studenti</span>
+                        <h2>Modifica i tuoi dati</h2>
+                        <span>Ci hai ripensato?</span>
                     </div>
                 </div>
             </div>
@@ -86,9 +86,9 @@ https://templatemo.com/tm-571-hexashop
     <h2> Modifica qui i tuoi dati:</h2>
     @if ($user->livello == 'locatario')
         {{ Form::model($user, array('route' => 'modificalocatario.save', 'id' => 'editform')) }}
-    @else{
+    @else
         {{ Form::model($user, array('route' => 'modificalocatore.save', 'id' => 'editform')) }}
-           }
+           
     @endif
     @csrf 
     <br>
