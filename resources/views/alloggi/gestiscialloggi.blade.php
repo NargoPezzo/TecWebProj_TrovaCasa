@@ -7,10 +7,10 @@
       <style>
         #Myform{
             display: none;
-            width: 1000px;
+            width: 600px;
             border: 1px solid #ccc;
             padding: 14px;
-            background: #ececec;
+            
         }	
        </style>
 
@@ -41,13 +41,7 @@
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
-<!--
 
-TemplateMo 571 Hexashop
-
-https://templatemo.com/tm-571-hexashop
-
--->
     </head>
     
     <body>
@@ -113,6 +107,7 @@ https://templatemo.com/tm-571-hexashop
                         <span>Clicca su un'immagine per visualizzare le richieste ricevute</span><br>
                              <a id="Mybtn"><i class="fa fa-edit fa-2x text-info"></i></a>
                             <span>Clicca qui per modificare gli alloggi, oppure clicca sul tasto apposito per eliminarne uno.</span><br>
+
                     </div>
                 </div>
             </div>
@@ -121,11 +116,13 @@ https://templatemo.com/tm-571-hexashop
         
         
         <div class="container">
+          
           @isset($houses)
             @foreach ($houses as $house)
             @php
                 $id = urlencode($house->id);
             @endphp
+            <div class="row">
                 <div class="col-lg-4">
                     <div class="item">
                         <div class="thumb">
@@ -147,106 +144,119 @@ https://templatemo.com/tm-571-hexashop
                             <div class =" right-content">
                             
 
-                            <a onclick="if (confirm('Vuoi eliminarlo definitivamente?')) {
-                                location.href = '{{route('eliminaalloggio', [$id])}}'; }"><i class="fa fa-times fa-2x text-danger"></i></a>                            
+                                <a onclick="if (confirm('Vuoi eliminarlo definitivamente?')) {
+                                    location.href = '{{route('eliminaalloggio', [$id])}}'; }"><i class="fa fa-times fa-2x text-danger"></i></a>                            
                             
-                                </div><!-- comment -->
+                            </div>
                         </div>
-                        </div>
-                            
+                    </div>
+                </div>    
+                        
+                        
+            <div class=" lg-col-8">  
                             {{ Form::model($house, array('route' => 'modificaalloggio', 'class' => 'contact-form', 'id' => 'Myform')) }}
                                 {{Form::hidden('id', $house->id)}}
-                                <p id="pencil_text"><b>Modifica i dati del tuo alloggio</b></p>
+                                <p id="pencil_text"><b>Modifica i dati del tuo alloggio</b></p><br>
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
-                                        <label>Nuovo titolo:</label>
-                                        {{ Form::text('titolo', $house->titolo, ['class' => 'input','id' => 'titolo', 'style'=>'font-weight: bold;width:50em', 'required' => '']) }}
+                                        <label>Nome:</label>
+                                        <br> {{ Form::text('titolo', $house->titolo, ['class' => 'input','id' => 'titolo', 'style'=>'width:30em', 'required' => '']) }} 
                                         </div>
+                                        <br>
                                     </div>
                                 <div class="faq-element">
                                         <div class="wrap-contact1">
-                                        <label>Nuova descrizione:</label>
-                                        {{ Form::text('descrizione', $house->descrizione, ['class' => 'input','id' => 'descrizione', 'style'=>'font-weight: bold;width:50em', 'required' => '']) }}
+                                        <label>Descrizione:</label>
+                                        <br>{{ Form::textarea('descrizione', $house->descrizione, ['class' => 'input','id' => 'descrizione', 'style'=>'width:30em', 'required' => '']) }}
                                         </div>
+                                        <br>
                                     </div>
                                  <div class="faq-element">
                                         <div class="wrap-contact1">
-                                        <label>Nuovo prezzo:</label>
-                                        {{ Form::text('prezzo', $house->prezzo, ['class' => 'input','id' => 'prezzo', 'style'=>'font-weight: bold;width:50em', 'required' => '']) }}
+                                        <label>Prezzo:</label>
+                                        <br>{{ Form::text('prezzo', $house->prezzo, ['class' => 'input','id' => 'prezzo', 'style'=>'width:30em', 'required' => '']) }}
                                         </div>
-                                 </div><!-- comment -->
-                                  <div class="faq-element">
+                                        <br>
+                                </div>
+                                
+                                <div class="faq-element">
                                         <div class="wrap-contact1">
-                                        <label>Nuova tipologia:</label>
-                                        {{ Form::text('tipologia', $house->tipologia, ['class' => 'input','id' => 'tipologia', 'style'=>'font-weight: bold;width:50em', 'required' => '']) }}
+                                        <label>Numero di Camere:</label>
+                                        <br>{{ Form::text('n_camere', $house->n_camere, ['class' => 'input','id' => 'n_camere', 'style'=>'width:30em', 'required' => '']) }}
                                         </div>
-                                    </div>
-                                 <div class="faq-element">
-                                        <div class="wrap-contact1">
-                                        <label>Nuova n_camere:</label>
-                                        {{ Form::text('n_camere', $house->n_camere, ['class' => 'input','id' => 'n_camere', 'style'=>'font-weight: bold;width:50em', 'required' => '']) }}
-                                        </div>
+                                        <br>
                                     </div><!-- comment -->
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
-                                        <label>Nuova n_posti_letto_totali:</label>
-                                        {{ Form::text('n_posti_letto_totali', $house->n_posti_letto_totali, ['class' => 'input','id' => 'n_posti_letto_totali', 'style'=>'font-weight: bold;width:50em', 'required' => '']) }}
+                                        <label>Posti Letto Totali:</label>
+                                        <br>{{ Form::text('n_posti_letto_totali', $house->n_posti_letto_totali, ['class' => 'input','id' => 'n_posti_letto_totali', 'style'=>'width:30em', 'required' => '']) }}
                                         </div>
+                                        <br>
                                     </div>
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
-                                        <label>Nuova indirizzo:</label>
-                                        {{ Form::text('indirizzo', $house->indirizzo, ['class' => 'input','id' => 'indirizzo', 'style'=>'font-weight: bold;width:50em', 'required' => '']) }}
+                                        <label>Indirizzo:</label>
+                                        <br>{{ Form::text('indirizzo', $house->indirizzo, ['class' => 'input','id' => 'indirizzo', 'style'=>'width:30em', 'required' => '']) }}
                                         </div>
+                                        <br>
                                     </div>
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
-                                        <label>Nuova cap:</label>
-                                        {{ Form::text('cap', $house->cap, ['class' => 'input','id' => 'cap', 'style'=>'font-weight: bold;width:50em', 'required' => '']) }}
+                                        <label>CAP:</label>
+                                        <br>{{ Form::text('cap', $house->cap, ['class' => 'input','id' => 'cap', 'style'=>'width:30em', 'required' => '']) }}
                                         </div>
+                                        <br>
                                     </div>
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
-                                        <label>Nuova città:</label>
-                                        {{ Form::text('città', $house->città, ['class' => 'input','id' => 'città', 'style'=>'font-weight: bold;width:50em', 'required' => '']) }}
+                                        <label>Città:</label>
+                                        <br>{{ Form::text('città', $house->città, ['class' => 'input','id' => 'città', 'style'=>'width:30em', 'required' => '']) }}
                                         </div>
+                                        <br>
                                     </div>
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
-                                        <label>Nuova provincia:</label>
-                                        {{ Form::text('provincia', $house->provincia, ['class' => 'input','id' => 'provincia', 'style'=>'font-weight: bold;width:50em', 'required' => '']) }}
+                                        <label>Provincia:</label>
+                                        <br>{{ Form::text('provincia', $house->provincia, ['class' => 'input','id' => 'provincia', 'style'=>'width:30em', 'required' => '']) }}
                                         </div>
+                                        <br>
                                     </div><!-- comment -->
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
-                                        <label>Nuova superficie:</label>
-                                        {{ Form::text('superficie', $house->superficie, ['class' => 'input','id' => 'superficie', 'style'=>'font-weight: bold;width:50em', 'required' => '']) }}
+                                        <label>Metri Quadri:</label>
+                                        <br>{{ Form::text('superficie', $house->superficie, ['class' => 'input','id' => 'superficie', 'style'=>'width:30em', 'required' => '']) }}
                                         </div>
+                                        <br>
                                     </div>
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
-                                        <label>Nuova immagine:</label>
-                                        {{ Form::image('immagine', $house->immagine, ['class' => 'input','id' => 'immagine', 'style'=>'font-weight: bold;width:50em', 'required' => '']) }}
+                                        <label>Modifica Immagine:</label>
+                                        <br>{{ Form::image('immagine', $house->immagine, ['class' => 'input','id' => 'immagine', 'style'=>'width:30em', 'required' => '']) }}
                                         </div>
+                                        <br>
                                     </div>        
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
-                                        <label>Nuova servizi:</label>
-                                        {{ Form::text('servizi', $house->servizi, ['class' => 'input','id' => 'servizi', 'style'=>'font-weight: bold;width:50em', 'required' => '']) }}
+                                        <label>Servizi:</label>
+                                        <br>{{ Form::text('servizi', $house->servizi, ['class' => 'input','id' => 'servizi', 'style'=>'width:30em', 'required' => '']) }}
+                                        
+                                                <input type="checkbox" name="servizi[]" value="Lavatrice"> Lavatrice<br/>
+                                                <input type="checkbox" name="servizi[]" value="Asciugatrice"> Asciugatrice <br/>
+                                                <input type="checkbox" name="servizi[]" value="Wifi"> Wifi <br/>
+                                                <input type="checkbox" name="servizi[]" value="Posto Auto"> Posto Auto <br/>
+                                                <input type="checkbox" name="servizi[]" value="Locale Ricreativo"> Locale Ricreativo <br/><br/>
                                         </div>
+                                        <br>
                                     </div> 
-                                    <div class="faq-element">
-                                        <div class="wrap-contact1">
-                                        <label>Nuova tipologia:</label>
-                                        {{ Form::text('tipologia', $house->tipologia, ['class' => 'input','id' => 'tipologia', 'style'=>'font-weight: bold;width:50em', 'required' => '']) }}
-                                        </div>
-                                    </div>
+                                    
                                     
                                 {{ Form::submit('Modifica', ['id' => 'adduser']) }}
                                 {{ Form::close() }}
                                 
                                 <br><br><br>
-                                </div>
+                    </div>
+                </div>    
+                   
                         
                     @endcan
                             
