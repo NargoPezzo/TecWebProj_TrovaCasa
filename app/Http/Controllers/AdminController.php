@@ -2,6 +2,7 @@
 
 namespace app\Http\Controllers;
 
+new \App\Models\Resources\House;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\User;
@@ -91,26 +92,26 @@ class AdminController extends Controller {
 }
 
 
-public function getStats(Request $request){
-        $this->_accomodations = new Alloggio;
-        $this->requested = new Rented;
-        $tipo = $request->input('type');
-        $data_inizio = $request->input('start-date');
-        $data_fine = $request->input('end-date');
+public function getStats(Request $tipologia){
+        $this->_alloggi = new House;
+        $this->_opzionati = new Opzionato;
+        $tipo = $tipologia->input('type');// BOHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+        $data_min = $tipologia->input('start-date'); 
+        $data_max = $tipologia->input('end-date');
 
-        if (!is_null($data_fine) and !is_null($data_inizio)){
-            $request->validate([
+        if (!is_null($data_max) and !is_null($data_min)){
+            $tipologia->validate([
                 'start-date' => 'date_format:Y-m-d|before:tomorrow',
                 'end-date' => 'date_format:Y-m-d|after:start-date'  
             ]);
-                $count_rent = $this->_accomodations->make_stats($tipo, $data_inizio, $data_fine);
-                $count_request = $this->_accomodations->make_stats3($tipo, $data_inizio, $data_fine);
-                $count_assigned = $this->requested->make_stats2($tipo, $data_inizio, $data_fine);            
+                $count_rent = $this->_accomodations->make_stats($tipo, $data_min, $data_max);
+                $count_request = $this->_accomodations->make_stats3($tipo, $data_min, $data_max);
+                $count_assigned = $this->requested->make_stats2($tipo, $data_min, $data_max);            
         }
         else{
-            $count_rent = $this->_accomodations->make_stats($tipo, $data_inizio, $data_fine);
-            $count_request = $this->_accomodations->make_stats3($tipo, $data_inizio, $data_fine);
-            $count_assigned = $this->requested->make_stats2($tipo, $data_inizio, $data_fine);
+            $count_rent = $this->_accomodations->make_stats($tipo, $data_min, $data_max);
+            $count_request = $this->_accomodations->make_stats3($tipo, $data_min, $data_max);
+            $count_assigned = $this->requested->make_stats2($tipo, $data_min, $data_max);
         }
         return view('admin.statistics')->with('count_rent',$count_rent)->with('count_request',$count_request)->with('count_assigned',$count_assigned);
     }
