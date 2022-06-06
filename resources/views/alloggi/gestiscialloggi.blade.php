@@ -160,39 +160,50 @@
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
                                         <label><b>Nome</b></label>
-                                        <br> {{ Form::text('titolo', $house->titolo, ['class' => 'input','id' => 'titolo', 'style'=>'width:35em', 'required' => '']) }} 
+                                        <br> {{ Form::text('titolo', $house->titolo, ['class' => 'input','id' => 'titolo', 'style'=>'width:29em', 'required' => '']) }} 
                                         </div>
                                         <br>
                                     </div>
                                 <div class="faq-element">
                                         <div class="wrap-contact1">
                                         <label><b>Descrizione:</b></label>
-                                        <br>{{ Form::textarea('descrizione', $house->descrizione, ['class' => 'input','id' => 'descrizione', 'style'=>'width:35em;height:5em', 'required' => '']) }}
+                                        
+                                        <br>{{ Form::textarea('descrizione', $house->descrizione, ['class' => 'input','id' => 'descrizione', 'style'=>'width:29em;height:7em', 'required' => '']) }}
                                         </div>
                                         <br>
                                     </div>
-                                 <div class="faq-element">
+                                
+                                
+                                <div class="lg-col-3"
+>                                   <div class="faq-element">
                                         <div class="wrap-contact1">
                                         <label><b>Prezzo:</b></label>
-                                        <br>{{ Form::text('prezzo', $house->prezzo, ['class' => 'input','id' => 'prezzo', 'style'=>'width:35em', 'required' => '']) }}
+                                        <br>{{ Form::number('prezzo', $house->prezzo, ['class' => 'input','id' => 'prezzo', 'style'=>'width:5em', 'required' => '']) }}
                                         </div>
                                         <br>
+                                </div>      
                                 </div>
                                 
+                                <div class ="lg-col-3">
                                 <div class="faq-element">
                                         <div class="wrap-contact1">
                                         <label><b>Numero di Camere:</b></label>
-                                        <br>{{ Form::text('n_camere', $house->n_camere, ['class' => 'input','id' => 'n_camere', 'style'=>'width:35em', 'required' => '']) }}
+                                        <br>{{ Form::number('n_camere', $house->n_camere, ['class' => 'input','id' => 'n_camere', 'style'=>'width:5em', 'required' => '']) }}
                                         </div>
                                         <br>
-                                    </div><!-- comment -->
+                                </div>        
+                                </div>
+                                
+                                <div class ="lg-col-3">
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
                                         <label><b>Posti Letto Totali:</b></label>
-                                        <br>{{ Form::text('n_posti_letto_totali', $house->n_posti_letto_totali, ['class' => 'input','id' => 'n_posti_letto_totali', 'style'=>'width:35em', 'required' => '']) }}
+                                        <br>{{ Form::text('n_posti_letto_totali', $house->n_posti_letto_totali, ['class' => 'input','id' => 'n_posti_letto_totali', 'style'=>'width:5em', 'required' => '']) }}
                                         </div>
                                         <br>
                                     </div>
+                                </div>
+                                
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
                                         <label><b>Indirizzo:</b></label>
