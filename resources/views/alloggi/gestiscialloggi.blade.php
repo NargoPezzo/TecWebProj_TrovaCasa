@@ -166,6 +166,13 @@
                                     </div>
                                 <div class="faq-element">
                                         <div class="wrap-contact1">
+                                        <label><b>Tipologia</b></label>
+                                        <br> {{ Form::text('tipologia', $house->tipologia, ['class' => 'input','id' => 'tipologia', 'style'=>'width:29em', 'required' => '', 'readonly' => 'true']) }} 
+                                        </div>
+                                        <br>
+                                    </div>
+                                <div class="faq-element">
+                                        <div class="wrap-contact1">
                                         <label><b>Descrizione:</b></label>
                                         
                                         <br>{{ Form::textarea('descrizione', $house->descrizione, ['class' => 'input','id' => 'descrizione', 'style'=>'width:29em;height:7em', 'required' => '']) }}
