@@ -147,12 +147,12 @@
                             <div class=" right-content">
                                 <img src="assets/images/LogoBigBlack.png" alt="">
                                 <h4>Benvenuto, Locatore.</h4>
-                                <span> Sei uno studente in cerca di un tranquillo alloggio per conseguire la tua carriera universitaria?
-                                    <br> Great!
-                                    <br> Hai uno o più appartamenti da affittare di fretta e furia?
-                                    <br> Giusto così, il tempo è denaro!</span>
-                                <span> Allora ti trovi nel posto giusto! Sfoglia pure il nostro catalogo con oltre migliaia di inserzioni da tutta Italia. 
-                                    <br> E quando sei pronto per lo step successivo, crea pure un account gratuito con cui poter filtrare, prenotare un affitto o metterne in vendita uno.</span>
+                                <span> L' account di <b> Locatore </b> ti permette di raggiungere in modo facile migliaia di studenti potenziali locatari.
+                                    <br> Puoi recarti sotto la sezione <b>"Alloggio"</b> e inserire il tuo primo annuncio.
+                                    <br> Assicurati di dare uno sguardo prima alla nostra sezione <b>"Condizioni"</b>, al fine di rispettare tutte le linee
+                                    <br> guida e le regole indicate.</span>
+                                <span> Dopo che avrai inserito i tuoi annunci, puoi controllare le richieste e i messaggi ricevuti direttamente dalla sezione <b>"Account"</b> 
+                                    
                                 <span> Ti auguriamo un accogliente soggiorno nel nostro portale. <br></span>
                                 <span><i> -il team di TrovaCasa.it</i></span>
                             </div>
@@ -168,12 +168,13 @@
                             <div class=" right-content">
                                 <img src="assets/images/LogoBigBlack.png" alt="">
                                 <h4>Benvenuto, Locatario.</h4>
-                                <span> Sei uno studente in cerca di un tranquillo alloggio per conseguire la tua carriera universitaria?
-                                    <br> Great!
-                                    <br> Hai uno o più appartamenti da affittare di fretta e furia?
-                                    <br> Giusto così, il tempo è denaro!</span>
-                                <span> Allora ti trovi nel posto giusto! Sfoglia pure il nostro catalogo con oltre migliaia di inserzioni da tutta Italia. 
-                                    <br> E quando sei pronto per lo step successivo, crea pure un account gratuito con cui poter filtrare, prenotare un affitto o metterne in vendita uno.</span>
+                                <span> L' account da <b>Locatario</b> ti permette di filtrare tutti gli alloggi, in modo da trovare quelli più vicini alle tue esigenze.
+                                    <br> Puoi anche visualizzare nel dettaglio tutti gli alloggi e, se ne trovi uno adatto alle tue esigenze, 
+                                    <br> puoi direttamente fare una proposta e contattare il proprietario.
+                                    <br> Che aspetti? Migliaia di annunci ti aspettano! 
+                                    
+                                    <span> Sfoglia pure il nostro catalogo, accedendovi tramite il tab <b>"Offerte"</b> che trovi in alto. 
+                                    
                                 <span> Ti auguriamo un accogliente soggiorno nel nostro portale. <br></span>
                                 <span><i> -il team di TrovaCasa.it</i></span>
                             </div>
@@ -188,9 +189,9 @@
                         <div class="col-lg-12">
                             <div class=" right-content">
                                 <img src="assets/images/LogoBigBlack.png" alt="">
-                                <h4>Benvenuto, Admin supremo.</h4>
-                                <span> Sei uno studente in cerca di un tranquillo alloggio per conseguire la tua carriera universitaria?
-                                    <br> Great!
+                                <h4>Benvenuto, Admin Supremo.</h4>
+                                <span> Non hai bisogno di nessuna presentazione.
+                                    <br> 
                                     <br> Hai uno o più appartamenti da affittare di fretta e furia?
                                     <br> Giusto così, il tempo è denaro!</span>
                                 <span> Allora ti trovi nel posto giusto! Sfoglia pure il nostro catalogo con oltre migliaia di inserzioni da tutta Italia. 
