@@ -255,8 +255,13 @@
                                     </div>        
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
-                                        <label><b>Servizi:</b></label>
-                                        <br>{{ Form::text('servizi', $house->servizi, ['class' => 'input','id' => 'servizi', 'style'=>'width:29em', 'required' => '']) }}
+                                        <label><b>Servizi:</b></label><br>
+                                       
+                                    <input checked = true type="checkbox" name="servizi[]" value="Lavatrice"> Lavatrice<br/>
+                                    <input type="checkbox" name="servizi[]" value="Asciugatrice"> Asciugatrice <br/>
+                                    <input type="checkbox" name="servizi[]" value="Wifi"> Wifi <br/>
+                                    <input type="checkbox" name="servizi[]" value="Posto Auto"> Posto Auto <br/>
+                                    <input type="checkbox" name="servizi[]" value="Locale Ricreativo"> Locale Ricreativo <br/><br/>
                                         </div>
                                         <br>
                                     </div> 
