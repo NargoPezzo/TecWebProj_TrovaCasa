@@ -38,7 +38,24 @@
       background-color: #008CBA;
       color: white;
     }
-
+    
+    input[type='number']{
+    width: 80px;
+    } 
+    
+    input[type='submit']{
+    border: 2px solid #ccc;
+    
+    
+    } 
+    
+    form{
+            display: none;
+            width: 775px;
+            border: 2px solid #ccc;
+            padding: 30px;
+            
+        }	
 </style>
 
 <script>
@@ -151,13 +168,7 @@
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
-<!--
 
-TemplateMo 571 Hexashop
-
-https://templatemo.com/tm-571-hexashop
-
--->
     </head>
     
     <body>
@@ -237,7 +248,7 @@ https://templatemo.com/tm-571-hexashop
         <div class="outer_search">
             <div>
                 <p style="padding:20px;float:left">
-                    <b>Ricerca<br>avanzata</b>
+                    <b>Ricerca Avanzata:</b>
                 </p>
             </div>
             
@@ -248,14 +259,17 @@ https://templatemo.com/tm-571-hexashop
                 action="{{route('offerte.search')}}">
                 @csrf
                 <span class="search">
-                    <label for='tip' class="control">Tipologia</label>
+                    <label for='tip' class="control"><b>Tipologia:</b></label>&nbsp;&nbsp;&nbsp;
                     <select name="tip" id="tip">
                        <option value="Appartamento" selected>Appartamento</option>
                     </select>
                 </span>
                 <br>
+                <br>
+                <b>Prezzo:</b>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="search">
-                   <label for='prezzomin' class="control">Prezzo min</label>
+                    <label for='prezzomin' class="control">Da:</label>&nbsp;&nbsp;&nbsp;
                    <input name ="prezzomin" id="prezzomin" type="range" min="0" max="1000" step="25"
                    oninput="this.nextElementSibling.value = this.value">
                     <output></output>
@@ -263,8 +277,9 @@ https://templatemo.com/tm-571-hexashop
                         <option>{{$prezzomin}}</option>
                     @endisset €
                 </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="search">
-                    <label for='prezzomax' class="control">Prezzo max</label>
+                    <label for='prezzomax' class="control">A:</label>&nbsp;&nbsp;&nbsp;
                    <input name ="prezzomax" id="prezzomax" type="range" min="0" max="3000" step="25"
                    oninput="this.nextElementSibling.value = this.value">
                     <output></output>
@@ -273,8 +288,11 @@ https://templatemo.com/tm-571-hexashop
                     @endisset €
                 </span>
                 <br>
+                <br>
+                <b>Periodo di Disponibilità:</b>
+                &nbsp;&nbsp;&nbsp;
                 <span class="search">
-                   <label for='data_min' class="control">Data min</label>
+                    <label for='data_min' class="control">Dal:</label>&nbsp;&nbsp;&nbsp;
                    <input name ="data_min" id="data_min" type="date" 
                    oninput="this.nextElementSibling.value = this.value">
                    <output></output>
@@ -282,8 +300,9 @@ https://templatemo.com/tm-571-hexashop
                         <option>{{$data_min}}</option>
                     @endisset
                 </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="search">
-                    <label for='data_max' class="control">Data max</label>
+                    <label for='data_max' class="control">Al:</label>&nbsp;&nbsp;&nbsp;
                    <input name ="data_max" id="data_max" type="date" 
                    oninput="this.nextElementSibling.value = this.value" >
                     @isset($data_max)
@@ -291,30 +310,33 @@ https://templatemo.com/tm-571-hexashop
                     @endisset
                 </span>
                 <br>
-                <span class="search">
-                    <label for="n_camere" class="control">Numero di camere nell'appartamento</label>
-                    <input type="number" name="n_camere" id="n_camere" min="0" step="1"/> 
-                </span>
                 <br>
                 <span class="search">
-                    <label for="n_posti_letto_totali" class="control">Numero di posti letto totali</label>
+                    <label for="n_camere" class="control"><b>N° Camere:</b></label>&nbsp;&nbsp;&nbsp;
+                    <input type="number" name="n_camere" id="n_camere" min="0" step="1" /> 
+                </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="search">
+                    <label for="n_posti_letto_totali" class="control"><b>N° Posti Letto:</b></label>&nbsp;&nbsp;&nbsp;
                     <input type="number" name="n_posti_letto_totali" id="n_posti_letto_totali" min="0" step="1"/> 
                 </span>
-                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="search">
-                    <label for="superficie" class="control">Superficie minima dell'appartamento</label>
+                    <label for="superficie" class="control"><b>Dimensioni:</b></label>&nbsp;&nbsp;&nbsp;
                     <input type="number" name="superficie" id="superficie" min="0" step="5"/> mq
                 </span>
                 <br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="search">
-                    <p><b>Presenza di:</b></p>
+                    <p><b>Servizi Aggiuntivi:</b></p><br>
                     @foreach ($servizi as $servizio)
+                    <input name ="servizi[]" id="servizi"type="checkbox" value="{{$servizio->id}}"></input>
                     <label for='servizi[]' class="control">{{$servizio->nome}}</label>
-                    <input name ="servizi[]" id="servizi"type="checkbox" value="{{$servizio->id}}"></input><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     @endforeach
                 </span>
-                <br><br>
-                <input type="submit" class="btn btn-inverse" style="vertical-align: super" value="Cerca">
+                <br><br><br>
+                <input type="submit" class="btn btn-inverse" style="vertical-align: super" value="Filtra i risultati:">
                 @if ($errors->first('tipologia'))
                 <ul class="errors">
                     @foreach ($errors->get('tipologia') as $message)
@@ -323,12 +345,13 @@ https://templatemo.com/tm-571-hexashop
                 </ul>
                 @endif
             </form>
-            <br><br>
+            
+            
             <form method="post" id="plform" name="search" enctype="multipart/form-data"
                 action="{{route('offerte.search')}}">
                 @csrf
                 <span class="search">
-                    <label for='tip' class="control">Tipologia</label>
+                    <label for='tip' class="control"><b>Tipologia:</b></label>&nbsp;&nbsp;&nbsp;
                     <select required name="tip" id="tip">
                         
                         <option  value="Posto letto singolo">Posto letto singolo</option>
@@ -337,8 +360,11 @@ https://templatemo.com/tm-571-hexashop
                     </select>
                 </span>
                 <br>
+                <br>
+                <b>Prezzo:</b>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="search">
-                   <label for='prezzomin' class="control">Prezzo min</label>
+                    <label for='prezzomin' class="control">Da:</label>&nbsp;&nbsp;&nbsp;
                    <input name ="prezzomin" id="prezzomin" type="range" min="0" max="1000" step="25"
                    oninput="this.nextElementSibling.value = this.value">
                     <output></output>
@@ -346,8 +372,9 @@ https://templatemo.com/tm-571-hexashop
                         <option>{{$prezzomin}}</option>
                     @endisset €
                 </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="search">
-                    <label for='prezzomax' class="control">Prezzo max</label>
+                    <label for='prezzomax' class="control">A:</label>&nbsp;&nbsp;&nbsp;
                    <input name ="prezzomax" id="prezzomax" type="range" min="0" max="3000" step="25"
                    oninput="this.nextElementSibling.value = this.value">
                     <output></output>
@@ -356,54 +383,57 @@ https://templatemo.com/tm-571-hexashop
                     @endisset €
                 </span>
                 <br>
+                <br>
+                <b>Periodo di Disponibilità:</b>
+                &nbsp;&nbsp;&nbsp;
                 <span class="search">
-                   <label for='data_min' class="control">Data min</label>
-                   <input name ="data_min" id="data_min" type="date" value="01-01-2000"
+                    <label for='data_min' class="control">Dal:</label>&nbsp;&nbsp;&nbsp;
+                   <input name ="data_min" id="data_min" type="date" 
                    oninput="this.nextElementSibling.value = this.value">
                    <output></output>
                     @isset($data_min)
                         <option>{{$data_min}}</option>
                     @endisset
                 </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="search">
-                    <label for='data_max' class="control">Data max</label>
-                   <input name ="data_max" id="data_max" type="date" value="01-01-3000"
+                    <label for='data_max' class="control">Al:</label>&nbsp;&nbsp;&nbsp;
+                   <input name ="data_max" id="data_max" type="date" 
                    oninput="this.nextElementSibling.value = this.value" >
                     @isset($data_max)
                         <option>{{$data_max}}</option>
                     @endisset
                 </span>
                 <br>
-                <span class="search">
-                    <label for="num_pl_tot" class="control">Numero di posti letto nella camera</label>
-                    <input type="number" name="num_pl_tot" id="num_pl_tot" min="0" step="1"/> 
-                </span>
                 <br>
+                
                 <span class="search">
-                    <label for="n_camere" class="control">Numero di posti letto totali nell'alloggio</label>
-                    <input type="number" name="n_camere" id="n_camere" min="0" step="1"/> 
+                    <label for="n_posti_letto_totali" class="control"><b>N° Posti Letto Totali Alloggio:</b></label>&nbsp;&nbsp;&nbsp;
+                    <input type="number" name="n_posti_letto_totali" id="n_posti_letto_totali" min="0" step="1"/> 
                 </span>
-                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="search">
-                    <label for="superficie" class="control">Superficie minima della camera</label>
+                    <label for="superficie" class="control"><b>Dimensioni:</b></label>&nbsp;&nbsp;&nbsp;
                     <input type="number" name="superficie" id="superficie" min="0" step="5"/> mq
-                </span>
                 <br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="search">
-                    <p><b>Presenza di:</b></p>
+                    <p><b>Servizi Aggiuntivi:</b></p><br>
                     @foreach ($servizi as $servizio)
-                    <label for='servizi' class="control">{{$servizio->nome}}</label>
-                        <input name ="servizi" id="servizi"type="checkbox"></input><br>
-                        @endforeach
+                    <input name ="servizi[]" id="servizi"type="checkbox" value="{{$servizio->id}}"></input>
+                    <label for='servizi[]' class="control">{{$servizio->nome}}</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    @endforeach
                 </span>
-                <br><br>
-                <input type="submit" class="btn btn-inverse" style="vertical-align: super" value="Cerca">
+                <br><br><br>
+                <input type="submit" class="btn btn-inverse" style="vertical-align: super" value="Filtra i risultati:">
                 @if ($errors->first('tipologia'))
                 <ul class="errors">
                     @foreach ($errors->get('tipologia') as $message)
                     <li>{{ $message }}</li>
                     @endforeach
                 </ul>
+                
                 @endif
             </form>
             
@@ -411,7 +441,7 @@ https://templatemo.com/tm-571-hexashop
         </div>
     </section>
 @endcan
-            
+<br> 
           <div class="row">
           @isset($houses)
             @foreach ($houses as $house)
