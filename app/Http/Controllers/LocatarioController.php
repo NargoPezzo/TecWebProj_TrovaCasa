@@ -26,5 +26,31 @@ class LocatarioController extends Controller {
    /* public function indexoffertelocatario() {   POTREBBE ESSERE INUTILE
         return view('offertelocatario');
     } */
+  
     
+    
+    public function sendMessaggio(NuovoMessaggioRequest $request){
+        $messaggio = new Messaggio;
+        $request->validated();           
+        
+        $user = auth()->user();                
+        $messaggio->mittente = $user->username;
+        $messaggio->destinatario = $request->get('destinatario');
+        $messaggio->testo = $request->get('testo');       
+        $messaggio->dataOraInvio = date("Y-m-d H:i:s"); 
+        
+        $messaggio->save();
+        
+        $chat = $this->_locatarioModel->getChat($user->username, $request->get('destinatario'));
+        
+        if(!$chat) {
+            $chat = new Chat();
+            $chat->user1 = $user->username;
+            $chat->user2 = $request->get('destinatario');
+            
+            $chat->save();
+        }
+        
+        return redirect()->action('LocatarioController@index');
+    }
 }

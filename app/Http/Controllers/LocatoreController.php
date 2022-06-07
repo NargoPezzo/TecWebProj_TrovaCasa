@@ -179,4 +179,35 @@ public function editAlloggio(ModificaAlloggioRequest $request) {
         session() -> flash('message', 'Eliminazione effettuata con successo!');
         return redirect()->route('faq');
     }
+    
+    
+    public function sendMessaggio(NuovoMessaggioRequest $request){
+        $messaggio = new Messaggio;
+        $request->validated();
+        
+        $user = auth()->user();
+        $messaggio->mittente = $user->username;
+        $messaggio->destinatario = $request->get('destinatario');
+        $messaggio->testo = $request->get('testo');       
+        $messaggio->dataOraInvio = date("Y-m-d H:i:s"); 
+        
+        $messaggio->save();
+        
+        $chat = $this->_userModel->getChat(auth()->user()->username);
+        $messaggi = $this->_userModel->getMessaggi($chat);
+        
+        if($request->ajax()) {
+       
+            return view('elenco-messaggi')
+                ->with('authuser', auth()->user()->username)
+                ->with('chat', $chat)
+                ->with('messaggi', $messaggi);
+        }
+        
+        return view('messaggistica')
+                ->with('authuser', auth()->user()->username)
+                ->with('chat', $chat)
+                ->with('messaggi', $messaggi);
+        
+    }
 }

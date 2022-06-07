@@ -3,16 +3,17 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class NewMessageRequest extends FormRequest
-{
+
+class NuovoMessaggioRequest extends FormRequest {
+
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize()
-    {
+    public function authorize() {        
         return true;
     }
 
@@ -21,11 +22,11 @@ class NewMessageRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    
+    public function rules() {
         return [
-            'testo' => 'required|min:1|max:5000',
-	    'id_alloggio' => ''
+            'testo' => 'required|string',
         ];
     }
+    
 }

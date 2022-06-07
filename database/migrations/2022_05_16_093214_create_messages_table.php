@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class CreateMessaggesTable extends Migration
+class CreateMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,19 +14,11 @@ class CreateMessaggesTable extends Migration
     public function up()
     {
         Schema::create('messaggi', function (Blueprint $table) {
-            $table->bigIncrements('id')->index();
-            $table->unsignedBigInteger('id_mittente');
-            $table->unsignedBigInteger('id_destinatario');
-            $table->string('testo', 5000);
-            $table->unsignedBigInteger('id_alloggio')->nullable();
-	    $table->dateTime('data_conferma_opzione')->nullable();
-	    $table->timestamps();
-
-	    $table->unique(['id_destinatario', 'id_mittente', 'id_alloggio']);
-
-	    $table->foreign('id_destinatario')->references('id')->on('users');
-	    $table->foreign('id_mittente')->references('id')->on('users');
-	    $table->foreign('id_alloggio')->references('id')->on('alloggi');
+            $table->increments('id');
+            $table->string('destinatario', 20);
+            $table->string('mittente', 20);
+            $table->string('testo');
+            $table->timestamp('dataOraInvio');
         });
     }
 

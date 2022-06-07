@@ -243,6 +243,20 @@ class DatabaseSeeder extends Seeder
                 'price' => 78.66, 'discountPerc' => 7, 'discounted' => 01, 'image' => 'Ukraine.gif']
         ]);*/
 
-    }
+                
+            /* messaggio(destinatario, mittente, testo, dataOraInvio)*/
+            DB::table('messaggi')->insert([
+            ['destinatario' => 'eliaelia', 'mittente' => 'alexalex', 'testo' =>
+            'Buongiorno, ho visto il tuo annuncio, volevo chiderti alcune informazioni.', 'dataOraInvio' => date("Y-m-d H:i:s")],
+
+             ]);
+        
+        
+            DB::table('chat')->insert([
+            ['user1' => 'alexalex', 'user2' => 'eliaelia']
+            ]);
+                            
+                            }
 
 }
+
