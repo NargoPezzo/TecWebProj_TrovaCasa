@@ -41,7 +41,9 @@ class ModificaAlloggioRequest extends FormRequest {
             'superficie' => 'int',
             'immagine' => 'image|max:1024',
             "servizi"    => '',
-            'id' => ''
+            'id' => '',
+            "data_min" => "date",
+            "data_max" => "date"
         ];
     }
 

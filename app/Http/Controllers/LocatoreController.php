@@ -154,6 +154,8 @@ public function editAlloggio(ModificaAlloggioRequest $request) {
         $alloggio->città = $request->città;
         $alloggio->provincia = $request->provincia;
         $alloggio->superficie = $request->superficie;
+        $alloggio->data_min = $request->data_min;
+        $alloggio->data_max = $request->data_max;
          
             //'immagine' => 'image|max:1024',
             //"servizi"    => '',

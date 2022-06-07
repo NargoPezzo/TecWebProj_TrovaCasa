@@ -224,6 +224,35 @@ https://templatemo.com/tm-571-hexashop -->
                                 @endif
                             </div>
                             
+                            <div style="text-align:center; margin-top: 1em;"> Periodo di disponibilità </div>
+                        <div class="row">
+                            <div class="left">
+                                {{ Form::label('data_min', 'Inizio', ['class' =>'label-input']) }}
+                                {{ Form::date('data_min', '', ['class' => 'input', 'id' =>'data_min'])}}
+                
+                                @if ($errors->first('data_min'))
+                                <div class="errors" >
+                                        @foreach ($errors->get('data_min') as $message)
+                                        <p>{{ $message }}</p>
+                                        @endforeach
+                                </div>
+                                @endif
+                            </div>
+                            
+                       <div style="margin-left:2.5em;">
+                                {{ Form::label('data_max', 'Fine', ['class' =>'label-input']) }}
+                                {{ Form::date('data_max', '', ['class' => 'input', 'id' =>'data_max'])}}
+                
+                                @if ($errors->first('data_max'))
+                                <div class="errors" >
+                                        @foreach ($errors->get('data_max') as $message)
+                                        <p>{{ $message }}</p>
+                                        @endforeach
+                                </div>
+                                @endif
+                            </div> 
+                        </div>
+                            
                             <div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('provincia', 'Provincia', ['class' => 'label-input']) }}
                                 {{ Form::text('provincia', '', ['class' => 'input', 'id' => 'provincia']) }}

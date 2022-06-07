@@ -39,6 +39,8 @@ class NuovoAlloggioRequest extends FormRequest {
             'superficie' => 'required|int',
             'immagine' => 'image|max:1024',
             "servizi"    => "required|array|min:1",
+            "data_min" => "date",
+            "data_max" => "date"
         ];
     }
 

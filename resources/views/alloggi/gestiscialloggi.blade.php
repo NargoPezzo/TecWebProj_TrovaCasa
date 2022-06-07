@@ -232,6 +232,35 @@
                                         </div>
                                         <br>
                                     </div>
+                                    <div style="text-align:center; margin-top: 1em;"> Periodo di disponibilità </div>
+                                        <div class="row">
+                                            <div class="left">
+                                                {{ Form::label('data_min', 'Inizio', ['class' =>'label-input']) }}
+                                                {{ Form::date('data_min', $house->data_min, ['class' => 'input', 'id' =>'data_min'])}}
+                
+                                                @if ($errors->first('data_min'))
+                                                <div class="errors" >
+                                                    @foreach ($errors->get('data_min') as $message)
+                                                    <p>{{ $message }}</p>
+                                                    @endforeach
+                                                </div>
+                                                @endif
+                                            </div>
+                            
+                                    <div style="margin-left:2.5em;">
+                                                {{ Form::label('data_max', 'Fine', ['class' =>'label-input']) }}
+                                                {{ Form::date('data_max', $house->data_max, ['class' => 'input', 'id' =>'data_max'])}}
+                
+                                                @if ($errors->first('data_max'))
+                                                <div class="errors" >
+                                                    @foreach ($errors->get('data_max') as $message)
+                                                    <p>{{ $message }}</p>
+                                                    @endforeach
+                                                </div>
+                                                @endif
+                                            </div> 
+                                        </div>
+                                
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
                                         <label><b>Provincia:</b></label>
