@@ -22,13 +22,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/owl-carousel.css')}}">
 
     <link rel="stylesheet" href="{{ asset('assets/css/lightbox.css')}}">
-<!--
 
-TemplateMo 571 Hexashop
-
-https://templatemo.com/tm-571-hexashop
-
--->
     </head>
     
     <body>
