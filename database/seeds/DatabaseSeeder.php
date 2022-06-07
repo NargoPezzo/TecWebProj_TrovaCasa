@@ -246,17 +246,19 @@ class DatabaseSeeder extends Seeder
                 
             /* messaggio(destinatario, mittente, testo, dataOraInvio)*/
             DB::table('messaggi')->insert([
-            ['destinatario' => 'eliaelia', 'mittente' => 'alexalex', 'testo' =>
+            ['destinatario' => 'alexalex', 'mittente' => 'eliaelia', 'testo' =>
             'Buongiorno, ho visto il tuo annuncio, volevo chiderti alcune informazioni.', 'dataOraInvio' => date("Y-m-d H:i:s")],
-
+            ['destinatario' => 'eliaelia', 'mittente' => 'alexalex', 'testo' =>
+            'Lalloggio fa un po schifo.', 'dataOraInvio' => date("Y-m-d H:i:s")],
              ]);
         
         
             DB::table('chat')->insert([
-            ['user1' => 'alexalex', 'user2' => 'eliaelia']
+            ['user1' => 'alexalex', 'user2' => 'eliaelia'],
+            ['user1' => 'lorelore', 'user2' => 'alexalex']
             ]);
                             
-                            }
+            }
 
 }
 

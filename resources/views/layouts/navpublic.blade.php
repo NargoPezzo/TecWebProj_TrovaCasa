@@ -59,7 +59,7 @@
                     @endcan
                     
                     @cannot('isAdmin')
-                    <li><a href="{{ route('chisiamo') }}" title="Va alle chat">Sezione messaggistica</a></li>
+                    <li><a href="{{ route('messaggistica') }}" title="Va alle chat">Sezione messaggistica</a></li>
                     @endcan
                     
                     <li><a href="" class="highlight" title="Esci dal sito" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>

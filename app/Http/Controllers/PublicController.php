@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Offerte;
+use App\User;
 use App\Models\Resources\House;
 use App\Models\Faqs;
 use App\Models\Resources\Services;
+use App\Model\Resources\Messaggio;
 use App\Http\Request\RicercaOfferteRequest;
+use App\Http\Request\InviaMessaggioRequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class PublicController extends Controller {
     
@@ -26,6 +31,8 @@ class PublicController extends Controller {
         $this->_houseModel = new House;
         
         $this->_serviziModel = new Services;
+        
+        $this->_userModel = new User;
     }
     
     public function showOfferte() {
@@ -106,17 +113,14 @@ class PublicController extends Controller {
                         ->with('faqs', $faqs);
     }
     
-    
-    
-    
+
         public function showChat() {
-        
-        
-        $chat = $this->_userModel->getChat(auth()->user()->username);
+
+        $chat = $this->_userModel->getChat(Auth()->user()->username);
         $messaggi = $this->_userModel->getMessaggi($chat);
         
         return view('messaggistica')
-            ->with('authuser', auth()->user()->username)
+            ->with('authuser', Auth()->User()->username)
             ->with('chat', $chat)
             ->with('messaggi', $messaggi);
     }
@@ -126,12 +130,12 @@ class PublicController extends Controller {
         $messaggi = $this->_userModel->getMessaggiUser($user);
         
         return view('chat')
-            ->with('authuser', auth()->user()->username)
+            ->with('authuser', Auth()->User()->username)
             ->with('messaggi', $messaggi)
             ->with('user', $user);
     }
     
-    public function sendMessaggio(NuovoMessaggioRequest $request){
+    public function sendMessaggio(InviaMessaggioRequest $request){
         $messaggio = new Messaggio;
         $request->validated();
         
@@ -144,7 +148,6 @@ class PublicController extends Controller {
         $messaggio->save();
         
         $messaggi = $this->_userModel->getMessaggiUser($request->get('destinatario'));
-        
         
         return view('chat')
                 ->with('authuser', auth()->user()->username)

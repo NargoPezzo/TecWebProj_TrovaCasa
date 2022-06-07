@@ -85,7 +85,7 @@
     </header>
     <!-- ***** Header Area End ***** -->
 
-        <!-- ***** Main Banner Area Start ***** -->
+    <!-- ***** Main Banner Area Start ***** -->
     
         
     <div class="main-banner" id="top">

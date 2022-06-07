@@ -141,7 +141,7 @@ Route::get('/messaggistica', 'PublicController@showChat')
         ->name('messaggistica');
 
 Route::post('/messaggisticapost', 'PublicController@sendMessaggio')
-        ->name('messaggisticapost')->middleware('can:isUser');
+        ->name('messaggisticapost');
 
 Route::get('/chat/{user}', 'PublicController@showUserChat')
         ->name('chat');
