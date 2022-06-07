@@ -135,3 +135,16 @@ Route::get('/offertelocatario', 'LocatarioController@indexoffertelocatario')   P
 Auth::routes();
 
 /*Route::get('/home', 'HomeController@index')->name('home'); ME L'HA AGGIUNTA IL TERMINALEEEEEEEEEE */
+
+
+Route::get('/messaggistica', 'PublicController@showChat')
+        ->name('messaggistica');
+
+Route::post('/messaggisticapost', 'PublicController@sendMessaggio')
+        ->name('messaggisticapost')->middleware('can:isUser');
+
+Route::get('/chat/{user}', 'PublicController@showUserChat')
+        ->name('chat');
+
+Route::post('/locatario/messaggio', 'LocatarioController@sendMessaggio')
+        ->name('messaggio')->middleware('can:isLocatario');
