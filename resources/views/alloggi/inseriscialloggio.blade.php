@@ -251,11 +251,10 @@ https://templatemo.com/tm-571-hexashop -->
     
 
         <label>Filtri</label><br/>
-        <input type="checkbox" name="servizi[]" value="Lavatrice"> Lavatrice<br/>
-        <input type="checkbox" name="servizi[]" value="Asciugatrice"> Asciugatrice <br/>
-        <input type="checkbox" name="servizi[]" value="Wifi"> Wifi <br/>
-        <input type="checkbox" name="servizi[]" value="Posto Auto"> Posto Auto <br/>
-        <input type="checkbox" name="servizi[]" value="Locale Ricreativo"> Locale Ricreativo <br/><br/>
+        @foreach ($servizi as $servizio)
+        
+            <input type="checkbox" name="servizi[]" value="{{$servizio->nome}}"> {{$servizio->nome}}<br/>
+        @endforeach
         
   
     

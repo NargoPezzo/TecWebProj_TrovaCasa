@@ -42,9 +42,11 @@ class LocatoreController extends Controller {
     public function getMyAlloggi() {
         $id = Auth::id();
     //  $alloggi = House::where('locatore_id', $id) -> get();
+        $servizi = $this->_serviceModel->getServizi();
         $alloggi=$this->_locatoreModel->getAlloggi($id);
         return view('alloggi.gestiscialloggi')
-                    ->with('houses', $alloggi);
+                    ->with('houses', $alloggi)
+                    ->with('servizi', $servizi);
     }
     
     public function createAlloggio() {
@@ -156,7 +158,20 @@ public function editAlloggio(ModificaAlloggioRequest $request) {
             //'immagine' => 'image|max:1024',
             //"servizi"    => '',
         $alloggio->save();
-        return redirect()->route('gestiscialloggi');
+        
+        //eliminare i servizi della casa e riaghgiungerle sotto
+        foreach($request->servizi as $servizio){
+            
+            
+            $houseservice = new HouseService();
+            $houseservice->house_id = $this->_locatoreModel->lastAlloggio();
+            $houseservice->services_id = $this->_serviceModel->servizioIdByName($servizio)->id;
+             Log::info($houseservice);
+            $houseservice->save();
+        }
+        $servizi = $this->_serviceModel->getServizi();
+        return redirect()->route('gestiscialloggi')
+                    ->with('servizi', $servizi);
         
     }
 

@@ -256,12 +256,21 @@
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
                                         <label><b>Servizi:</b></label><br>
-                                       
-                                    <input checked = true type="checkbox" name="servizi[]" value="Lavatrice"> Lavatrice<br/>
-                                    <input type="checkbox" name="servizi[]" value="Asciugatrice"> Asciugatrice <br/>
-                                    <input type="checkbox" name="servizi[]" value="Wifi"> Wifi <br/>
-                                    <input type="checkbox" name="servizi[]" value="Posto Auto"> Posto Auto <br/>
-                                    <input type="checkbox" name="servizi[]" value="Locale Ricreativo"> Locale Ricreativo <br/><br/>
+                                    @foreach ($servizi as $servizio)
+                                            @php
+                                            $check = "false"
+                                            @endphp
+                                        @foreach ($house->servizi as $houseservice)
+                                             
+                                            @if($houseservice->nome == $servizio->nome)
+                                                @php
+                                                $check = "checked"
+                                                @endphp
+                                            @endif
+                                        @endforeach
+                                        <input  {{$check}} type="checkbox" name="servizi[]" value="{{$servizio->nome}}"> {{$servizio->nome}}<br/>
+                                        
+                                    @endforeach
                                         </div>
                                         <br>
                                     </div> 
