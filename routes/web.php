@@ -88,7 +88,7 @@ Route::get('/homeadmin', 'AdminController@indexhome')
         ->name('homeadmin')->middleware('can:isAdmin');
 
 Route::get('/admin/stats', "AdminController@statistics")
-        ->name('admin.stats');
+        ->name('statistiche');
 
 Route::get('/admin/stats/search', "AdminController@getStats")
         ->name('admin.stats.search');
@@ -126,8 +126,7 @@ Route::get("eliminafaq/{id}", 'AdminController@deleteFaq')
 Route::post('modificafaq', 'AdminController@editFaq')
         ->name('modificafaq')->middleware('can:isAdmin');
 
-Route::get('statistiche', "AdminController@statistics")
-        ->name('statistiche');
+
 
 /*
 Route::get('/offertelocatario', 'LocatarioController@indexoffertelocatario')   POTREBBE ESSERE INUTILE

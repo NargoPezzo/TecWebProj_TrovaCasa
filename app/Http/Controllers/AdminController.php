@@ -2,7 +2,7 @@
 
 namespace app\Http\Controllers;
 
-new \App\Models\Resources\House;
+
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\User;
@@ -10,6 +10,8 @@ use App\Models\Resources\Faq;
 use App\Models\Faqs;
 use App\Http\Request\NuovaFaqRequest;
 use App\Http\Request\ModificaFaqRequest;
+use App\Models\Resources\House;
+use App\Models\Opzionato;
 
 use App\Models\Rented;
 
@@ -105,15 +107,15 @@ class AdminController extends Controller {
                 'end-date' => 'date_format:Y-m-d|after:start-date'  
             ]);
                 $count_rent = $this->_alloggi->genera_statistiche1($tipo, $data_min, $data_max);
-                $count_request = $this->_alloggi->genera_statistiche3($tipo, $data_min, $data_max);
-                // $count_assigned = $this->_opzionati->genera_statistiche2($tipo, $data_min, $data_max);             
+              //  $count_request = $this->_opzionati->genera_statistiche2($tipo, $data_min, $data_max);
+                 $count_assigned = $this->_alloggi->genera_statistiche3($tipo, $data_min, $data_max);             
         }
         else{
             $count_rent = $this->_alloggi->genera_statistiche1($tipo, $data_min, $data_max);
-            $count_request = $this->_alloggi->genera_statistiche3($tipo, $data_min, $data_max);
-            // $count_assigned = $this->_opzionati->genera_statistiche2($tipo, $data_min, $data_max);
+            //$count_request = $this->_opzionati->genera_statistiche2($tipo, $data_min, $data_max);
+            $count_assigned = $this->_alloggi->genera_statistiche3($tipo, $data_min, $data_max);
         }
-        return view('statistiche')->with('count_rent',$count_rent)->with('count_request',$count_request)->with('count_assigned',$count_assigned);
+        return view('statistiche')->with('count_rent',$count_rent) /*->with('count_request',$count_request)*/ ->with('count_assigned',$count_assigned);
     }
     
 public function statistics()

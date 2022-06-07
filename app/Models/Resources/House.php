@@ -122,26 +122,26 @@ class House extends Model
     
     public function genera_statistiche1($tipologia, $data_min, $data_max){
             $this->_alloggi = new House;
-            if ($tipologia == 'Appartamento')
+            if ($tipologia == 'alloggio')
             {
                 $tipologia = '';
             }
             if((is_null($data_min)) and is_null($data_max))
             {            
-                $statistiche = House::whereRaw('tipo like "%' . $tipologia . '%"')->count();
+                $statistiche = House::whereRaw('tipologia like "%' . $tipologia . '%"')->count();
             }
             else
             {
                 $data_min = date("Y-m-d",strtotime($data_min));
                 $data_max = date("Y-m-d",strtotime($data_max)); 
-                $statistiche = House::whereRaw('tipo like "%'. $tipologia .'%" and created_at between "'. $data_min. '" and "'.$data_max .'";')->count();
+                $statistiche = House::whereRaw('tipologia like "%'. $tipologia .'%" and data_inserimento between "'. $data_min. '" and "'.$data_max .'";')->count();
             }
             return $statistiche;
     }
     
     public function genera_statistiche3($tipologia, $data_min, $data_max){
             $this->_alloggi = new House;
-            if ($tipologia == 'Appartamento')
+            if ($tipologia == 'alloggio')
             {
                 $tipologia = '';
             }
@@ -155,13 +155,13 @@ class House extends Model
             }
             if((is_null($data_min)) and is_null($data_max))
             {            
-                $statistiche = House::whereRaw('tipo like "%' . $tipologia . '%" and opzionato = 1')->count();
+                $statistiche = House::whereRaw('tipologia like "%' . $tipologia . '%" and opzionato = 1')->count();
             }
             else
             {
                 $data_min = date("Y-m-d",strtotime($data_min));
                 $data_max = date("Y-m-d",strtotime($data_max));
-                $statistiche = House::whereRaw('tipo like "%'. $tipologia .'%" and created_at between "'. $data_min. '" and "'.$data_max .'" and opzionato = 1')->count();
+                $statistiche = House::whereRaw('tipologia like "%'. $tipologia .'%" and data_inserimento between "'. $data_min. '" and "'.$data_max .'" and opzionato = 1')->count();
             }
             return $statistiche;
     }
