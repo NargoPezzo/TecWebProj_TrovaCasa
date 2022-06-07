@@ -18,7 +18,7 @@
     @endcan
     
     @can('isAdmin')
-    <li><a href="{{ route('chisiamo') }}" title="Visualizza le statistiche">Statistiche</a></li>
+    <li><a href="{{ route('statistiche') }}" title="Visualizza le statistiche">Statistiche</a></li>
     <li class="submenu">
         <a href="javascript:;">F.A.Q</a>
             <ul>

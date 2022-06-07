@@ -104,21 +104,21 @@ class AdminController extends Controller {
                 'start-date' => 'date_format:Y-m-d|before:tomorrow',
                 'end-date' => 'date_format:Y-m-d|after:start-date'  
             ]);
-                $count_rent = $this->_accomodations->make_stats($tipo, $data_min, $data_max);
-                $count_request = $this->_accomodations->make_stats3($tipo, $data_min, $data_max);
-                $count_assigned = $this->requested->make_stats2($tipo, $data_min, $data_max);            
+                $count_rent = $this->_alloggi->genera_statistiche1($tipo, $data_min, $data_max);
+                $count_request = $this->_alloggi->genera_statistiche3($tipo, $data_min, $data_max);
+                // $count_assigned = $this->_opzionati->genera_statistiche2($tipo, $data_min, $data_max);             
         }
         else{
-            $count_rent = $this->_accomodations->make_stats($tipo, $data_min, $data_max);
-            $count_request = $this->_accomodations->make_stats3($tipo, $data_min, $data_max);
-            $count_assigned = $this->requested->make_stats2($tipo, $data_min, $data_max);
+            $count_rent = $this->_alloggi->genera_statistiche1($tipo, $data_min, $data_max);
+            $count_request = $this->_alloggi->genera_statistiche3($tipo, $data_min, $data_max);
+            // $count_assigned = $this->_opzionati->genera_statistiche2($tipo, $data_min, $data_max);
         }
-        return view('admin.statistics')->with('count_rent',$count_rent)->with('count_request',$count_request)->with('count_assigned',$count_assigned);
+        return view('statistiche')->with('count_rent',$count_rent)->with('count_request',$count_request)->with('count_assigned',$count_assigned);
     }
     
 public function statistics()
     {
-        return view('admin.statistics');
+        return view('statistiche');
     }
     
     }

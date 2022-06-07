@@ -1,35 +1,47 @@
 
 @if ($paginator->lastPage() != 1)
-<div class="pagination pagination-centered">
-    {{ $paginator->firstItem() }} - {{ $paginator->lastItem() }} di {{ $paginator->total() }} ---
+<div class="col-lg-12">
+    <div class="pagination">
+        
 
-    <!-- Link alla prima pagina -->
-    @if (!$paginator->onFirstPage())
-        <a href="{{ $paginator->url(1) }}" id="toColor">Inizio</a> |
-    @else
-        Inizio |
-    @endif
+        <!-- Link alla prima pagina -->
+        <ul>
+            <li>    
+                @if (!$paginator->onFirstPage())
+                    <a href="{{ $paginator->url(1) }}"><<</a>
+                @endif
+            </li>
+            
 
-    <!-- Link alla pagina precedente -->
-    @if ($paginator->currentPage() != 1)
-        <a href="{{ $paginator->previousPageUrl() }}" id="toColor">&lt; Precedente</a> |
-    @else
-        &lt; Precedente |
-    @endif
+        <!-- Link alla pagina precedente -->
+        
+            <li>
+                @if ($paginator->currentPage() != 1)
+                    <a href="{{ $paginator->previousPageUrl() }}" id="toColor"><</a>
+                @endif
+            </li>
+                 
+            <li class="active">
+                <a> {{ $paginator->currentPage() }} </a>
+            </li>
+        <!-- Link alla pagina successiva -->
+        
+            <li>
+                @if ($paginator->hasMorePages())
+                    <a href="{{ $paginator->nextPageUrl() }}" id="toColor">></a>
+                @endif
+            </li>
+               
 
-    <!-- Link alla pagina successiva -->
-    @if ($paginator->hasMorePages())
-            <a href="{{ $paginator->nextPageUrl() }}" id="toColor">Successivo &gt;</a> |
-    @else
-        Successivo &gt; |
-    @endif
-
-    <!-- Link all'ultima pagina -->
-    @if ($paginator->hasMorePages())
-        <a href="{{ $paginator->url($paginator->lastPage()) }}" id="toColor">Fine</a>
-    @else
-        Fine
-    @endif
-</div>
+        <!-- Link all'ultima pagina -->
+        
+            <li>
+                @if ($paginator->hasMorePages())
+                    <a href="{{ $paginator->url($paginator->lastPage()) }}" id="toColor">>></a>
+                @endif
+            </li>
+            
+    </div>
+</div>    
 @endif
 

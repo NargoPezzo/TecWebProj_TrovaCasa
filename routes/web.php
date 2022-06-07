@@ -126,6 +126,8 @@ Route::get("eliminafaq/{id}", 'AdminController@deleteFaq')
 Route::post('modificafaq', 'AdminController@editFaq')
         ->name('modificafaq')->middleware('can:isAdmin');
 
+Route::get('statistiche', "AdminController@statistics")
+        ->name('statistiche');
 
 /*
 Route::get('/offertelocatario', 'LocatarioController@indexoffertelocatario')   POTREBBE ESSERE INUTILE

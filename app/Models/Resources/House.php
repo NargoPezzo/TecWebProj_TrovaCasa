@@ -116,48 +116,48 @@ class House extends Model
     }
     
     
-    public function genera_statistiche1($tipo, $data_min, $data_max){
+    public function genera_statistiche1($tipologia, $data_min, $data_max){
             $this->_alloggi = new House;
-            if ($tipo == 'Appartamento')
+            if ($tipologia == 'Appartamento')
             {
-                $tipo = '';
+                $tipologia = '';
             }
             if((is_null($data_min)) and is_null($data_max))
             {            
-                $statistiche = House::whereRaw('tipo like "%' . $tipo . '%"')->count();
+                $statistiche = House::whereRaw('tipo like "%' . $tipologia . '%"')->count();
             }
             else
             {
                 $data_min = date("Y-m-d",strtotime($data_min));
                 $data_max = date("Y-m-d",strtotime($data_max)); 
-                $statistiche = House::whereRaw('tipo like "%'. $tipo .'%" and created_at between "'. $data_min. '" and "'.$data_max .'";')->count();
+                $statistiche = House::whereRaw('tipo like "%'. $tipologia .'%" and created_at between "'. $data_min. '" and "'.$data_max .'";')->count();
             }
             return $statistiche;
     }
     
-    public function genera_statistiche3($tipo, $data_min, $data_max){
+    public function genera_statistiche3($tipologia, $data_min, $data_max){
             $this->_alloggi = new House;
-            if ($tipo == 'Appartamento')
+            if ($tipologia == 'Appartamento')
             {
-                $tipo = '';
+                $tipologia = '';
             }
-            if ($tipo == 'Posto letto singolo')
+            if ($tipologia == 'Posto letto singolo')
             {
-                $tipo = 'Posto_letto singolo';
+                $tipologia = 'Posto_letto singolo';
             }
-            if ($tipo == 'Posto letto doppio')
+            if ($tipologia == 'Posto letto doppio')
             {
-                $tipo = 'Posto_letto doppio';
+                $tipologia = 'Posto_letto doppio';
             }
             if((is_null($data_min)) and is_null($data_max))
             {            
-                $statistiche = House::whereRaw('tipo like "%' . $tipo . '%" and opzionato = 1')->count();
+                $statistiche = House::whereRaw('tipo like "%' . $tipologia . '%" and opzionato = 1')->count();
             }
             else
             {
                 $data_min = date("Y-m-d",strtotime($data_min));
                 $data_max = date("Y-m-d",strtotime($data_max));
-                $statistiche = House::whereRaw('tipo like "%'. $tipo .'%" and created_at between "'. $data_min. '" and "'.$data_max .'" and opzionato = 1')->count();
+                $statistiche = House::whereRaw('tipo like "%'. $tipologia .'%" and created_at between "'. $data_min. '" and "'.$data_max .'" and opzionato = 1')->count();
             }
             return $statistiche;
     }
