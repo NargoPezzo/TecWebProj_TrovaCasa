@@ -113,12 +113,20 @@
                          echo isset($_POST['n_camere']) ? $_POST['n_camere'] : '';
                     }
                 ?>";
-    document.getElementById("desc").value =
+    document.getElementById("n_posti_letto_totali").value =
             "<?php
-                    if (old('desc')!=null) {
-                         echo old('desc');
+                    if (old('n_posti_letto_totali')!=null) {
+                         echo old('n_posti_letto_totali');
                     } else {
-                         echo isset($_POST['desc']) ? $_POST['desc'] : '';
+                         echo isset($_POST['n_posti_letto_totali']) ? $_POST['n_posti_letto_totali'] : '';
+                    }
+                ?>";
+    document.getElementById("servizi").value =
+            "<?php
+                    if (old('servizi')!=null) {
+                         echo old('servizi');
+                    } else {
+                         echo isset($_POST['servizi']) ? $_POST['servizi'] : '';
                     }
                 ?>";
     };
@@ -242,9 +250,7 @@ https://templatemo.com/tm-571-hexashop
                 <span class="search">
                     <label for='tip' class="control">Tipologia</label>
                     <select name="tip" id="tip">
-                       
-                       <option value="Appartamento">Appartamento</option>
-                        
+                       <option value="Appartamento" selected>Appartamento</option>
                     </select>
                 </span>
                 <br>
@@ -291,52 +297,23 @@ https://templatemo.com/tm-571-hexashop
                 </span>
                 <br>
                 <span class="search">
-                    <label for="num_pl_tot" class="control">Numero di posti letto totali</label>
-                    <input type="number" name="num_pl_tot" id="num_pl_tot" min="0" step="1"/> 
+                    <label for="n_posti_letto_totali" class="control">Numero di posti letto totali</label>
+                    <input type="number" name="n_posti_letto_totali" id="n_posti_letto_totali" min="0" step="1"/> 
                 </span>
                 <br>
                 <span class="search">
-                    <label for="num_pl" class="control">Numero di posti letto nella stanza</label>
-                    <input type="number" name="num_pl" id="num_pl" min="0" step="1"/> 
-                </span>
-                <br>
-                <span class="search">
-                    <label for="superficie" class="control">Superficie minima</label>
+                    <label for="superficie" class="control">Superficie minima dell'appartamento</label>
                     <input type="number" name="superficie" id="superficie" min="0" step="5"/> mq
                 </span>
-                <br>
                 <br><br>
-                <p><b>Presenza di:</b></p>
                 <span class="search">
-                    <label for='loc_ric' class="control">Locale Ricreativo</label>
-                    <input name ="loc_ric" id="loc_ric" type="checkbox" >
+                    <p><b>Presenza di:</b></p>
+                    @foreach ($servizi as $servizio)
+                    <label for='servizi' class="control">{{$servizio}}</label>
+                    <input name ="servizi" id="servizi"type="checkbox"></input><br>
+                    @endforeach
                 </span>
-                <br>
-                <span class="search">
-                    <label for='lavatrice' class="control">Lavatrice</label>
-                    <input name ="lavatrice" id="lavatrice" type="checkbox" >
-                </span>
-                <br>
-                <span class="search">
-                    <label for='wifi' class="control">Wifi</label>
-                    <input name ="wifi" id="wifi" type="checkbox" >
-                </span>
-                <br>
-                <span class="search">
-                    <label for='p_auto' class="control">Posto Auto</label>
-                    <input name ="p_auto" id="p_auto" type="checkbox" >
-                </span>
-                <br>
-                <span class="search">
-                    <label for='asciugatrice' class="control">Asciugatrice</label>
-                    <input name ="asciugatrice" id="asciugatrice" type="checkbox" >
-                </span>
-                <br>
-                <span class="search">
-                    <label for='ang_stud' class="control">Angolo studio</label>
-                    <input name ="ang_stud" id="ang_stud" type="checkbox" >
-                </span>
-                <br>
+                <br><br>
                 <input type="submit" class="btn btn-inverse" style="vertical-align: super" value="Cerca">
                 @if ($errors->first('tipologia'))
                 <ul class="errors">
@@ -346,16 +323,15 @@ https://templatemo.com/tm-571-hexashop
                 </ul>
                 @endif
             </form>
-            <br>
-            <br>
+
             <form method="post" id="plform" name="search" enctype="multipart/form-data"
                 action="{{route('offerte.search')}}">
                 @csrf
                 <span class="search">
                     <label for='tip' class="control">Tipologia</label>
-                    <select name="tip" id="tip">
+                    <select required name="tip" id="tip">
                         
-                        <option value="Posto letto singolo">Posto letto singolo</option>
+                        <option  value="Posto letto singolo">Posto letto singolo</option>
                         <option value="Posto letto doppio">Posto letto doppio</option>
                         
                     </select>
@@ -399,57 +375,28 @@ https://templatemo.com/tm-571-hexashop
                 </span>
                 <br>
                 <span class="search">
-                    <label for="n_camere" class="control">Numero di camere nell'appartamento</label>
-                    <input type="number" name="n_camere" id="n_camere" min="0" step="1"/> 
-                </span>
-                <br>
-                <span class="search">
-                    <label for="num_pl_tot" class="control">Numero di posti letto totali</label>
+                    <label for="num_pl_tot" class="control">Numero di posti letto nella camera</label>
                     <input type="number" name="num_pl_tot" id="num_pl_tot" min="0" step="1"/> 
                 </span>
                 <br>
                 <span class="search">
-                    <label for="num_pl" class="control">Numero di posti letto nella stanza</label>
-                    <input type="number" name="num_pl" id="num_pl" min="0" step="1"/> 
+                    <label for="n_camere" class="control">Numero di posti letto totali nell'alloggio</label>
+                    <input type="number" name="n_camere" id="n_camere" min="0" step="1"/> 
                 </span>
                 <br>
                 <span class="search">
-                    <label for="superficie" class="control">Superficie minima</label>
+                    <label for="superficie" class="control">Superficie minima della camera</label>
                     <input type="number" name="superficie" id="superficie" min="0" step="5"/> mq
                 </span>
-                <br>
                 <br><br>
-                <p><b>Presenza di:</b></p>
                 <span class="search">
-                    <label for='loc_ric' class="control">Locale Ricreativo</label>
-                    <input name ="loc_ric" id="loc_ric" type="checkbox" >
+                    <p><b>Presenza di:</b></p>
+                    @foreach ($servizi as $servizio)
+                    <label for='servizi' class="control">{{$servizio}}</label>
+                        <input name ="servizi" id="servizi"type="checkbox"></input><br>
+                        @endforeach
                 </span>
-                <br>
-                <span class="search">
-                    <label for='lavatrice' class="control">Lavatrice</label>
-                    <input name ="lavatrice" id="lavatrice" type="checkbox" >
-                </span>
-                <br>
-                <span class="search">
-                    <label for='wifi' class="control">Wifi</label>
-                    <input name ="wifi" id="wifi" type="checkbox" >
-                </span>
-                <br>
-                <span class="search">
-                    <label for='p_auto' class="control">Posto Auto</label>
-                    <input name ="p_auto" id="p_auto" type="checkbox" >
-                </span>
-                <br>
-                <span class="search">
-                    <label for='asciugatrice' class="control">Asciugatrice</label>
-                    <input name ="asciugatrice" id="asciugatrice" type="checkbox" >
-                </span>
-                <br>
-                <span class="search">
-                    <label for='ang_stud' class="control">Angolo studio</label>
-                    <input name ="ang_stud" id="ang_stud" type="checkbox" >
-                </span>
-                <br>
+                <br><br>
                 <input type="submit" class="btn btn-inverse" style="vertical-align: super" value="Cerca">
                 @if ($errors->first('tipologia'))
                 <ul class="errors">
@@ -502,7 +449,7 @@ https://templatemo.com/tm-571-hexashop
             
   
            
-              
+         </div>      
           </div>   
     </section>
     <!-- ***** Products Area Ends ***** -->

@@ -27,7 +27,6 @@ class House extends Model
     }
     // Realazione One-To-Many con Servizi
     public function servizi() {
-        
         return $this->belongsToMany(Services::class);
     }
     
@@ -38,6 +37,11 @@ class House extends Model
     public function getTipologiaList () {
         $tipologie = array('Appartamento', 'Posto letto singolo', 'Posto letto doppio');
         return $tipologie;
+    }
+    
+    public function getServiziList () {
+        $servizi = array('Locale ricreativo', 'Lavatrice', 'Wifi', 'Posto auto', 'Asciugatrice', 'Angolo studio');
+        return $servizi;
     }
     
     public function getHousesByTipologia ($tipologia) {

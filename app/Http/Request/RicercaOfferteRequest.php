@@ -32,11 +32,13 @@ class RicercaOfferteRequest extends FormRequest {
             'data_max' => '',
             'superficie' => '',
             'n_camere' => '',
+            'n_posti_letto_totali' => '',
+            'servizi' => '',
             //'titolo' => 'string|max:50',
             /*'prezzo' => 'numeric|min:0',
             //'descrizione' => 'string|max:2500',
             
-            'n_posti_letto_totali' => 'int',
+            
             'indirizzo' => 'string|max:255',
             'città' => 'string|max:255|required_with:indirizzo',
             'cap' => 'numeric|max:5',
