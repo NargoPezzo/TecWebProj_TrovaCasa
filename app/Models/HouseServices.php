@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 
-class HouseServices {
+class HouseServices extends Model{
+    
     
     public function lastAlloggio(){
     

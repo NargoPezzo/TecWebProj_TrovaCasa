@@ -41,7 +41,7 @@ class PublicController extends Controller {
         
         
         $tipologie = $this->_houseModel->getTipologiaList();
-        $servizi = $this->_houseModel->getServiziList();
+        $servizi = $this->_serviziModel->getServizi();
         $alloggi = $this->_offerteModel->getAlloggi();
         
         return view('offerte')
@@ -60,7 +60,9 @@ class PublicController extends Controller {
         $superficie = $request->superficie;
         $n_camere = $request->n_camere;
         $n_posti_letto_totali = $request->n_posti_letto_totali;
-        $servizi = $this->_houseModel->getServiziList();
+        $servizi = $request->servizi;
+        Log::info('Controller');
+        Log::info($servizi);
         /*$regions = $this->eventsList->getRegionList();
         $months = $this->eventsList->getMonthList();
         $events = $this->eventsList->getEventsFiltered($request->year, $request->month, $request->reg,

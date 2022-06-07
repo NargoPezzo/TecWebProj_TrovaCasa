@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Resources\House;
+use App\Models\Resources\HouseService;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Resources\Services;
 use Carbon\Carbon;
@@ -33,6 +34,11 @@ class Offerte {
         return $alloggi;
     }
     
+    public function compare($value, $size) {
+        return $value == $size;
+    }
+    
+    
     public function getHousesFiltered($tipologia = null, $prezzomin = null, $prezzomax = null, $data_min = null, $data_max = null, $superficie = null, $n_camere = null, $n_posti_letto_totali = null, $servizi = null/*$anno = null, $mese = null, $regione = null, $organizzazione = null, $descrizione = null*/) {
         /*$data = null;
         if ((isset($anno)) && (isset($mese))) {
@@ -50,8 +56,38 @@ class Offerte {
             }
         }
         
-        Log::info($data_min);
-        Log::info($data_max);
+        Log::info('SERVIZI');
+        Log::info($servizi);
+        
+        $selectedalloggi = array();
+        
+        if (!is_null($filters['servizi'])) {
+            $allalloggi = array();
+            $size = sizeof($servizi);
+            foreach ($servizi as $servizio) {
+                $alloggi = HouseService::select('house_id')->where('services_id', $servizio)->get();
+                if (!is_null($alloggi)) {
+                    foreach ($alloggi as $alloggio) {
+                        if (array_key_exists(strval($alloggio->house_id), $allalloggi)){
+                            $allalloggi[strval($alloggio->house_id)] = $allalloggi[strval($alloggio->house_id)]++;
+                        } else {
+                            $allalloggi[strval($alloggio->house_id)] = 1;
+                        }
+                    }
+                }
+            } 
+            Log::info($allalloggi);
+            foreach ($allalloggi as $key => $value) {
+                if ($value != $size) {
+                    unset($allalloggi[$key]);
+                }
+            }
+        }
+        
+        
+        
+        /*Log::info($data_min);
+        /*Log::info($data_max);*/
 
 
         //Creo l'array sul quale verrà fatta la query
@@ -83,7 +119,9 @@ class Offerte {
                     $queryFilters[] = ["n_posti_letto_totali", "=", $n_posti_letto_totali];
                     break;
                 case "servizi":
-                    $queryFilters[] = ["servizi", "LIKE", "%" . strval($servizi) . "%"];
+                    foreach($allalloggi as $alloggio) {
+                        $queryFilters[] = ["id", "IN", array_keys($allalloggi)];
+                    };
                     break;
                 /*case "data":
                     $queryFilters[] = ["data", "LIKE", "%" . strval($data) . "%"];
@@ -103,10 +141,11 @@ class Offerte {
 
         
         Log::info($queryFilters);
+        Log::info($selectedalloggi);
         
         //Controllo se non è presente alcun filtro
         if (empty($queryFilters)) {
-            $houses = House::where('id', 4)->orderBy('id');
+            $houses = House::where('id', '>', 0)->orderBy('id');
         }
 
         //Caso in cui sia presente almeno un filtro
@@ -114,6 +153,8 @@ class Offerte {
             $houses = House::where($queryFilters)/*->whereDate('data', '>=', $this->today)*/;
         }
 
+        Log::info($houses->get());
+        
         return $houses->paginate(9);
     }
     

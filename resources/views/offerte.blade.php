@@ -309,8 +309,8 @@ https://templatemo.com/tm-571-hexashop
                 <span class="search">
                     <p><b>Presenza di:</b></p>
                     @foreach ($servizi as $servizio)
-                    <label for='servizi' class="control">{{$servizio}}</label>
-                    <input name ="servizi" id="servizi"type="checkbox"></input><br>
+                    <label for='servizi[]' class="control">{{$servizio->nome}}</label>
+                    <input name ="servizi[]" id="servizi"type="checkbox" value="{{$servizio->id}}"></input><br>
                     @endforeach
                 </span>
                 <br><br>
@@ -323,7 +323,7 @@ https://templatemo.com/tm-571-hexashop
                 </ul>
                 @endif
             </form>
-
+            <br><br>
             <form method="post" id="plform" name="search" enctype="multipart/form-data"
                 action="{{route('offerte.search')}}">
                 @csrf
@@ -392,7 +392,7 @@ https://templatemo.com/tm-571-hexashop
                 <span class="search">
                     <p><b>Presenza di:</b></p>
                     @foreach ($servizi as $servizio)
-                    <label for='servizi' class="control">{{$servizio}}</label>
+                    <label for='servizi' class="control">{{$servizio->nome}}</label>
                         <input name ="servizi" id="servizi"type="checkbox"></input><br>
                         @endforeach
                 </span>
