@@ -33,14 +33,14 @@ class Offerte {
         return $alloggi;
     }
     
-    public function getHousesFiltered($tipologia = null, $prezzomin = null, $prezzomax = null, $data_min = null, $data_max = null/*, $superficie = null/*$anno = null, $mese = null, $regione = null, $organizzazione = null, $descrizione = null*/) {
+    public function getHousesFiltered($tipologia = null, $prezzomin = null, $prezzomax = null, $data_min = null, $data_max = null, $superficie = null, $n_camere = null/*$anno = null, $mese = null, $regione = null, $organizzazione = null, $descrizione = null*/) {
         /*$data = null;
         if ((isset($anno)) && (isset($mese))) {
             $data = $anno . '-' . $this->chooseMonthNumber($mese);
         }*/
         $today = Carbon::now()->toDateString();
         
-        $filters = array("tipologia" => $tipologia, "prezzomin" => $prezzomin, "prezzomax" => $prezzomax, "data_min" => $data_min, "data_max" => $data_max/*, "superficie" => $superficie/*data" => $data, "regione" => $regione, "organizzazione" => $organizzazione, "descrizione" => $descrizione*/);
+        $filters = array("tipologia" => $tipologia, "prezzomin" => $prezzomin, "prezzomax" => $prezzomax, "data_min" => $data_min, "data_max" => $data_max, "superficie" => $superficie, "n_camere" => $n_camere /*data" => $data, "regione" => $regione, "organizzazione" => $organizzazione, "descrizione" => $descrizione*/);
 
         //Controllo quali filtri sono stati settati
         foreach ($filters as $key => $value) {
@@ -50,6 +50,8 @@ class Offerte {
         }
         
         Log::info($data_min);
+        Log::info($data_max);
+
 
         //Creo l'array sul quale verrà fatta la query
         $queryFilters = [];
@@ -64,14 +66,17 @@ class Offerte {
                 case "prezzomax":
                     $queryFilters[] = ["prezzo", "<=", $prezzomax];
                     break;
-                /*case "data_min":
-                    $queryFilters[] = ["data_min", "LIKE", "%" . strval($data_min) . "%"];
+                case "data_min":
+                    $queryFilters[] = ["data_min", "<=", $data_min];
                     break;
                 case "data_max":
-                    $queryFilters[] = ["data_max", "<=", $data_max];
+                    $queryFilters[] = ["data_max", ">=", $data_max];
                     break;
-                /*case "superficie":
-                    $queryFilters[] = ["superfcie", ">=", $superficie];
+                case "superficie":
+                    $queryFilters[] = ["superficie", ">=", $superficie];
+                    break;
+                case "n_camere":
+                    $queryFilters[] = ["n_camere", "=", $n_camere];
                     break;
                 /*case "data":
                     $queryFilters[] = ["data", "LIKE", "%" . strval($data) . "%"];
@@ -89,6 +94,7 @@ class Offerte {
             }
         }
 
+        
         Log::info($queryFilters);
         
         //Controllo se non è presente alcun filtro

@@ -3,8 +3,60 @@
 
   <head>
 
+<style>
+    .button {
+      border: none;
+      color: white;
+      padding: 16px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+    }
+
+    .button1 {
+      background-color: white; 
+      color: black; 
+      border: 2px solid #4CAF50;
+    }
+
+    .button1:hover {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .button2 {
+      background-color: white; 
+      color: black; 
+      border: 2px solid #008CBA;
+    }
+
+    .button2:hover {
+      background-color: #008CBA;
+      color: white;
+    }
+
+</style>
+
 <script>
+    
+    
     window.onload = function () {
+        
+        $("#appform").hide();
+        $("#plform").hide();
+        
+        $("#app").click(function() {
+            $("#appform").show();
+            $("#plform").hide(); })
+        
+        $("#pl").click(function() {
+            $("#plform").show();
+            $("#appform").hide(); })
+       
         document.getElementById("tip").value =
                 "<?php
                     if (old('tip')!=null) {
@@ -45,20 +97,20 @@
                          echo isset($_POST['data_max']) ? $_POST['data_max'] : '';
                     }
                 ?>";
-    document.getElementById("month").value =
+    document.getElementById("superficie").value =
             "<?php
-                    if (old('month')!=null) {
-                         echo old('month');
+                    if (old('superficie')!=null) {
+                         echo old('superficie');
                     } else {
-                         echo isset($_POST['month']) ? $_POST['month'] : '';
+                         echo isset($_POST['superficie']) ? $_POST['superficie'] : '';
                     }
                 ?>";
-    document.getElementById("year").value =
+    document.getElementById("n_camere").value =
             "<?php
-                    if (old('year')!=null) {
-                         echo old('year');
+                    if (old('n_camere')!=null) {
+                         echo old('n_camere');
                     } else {
-                         echo isset($_POST['year']) ? $_POST['year'] : '';
+                         echo isset($_POST['n_camere']) ? $_POST['n_camere'] : '';
                     }
                 ?>";
     document.getElementById("desc").value =
@@ -180,22 +232,25 @@ https://templatemo.com/tm-571-hexashop
                     <b>Ricerca<br>avanzata</b>
                 </p>
             </div>
+            
+            <button id="app" class="button button1">Appartamento</button>
+            <button id="pl" class="button button2">Posto Letto</button><br><br><br>
 
-            <form method="post" id="search" name="search" enctype="multipart/form-data"
+            <form method="post" id="appform" name="search" enctype="multipart/form-data"
                 action="{{route('offerte.search')}}">
                 @csrf
                 <span class="search">
                     <label for='tip' class="control">Tipologia</label>
                     <select name="tip" id="tip">
-                        @foreach ($tipologie as $tipologia)
-                        <option>{{$tipologia}}</option>
-                        @endforeach
+                       
+                       <option value="Appartamento">Appartamento</option>
+                        
                     </select>
                 </span>
                 <br>
                 <span class="search">
                    <label for='prezzomin' class="control">Prezzo min</label>
-                   <input name ="prezzomin" id="prezzomin" type="range" value="10" min="0" max="1000" step="25"
+                   <input name ="prezzomin" id="prezzomin" type="range" min="0" max="1000" step="25"
                    oninput="this.nextElementSibling.value = this.value">
                     <output></output>
                     @isset($prezzomin)
@@ -204,7 +259,7 @@ https://templatemo.com/tm-571-hexashop
                 </span>
                 <span class="search">
                     <label for='prezzomax' class="control">Prezzo max</label>
-                   <input name ="prezzomax" id="prezzomax" type="range" value="1000" min="0" max="3000" step="25"
+                   <input name ="prezzomax" id="prezzomax" type="range" min="0" max="3000" step="25"
                    oninput="this.nextElementSibling.value = this.value">
                     <output></output>
                     @isset($prezzomax)
@@ -214,7 +269,7 @@ https://templatemo.com/tm-571-hexashop
                 <br>
                 <span class="search">
                    <label for='data_min' class="control">Data min</label>
-                   <input name ="data_min" id="data_min" type="date" value="01-01-2000"
+                   <input name ="data_min" id="data_min" type="date" 
                    oninput="this.nextElementSibling.value = this.value">
                    <output></output>
                     @isset($data_min)
@@ -223,7 +278,7 @@ https://templatemo.com/tm-571-hexashop
                 </span>
                 <span class="search">
                     <label for='data_max' class="control">Data max</label>
-                   <input name ="data_max" id="data_max" type="date" value="01-01-3000"
+                   <input name ="data_max" id="data_max" type="date" 
                    oninput="this.nextElementSibling.value = this.value" >
                     @isset($data_max)
                         <option>{{$data_max}}</option>
@@ -231,8 +286,8 @@ https://templatemo.com/tm-571-hexashop
                 </span>
                 <br>
                 <span class="search">
-                    <label for="num_camere" class="control">Numero di camere nell'appartamento</label>
-                    <input type="number" name="num_camere" id="num_camere" min="0" step="1"/> 
+                    <label for="n_camere" class="control">Numero di camere nell'appartamento</label>
+                    <input type="number" name="n_camere" id="n_camere" min="0" step="1"/> 
                 </span>
                 <br>
                 <span class="search">
@@ -291,9 +346,124 @@ https://templatemo.com/tm-571-hexashop
                 </ul>
                 @endif
             </form>
+            <br>
+            <br>
+            <form method="post" id="plform" name="search" enctype="multipart/form-data"
+                action="{{route('offerte.search')}}">
+                @csrf
+                <span class="search">
+                    <label for='tip' class="control">Tipologia</label>
+                    <select name="tip" id="tip">
+                        
+                        <option value="Posto letto singolo">Posto letto singolo</option>
+                        <option value="Posto letto doppio">Posto letto doppio</option>
+                        
+                    </select>
+                </span>
+                <br>
+                <span class="search">
+                   <label for='prezzomin' class="control">Prezzo min</label>
+                   <input name ="prezzomin" id="prezzomin" type="range" min="0" max="1000" step="25"
+                   oninput="this.nextElementSibling.value = this.value">
+                    <output></output>
+                    @isset($prezzomin)
+                        <option>{{$prezzomin}}</option>
+                    @endisset €
+                </span>
+                <span class="search">
+                    <label for='prezzomax' class="control">Prezzo max</label>
+                   <input name ="prezzomax" id="prezzomax" type="range" min="0" max="3000" step="25"
+                   oninput="this.nextElementSibling.value = this.value">
+                    <output></output>
+                    @isset($prezzomax)
+                        <option>{{$prezzomax}}</option>
+                    @endisset €
+                </span>
+                <br>
+                <span class="search">
+                   <label for='data_min' class="control">Data min</label>
+                   <input name ="data_min" id="data_min" type="date" value="01-01-2000"
+                   oninput="this.nextElementSibling.value = this.value">
+                   <output></output>
+                    @isset($data_min)
+                        <option>{{$data_min}}</option>
+                    @endisset
+                </span>
+                <span class="search">
+                    <label for='data_max' class="control">Data max</label>
+                   <input name ="data_max" id="data_max" type="date" value="01-01-3000"
+                   oninput="this.nextElementSibling.value = this.value" >
+                    @isset($data_max)
+                        <option>{{$data_max}}</option>
+                    @endisset
+                </span>
+                <br>
+                <span class="search">
+                    <label for="n_camere" class="control">Numero di camere nell'appartamento</label>
+                    <input type="number" name="n_camere" id="n_camere" min="0" step="1"/> 
+                </span>
+                <br>
+                <span class="search">
+                    <label for="num_pl_tot" class="control">Numero di posti letto totali</label>
+                    <input type="number" name="num_pl_tot" id="num_pl_tot" min="0" step="1"/> 
+                </span>
+                <br>
+                <span class="search">
+                    <label for="num_pl" class="control">Numero di posti letto nella stanza</label>
+                    <input type="number" name="num_pl" id="num_pl" min="0" step="1"/> 
+                </span>
+                <br>
+                <span class="search">
+                    <label for="superficie" class="control">Superficie minima</label>
+                    <input type="number" name="superficie" id="superficie" min="0" step="5"/> mq
+                </span>
+                <br>
+                <br><br>
+                <p><b>Presenza di:</b></p>
+                <span class="search">
+                    <label for='loc_ric' class="control">Locale Ricreativo</label>
+                    <input name ="loc_ric" id="loc_ric" type="checkbox" >
+                </span>
+                <br>
+                <span class="search">
+                    <label for='lavatrice' class="control">Lavatrice</label>
+                    <input name ="lavatrice" id="lavatrice" type="checkbox" >
+                </span>
+                <br>
+                <span class="search">
+                    <label for='wifi' class="control">Wifi</label>
+                    <input name ="wifi" id="wifi" type="checkbox" >
+                </span>
+                <br>
+                <span class="search">
+                    <label for='p_auto' class="control">Posto Auto</label>
+                    <input name ="p_auto" id="p_auto" type="checkbox" >
+                </span>
+                <br>
+                <span class="search">
+                    <label for='asciugatrice' class="control">Asciugatrice</label>
+                    <input name ="asciugatrice" id="asciugatrice" type="checkbox" >
+                </span>
+                <br>
+                <span class="search">
+                    <label for='ang_stud' class="control">Angolo studio</label>
+                    <input name ="ang_stud" id="ang_stud" type="checkbox" >
+                </span>
+                <br>
+                <input type="submit" class="btn btn-inverse" style="vertical-align: super" value="Cerca">
+                @if ($errors->first('tipologia'))
+                <ul class="errors">
+                    @foreach ($errors->get('tipologia') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+            </form>
+            
+            
         </div>
     </section>
-            @endcan
+@endcan
             
           <div class="row">
           @isset($houses)

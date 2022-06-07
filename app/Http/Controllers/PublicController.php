@@ -46,12 +46,15 @@ class PublicController extends Controller {
     
     public function showOfferteFiltrate(RicercaOfferteRequest $request) {
         
+        Log::info($request);
+      
         $tipologie = $this->_houseModel->getTipologiaList();
         $prezzomin = $request->prezzomin;
         $prezzomax = $request->prezzomax;
         $data_min = $request->data_min;
         $data_max = $request->data_max;
-        //$superficie = $request->superficie;
+        $superficie = $request->superficie;
+        $n_camere = $request->n_camere;
         /*$regions = $this->eventsList->getRegionList();
         $months = $this->eventsList->getMonthList();
         $events = $this->eventsList->getEventsFiltered($request->year, $request->month, $request->reg,
@@ -64,12 +67,11 @@ class PublicController extends Controller {
                 ->with('months', $months)->with('OnSales', $EventsOnSales);
 */
         Log::info($data_min);
-        Log::info($data_max);
         
-        $alloggi = $this->_offerteModel->getHousesFiltered($request->tip, $prezzomin, $prezzomax, $data_min, $data_max /*$superficie*/);
+        $alloggi = $this->_offerteModel->getHousesFiltered($request->tip, $prezzomin, $prezzomax, $data_min, $data_max, $superficie, $n_camere);
         
         return view('offerte')->with('houses', $alloggi)->with('tipologie', $tipologie)->with('prezzomin', $prezzomin)->with('prezzomax', $prezzomax)
-                ->with('data_min', $data_min)->with('data_max', $data_max);
+                ->with('data_min', $data_min)->with('data_max', $data_max)->with('superficie', $superficie)->with('n_camere', $n_camere);
     }
     
     public function showOfferta($id) {
