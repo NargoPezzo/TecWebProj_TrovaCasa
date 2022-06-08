@@ -21,14 +21,15 @@ class LocatoreController extends Controller {
     protected $_locatoreModel;
     protected $_serviceModel;
     protected $_alloggioModel;
-    protected $_houseservicesModel;
+    protected $_houseserviceModel;
 
     public function __construct() {
         $this->middleware('can:isLocatore');
         $this->_locatoreModel = new Locatore;
         $this->_serviceModel = new Services;
         $this->_alloggioModel = new House;
-        $this->_houseservicesModel = new HouseServices;
+       
+        $this->_houseserviceModel = new HouseService;
     }
 
     public function index() {
@@ -162,6 +163,13 @@ public function editAlloggio(ModificaAlloggioRequest $request) {
         $alloggio->save();
         
         //eliminare i servizi della casa e riaghgiungerle sotto
+        
+        
+        $this->_houseserviceModel->deleteHouseServizioById($alloggio->id);
+        
+        
+        //LE RIGHE SOPRA SONO DI PROVA PER CANCELLARE
+     if (!empty($request->servizi)) {   
         foreach($request->servizi as $servizio){
             
             
@@ -170,6 +178,7 @@ public function editAlloggio(ModificaAlloggioRequest $request) {
             $houseservice->services_id = $this->_serviceModel->servizioIdByName($servizio)->id;
              Log::info($houseservice);
             $houseservice->save();
+            }   
         }
         $servizi = $this->_serviceModel->getServizi();
         return redirect()->route('gestiscialloggi')

@@ -14,4 +14,10 @@ class HouseService extends Model
     
     protected $fillable=['house_id', 'service_id'];
     
+    
+    public function deleteHouseServizioById($id){
+        $houseservizio = HouseService::where(["house_id"=>$id])->delete('service_id');
+        
+        
+    }
 }
