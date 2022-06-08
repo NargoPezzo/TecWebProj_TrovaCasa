@@ -21,11 +21,7 @@
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
-<!--
 
-TemplateMo 571 Hexashop
-
-https://templatemo.com/tm-571-hexashop -->
 
 <script type="text/javascript" src="resources/js/app.js"></script>
   <!-- Custom styles -->
@@ -98,7 +94,7 @@ https://templatemo.com/tm-571-hexashop -->
                             
                         {{ Form::open(array('route' => 'inseriscialloggio.store', 'id' => 'houses', 'files' => true, 'class' => 'contact-form')) }}
                             <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('titolo', 'Titolo', ['class' => 'label-input']) }}
+                                <b>{{ Form::label('titolo', 'Titolo:', ['class' => 'label-input']) }}&nbsp;&nbsp;&nbsp;
                                 {{ Form::text('titolo', '', ['class' => 'input', 'id' => 'titolo']) }}
                                 @if ($errors->first('titolo'))
                                 <ul class="errors">
@@ -107,7 +103,7 @@ https://templatemo.com/tm-571-hexashop -->
                                     @endforeach
                                 </ul>
                                 @endif
-                            </div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             
                             <!--<div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('locatoreId', 'ID', ['class' => 'label-input']) }}
@@ -123,13 +119,14 @@ https://templatemo.com/tm-571-hexashop -->
                             </div>-->
                             
                                     
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('tipologia', 'Tipologia', ['class' => 'label-input']) }}
+                            
+                                {{ Form::label('tipologia', 'Tipologia:', ['class' => 'label-input']) }}&nbsp;&nbsp;&nbsp;
                                 {{ Form::select('tipologia', ['appartamento' => 'Appartamento', 'posto_letto_singolo' => 'Posto letto (singolo)', 'posto_letto_doppio' => 'Posto letto (doppio)'], ['class' => 'input','id' => 'tipologia']) }}
                             </div>
+                        <br>
 
                             <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('immagine', 'Immagine', ['class' => 'label-input']) }}
+                                {{ Form::label('immagine', 'Immagine:', ['class' => 'label-input']) }}&nbsp;&nbsp;&nbsp;
                                 {{ Form::file('immagine', ['class' => 'input', 'id' => 'immagine']) }}
                                 @if ($errors->first('immagine'))
                                 <ul class="errors">
@@ -139,7 +136,7 @@ https://templatemo.com/tm-571-hexashop -->
                                 </ul>
                                 @endif
                             </div>
-
+                        <br>
                             <div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('descrizione', 'Descrizione ', ['class' => 'label-input']) }}
                                 {{ Form::textarea('descrizione', '', ['class' => 'input', 'id' => 'descrizione']) }}

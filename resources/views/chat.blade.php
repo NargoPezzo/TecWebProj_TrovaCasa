@@ -9,27 +9,25 @@
 <body>
 @isset($messaggi)
 
-<div class="msg_history">
+
             
             @foreach($messaggi as $messaggio)  
                 
                 @if($messaggio->destinatario==$authuser)
-                <div class="received_msg">
-                 <div class="received_withd_msg">
+                <div>
                   <p>{!! $messaggio->testo !!}</p>
-                  <span class="time_date">{{ $messaggio->dataOraInvio }}</span></div>
+                  <span class="time_date">{{ $messaggio->dataOraInvio }}</span>
                 </div>
                 @else
-                <div class="outgoing_msg">
-                  <div class="sent_msg">
-                    <p>{!! $messaggio->testo !!}</p>
-                    <span class="time_date">{{ $messaggio->dataOraInvio }}</span> </div>
+                <div>
+                    <right><p>{!! $messaggio->testo !!}</p></right>
+                    <span class="time_date">{{ $messaggio->dataOraInvio }}</span>
                 </div>
                 
                 @endif
                 
             @endforeach
-</div>
+
     
     <div class="type_msg">
             <div class="input_msg_write split2chat">

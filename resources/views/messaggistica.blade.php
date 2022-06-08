@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>TrovaCasa.it - @yield('title', 'Home')</title>
+    <title>TrovaCasa.it - @yield('title', 'Messaggi')</title>
 
 
     <!-- Additional CSS Files -->
@@ -23,32 +23,18 @@
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
 
-    <style>
-    body {font-family:Arial, Helvetica, sans-serif; font-size:12px;}
-    
-    .fadein { 
-        position:relative; height:600px; width:450px; margin:0 auto;
-        padding: 10px;
-    }
-    
-    .fadein img{
-        position:absolute;
-        width: calc(96%);
-        height: calc(94%);
-        object-fit: scale-down;
-    }
 
-</style>
- 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script>
-    $(function(){
-            $('.fadein img:gt(0)').hide();
-            setInterval(function(){$('.fadein :first-child').fadeOut().next('img').fadeIn().end().appendTo('.fadein');}, 3000);
-    });
+   
+    var ifrm = document.getElementById('chatframe');
+    ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
+    ifrm.document.open();
+    ifrm.document.write('Seleziona una chat');
+    ifrm.document.close();
+    
 </script>
     
-    </head>
+</head>
     
     <body>
     
@@ -80,65 +66,60 @@
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
+    
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="page-heading about-page-heading" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="inner-content">
+                        <h2>Messaggistica</h2>
+                        <span>Nel cuore degli studenti</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
 
 
-<script>
-   
-    var ifrm = document.getElementById('chatframe');
-    ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
-    ifrm.document.open();
-    ifrm.document.write('Seleziona una chat');
-    ifrm.document.close();
-</script>
 
 
 
 
 
-
-<div class="container-chat">
-<h1 class=" text-center">Le tue conversazioni</h1>
-<div class="messaging">
-    <div id="CHAT"> </div>
-      <div class="inbox_msg">
-        <div class="inbox_people">
-          
-          <div class="inbox_chat">
-            
+    <br><br>
+<div class="container">
+    
             @isset($chat) 
             @foreach($chat as $singolachat)
-            @if($singolachat->user1 == $authuser)
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5><a href="{{ route('chat', [$singolachat->user2]) }}" class="ancora-singolachat" target="chatframe"> {{$singolachat->user2}} </a></h5>
-                </div>
-              </div>
-            </div>    
-            @else
-            <div class="chat_list">
-              <div class="chat_people" >
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5><a href="{{ route('chat', [$singolachat->user1]) }}" class="ancora-singolachat" target="chatframe"> {{$singolachat->user1}} </a></h5>
-                </div>
-              </div>
-            </div>
-            @endif
-            @endforeach
-            @endisset
-          </div>
-        </div>
-        <div class="mesgs">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="item">
+                        <div class="thumb">
+                        @if($singolachat->user1 == $authuser)
+                            <div> <img src="assets/images/chat-user.png"> </div>
+                            <h5><a href="{{ route('chat', [$singolachat->user2]) }}" target="chatframe"> {{$singolachat->user2}} </a></h5>
+                
+                        @else
             
-              <iframe id="chatframe" src="" name="chatframe">
-                  
-              </iframe>
-        </div>
-</div>
-</div>    
-</div>
+                            <div> <img src="assets/images/chat-user.png"> </div>
+                            <h5><a href="{{ route('chat', [$singolachat->user1]) }}" target="chatframe"> {{$singolachat->user1}} </a></h5>
+                
+                        @endif
+                        @endforeach
+                        @endisset
+                        
+                        </div>
+                    </div>
+                </div>        
+                <div class="col-lg-8">
+                    <iframe id="chatframe" src="" name="chatframe" width="100%" height="300">   
+                    </iframe>
+                </div>
+            </div>
+</div>            
+
 
 
 
