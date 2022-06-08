@@ -22,6 +22,8 @@ class PublicController extends Controller {
     protected $_faqsModel;
     
     protected $_houseModel;
+    
+    protected $_userModel;
 
     public function __construct() {
         $this->_offerteModel = new Offerte;
@@ -48,11 +50,12 @@ class PublicController extends Controller {
         
         
         $tipologie = $this->_houseModel->getTipologiaList();
+        $province = $this->_offerteModel->getProvList();
         $servizi = $this->_serviziModel->getServizi();
         $alloggi = $this->_offerteModel->getAlloggi();
         
         return view('offerte')
-                        ->with('houses', $alloggi)->with('tipologie', $tipologie)->with('servizi', $servizi);
+                        ->with('houses', $alloggi)->with('province', $province)->with('tipologie', $tipologie)->with('servizi', $servizi);
     }
     
     public function showOfferteFiltrate(RicercaOfferteRequest $request) {
@@ -60,6 +63,7 @@ class PublicController extends Controller {
         Log::info($request);
       
         $tipologie = $this->_houseModel->getTipologiaList();
+        $province = $this->_offerteModel->getProvList();
         $prezzomin = $request->prezzomin;
         $prezzomax = $request->prezzomax;
         $data_min = $request->data_min;
@@ -116,7 +120,7 @@ class PublicController extends Controller {
 
         public function showChat() {
 
-        $chat = $this->_userModel->getChat(Auth()->user()->username);
+        $chat = $this->_userModel->getChat(Auth()->User()->username);
         $messaggi = $this->_userModel->getMessaggi($chat);
         
         return view('messaggistica')

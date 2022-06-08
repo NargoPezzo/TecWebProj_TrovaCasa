@@ -59,8 +59,29 @@
 </style>
 
 <script>
-    
-    
+    $(function () {
+                $('#prov').change(function (event) {
+                    if ($('#prov').val() == "-- Seleziona --") {
+                        $('#citta').find('option').remove();
+                        return
+                    }
+                    $.ajax({
+                        type: 'GET',
+                        url: '',
+                        data: "reg=" + $('#prov').val(),
+                        dataType: 'json',
+                        success: setCittà
+                    });
+                });
+            });
+
+            function setCittà(data) {
+                $('#città').find('option').remove();
+                $.each(data, function (key, val) {
+                    $('#città').append('<option>' + val + '</option>');
+                });
+            }
+            
     window.onload = function () {
         
         $("#appform").hide();
@@ -266,6 +287,24 @@
                 </span>
                 <br>
                 <br>
+                <span class="search">
+                    <label for="prov" class="control">Provincia:</label>
+                    <select name="prov" id="prov">
+                        @foreach ($province as $provincia)
+                        <option>{{$provincia}}</option>
+                        @endforeach
+                    </select>
+                </span>
+                <br><br>
+                <span class="search">
+                    <label for="citta" class="control">Città::</label>
+                    <select name="citta" id="citta">
+                        @foreach ($province as $provincia)
+                        <option>{{$provincia}}</option>
+                        @endforeach
+                    </select>
+                </span>
+                <br><br>
                 <b>Prezzo:</b>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="search">

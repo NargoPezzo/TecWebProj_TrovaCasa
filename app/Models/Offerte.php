@@ -83,12 +83,9 @@ class Offerte {
                 }
             }
         }
-        
-        
-        
+
         /*Log::info($data_min);
         /*Log::info($data_max);*/
-
 
         //Creo l'array sul quale verrà fatta la query
         $queryFilters = [];
@@ -158,4 +155,19 @@ class Offerte {
         return $houses->paginate(9);
     }
     
+    public function getProvList() {
+        $province = array('AN', 'AP', 'FM', 'MC', 'PU');
+        return $province;
+    }
+    
+    public function getCittà($provincia){
+        switch($provincia){
+            case 'AN': return ['Agugliano', 'Ancona', 'Arcevia', 'Barbara', 'Belvedere Ostrense', 'Camerano', 'Camerata Picena', 'Castelbellino', 'Castelfidardo', 'Castelleone di Suasa', 'Castelplanio', "Cerreto d'Esi", 'Chiaravalle', 'Corinaldo', 'Cupramontana', 'Fabriano', 'Falconara Marittima', 'Filottrano', 'Genga', 'Jesi', 'Loreto', 'Maiolati Spontini', 'Mergo', 'Monsano', 'Monte Roberto', 'Monte San Vito', 'Montecarotto', 'Montemarciano', "Morro d'Alba", 'Numana', 'Offagna', 'Osimo', 'Ostra', 'Ostra Vetere', 'Poggio San Marcello', 'Polverigi', 'Rosora', 'San Marcello', 'San Paolo di Jesi', 'Santa Maria Nuova', 'Sassoferrato', 'Senigallia', "Serra de' Conti", 'Serra San Quirico', 'Sirolo', 'Staffolo', 'Trecastelli'];
+            case 'AP': return ['MT', 'PZ'];
+            case 'FM': return ['CZ', 'CS', 'KR', 'RC', 'VV'];
+            case 'MC': return ['AV', 'BN', 'CE', 'NA', 'SA'];
+            case 'PU': return ['BO', 'FE', 'FC', 'MO', 'PR', 'PC', 'RA', 'RE', 'RN'];
+        }
+    
+    }
 }
