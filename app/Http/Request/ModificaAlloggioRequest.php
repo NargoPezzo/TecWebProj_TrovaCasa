@@ -42,8 +42,8 @@ class ModificaAlloggioRequest extends FormRequest {
             'immagine' => 'image|max:1024',
             "servizi"    => '',
             'id' => '',
-            "data_min" => "date",
-            "data_max" => "date",
+            "data_min" => "",
+            "data_max" => "",
             "età_min" => "numeric",
             "età_max" => "numeric",
             "genere" => "string"

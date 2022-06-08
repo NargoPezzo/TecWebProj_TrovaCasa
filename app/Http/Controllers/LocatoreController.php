@@ -47,9 +47,11 @@ class LocatoreController extends Controller {
     //  $alloggi = House::where('locatore_id', $id) -> get();
         $servizi = $this->_serviceModel->getServizi();
         $alloggi=$this->_locatoreModel->getAlloggi($id);
+        $province = $this->_offerteModel->getProvList();
         return view('alloggi.gestiscialloggi')
                     ->with('houses', $alloggi)
-                    ->with('servizi', $servizi);
+                    ->with('servizi', $servizi)
+                    ->with('province', $province);
     }
     
     public function createAlloggio() {
