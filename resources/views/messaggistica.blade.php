@@ -22,8 +22,15 @@
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
+    <style> 
+        
+    iframe {
+        
+        bottom: 0;
+    }
+    </style>
 
-
+    
 <script>
    
     var ifrm = document.getElementById('chatframe');
@@ -33,6 +40,8 @@
     ifrm.document.close();
     
 </script>
+
+
     
 </head>
     
@@ -114,7 +123,7 @@
                     </div>
                 </div>        
                 <div class="col-lg-8">
-                    <iframe id="chatframe" src="" name="chatframe" width="100%" height="300">   
+                    <iframe id="chatframe" src="" name="chatframe" width="100%" height="300" >   
                     </iframe>
                 </div>
             </div>
