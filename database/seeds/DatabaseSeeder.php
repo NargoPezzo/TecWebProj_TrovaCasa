@@ -246,10 +246,14 @@ class DatabaseSeeder extends Seeder
                 
             /* messaggio(destinatario, mittente, testo, dataOraInvio)*/
             DB::table('messaggi')->insert([
-            ['destinatario' => 'alexalex', 'mittente' => 'eliaelia', 'testo' =>
-            'Buongiorno, ho visto il tuo annuncio, volevo chiderti alcune informazioni.', 'dataOraInvio' => date("Y-m-d H:i:s")],
             ['destinatario' => 'eliaelia', 'mittente' => 'alexalex', 'testo' =>
-            'Lalloggio fa un po schifo.', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            'Buongiorno, ho visto il tuo annuncio, volevo chiederti alcune informazioni.', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'alexalex', 'mittente' => 'eliaelia', 'testo' =>
+            "Ciao, chiedi pure", 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'eliaelia', 'mittente' => 'alexalex', 'testo' =>
+            "Vorrei sapere quanto dista l' Università dall' abitazione che hai messo in vendita", 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'alexalex', 'mittente' => 'eliaelia', 'testo' =>
+            "Dovrebbe distare circa 5 minuti con l' autobus o 10 minuti a piedi", 'dataOraInvio' => date("Y-m-d H:i:s")],
              ]);
         
         
