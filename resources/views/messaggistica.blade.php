@@ -25,9 +25,11 @@
     <style> 
         
     iframe {
-        
-        bottom: 0;
-    }
+  position:absolute;
+  top:-300px;
+  left:200px;
+  width:100%;
+}
     </style>
 
     
@@ -102,7 +104,7 @@
     
             @isset($chat) 
             @foreach($chat as $singolachat)
-            <div class="row">
+            
                 <div class="col-lg-2">
                     <div class="item">
                         <div class="thumb">
@@ -116,17 +118,18 @@
                             <h5><a href="{{ route('chat', [$singolachat->user1]) }}" target="chatframe"> {{$singolachat->user1}} </a></h5>
                 
                         @endif
-                        @endforeach
-                        @endisset
-                        
                         </div>
                     </div>
-                </div>        
+                </div>
+            @endforeach
+            @endisset
+                        
+                                
                 <div class="col-lg-8">
-                    <iframe id="chatframe" src="" name="chatframe" width="100%" height="500" >   
+                    <iframe id="chatframe" src="" name="chatframe" width="100%" height="300" >   
                     </iframe>
                 </div>
-            </div>
+            
 </div>            
 
 
