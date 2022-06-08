@@ -61,20 +61,20 @@
 <script>
     
 
-    window.onload = function () {
+window.onload = function () {
         
         $("#appform").hide();
         $("#plform").hide();
         
         $("#app").click(function() {
             $("#appform").show();
-            $("#plform").hide(); })
+            $("#plform").hide(); });
         
         $("#pl").click(function() {
             $("#plform").show();
-            $("#appform").hide(); })
+            $("#appform").hide(); });
        
-        document.getElementById("tip").value =
+    document.getElementById("tip").value =
                 "<?php
                     if (old('tip')!=null) {
                          echo old('tip');
@@ -138,38 +138,101 @@
                          echo isset($_POST['n_posti_letto_totali']) ? $_POST['n_posti_letto_totali'] : '';
                     }
                 ?>";
+    document.getElementById("aprov").value =
+            "<?php
+                    if (old('aprov')!=null) {
+                         echo old('aprov');
+                    } else {
+                         echo isset($_POST['aprov']) ? $_POST['aprov'] : '';
+                    }
+                ?>"; 
+    document.getElementById("acittà").value =
+            "<?php
+                    if (old('acittà')!=null) {
+                         echo old('acittà');
+                    } else {
+                         echo isset($_POST['acittà']) ? $_POST['acittà'] : '';
+                    }
+                ?>"; 
+    document.getElementById("plprov").value =
+            "<?php
+                    if (old('plprov')!=null) {
+                         echo old('plprov');
+                    } else {
+                         echo isset($_POST['plprov']) ? $_POST['plprov'] : '';
+                    }
+                ?>"; 
+    document.getElementById("plcittà").value =
+            "<?php
+                    if (old('plcittà')!=null) {
+                         echo old('plcittà');
+                    } else {
+                         echo isset($_POST['plcittà']) ? $_POST['plcittà'] : '';
+                    }
+                ?>"; 
     document.getElementById("servizi").value =
             "<?php
                     if (old('servizi')!=null) {
                          echo old('servizi');
                     } else {
-                         echo isset($_POST['servizi']) ? $_POST['servizi'] : '';
+                         echo isset($_POST['servizi[]']) ? $_POST['servizi[]'] : '';
                     }
-                ?>";                   
-    $(function () {
-                $('#prov').change(function (event) {
-                    if ($('#prov').val() == "-- Seleziona --") {
-                        $('#citta').find('option').remove();
-                        return
-                    }
-                    
-                    $.ajax({
-                        type: 'GET',
-                        url: actionUrl,   
-                        data: formElems,
-                        dataType: 'json',
-                        success: setCittà
-                    });
-                });
-            });
+                ?>";        
+};
+</script>
 
-            function setCittà(data) {
-                $('#città').find('option').remove();
-                $.each(data, function (città) {
-                    $('#città').append('<option>' + città + '</option>');
+<script>
+    function getCity(cityUrl) {
+    var city;
+    $.ajax({
+        type: "GET",
+        url: cityUrl,
+        data: city,
+        dataType: "json",
+        error: function (data) {
+            if (data.status === 422) {
+                var errMsgs = JSON.parse(data.responseText);
+                $.each(errMsgs, function (id) {
+                    $("#" + id)
+                        .parent()
+                        .find(".errors")
+                        .html(" ");
+                    $("#" + id).after(getErrorHtml(errMsgs[id]));
                 });
             }
-    };
+        },
+        success: function (data) {
+            data.forEach(function (elem) {
+                $("#acittà, #plcittà").append(new Option(elem, elem));
+            });
+        },
+        contentType: false,
+        processData: false
+    });
+}
+</script>
+
+<script>
+    $(function () {
+        $('#aprov, #plprov').append('<option selected disabled>Scegli la provincia</option>');
+        @foreach($province as $provincia)
+        $('#aprov, #plprov').append(new Option("{!!$provincia!!}", "{!!$provincia!!}"));
+        @endforeach
+        $('#aprov').change(function () {
+            var province = $('#aprov option:selected').text();
+            var cityUrl = "{{route('city', '')}}" + "/" + province;
+            $('#acittà').find('option').remove();
+            $('#acittà').append('<option selected disabled>Scegli la città</option>');
+            getCity(cityUrl);
+        });
+        $('#plprov').change(function () {
+            var province = $('#plprov option:selected').text();
+            var cityUrl = "{{route('city', '')}}" + "/" + province;
+            $('#plcittà').find('option').remove();
+            $('#plcittà').append('<option selected disabled>Scegli la città</option>');
+            getCity(cityUrl);
+        });
+    });
 </script>
 
     <meta charset="utf-8">
@@ -269,6 +332,7 @@
 <section class="main-content">
     <section>
         <div class="outer_search">
+            
             <div>
                 <p style="padding:20px;float:left">
                     <b>Ricerca Avanzata:</b>
@@ -290,18 +354,14 @@
                 <br>
                 <br>
                 <span class="search">
-                    <label for="prov" class="control">Provincia:</label>
-                    <select name="prov" id="prov">
-                        <option selected>-- Seleziona --</option>
-                        @foreach ($province as $provincia)
-                        <option>{{$provincia}}</option>
-                        @endforeach
+                    <label for="aprov" class="control">Provincia:</label>
+                    <select name="aprov" id="aprov">
                     </select>
                 </span>
                 <br><br>
                 <span class="search">
-                    <label for="citta" class="control">Città::</label>
-                    <select id="città" name="città" size="1">
+                    <label for="acitta" class="control">Città:</label>
+                    <select id="acittà" name="acittà" size="1">
                 </select>
                 </span>
                 <br><br>
@@ -392,14 +452,24 @@
                 <span class="search">
                     <label for='tip' class="control"><b>Tipologia:</b></label>&nbsp;&nbsp;&nbsp;
                     <select required name="tip" id="tip">
-                        
                         <option  value="Posto letto singolo">Posto letto singolo</option>
                         <option value="Posto letto doppio">Posto letto doppio</option>
-                        
                     </select>
                 </span>
                 <br>
                 <br>
+                <span class="search">
+                    <label for="plprov" class="control">Provincia:</label>
+                    <select name="plprov" id="plprov">
+                    </select>
+                </span>
+                <br><br>
+                <span class="search">
+                    <label for="plcitta" class="control">Città:</label>
+                    <select id="plcittà" name="plcittà" size="1">
+                </select>
+                </span>
+                <br><br>
                 <b>Prezzo:</b>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="search">

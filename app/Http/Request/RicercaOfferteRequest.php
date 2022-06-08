@@ -26,6 +26,10 @@ class RicercaOfferteRequest extends FormRequest {
     public function rules() {
         return [
             'tip' => '',
+            'aprov' => '',
+            'plprov' => '',
+            'acittà' => '',
+            'plcittà' => '',
             'prezzomin' => '',
             'prezzomax' => '',
             'data_min' => '',

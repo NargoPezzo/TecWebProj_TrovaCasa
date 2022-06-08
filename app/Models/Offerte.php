@@ -39,14 +39,14 @@ class Offerte {
     }
     
     
-    public function getHousesFiltered($tipologia = null, $prezzomin = null, $prezzomax = null, $data_min = null, $data_max = null, $superficie = null, $n_camere = null, $n_posti_letto_totali = null, $servizi = null/*$anno = null, $mese = null, $regione = null, $organizzazione = null, $descrizione = null*/) {
+    public function getHousesFiltered($tipologia = null, $aprovincia = null, $plprovincia = null, $acittà = null, $plcittà = null,$prezzomin = null, $prezzomax = null, $data_min = null, $data_max = null, $superficie = null, $n_camere = null, $n_posti_letto_totali = null, $servizi = null/*$anno = null, $mese = null, $regione = null, $organizzazione = null, $descrizione = null*/) {
         /*$data = null;
         if ((isset($anno)) && (isset($mese))) {
             $data = $anno . '-' . $this->chooseMonthNumber($mese);
         }*/
         $today = Carbon::now()->toDateString();
         
-        $filters = array("tipologia" => $tipologia, "prezzomin" => $prezzomin, "prezzomax" => $prezzomax, "data_min" => $data_min, "data_max" => $data_max, "superficie" => $superficie,
+        $filters = array("tipologia" => $tipologia, "aprovincia" => $aprovincia, "plprovincia" => $plprovincia, "acittà" => $acittà, "plcittà" => $plcittà,"prezzomin" => $prezzomin, "prezzomax" => $prezzomax, "data_min" => $data_min, "data_max" => $data_max, "superficie" => $superficie,
             "n_camere" => $n_camere, "n_posti_letto_totali" => $n_posti_letto_totali, "servizi" => $servizi /*data" => $data, "regione" => $regione, "organizzazione" => $organizzazione, "descrizione" => $descrizione*/);
 
         //Controllo quali filtri sono stati settati
@@ -56,12 +56,9 @@ class Offerte {
             }
         }
         
-        Log::info('SERVIZI');
-        Log::info($servizi);
         
-        $selectedalloggi = array();
         
-        if (!is_null($filters['servizi'])) {
+        if (array_key_exists('servizi', $filters)) {
             $allalloggi = array();
             $size = sizeof($servizi);
             foreach ($servizi as $servizio) {
@@ -69,13 +66,13 @@ class Offerte {
                 if (!is_null($alloggi)) {
                     foreach ($alloggi as $alloggio) {
                         if (array_key_exists(strval($alloggio->house_id), $allalloggi)){
-                            $allalloggi[strval($alloggio->house_id)] = $allalloggi[strval($alloggio->house_id)]++;
+                            $allalloggi[strval($alloggio->house_id)] += 1;
                         } else {
                             $allalloggi[strval($alloggio->house_id)] = 1;
                         }
                     }
                 }
-            } 
+            }
             Log::info($allalloggi);
             foreach ($allalloggi as $key => $value) {
                 if ($value != $size) {
@@ -83,9 +80,8 @@ class Offerte {
                 }
             }
         }
-
-        /*Log::info($data_min);
-        /*Log::info($data_max);*/
+        Log::info('model');
+        Log::info($acittà);
 
         //Creo l'array sul quale verrà fatta la query
         $queryFilters = [];
@@ -93,6 +89,18 @@ class Offerte {
             switch ($key) {
                 case "tipologia":
                     $queryFilters[] = ["tipologia", "LIKE", strval($tipologia)];
+                    break;
+                case "aprovincia":
+                    $queryFilters[] = ["provincia", "LIKE", strval($aprovincia)];
+                    break;
+                case "plprovincia":
+                    $queryFilters[] = ["provincia", "LIKE", strval($plprovincia)];
+                    break;
+                case "acittà":
+                    $queryFilters[] = ["città", "LIKE", strval($acittà)];
+                    break;
+                case "plcittà":
+                    $queryFilters[] = ["città", "LIKE", strval($plcittà)];
                     break;
                 case "prezzomin":
                     $queryFilters[] = ["prezzo", ">=", $prezzomin];
@@ -115,11 +123,7 @@ class Offerte {
                 case "n_posti_letto_totali":
                     $queryFilters[] = ["n_posti_letto_totali", "=", $n_posti_letto_totali];
                     break;
-                case "servizi":
-                    foreach($allalloggi as $alloggio) {
-                        $queryFilters[] = ["id", "IN", array_keys($allalloggi)];
-                    };
-                    break;
+                
                 /*case "data":
                     $queryFilters[] = ["data", "LIKE", "%" . strval($data) . "%"];
                     break;
@@ -136,9 +140,7 @@ class Offerte {
             }
         }
 
-        
-        Log::info($queryFilters);
-        Log::info($selectedalloggi);
+
         
         //Controllo se non è presente alcun filtro
         if (empty($queryFilters)) {
@@ -146,12 +148,15 @@ class Offerte {
         }
 
         //Caso in cui sia presente almeno un filtro
-        {
-            $houses = House::where($queryFilters)/*->whereDate('data', '>=', $this->today)*/;
+        else if (isset($allalloggi)){
+            $houses = House::where($queryFilters)->whereIn("id", array_keys($allalloggi));
+
+        }
+        
+        else {
+            $houses = House::where($queryFilters);
         }
 
-        Log::info($houses->get());
-        
         return $houses->paginate(9);
     }
     
@@ -160,15 +165,15 @@ class Offerte {
         return $province;
     }
     
-    public function getCittà($provincia){
+    public function getCittàList($provincia){
         switch($provincia){
             case 'AN': return ['Agugliano', 'Ancona', 'Arcevia', 'Barbara', 'Belvedere Ostrense', 'Camerano', 'Camerata Picena', 'Castelbellino', 'Castelfidardo', 'Castelleone di Suasa', 'Castelplanio', "Cerreto d'Esi", 'Chiaravalle', 'Corinaldo', 'Cupramontana', 'Fabriano', 'Falconara Marittima', 'Filottrano', 'Genga', 'Jesi', 'Loreto', 'Maiolati Spontini', 'Mergo', 'Monsano', 'Monte Roberto', 'Monte San Vito', 'Montecarotto', 'Montemarciano', "Morro d'Alba", 'Numana', 'Offagna', 'Osimo', 'Ostra', 'Ostra Vetere', 'Poggio San Marcello', 'Polverigi', 'Rosora', 'San Marcello', 'San Paolo di Jesi', 'Santa Maria Nuova', 'Sassoferrato', 'Senigallia', "Serra de' Conti", 'Serra San Quirico', 'Sirolo', 'Staffolo', 'Trecastelli'];
-            case 'AP': return ['Acquasanta Terme', 'Acquaviva Picena', 'Altidona', 'Amandola', 'Appignano del Tronto', 'Arquata del Tronto', 'Ascoli Piceno', 'Belmonte Piceno', 'Campofilone', 'Carassai', 'Castel di Lama', 'Castel Trosino', 'Castignano', 'Castorano','Colli del Tronto', 'Comunanza', 'Cossignano', 'Cupra Marittima', 'Falerone',' Fermo', 'Folignano', 'Force'," Francavilla d'Ete", 'Grottammare', 'Grottazzolina', 'Lapedona', 'Magliano di Tenna', 'Maltignano', 'Massa Fermana', 'Massignano', 'Monsampietro Morico',' Monsampolo del Tronto',' Montalto delle Marche', 'Montappone', 'Monte Giberto', 'Monte Rinaldo',' Monte San Pietrangeli',' Monte Urano', 'Monte Vidon Combatte',' Monte Vidon Corrado', 'Montedinove', 'Montefalcone Appennino', "Montefiore dell'Aso", 'Montefortino', 'Montegallo', 'Montegiorgio', 'Montegranaro', 'Monteleone di Fermo', 'Montelparo', 'Montemonaco', 'Monteprandone', 'Monterubbiano', 'Montottone', 'Moresco', 'Offida', 'Ortezzano', 'Palmiano', 'Pedaso', 'Petritoli', 'Ponzano di Fermo',' Porto San Giorgio', "Porto Sant'Elpidio", 'Rapagnano', 'Ripatransone', 'Roccafluvione', 'Rotella', "Sant'Elpidio a mare", 'San Benedetto del Tronto',' Santa Vittoria in Matenano', 'Servigliano', 'Smerillo', 'Spinetoli', 'Torre San Patrizio', 'Venarotta'];
+            case 'AP': return ["Acquasanta Terme", "Acquaviva Picena", "Appignano del Tronto", "Arquata del Tronto", "Ascoli Piceno", 'Carassai', 'Castel di Lama', 'Castignano', 'Castorano', 'Colli del Tronto', 'Comunanza', 'Cossignano', 'Cupra Marittima', 'Folignano', 'Force', 'Grottammare', 'Maltignano', 'Massignano', 'Monsampolo del Tronto', 'Montalto delle Marche', 'Montedinove', "Montefiore dell'Aso", 'Montegallo', 'Montemonaco', 'Monteprandone', 'Offida', 'Palmiano', 'Ripatransone', 'Roccafluvione', 'Rotella', 'San Benedetto del Tronto', 'Spinetoli', 'Venarotta'];
             case 'FM': return ['Altidona', 'Amandola', 'Belmonte Piceno', 'Campofilone' , 'Falerone' , 'Fermo', "Francavilla d'Ete", 'Grottazzolina', 'Lapedona', 'Magliano di Tenna', 'Massa Fermana' ,' Monsampietro Morico', 'Montappone', 'Montefalcone Appennino', 'Montefortino', 'Monte Giberto' , 'Montegiorgio', 'Montegranaro', 'Monteleone di Fermo', 'Montelparo' , 'Monte Rinaldo', 'Monterubbiano', 'Monte San Pietrangeli', 'Monte Urano', 'Monte Vidon Combatte', 'Monte Vidon Corrado',' Montottone', 'Moresco', 'Ortezzano', 'Pedaso', 'Petritoli', 'Ponzano di Fermo',' Porto San Giorgio', "Porto Sant'Elpidio", 'Rapagnano', 'Santa Vittoria in Matenano', "Sant'Elpidio a Mare", 'Servigliano', 'Smerillo',' Torre San Patrizio'];
             case 'MC': return ['Acquacanina', 'Apiro', 'Appignano', 'Belforte del Chienti', 'Bolognola', 'Caldarola', 'Camerino', 'Camporotondo di Fiastrone', 'Castelraimondo',' Castelsantangelo sul Nera', 'Cessapalombo', 'Cingoli', 'Civitanova Marche', 'Colmurano', 'Corridonia', 'Esanatoglia', 'Fiastra', 'Fiordimonte', 'Fiuminata', 'Gagliole',' Gualdo (MC)', 'Loro Piceno', 'Macerata', 'Matelica', 'Mogliano (MC)', 'Monte Cavallo', 'Monte San Giusto', 'Monte San Martino', 'Montecassiano', 'Montecosaro', 'Montefano', 'Montelupone', 'Morrovalle', 'Muccia',' Penna San Giovanni', 'Petriolo', 'Pieve Torina', 'Pievebovigliana', 'Pioraco', 'Poggio San Vicino', 'Pollenza', 'Porto Recanati', 'Potenza Picena', 'Recanati', 'Ripe San Ginesio', 'San Ginesio', 'San Severino Marche', "Sant'Angelo in Pontano", 'Sarnano', 'Sefro', 'Serrapetrona', 'Serravalle di Chienti', 'Tolentino', 'Treia', 'Urbisaglia', 'Ussita', 'Visso'];
             case 'PU': return ['Acqualagna', 'Apecchio', 'Auditore', 'Barchi', "Belforte all'Isauro", 'Borgo Pace', 'Cagli', 'Cantiano', 'Carpegna', 'Cartoceto', 'Casteldelci', 'Colbordolo', 'Fano', 'Fermignano', 'Fossombrone', 'Fratte Rosa', 'Frontino', 'Frontone (PU)', 'Gabicce Mare', 'Gradara', 'Isola del Piano', 'Lunano', 'Macerata Feltria', 'Maiolo', 'Mercatello sul Metauro', 'Mercatino Conca', 'Mombaroccio', 'Mondavio', 'Mondolfo', 'Monte Cerignone', 'Monte Grimano Terme', 'Monte Porzio', 'Montecalvo in Foglia', 'Monteciccardo', 'Montecopiolo', 'Montefelcino', 'Montelabbate',' Montemaggiore al Metauro', 'Novafeltria',' Orciano di Pesaro', 'Peglio (PU)', 'Pennabilli', 'Pergola', 'Pesaro', 'Petriano', 'Piagge', 'Piandimeleto', 'Pietrarubbia', 'Piobbico', 'Saltara',' San Costanzo',' San Giorgio di Pesaro', 'San Leo', 'San Lorenzo in Campo', "Sant'Agata Feltria", "Sant'Angelo in Lizzola"," Sant'Angelo in Vado", "Sant'Ippolito", 'Sassocorvaro', 'Sassofeltrio',"Serra Sant'Abbondio", 'Serrungarina', 'Talamello', 'Tavoleto', 'Tavullia', 'Urbania', 'Urbino'];
         }
-    
+
     }
-       
+
 }

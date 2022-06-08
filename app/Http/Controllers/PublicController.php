@@ -60,10 +60,12 @@ class PublicController extends Controller {
     
     public function showOfferteFiltrate(RicercaOfferteRequest $request) {
         
-        Log::info($request);
+        
       
         $tipologie = $this->_houseModel->getTipologiaList();
         $province = $this->_offerteModel->getProvList();
+        $acittà = $request->acittà;
+        $plcittà = $request->plcittà;
         $prezzomin = $request->prezzomin;
         $prezzomax = $request->prezzomax;
         $data_min = $request->data_min;
@@ -71,9 +73,10 @@ class PublicController extends Controller {
         $superficie = $request->superficie;
         $n_camere = $request->n_camere;
         $n_posti_letto_totali = $request->n_posti_letto_totali;
-        $servizi = $request->servizi;
-        Log::info('Controller');
-        Log::info($servizi);
+        $servizi = $this->_serviziModel->getServizi();
+        
+        Log::info( 'controller');
+        Log::info( $acittà);
         /*$regions = $this->eventsList->getRegionList();
         $months = $this->eventsList->getMonthList();
         $events = $this->eventsList->getEventsFiltered($request->year, $request->month, $request->reg,
@@ -87,9 +90,9 @@ class PublicController extends Controller {
 */
         Log::info($data_min);
         
-        $alloggi = $this->_offerteModel->getHousesFiltered($request->tip, $prezzomin, $prezzomax, $data_min, $data_max, $superficie, $n_camere, $n_posti_letto_totali, $request->servizi);
+        $alloggi = $this->_offerteModel->getHousesFiltered($request->tip, $request->aprov, $request->plprov, $acittà, $plcittà, $prezzomin, $prezzomax, $data_min, $data_max, $superficie, $n_camere, $n_posti_letto_totali, $request->servizi);
         
-        return view('offerte')->with('houses', $alloggi)->with('tipologie', $tipologie)->with('prezzomin', $prezzomin)->with('prezzomax', $prezzomax)
+        return view('offerte')->with('houses', $alloggi)->with('province', $province)->with('acittà', $acittà)->with('plcittà', $plcittà)->with('tipologie', $tipologie)->with('prezzomin', $prezzomin)->with('prezzomax', $prezzomax)
                 ->with('data_min', $data_min)->with('data_max', $data_max)->with('superficie', $superficie)->with('n_camere', $n_camere)->with('n_posti_letto_totali', $n_posti_letto_totali)
                 ->with('servizi', $servizi);
     }
@@ -158,5 +161,27 @@ class PublicController extends Controller {
                 ->with('user', $request->get('destinatario'))
                 ->with('messaggi', $messaggi);
         
+    }
+    
+    public function getCittà($provincia) {
+        $city = $this->_offerteModel->getCittàList($provincia);
+        $response = [];
+        $i = 0;
+        foreach ($city as $p) {
+            $response[$i] = $p;
+            $i++;
+        }
+        return response()->json($response);
+    }
+    
+    public function getProvince($regione) {
+        $prov = $this->eventsList->getProv($regione);
+        $response = [];
+        $i = 0;
+        foreach ($prov as $p) {
+            $response[$i] = $p;
+            $i++;
+        }
+        return response()->json($response);
     }
 }
