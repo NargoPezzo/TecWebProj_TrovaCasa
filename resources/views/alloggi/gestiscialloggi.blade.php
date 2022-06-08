@@ -206,6 +206,14 @@
                             <div class ="col-lg-5">            
                                 <label><b>Nome</b></label>
                                 <br> {{ Form::text('titolo', $house->titolo, ['class' => 'input','id' => 'titolo', 'style'=>'width:13em', 'required' => '']) }} 
+                                            @if ($errors->first('titolo'))
+                                                <div class="errors" >
+                                                    @foreach ($errors->get('titolo') as $message)
+                                                    <p>{{ $message }}</p>
+                                                    @endforeach
+                                                </div>
+                                                @endif
+                            
                             </div>
                             
                             <div class ="col-lg-5">   
@@ -213,21 +221,50 @@
                     <label for="prov" class="control">Provincia:</label>
                     <select name="prov" id="prov">
                     </select>
+                                        @if ($errors->first('Provincia'))
+                                                <div class="errors" >
+                                                    @foreach ($errors->get('Provincia') as $message)
+                                                    <p>{{ $message }}</p>
+                                                    @endforeach
+                                                </div>
+                                                @endif
                 </span>
                 <br><br>
                 <span class="search">
                     <label for="citta" class="control">Città:</label>
                     <select id="città" name="città" size="1">
+                                            @if ($errors->first('città'))
+                                                <div class="errors" >
+                                                    @foreach ($errors->get('città') as $message)
+                                                    <p>{{ $message }}</p>
+                                                    @endforeach
+                                                </div>
+                                                @endif
+                        
                 </select>
                                 <label><b>Tipologia</b></label>
                                 <br> {{ Form::select('tipologia', ['appartamento' => 'Appartamento', 'posto_letto_singolo' => 'Posto letto (singolo)', 'posto_letto_doppio' => 'Posto letto (doppio)'], ['class' => 'input','id' => 'tipologia']) }} 
-                            </div>
+                                            @if ($errors->first('tipologia'))
+                                                <div class="errors" >
+                                                    @foreach ($errors->get('tipologia') as $message)
+                                                    <p>{{ $message }}</p>
+                                                    @endforeach
+                                                </div>
+                                                @endif
+                                </div>
                             <br>
                         </div>
                         <br>
                                 
                         <label><b>Descrizione:</b></label>
                         <br>{{ Form::textarea('descrizione', $house->descrizione, ['class' => 'input','id' => 'descrizione', 'style'=>'width:29em;height:7em', 'required' => '']) }}
+                                            @if ($errors->first('descrizione'))
+                                                <div class="errors" >
+                                                    @foreach ($errors->get('descrizione') as $message)
+                                                    <p>{{ $message }}</p>
+                                                    @endforeach
+                                                </div>
+                                                @endif
                         <br>
                         <br>            
                                 
@@ -235,6 +272,13 @@
                                 <div class="col-lg-3">
                                         <label><b>Prezzo:</b></label>
                                         <br> {{ Form::number('prezzo', $house->prezzo, ['class' => 'input','id' => 'prezzo', 'style'=>'width:5em', 'required' => '']) }}
+                                                    @if ($errors->first('prezzo'))
+                                                <div class="errors" >
+                                                    @foreach ($errors->get('prezzo') as $message)
+                                                    <p>{{ $message }}</p>
+                                                    @endforeach
+                                                </div>
+                                                @endif
                                 </div>
                                         
                                      
@@ -242,6 +286,13 @@
                                 
                                         <label><b>Numero di Camere:</b></label>
                                         <br>{{ Form::number('n_camere', $house->n_camere, ['class' => 'input','id' => 'n_camere', 'style'=>'width:5em', 'required' => '']) }}
+                                                    @if ($errors->first('n_camere'))
+                                                <div class="errors" >
+                                                    @foreach ($errors->get('n_camere') as $message)
+                                                    <p>{{ $message }}</p>
+                                                    @endforeach
+                                                </div>
+                                                @endif
                                 </div>
                                         <br>
                                         
@@ -251,7 +302,13 @@
                                       <label><b>Posti Letto Totali:</b></label>
                                       <br>{{ Form::number('n_posti_letto_totali', $house->n_posti_letto_totali, ['class' => 'input','id' => 'n_posti_letto_totali', 'style'=>'width:5em', 'required' => '']) }}
                                       <br>
-                                    
+                                                @if ($errors->first('n_posti_letto_totali'))
+                                                <div class="errors" >
+                                                    @foreach ($errors->get('n_posti_letto_totali') as $message)
+                                                    <p>{{ $message }}</p>
+                                                    @endforeach
+                                                </div>
+                                                @endif
                                 </div>
                             </div>
                         <br>
@@ -262,10 +319,26 @@
                             <div class="col-lg-3">
                                 <label>Da:</label>
                                 {{ Form::number('età_min', $house->età_min, ['class' => 'input','id' => 'età_min', 'min' => '18',  'style'=>'width:5em']) }}
+                                            @if ($errors->first('età_min'))
+                                                <div class="errors" >
+                                                    @foreach ($errors->get('età_min') as $message)
+                                                    <p>{{ $message }}</p>
+                                                    @endforeach
+                                                </div>
+                                                @endif
+                            
                             </div>
                             <div class="col-lg-3">
                                 <label>A:</label>
                                 {{ Form::number('età_max', $house->età_max, ['class' => 'input','id' => 'età_max', 'min' => '18', 'style'=>'width:5em']) }}
+                                            @if ($errors->first('età_max'))
+                                                <div class="errors" >
+                                                    @foreach ($errors->get('età_max') as $message)
+                                                    <p>{{ $message }}</p>
+                                                    @endforeach
+                                                </div>
+                                                @endif
+                            
                             </div>
                         </div>    
                     
@@ -275,15 +348,37 @@
                         <div class="col-lg-4">
                             <label><b>Indirizzo:</b></label>
                             <br>{{ Form::text('indirizzo', $house->indirizzo, ['class' => 'input','id' => 'indirizzo', 'style'=>'width:10em', 'required' => '']) }}
+                                                @if ($errors->first('indirizzo'))
+                                                <div class="errors" >
+                                                    @foreach ($errors->get('indirizzo') as $message)
+                                                    <p>{{ $message }}</p>
+                                                    @endforeach
+                                                </div>
+                                                @endif
                         </div>
                         
                         <div class="col-lg-4">
                             <label><b>CAP:</b></label>
                                 <br>{{ Form::text('cap', $house->cap, ['class' => 'input','id' => 'cap', 'style'=>'width:10em', 'required' => '']) }}
+                                                @if ($errors->first('cap'))
+                                                <div class="errors" >
+                                                    @foreach ($errors->get('cap') as $message)
+                                                    <p>{{ $message }}</p>
+                                                    @endforeach
+                                                </div>
+                                                @endif
                         </div>
                         <div class="col-lg-4">
                             <label><b>Città:</b></label>
                                 <br>{{ Form::text('città', $house->città, ['class' => 'input','id' => 'città', 'style'=>'width:10em', 'required' => '']) }}
+                                                @if ($errors->first('città'))
+                                                <div class="errors" >
+                                                    @foreach ($errors->get('città') as $message)
+                                                    <p>{{ $message }}</p>
+                                                    @endforeach
+                                                </div>
+                                                @endif
+                        
                         </div>
                                         
                     </div>
@@ -324,6 +419,13 @@
                         <div class="col-lg-5">
                             <label><b>Dimensioni:</b></label>
                             <br>{{ Form::number('superficie', $house->superficie, ['class' => 'input','id' => 'superficie', 'style'=>'width:5em', 'required' => '']) }} mq
+                                     @if ($errors->first('superficie'))
+                                                <div class="errors" >
+                                                    @foreach ($errors->get('superficie') as $message)
+                                                    <p>{{ $message }}</p>
+                                                    @endforeach
+                                                </div>
+                                                @endif
                         </div>
                                         
                     </div>
@@ -380,6 +482,13 @@
                             <br><br><label><b>Modifica Immagine:</b></label>
                             <br>{{ Form::image('immagine', $house->immagine, ['class' => 'input','id' => 'immagine', 'style'=>'width:29em', 'required' => '']) }}
                             <br>
+                                                @if ($errors->first('immagine'))
+                                                <div class="errors" >
+                                                    @foreach ($errors->get('immagine') as $message)
+                                                    <p>{{ $message }}</p>
+                                                    @endforeach
+                                                </div>
+                                                @endif
                         </div>
                     </div>
                     <br>
