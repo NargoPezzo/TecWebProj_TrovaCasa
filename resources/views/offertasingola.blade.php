@@ -140,7 +140,7 @@
                     @endif
 
 
-                    </div>
+                </div><br>
 
                 </div><br><br>
             
@@ -187,11 +187,12 @@
                         @foreach ($richieste as $richiesta) 
                             <ul>
                                 <li>
-                                    <p>{{ $richiesta->nome }}</p>
+                                    <p>Richiedente: <b>{{ $richiesta->username }}</b></p><br>
+                                    <p>Anagrafica: {{ $richiesta->nome }} {{ $richiesta->cognome }}, genere: {{ $richiesta->genere }}, età: {{ $richiesta->età }}</p><br>
                                 <div class="left-content">
                                 <div class="col-lg-12"><br><br>
                                     <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Assegna</a>
-                                    <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Messaggia il Locatario</a>
+                                    <a href="{{url('messaggistica')}}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Messaggia il Locatario</a>
                                 </div>
                                 </div>
                                 </li>

@@ -108,7 +108,7 @@ class PublicController extends Controller {
                         ->with('servizi', $servizi)
                         ->with('richieste', $richieste);
       }
-      else{
+      else {
           return redirect('/offerte')->with('status','The link was broken');
       }
     }

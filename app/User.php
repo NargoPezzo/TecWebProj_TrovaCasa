@@ -80,7 +80,7 @@ class User extends Authenticatable {
         Log::info('richieste');
         Log::info($richieste);
         foreach ($richieste as $richiesta) {
-            $richiedenti = User::where('id', $richiesta->locatario_id)->////////////////get();
+            $richiedenti = User::where('id', $richiesta->locatario_id)->get();
         }
         Log::info('getRichieste');
         Log::info($richiedenti);
