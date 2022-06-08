@@ -7,7 +7,7 @@
       <style>
         #Myform{
             display: none;
-            width: 500px;
+            width: 600px;
             border: 1px solid #ccc;
             padding: 14px;
             
@@ -153,109 +153,95 @@
                 </div>    
                         
                         
-            <div class=" lg-col-8">  
-                            {{ Form::model($house, array('route' => 'modificaalloggio', 'class' => 'contact-form', 'id' => 'Myform')) }}
-                                {{Form::hidden('id', $house->id)}}
-                                <Center><p id="pencil_text"><b>Modifica i dati del tuo alloggio</b></p><br></center>
-                                    <div class="faq-element">
-                                        <div class="wrap-contact1">
-                                        <label><b>Nome</b></label>
-                                        <br> {{ Form::text('titolo', $house->titolo, ['class' => 'input','id' => 'titolo', 'style'=>'width:29em', 'required' => '']) }} 
-                                        </div>
-                                        <br>
-                                    </div>
-                                <div class="faq-element">
-                                        <div class="wrap-contact1">
-                                        <label><b>Tipologia</b></label>
-                                        <br> {{ Form::text('tipologia', $house->tipologia, ['class' => 'input','id' => 'tipologia', 'style'=>'width:29em', 'required' => '', 'readonly' => 'true']) }} 
-                                        </div>
-                                        <br>
-                                    </div>
-                                <div class="faq-element">
-                                        <div class="wrap-contact1">
-                                        <label><b>Descrizione:</b></label>
+              
+                {{ Form::model($house, array('route' => 'modificaalloggio', 'class' => 'contact-form', 'id' => 'Myform')) }}
+                {{Form::hidden('id', $house->id)}}
+                    <Center><p id="pencil_text"><b>Modifica i dati del tuo alloggio</b></p><br></center>
+                        <div class=" row">
+                            
+                            <div class ="col-lg-5">            
+                                <label><b>Nome</b></label>
+                                <br> {{ Form::text('titolo', $house->titolo, ['class' => 'input','id' => 'titolo', 'style'=>'width:13em', 'required' => '']) }} 
+                            </div>
+                            
+                            <div class ="col-lg-5">   
                                         
-                                        <br>{{ Form::textarea('descrizione', $house->descrizione, ['class' => 'input','id' => 'descrizione', 'style'=>'width:29em;height:7em', 'required' => '']) }}
-                                        </div>
-                                        <br>
-                                    </div>
+                                <label><b>Tipologia</b></label>
+                                <br> {{ Form::select('tipologia', ['appartamento' => 'Appartamento', 'posto_letto_singolo' => 'Posto letto (singolo)', 'posto_letto_doppio' => 'Posto letto (doppio)'], ['class' => 'input','id' => 'tipologia']) }} 
+                            </div>
+                            <br>
+                        </div>
+                        <br>
                                 
+                        <label><b>Descrizione:</b></label>
+                        <br>{{ Form::textarea('descrizione', $house->descrizione, ['class' => 'input','id' => 'descrizione', 'style'=>'width:29em;height:7em', 'required' => '']) }}
+                        <br>
+                        <br>            
                                 
-                                <div class="lg-col-3">
-                                    <div class="faq-element">
-                                        <div class="wrap-contact1">
+                            <div class=" row">  
+                                <div class="col-lg-3">
                                         <label><b>Prezzo:</b></label>
-                                        <br>{{ Form::number('prezzo', $house->prezzo, ['class' => 'input','id' => 'prezzo', 'style'=>'width:5em', 'required' => '']) }}
-                                        </div>
-                                        <br>
-                                    </div>      
-                                    </div>
+                                        <br> {{ Form::number('prezzo', $house->prezzo, ['class' => 'input','id' => 'prezzo', 'style'=>'width:5em', 'required' => '']) }}
+                                </div>
+                                        
+                                     
+                                <div class ="col-lg-4">
                                 
-                                <div class ="lg-col-3">
-                                <div class="faq-element">
-                                        <div class="wrap-contact1">
                                         <label><b>Numero di Camere:</b></label>
                                         <br>{{ Form::number('n_camere', $house->n_camere, ['class' => 'input','id' => 'n_camere', 'style'=>'width:5em', 'required' => '']) }}
-                                        </div>
-                                        <br>
-                                </div>        
                                 </div>
+                                        <br>
+                                        
                                 
-                                <div class ="lg-col-3">
-                                    <div class="faq-element">
-                                        <div class="wrap-contact1">
-                                        <label><b>Posti Letto Totali:</b></label>
-                                        <br>{{ Form::number('n_posti_letto_totali', $house->n_posti_letto_totali, ['class' => 'input','id' => 'n_posti_letto_totali', 'style'=>'width:5em', 'required' => '']) }}
-                                        </div>
-                                        <br>
-                                    </div>
-                                </div>
-                                <div class ="lg-col-3">
-                                    <div class="faq-element">
-                                        <div class="wrap-contact1">
-                                        <label><b>Età Minima:</b></label>
-                                        <br>{{ Form::number('età_min', $house->età_min, ['class' => 'input','id' => 'età_min', 'min' => '18',  'style'=>'width:5em']) }}
-                                        </div>
-                                        <br>
-                                    </div>
-                                </div>
                                 
-                                <div class ="lg-col-3">
-                                    <div class="faq-element">
-                                        <div class="wrap-contact1">
-                                        <label><b>Età Massima:</b></label>
-                                        <br>{{ Form::number('età_max', $house->età_max, ['class' => 'input','id' => 'età_max', 'min' => '18', 'style'=>'width:5em']) }}
-                                        </div>
-                                        <br>
-                                    </div>
+                                <div class ="col-lg-4">
+                                      <label><b>Posti Letto Totali:</b></label>
+                                      <br>{{ Form::number('n_posti_letto_totali', $house->n_posti_letto_totali, ['class' => 'input','id' => 'n_posti_letto_totali', 'style'=>'width:5em', 'required' => '']) }}
+                                      <br>
+                                    
                                 </div>
-                                
-                                    <div class="faq-element">
-                                        <div class="wrap-contact1">
-                                        <label><b>Indirizzo:</b></label>
-                                        <br>{{ Form::text('indirizzo', $house->indirizzo, ['class' => 'input','id' => 'indirizzo', 'style'=>'width:29em', 'required' => '']) }}
-                                        </div>
-                                        <br>
-                                    </div>
-                                    <div class="faq-element">
-                                        <div class="wrap-contact1">
-                                        <label><b>CAP:</b></label>
-                                        <br>{{ Form::text('cap', $house->cap, ['class' => 'input','id' => 'cap', 'style'=>'width:29em', 'required' => '']) }}
-                                        </div>
-                                        <br>
-                                    </div>
-                                    <div class="faq-element">
-                                        <div class="wrap-contact1">
-                                        <label><b>Città:</b></label>
-                                        <br>{{ Form::text('città', $house->città, ['class' => 'input','id' => 'città', 'style'=>'width:29em', 'required' => '']) }}
-                                        </div>
-                                        <br>
-                                    </div>
-                                    <div style="text-align:center; margin-top: 1em;"> Periodo di disponibilità </div>
-                                        <div class="row">
-                                            <div class="left">
-                                                {{ Form::label('data_min', 'Inizio', ['class' =>'label-input']) }}
-                                                {{ Form::date('data_min', $house->data_min, ['class' => 'input', 'id' =>'data_min'])}}
+                            </div>
+                        <br>
+                            
+                        
+                        <label><b>Limiti di Età (facoltativi):</b></label><br>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>Da:</label>
+                                {{ Form::number('età_min', $house->età_min, ['class' => 'input','id' => 'età_min', 'min' => '18',  'style'=>'width:5em']) }}
+                            </div>
+                            <div class="col-lg-3">
+                                <label>A:</label>
+                                {{ Form::number('età_max', $house->età_max, ['class' => 'input','id' => 'età_max', 'min' => '18', 'style'=>'width:5em']) }}
+                            </div>
+                        </div>    
+                    
+                    <br>
+                                    
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <label><b>Indirizzo:</b></label>
+                            <br>{{ Form::text('indirizzo', $house->indirizzo, ['class' => 'input','id' => 'indirizzo', 'style'=>'width:10em', 'required' => '']) }}
+                        </div>
+                        
+                        <div class="col-lg-4">
+                            <label><b>CAP:</b></label>
+                                <br>{{ Form::text('cap', $house->cap, ['class' => 'input','id' => 'cap', 'style'=>'width:10em', 'required' => '']) }}
+                        </div>
+                        <div class="col-lg-4">
+                            <label><b>Città:</b></label>
+                                <br>{{ Form::text('città', $house->città, ['class' => 'input','id' => 'città', 'style'=>'width:10em', 'required' => '']) }}
+                        </div>
+                                        
+                    </div>
+                    <br>
+                    <br>
+                    <div> <b>Periodo di disponibilità:</b> </div>
+                    <br>
+                        <div class="row">
+                            <div class="col-lg-5">
+                                {{ Form::label('data_min', 'Da:', ['class' =>'label-input']) }}
+                                {{ Form::date('data_min', $house->data_min, ['class' => 'input', 'id' =>'data_min'])}}
                 
                                                 @if ($errors->first('data_min'))
                                                 <div class="errors" >
@@ -264,10 +250,10 @@
                                                     @endforeach
                                                 </div>
                                                 @endif
-                                            </div>
+                            </div>
                             
-                                    <div style="margin-left:2.5em;">
-                                                {{ Form::label('data_max', 'Fine', ['class' =>'label-input']) }}
+                            <div class="col-lg-5">
+                                                {{ Form::label('data_max', 'A:', ['class' =>'label-input']) }}
                                                 {{ Form::date('data_max', $house->data_max, ['class' => 'input', 'id' =>'data_max'])}}
                 
                                                 @if ($errors->first('data_max'))
@@ -278,40 +264,34 @@
                                                 </div>
                                                 @endif
                                             </div> 
-                                        </div>
-                                
-                                    <div class="faq-element">
-                                        <div class="wrap-contact1">
-                                        <label><b>Provincia:</b></label>
-                                        <br>{{ Form::text('provincia', $house->provincia, ['class' => 'input','id' => 'provincia', 'style'=>'width:29em', 'required' => '']) }}
-                                        </div>
-                                        <br>
-                                    </div><!-- comment -->
-                                    <div class="faq-element">
-                                        <div class="wrap-contact1">
-                                        <label><b>Metri Quadri:</b></label>
-                                        <br>{{ Form::text('superficie', $house->superficie, ['class' => 'input','id' => 'superficie', 'style'=>'width:29em', 'required' => '']) }}
-                                        </div>
-                                        <br>
-                                    </div>
-                                    
-                                <label>    
-                                    <div class="label-input">
-                                        Seleziona sesso: <br>
-                                    </div>
-                                </label>
-                                    
-            
-                                <div class="wrap-input">
-                                    <input class="wrap-input-input" type="radio" name="genere" id="genereU1" value="M">
+                         </div>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-lg-5"
+                            <label><b>Provincia:</b></label>
+                            <br>{{ Form::text('provincia', $house->provincia, ['class' => 'input','id' => 'provincia', 'style'=>'width:10em', 'required' => '']) }}
+                        </div>
+                        <div class="col-lg-5">
+                            <label><b>Dimensioni:</b></label>
+                            <br>{{ Form::number('superficie', $house->superficie, ['class' => 'input','id' => 'superficie', 'style'=>'width:5em', 'required' => '']) }} mq
+                        </div>
+                                        
+                    </div>
+                    <br><br>
+                    
+                    <div class="row">    
+                        <div class="col-lg-4">
+                        <b>Seleziona sesso:</b> 
+                    <br>
+                    
+                                   <input class="wrap-input-input" type="radio" name="genere" id="genereU1" value="M">
                                         <label class="wrap-input-label" for="genereU1">
                                             <div class="label-input">
                                                 Uomo 
                                             </div>
                                         </label>
-                                </div>
-                 
-                                <div class="wrap-input">
+                                
+                                   <br>
                                     <input class="wrap-input-input" type="radio" name="genere" id="genereD1" value="F">
                                         <label class="wrap-input-label" for="genereD1">
                                             <div class="label-input">
@@ -325,19 +305,10 @@
                                             @endforeach
                                             </ul>
                                         @endif
-                
-                                </div>
-                                    
-                                <div class="faq-element">
-                                    <div class="wrap-contact1">
-                                        <label><b>Modifica Immagine:</b></label>
-                                            <br>{{ Form::image('immagine', $house->immagine, ['class' => 'input','id' => 'immagine', 'style'=>'width:29em', 'required' => '']) }}
-                                        </div>
-                                        <br>
-                                    </div>        
-                                    <div class="faq-element">
-                                        <div class="wrap-contact1">
-                                        <label><b>Servizi:</b></label><br>
+                        </div>                
+                        <div class="col-lg-8">
+                        
+                        <label><b>Servizi:</b></label><br>
                                     @foreach ($servizi as $servizio)
                                             @php
                                             $check = "false"
@@ -350,26 +321,31 @@
                                                 @endphp
                                             @endif
                                         @endforeach
-                                        <input  {{$check}} type="checkbox" name="servizi[]" value="{{$servizio->nome}}"> {{$servizio->nome}}<br/>
-                                        
-                                    @endforeach
-                                        </div>
-                                        <br>
-                                    </div> 
-                                    
-                                    
+                                        <input  {{$check}} type="checkbox" name="servizi[]" value="{{$servizio->nome}}"> &nbsp{{$servizio->nome}}
+                                    @endforeach    
+                        </div>
+                        
+                        
+                        <div class="col-lg-12">
+                            <br><br><label><b>Modifica Immagine:</b></label>
+                            <br>{{ Form::image('immagine', $house->immagine, ['class' => 'input','id' => 'immagine', 'style'=>'width:29em', 'required' => '']) }}
+                            <br>
+                        </div>
+                    </div>
+                    <br>
+                    
                                 {{ Form::submit('Modifica', ['id' => 'adduser']) }}
                                 {{ Form::close() }}
                                 
                                 <br><br><br>
-                    </div>
-                </div>    
+                    
+                    
                    
                         
                     @endcan
                             
                             
-            
+                </div>
             @endforeach
             
                 @include('pagination.paginator', ['paginator' => $houses])
@@ -379,7 +355,7 @@
         
         
             
-            </div>
+            
               
   
            

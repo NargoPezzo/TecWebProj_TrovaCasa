@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="assets/css/lightbox.css">
 
     <style>
-    
+    body {font-family:Arial, Helvetica, sans-serif; font-size:12px;}
     
             
     .fadein { 

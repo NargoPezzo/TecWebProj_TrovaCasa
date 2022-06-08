@@ -37,7 +37,7 @@
         <li class="submenu">
             <a href="javascript:;">Alloggio</a>
             <ul>
-                <li><a href="{{ route('chisiamo') }}" title="Lista delle richieste ricevute">Visualizza Richieste</a></li>
+                
                 <li><a href="{{ route('inseriscialloggio') }}" title="Inserisci un alloggio">Inserisci Alloggio</a></li>
                 <li><a href="{{ route('gestiscialloggi') }}" title="Gestisci Alloggi">Gestisci Alloggi</a></li>
                 
