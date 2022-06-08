@@ -155,3 +155,4 @@ Route::post('/locatario/messaggio', 'LocatarioController@sendMessaggio')
 
 Route::get('/city/{province}', 'PublicController@getCittà')->name('city');
 
+Route::get('/city/{province}', 'LocatoreController@getCittà')->name('city');

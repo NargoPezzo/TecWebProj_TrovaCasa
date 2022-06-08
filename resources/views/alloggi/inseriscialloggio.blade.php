@@ -22,131 +22,19 @@
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
 
+<style>
+    #form label.error {
+        color: red;
+        font-weight: bold;
+    }
+     
+    .main {
+        width: 600px;
+        margin: 0 auto;
+    }
+</style>
 
-<script type="text/javascript" src="resources/js/app.js"></script>
-
-<script>
-    
-
-window.onload = function () {
-        
-        $("#appform").hide();
-        $("#plform").hide();
-        
-        $("#app").click(function() {
-            $("#appform").show();
-            $("#plform").hide(); });
-        
-        $("#pl").click(function() {
-            $("#plform").show();
-            $("#appform").hide(); });
-       
-    document.getElementById("tip").value =
-                "<?php
-                    if (old('tip')!=null) {
-                         echo old('tip');
-                    } else {
-                         echo isset($_POST['tip']) ? $_POST['tip'] : '';
-                    }
-                ?>";
-    document.getElementById("prezzomin").value =
-            "<?php
-                    if (old('prezzomin')!=null) {
-                         echo old('prezzomin');
-                    } else {
-                         echo isset($_POST['prezzomin']) ? $_POST['prezzomin'] : '';
-                    }
-                ?>";
-    document.getElementById("prezzomax").value =
-            "<?php
-                    if (old('prezzomax')!=null) {
-                         echo old('prezzomax');
-                    } else {
-                         echo isset($_POST['prezzomax']) ? $_POST['prezzomax'] : '';
-                    }
-                ?>";
-    document.getElementById("data_min").value =
-            "<?php
-                    if (old('data_min')!=null) {
-                         echo old('data_min');
-                    } else {
-                         echo isset($_POST['data_min']) ? $_POST['data_min'] : '';
-                    }
-                ?>";
-    document.getElementById("data_max").value =
-            "<?php
-                    if (old('data_max')!=null) {
-                         echo old('data_max');
-                    } else {
-                         echo isset($_POST['data_max']) ? $_POST['data_max'] : '';
-                    }
-                ?>";
-    document.getElementById("superficie").value =
-            "<?php
-                    if (old('superficie')!=null) {
-                         echo old('superficie');
-                    } else {
-                         echo isset($_POST['superficie']) ? $_POST['superficie'] : '';
-                    }
-                ?>";
-    document.getElementById("n_camere").value =
-            "<?php
-                    if (old('n_camere')!=null) {
-                         echo old('n_camere');
-                    } else {
-                         echo isset($_POST['n_camere']) ? $_POST['n_camere'] : '';
-                    }
-                ?>";
-    document.getElementById("n_posti_letto_totali").value =
-            "<?php
-                    if (old('n_posti_letto_totali')!=null) {
-                         echo old('n_posti_letto_totali');
-                    } else {
-                         echo isset($_POST['n_posti_letto_totali']) ? $_POST['n_posti_letto_totali'] : '';
-                    }
-                ?>";
-    document.getElementById("aprov").value =
-            "<?php
-                    if (old('aprov')!=null) {
-                         echo old('aprov');
-                    } else {
-                         echo isset($_POST['aprov']) ? $_POST['aprov'] : '';
-                    }
-                ?>"; 
-    document.getElementById("acittà").value =
-            "<?php
-                    if (old('acittà')!=null) {
-                         echo old('acittà');
-                    } else {
-                         echo isset($_POST['acittà']) ? $_POST['acittà'] : '';
-                    }
-                ?>"; 
-    document.getElementById("plprov").value =
-            "<?php
-                    if (old('plprov')!=null) {
-                         echo old('plprov');
-                    } else {
-                         echo isset($_POST['plprov']) ? $_POST['plprov'] : '';
-                    }
-                ?>"; 
-    document.getElementById("plcittà").value =
-            "<?php
-                    if (old('plcittà')!=null) {
-                         echo old('plcittà');
-                    } else {
-                         echo isset($_POST['plcittà']) ? $_POST['plcittà'] : '';
-                    }
-                ?>"; 
-    document.getElementById("servizi").value =
-            "<?php
-                    if (old('servizi')!=null) {
-                         echo old('servizi');
-                    } else {
-                         echo isset($_POST['servizi[]']) ? $_POST['servizi[]'] : '';
-                    }
-                ?>";        
-};
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
     function getCity(cityUrl) {
@@ -170,7 +58,7 @@ window.onload = function () {
         },
         success: function (data) {
             data.forEach(function (elem) {
-                $("#acittà, #plcittà").append(new Option(elem, elem));
+                $("#città").append(new Option(elem, elem));
             });
         },
         contentType: false,
@@ -181,38 +69,21 @@ window.onload = function () {
 
 <script>
     $(function () {
-        $('#aprov, #plprov').append('<option selected disabled>Scegli la provincia</option>');
+        $('#prov').append('<option selected disabled>Scegli la provincia</option>');
         @foreach($province as $provincia)
-        $('#aprov, #plprov').append(new Option("{!!$provincia!!}", "{!!$provincia!!}"));
+        $('#prov').append(new Option("{!!$provincia!!}", "{!!$provincia!!}"));
         @endforeach
-        $('#aprov').change(function () {
-            var province = $('#aprov option:selected').text();
+        $('#prov').change(function () {
+            var province = $('#prov option:selected').text();
             var cityUrl = "{{route('city', '')}}" + "/" + province;
-            $('#acittà').find('option').remove();
-            $('#acittà').append('<option selected disabled>Scegli la città</option>');
-            getCity(cityUrl);
-        });
-        $('#plprov').change(function () {
-            var province = $('#plprov option:selected').text();
-            var cityUrl = "{{route('city', '')}}" + "/" + province;
-            $('#plcittà').find('option').remove();
-            $('#plcittà').append('<option selected disabled>Scegli la città</option>');
+            $('#città').find('option').remove();
+            $('#città').append('<option selected disabled>Scegli la città</option>');
             getCity(cityUrl);
         });
     });
 </script>
   <!-- Custom styles -->
-  <style>
-    #form label.error {
-        color: red;
-        font-weight: bold;
-    }
-     
-    .main {
-        width: 600px;
-        margin: 0 auto;
-    }
-  </style>
+  
     </head>
 
     </head>
@@ -291,10 +162,21 @@ window.onload = function () {
                                 </ul>
                                 @endif
                             </div>-->
-                <div class="col-lg-5">
-                                {{ Form::label('tipologia', 'Tipologia:', ['class' => 'label-input']) }}
-                                {{ Form::select('tipologia', ['appartamento' => 'Appartamento', 'posto_letto_singolo' => 'Posto letto (singolo)', 'posto_letto_doppio' => 'Posto letto (doppio)'], ['class' => 'input','id' => 'tipologia']) }}
-                </div>
+                <div class ="col-lg-5">   
+                            <span class="search">
+                                <label for="prov" class="control">Provincia:</label>
+                                <select name="prov" id="prov">
+                                </select>
+                            </span>
+                            <br><br>
+                            
+                            <span class="search">
+                                <label for="città" class="control">Città:</label>
+                                <select id="città" name="città" size="1">
+                            </select>
+                                <label><b>Tipologia</b></label>
+                                <br> {{ Form::select('tipologia', ['appartamento' => 'Appartamento', 'posto_letto_singolo' => 'Posto letto (singolo)', 'posto_letto_doppio' => 'Posto letto (doppio)'], ['class' => 'input','id' => 'tipologia']) }} 
+                            </div>
             </div>
                                 {{ Form::label('immagine', 'Immagine:', ['class' => 'label-input']) }}&nbsp;&nbsp;&nbsp;
                                 {{ Form::file('immagine', ['class' => 'input', 'id' => 'immagine']) }}
@@ -402,32 +284,10 @@ window.onload = function () {
                                 </ul>
                                 @endif
                             </div>
-                        
-                            <span class="search">
-                                <label for="aprov" class="control">Provincia:</label>
-                                <select name="aprov" id="aprov">
-                                </select>
-                            </span>
-                            <br><br>
-                            <span class="search">
-                                <label for="acitta" class="control">Città:</label>
-                                <select id="acittà" name="acittà" size="1">
-                            </select>
-                            </span>
-                            <br><br>
+                          
                             
-                            <span class="search">
-                                <label for="plprov" class="control">Provincia:</label>
-                                <select name="plprov" id="plprov">
-                                </select>
-                            </span>
-                            <br><br>
-                            <span class="search">
-                                <label for="plcitta" class="control">Città:</label>
-                                <select id="plcittà" name="plcittà" size="1">
-                            </select>
-                            </span>
-                            <br><br>
+                        
+
                             
                             <!-- comment     <div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('città', 'Citta', ['class' => 'label-input']) }}
@@ -522,24 +382,12 @@ window.onload = function () {
                     @endforeach
                 </ul>
                 @endif
-                
             </div>
-                            
-                            
-                            
-                            
-                            
     
-
         <label>Filtri</label><br/>
         @foreach ($servizi as $servizio)
-        
             <input type="checkbox" name="servizi[]" value="{{$servizio->nome}}"> {{$servizio->nome}}<br/>
         @endforeach
-        
-  
-    
-
                             <!--<div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('discountPerc', 'Sconto (%)', ['class' => 'label-input']) }}
                                 {{ Form::text('discountPerc', '', ['class' => 'input', 'id' => 'discountPerc']) }}

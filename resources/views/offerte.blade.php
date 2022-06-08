@@ -465,7 +465,7 @@ window.onload = function () {
                 </span>
                 <br><br>
                 <span class="search">
-                    <label for="plcitta" class="control">Città:</label>
+                    <label for="plcittà" class="control">Città:</label>
                     <select id="plcittà" name="plcittà" size="1">
                 </select>
                 </span>

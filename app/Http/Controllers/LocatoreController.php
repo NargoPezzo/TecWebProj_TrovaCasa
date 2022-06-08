@@ -57,9 +57,11 @@ class LocatoreController extends Controller {
     public function createAlloggio() {
         $servizi = $this->_serviceModel->getServizi();
         $province = $this->_offerteModel->getProvList();
+        Log::info($province);
         return view('alloggi.inseriscialloggio')
                     ->with('servizi', $servizi)
                     ->with('province', $province);
+        
     }
     
     public function storeAlloggio(NuovoAlloggioRequest $request) {
@@ -241,5 +243,16 @@ public function editAlloggio(ModificaAlloggioRequest $request) {
                 ->with('chat', $chat)
                 ->with('messaggi', $messaggi);
         
+    }
+    
+    public function getCittà($provincia) {
+        $city = $this->_offerteModel->getCittàList($provincia);
+        $response = [];
+        $i = 0;
+        foreach ($city as $p) {
+            $response[$i] = $p;
+            $i++;
+        }
+        return response()->json($response);
     }
 }

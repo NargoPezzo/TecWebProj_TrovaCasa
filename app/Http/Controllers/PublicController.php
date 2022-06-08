@@ -7,7 +7,7 @@ use App\User;
 use App\Models\Resources\House;
 use App\Models\Faqs;
 use App\Models\Resources\Services;
-use App\Model\Resources\Messaggio;
+use App\Models\Resources\Messaggio;
 use App\Http\Request\RicercaOfferteRequest;
 use App\Http\Request\InviaMessaggioRequest;
 use Carbon\Carbon;
@@ -147,7 +147,7 @@ class PublicController extends Controller {
     public function sendMessaggio(InviaMessaggioRequest $request){
         $messaggio = new Messaggio;
         $request->validated();
-        
+
         $user = auth()->user();
         $messaggio->mittente = $user->username;
         $messaggio->destinatario = $request->get('destinatario');
@@ -176,14 +176,5 @@ class PublicController extends Controller {
         return response()->json($response);
     }
     
-    public function getProvince($regione) {
-        $prov = $this->eventsList->getProv($regione);
-        $response = [];
-        $i = 0;
-        foreach ($prov as $p) {
-            $response[$i] = $p;
-            $i++;
-        }
-        return response()->json($response);
-    }
+   
 }
