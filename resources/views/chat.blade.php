@@ -23,17 +23,46 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/lightbox.css')}}">
     <style>
-        ricevuto {
-            border-style: solid;
-            border-color: blue;
+        #ricevuto {
+            text-align: left;
+            border: 1px solid #B8B8B8;
+            height: auto;
+            max-width: 300px;
+             border-radius: 20px;
+            
+            display:block;
+            padding:14px
             
         }
         
-        inviato {
-            border-style: solid;
-            border-color: green;
+        #inviato {
+            
+            text-align: right;
+            border: 2px solid black;
+            max-width: 300px;
+            height: auto;
+            margin-right: 10px;
+            margin-left: auto;
+            display:block;
+            padding: 14px;
+            border-radius: 20px;
             
         }
+        
+        #image {
+        
+        
+        max-width: 300px;
+        }
+
+        #element_block {
+        display:block;
+        }
+        
+        data {
+           size: 8px; 
+        }
+        
     </style>
     
     </head>
@@ -42,27 +71,38 @@
 @isset($messaggi)
 
 <div class="about-us">
-    <div class="right-content">
+    
            
             @foreach($messaggi as $messaggio)  
                 
                 @if($messaggio->destinatario==$authuser)
-                <div class="ricevuto">
-                  <p>{!! $messaggio->testo !!}</p> 
-                  <span class="time_date">{{ $messaggio->dataOraInvio }}</span>
-                </div>
+                
+                    <div id="element_block">
+                        <div id="ricevuto">
+                            <div id="image">
+                            <p>{!! $messaggio->testo !!}</p>
+                            <br>
+                            <p><span id="data">{{ $messaggio->dataOraInvio }}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                
                 @else
-                <div class="inviato">
+                <div id="element_block">
+                        <div id="inviato">
+                            <div id="image">
                     <p>{!! $messaggio->testo !!}</p>
-                    <span>{{ $messaggio->dataOraInvio }}</span>
+                    <br>
+                    <p><span id="data">{{ $messaggio->dataOraInvio }}</span></p>
                 </div>
-            
+            </div>            
+        </div>    
                 
                 @endif
                 <br><br>    
             @endforeach
            
-    </div>
+    
     <br><br>
             
 
