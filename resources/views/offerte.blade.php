@@ -542,7 +542,48 @@ window.onload = function () {
                     <li>{{ $message }}</li>
                     @endforeach
                 </ul>
-                
+                @endif
+                @if ($errors->first('provincia'))
+                <ul class="errors">
+                    @foreach ($errors->get('provincia') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+                @if ($errors->first('città'))
+                <ul class="errors">
+                    @foreach ($errors->get('città') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+                @if ($errors->first('prezzominimo'))
+                <ul class="errors">
+                    @foreach ($errors->get('prezzominimo') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+                @if ($errors->first('prezzomassimo'))
+                <ul class="errors">
+                    @foreach ($errors->get('prezzomassimo') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+                @if ($errors->first('dataminima'))
+                <ul class="errors">
+                    @foreach ($errors->get('dataminima') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+                @if ($errors->first('datamassima'))
+                <ul class="errors">
+                    @foreach ($errors->get('datamassima') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
                 @endif
             </form>
             
