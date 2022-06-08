@@ -262,15 +262,12 @@ window.onload = function () {
     <!-- ***** Main Banner Area End form poi si passa alla request poi al controller e dentro al controller si richiama una funzione del model passandogli i filtri che stanno nella form***** -->
     
     <!-- ***** About Area Starts ***** -->
-    <div class="about-us">
+    <br>
         <div class="container">
-            <div class="static">
-                   <div class="container-contact">
-                        <div class="wrap-contact">
-                            
-                            
+            <div class="row">
+                <div class="col-lg-5">
                         {{ Form::open(array('route' => 'inseriscialloggio.store', 'id' => 'houses', 'files' => true, 'class' => 'contact-form')) }}
-                            <div  class="wrap-input  rs1-wrap-input">
+                            
                                 <b>{{ Form::label('titolo', 'Titolo:', ['class' => 'label-input']) }}&nbsp;&nbsp;&nbsp;
                                 {{ Form::text('titolo', '', ['class' => 'input', 'id' => 'titolo']) }}
                                 @if ($errors->first('titolo'))
@@ -280,7 +277,7 @@ window.onload = function () {
                                     @endforeach
                                 </ul>
                                 @endif
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
                             
                             <!--<div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('locatoreId', 'ID', ['class' => 'label-input']) }}
@@ -294,15 +291,11 @@ window.onload = function () {
                                 </ul>
                                 @endif
                             </div>-->
-                            
-                                    
-                            
-                                {{ Form::label('tipologia', 'Tipologia:', ['class' => 'label-input']) }}&nbsp;&nbsp;&nbsp;
+                <div class="col-lg-5">
+                                {{ Form::label('tipologia', 'Tipologia:', ['class' => 'label-input']) }}
                                 {{ Form::select('tipologia', ['appartamento' => 'Appartamento', 'posto_letto_singolo' => 'Posto letto (singolo)', 'posto_letto_doppio' => 'Posto letto (doppio)'], ['class' => 'input','id' => 'tipologia']) }}
-                            </div>
-                        <br>
-
-                            <div  class="wrap-input  rs1-wrap-input">
+                </div>
+            </div>
                                 {{ Form::label('immagine', 'Immagine:', ['class' => 'label-input']) }}&nbsp;&nbsp;&nbsp;
                                 {{ Form::file('immagine', ['class' => 'input', 'id' => 'immagine']) }}
                                 @if ($errors->first('immagine'))
