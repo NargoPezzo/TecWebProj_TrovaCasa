@@ -214,7 +214,7 @@
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
                                         <label><b>Età Minima:</b></label>
-                                        <br>{{ Form::number('età_min', $house->età_min, ['class' => 'input','id' => 'età_min', 'style'=>'width:5em']) }}
+                                        <br>{{ Form::number('età_min', $house->età_min, ['class' => 'input','id' => 'età_min', 'min' => '18',  'style'=>'width:5em']) }}
                                         </div>
                                         <br>
                                     </div>
@@ -224,7 +224,7 @@
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
                                         <label><b>Età Massima:</b></label>
-                                        <br>{{ Form::number('età_max', $house->età_max, ['class' => 'input','id' => 'età_max', 'style'=>'width:5em']) }}
+                                        <br>{{ Form::number('età_max', $house->età_max, ['class' => 'input','id' => 'età_max', 'min' => '18', 'style'=>'width:5em']) }}
                                         </div>
                                         <br>
                                     </div>
@@ -294,10 +294,44 @@
                                         </div>
                                         <br>
                                     </div>
-                                    <div class="faq-element">
-                                        <div class="wrap-contact1">
+                                    
+                                <label>    
+                                    <div class="label-input">
+                                        Seleziona sesso: <br>
+                                    </div>
+                                </label>
+                                    
+            
+                                <div class="wrap-input">
+                                    <input class="wrap-input-input" type="radio" name="genere" id="genereU1" value="M">
+                                        <label class="wrap-input-label" for="genereU1">
+                                            <div class="label-input">
+                                                Uomo 
+                                            </div>
+                                        </label>
+                                </div>
+                 
+                                <div class="wrap-input">
+                                    <input class="wrap-input-input" type="radio" name="genere" id="genereD1" value="F">
+                                        <label class="wrap-input-label" for="genereD1">
+                                            <div class="label-input">
+                                                Donna
+                                            </div>
+                                        </label>
+                                        @if ($errors->first('genere'))
+                                            <ul class="errors">
+                                            @foreach ($errors->get('genere') as $message)
+                                            <li>{{ $message }}</li>
+                                            @endforeach
+                                            </ul>
+                                        @endif
+                
+                                </div>
+                                    
+                                <div class="faq-element">
+                                    <div class="wrap-contact1">
                                         <label><b>Modifica Immagine:</b></label>
-                                        <br>{{ Form::image('immagine', $house->immagine, ['class' => 'input','id' => 'immagine', 'style'=>'width:29em', 'required' => '']) }}
+                                            <br>{{ Form::image('immagine', $house->immagine, ['class' => 'input','id' => 'immagine', 'style'=>'width:29em', 'required' => '']) }}
                                         </div>
                                         <br>
                                     </div>        

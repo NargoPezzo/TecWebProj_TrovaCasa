@@ -41,8 +41,9 @@ class NuovoAlloggioRequest extends FormRequest {
             "servizi"    => "array|min:1",
             "data_min" => "date",
             "data_max" => "date",
-            "età_min" => "numeric|min:0",
-            "età_max" => "numeric|min:0"
+            "età_min" => "numeric|min:18",
+            "età_max" => "numeric|min:18",
+            "genere" => "string"
         ];
     }
 

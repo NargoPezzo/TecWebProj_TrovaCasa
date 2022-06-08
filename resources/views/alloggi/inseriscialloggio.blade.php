@@ -187,7 +187,7 @@
                         
                         <div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('età_min', 'Età Minima (Facoltativo)', ['class' => 'label-input']) }}
-                                {{ Form::text('età_min', '', ['class' => 'input', 'id' => 'età_min']) }}
+                                {{ Form::number('età_min', '', ['class' => 'input', 'id' => 'età_min', 'min' => '18']) }}
                                 @if ($errors->first('età_min'))
                                 <ul class="errors">
                                     @foreach ($errors->get('età_min') as $message)
@@ -199,7 +199,7 @@
                         
                         <div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('età_max', 'Età Massima (Facoltativo)', ['class' => 'label-input']) }}
-                                {{ Form::text('età_max', '', ['class' => 'input', 'id' => 'età_max']) }}
+                                {{ Form::number('età_max', '', ['class' => 'input', 'id' => 'età_max','min' => '18']) }}
                                 @if ($errors->first('età_max'))
                                 <ul class="errors">
                                     @foreach ($errors->get('età_max') as $message)
@@ -297,6 +297,41 @@
                                 </ul>
                                 @endif
                             </div>
+                            <label for="gender">
+                <div class="label-input">
+                    Seleziona sesso: <br>
+                </div>
+            </label>
+            
+            <div class="wrap-input">
+                <input class="wrap-input-input" type="radio" name="genere" id="genereU1" value="M">
+                    <label class="wrap-input-label" for="genereU1">
+                        <div class="label-input">
+                        Uomo 
+                        </div>
+                    </label>
+            </div>
+                 
+            <div class="wrap-input">
+                <input class="wrap-input-input" type="radio" name="genere" id="genereD1" value="F">
+                    <label class="wrap-input-label" for="genereD1">
+                        <div class="label-input">
+                        Donna
+                        </div>
+                    </label>
+                @if ($errors->first('genere'))
+                <ul class="errors">
+                    @foreach ($errors->get('genere') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+                
+            </div>
+                            
+                            
+                            
+                            
                             
     
 
