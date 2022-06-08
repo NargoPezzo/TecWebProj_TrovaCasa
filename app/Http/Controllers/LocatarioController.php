@@ -2,16 +2,21 @@
 
 namespace app\Http\Controllers;
 use App\Models\Resources\House;
+use App\User;
 
 //use App\Models\Admin;
 
 class LocatarioController extends Controller {
 
-//    protected $_locatarioModel;
+   protected $_locatarioModel;
+    
+   protected $_houseModel;
+    
 
     public function __construct() {
         $this->middleware('can:isLocatario');
-//        $this->_locatarioModel = new Locatario;
+        $this->_locatarioModel = new User;
+        $this->_houseModel = new House;
     }
 
     public function index() {
@@ -54,12 +59,24 @@ class LocatarioController extends Controller {
         return redirect()->action('LocatarioController@index');
     }
     
-    public function sendOpzionato(){
-       $house_id->locatario_id;
-       return view('offertasingola');
+    public function createOpzione() {
+        
+        $locatario_id = $this->_locatarioModel->id;
+        $house_id = $this->_houseModel->id;
+        
+        return view('offertasingola')
+                    ->with('locatario_id', $locatario_id)
+                    ->with('house_id', $house_id);
     }
     
-    
+    public function sendOpzione(OpzioneRequest $request){
+        Log::info($request);
+        $opzione = new Opzione;
+        $opzione->fill($request->validated());
+        $opzione->save();
+        
+        return view('offertasingola');
+    }
 }
 
 

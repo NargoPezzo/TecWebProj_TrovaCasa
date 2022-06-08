@@ -94,6 +94,12 @@ Route::get('/admin/stats/search', "AdminController@getStats")
         ->name('admin.stats.search');
 
 // Rotte Offerta singola
+Route::get('/opzionato', 'LocatarioController@createOpzione')
+        ->name('opzionato')->middleware('can:isLocatario');
+
+Route::post('/opzionato', 'LocatarioController@sendOpzione')
+        ->name('opzionato')->middleware('can:isLocatario');
+
 Route::get('/offertasingola/{id}', 'PublicController@showOfferta')   
         ->name('offertasingola');
 
@@ -126,8 +132,6 @@ Route::get("eliminafaq/{id}", 'AdminController@deleteFaq')
 Route::post('modificafaq', 'AdminController@editFaq')
         ->name('modificafaq')->middleware('can:isAdmin');
 
-
-
 /*
 Route::get('/offertelocatario', 'LocatarioController@indexoffertelocatario')   POTREBBE ESSERE INUTILE
         ->name('offertelocatario')->middleware('can:isLocatario');  */
@@ -151,6 +155,3 @@ Route::post('/locatario/messaggio', 'LocatarioController@sendMessaggio')
 
 Route::get('/city/{province}', 'PublicController@getCittà')->name('city')->middleware('can:isLocatario');
 
-
-Route::post('/locatario/opzionato', 'LocatarioController@sendOpzionato')
-        ->name('opzionato.store')->middleware('can:isLocatario');

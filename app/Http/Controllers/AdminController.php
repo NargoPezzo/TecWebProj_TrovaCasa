@@ -50,7 +50,6 @@ class AdminController extends Controller {
 
         $faq = new Faq;
         $faq->fill($request->validated());
-        
         $faq->save();
         //return view('faq');
         return redirect()->route('faq');

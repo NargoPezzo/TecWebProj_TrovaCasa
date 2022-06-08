@@ -147,13 +147,10 @@ https://templatemo.com/tm-571-hexashop -->
                                     </div>
                                 {{ Form::submit('Modifica', ['id' => 'form']) }}
                                 {{ Form::close() }}
-
-                                
-                            
                             <br>
                             @include('helpers/productImg', ['attrs' => 'imagefrm', 'imgFile' => "ques.gif"])
-                    </ul>
-                      </div> 
+                        </ul>
+                    </div> 
             @endforeach
         @endisset()
 
