@@ -184,6 +184,30 @@
                                 </ul>
                                 @endif
                             </div>
+                        
+                        <div  class="wrap-input  rs1-wrap-input">
+                                {{ Form::label('età_min', 'Età Minima (Facoltativo)', ['class' => 'label-input']) }}
+                                {{ Form::text('età_min', '', ['class' => 'input', 'id' => 'età_min']) }}
+                                @if ($errors->first('età_min'))
+                                <ul class="errors">
+                                    @foreach ($errors->get('età_min') as $message)
+                                    <li>{{ $message }}</li>
+                                    @endforeach
+                                </ul>
+                                @endif
+                            </div>
+                        
+                        <div  class="wrap-input  rs1-wrap-input">
+                                {{ Form::label('età_max', 'Età Massima (Facoltativo)', ['class' => 'label-input']) }}
+                                {{ Form::text('età_max', '', ['class' => 'input', 'id' => 'età_max']) }}
+                                @if ($errors->first('età_max'))
+                                <ul class="errors">
+                                    @foreach ($errors->get('età_max') as $message)
+                                    <li>{{ $message }}</li>
+                                    @endforeach
+                                </ul>
+                                @endif
+                            </div>
                             
                             <div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('indirizzo', 'Indirizzo', ['class' => 'label-input']) }}

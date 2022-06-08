@@ -38,9 +38,11 @@ class NuovoAlloggioRequest extends FormRequest {
             'provincia' => 'required|string|max:2',
             'superficie' => 'required|int',
             'immagine' => 'image|max:1024',
-            "servizi"    => "required|array|min:1",
+            "servizi"    => "array|min:1",
             "data_min" => "date",
-            "data_max" => "date"
+            "data_max" => "date",
+            "età_min" => "numeric|min:0",
+            "età_max" => "numeric|min:0",
         ];
     }
 
