@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             ['nome' => 'Admin', 'cognome' => 'Admin', 'età' => 55, 'genere' => 'M', 'email' => 'admin@admin.it', 
                 'cellulare' => '333567890', 'username' => 'adminadmin','password' => Hash::make('i4z5zipq'), 'livello' => 'admin',], //password criptata in phpmyadmin
-            ['nome' => 'Luca', 'cognome' => 'Tore', 'età' => 20, 'genere' => 'M', 'email' => 'loca@loca.it', 
+            ['nome' => 'Luca', 'cognome' => 'Tore', 'età' => 69, 'genere' => 'M', 'email' => 'loca@loca.it', 
                 'cellulare' => '334567890', 'username' => 'lorelore','password' => Hash::make('i4z5zipq'), 'livello' => 'locatore',],
-            ['nome' => 'Luca', 'cognome' => 'Tario', 'età' => 69, 'genere' => 'M', 'email' => 'lario@lario.it', 
+            ['nome' => 'Luca', 'cognome' => 'Tario', 'età' => 20, 'genere' => 'M', 'email' => 'lario@lario.it', 
                 'cellulare' => '335567890', 'username' => 'lariolario','password' => Hash::make('i4z5zipq'), 'livello' => 'locatario',],
             ['nome' => 'Alex', 'cognome' => 'Alex', 'età' => 69, 'genere' => 'M', 'email' => 'lari@lario.it', 
                 'cellulare' => '335567891', 'username' => 'alexalex','password' => Hash::make('alexalex'), 'livello' => 'locatario',],
@@ -209,6 +209,15 @@ class DatabaseSeeder extends Seeder
             ['house_id' => 3,  'services_id' => 3,],
             ['house_id' => 4,  'services_id' => 3,],
             ['house_id' => 5,  'services_id' => 4,],
+           
+        ]);
+        
+        DB::table('opzione')->insert([
+            ['locatario_id' => 3,  'house_id' => 1,],
+            ['locatario_id' => 3,  'house_id' => 2,],
+            ['locatario_id' => 3,  'house_id' => 3,],
+            ['locatario_id' => 4,  'house_id' => 3,],
+            ['locatario_id' => 4,  'house_id' => 4,],
            
         ]);
  /* 

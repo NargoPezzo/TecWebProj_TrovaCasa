@@ -4,9 +4,11 @@ namespace App;
 
 use App\Models\Resources\Chat;
 use App\Models\Resources\Messaggio;
+use App\Models\Resources\Opzione;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Log;
 
 class User extends Authenticatable {
 
@@ -69,10 +71,21 @@ class User extends Authenticatable {
         
         return Messaggio::where('mittente', $authuser)->where('destinatario', $user)
                 ->orWhere('destinatario', $authuser)->where('mittente', $user)->get();
+
+    }
+    
+    public function getRichieste($house_id) {
+        $richiedenti = new User();
+        $richieste = Opzione::select('locatario_id')->where('house_id', $house_id)->get();
+        Log::info('richieste');
+        Log::info($richieste);
+        foreach ($richieste as $richiesta) {
+            $richiedenti = User::where('id', $richiesta->locatario_id)->////////////////get();
+        }
+        Log::info('getRichieste');
+        Log::info($richiedenti);
         
-        
-        
-        
+        return $richiedenti;
     }
     
 }

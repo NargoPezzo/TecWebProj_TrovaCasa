@@ -170,15 +170,43 @@
                     <div class="left-content">
                         <div class="col-lg-12"><br><br>
                             <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Opziona Alloggio</a>
-                            <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Messaggia il Locatario</a>
+                            <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Messaggia il Locatore</a>
                         </div>
                     </div>
                 </div>    
                 @endcan
-                
+                <br><br>
                 @can('isLocatore')
-                 <!-- RICHIESTE RICEVUTE -->
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        
+                        <h4 class="title">Richieste ricevute per questo alloggio:</h4><br>
+                        
+                        @isset($richieste)
+                        @if(!empty($richieste))
+                        @foreach ($richieste as $richiesta) 
+                            <ul>
+                                <li>
+                                    <p>{{ $richiesta->nome }}</p>
+                                <div class="left-content">
+                                <div class="col-lg-12"><br><br>
+                                    <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Assegna</a>
+                                    <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Messaggia il Locatario</a>
+                                </div>
+                                </div>
+                                </li>
+                            </ul>
+                        @endforeach
+                        @else
+                            <p>Ancora nessuna richiesta ricevuta per questo alloggio</p>
+                        @endif
+                        <br><br>
+                    </div>
+                      
+                </div>
+
                 @endcan
+            @endisset
                 
     </section>
     <!-- ***** Product Area Ends ***** -->

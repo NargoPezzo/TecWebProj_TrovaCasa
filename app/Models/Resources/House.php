@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Models\HouseServices;
 use App\Models\Resources\Services;
+use App\Models\Resources\Opzione;
+use Illuminate\Support\Facades\Log;
 
 class House extends Model
 {
@@ -165,8 +167,5 @@ class House extends Model
             }
             return $statistiche;
     }
-    
-    
-    
-     
+
 }

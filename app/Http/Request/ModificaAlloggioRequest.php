@@ -44,8 +44,8 @@ class ModificaAlloggioRequest extends FormRequest {
             'id' => '',
             "data_min" => "date",
             "data_max" => "date",
-            "età_min" => "numeric|min:18",
-            "età_max" => "numeric|min:18",
+            "età_min" => "numeric",
+            "età_max" => "numeric",
             "genere" => "string"
             
         ];

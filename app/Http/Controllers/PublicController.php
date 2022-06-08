@@ -59,9 +59,7 @@ class PublicController extends Controller {
     }
     
     public function showOfferteFiltrate(RicercaOfferteRequest $request) {
-        
-        
-      
+
         $tipologie = $this->_houseModel->getTipologiaList();
         $province = $this->_offerteModel->getProvList();
         $acittà = $request->acittà;
@@ -101,10 +99,14 @@ class PublicController extends Controller {
       if(House::where('id', $id)->exists())
       {
           $alloggi = House::find($id);  // creare metodo nel model house così richiamo solo metodo 
-          Log::info($alloggi);
           $servizi = $this->_houseModel->servizi();
-          //Log::info($servizi);
-          return view('offertasingola', ['alloggi' =>$alloggi, 'servizi' => $servizi]);
+          $richieste = $this->_userModel->getRichieste($id);
+          Log::info('showOfferta');
+          Log::info($richieste);
+          return view('offertasingola') 
+                        ->with('alloggi', $alloggi)
+                        ->with('servizi', $servizi)
+                        ->with('richieste', $richieste);
       }
       else{
           return redirect('/offerte')->with('status','The link was broken');
@@ -121,7 +123,7 @@ class PublicController extends Controller {
     }
     
 
-        public function showChat() {
+    public function showChat() {
 
         $chat = $this->_userModel->getChat(Auth()->User()->username);
         $messaggi = $this->_userModel->getMessaggi($chat);

@@ -15,8 +15,8 @@ class CreateOpzioneTable extends Migration
     {
         Schema::create('opzione', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
-            $table->unsignedBigInteger('locatorio_id')->index();
-            $table->foreign('locatorio_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('locatario_id')->index();
+            $table->foreign('locatario_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('house_id')->index();
             $table->foreign('house_id')->references('id')->on('houses')->onDelete('cascade');
             $table->timestamps();

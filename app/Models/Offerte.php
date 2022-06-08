@@ -55,9 +55,7 @@ class Offerte {
                 unset($filters[$key]);
             }
         }
-        
-        
-        
+
         if (array_key_exists('servizi', $filters)) {
             $allalloggi = array();
             $size = sizeof($servizi);
