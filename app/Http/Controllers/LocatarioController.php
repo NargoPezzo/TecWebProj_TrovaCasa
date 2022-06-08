@@ -53,4 +53,13 @@ class LocatarioController extends Controller {
         
         return redirect()->action('LocatarioController@index');
     }
+    
+    public function sendOpzionato(){
+       $house_id->locatario_id;
+       return view('offertasingola');
+    }
+    
+    
 }
+
+

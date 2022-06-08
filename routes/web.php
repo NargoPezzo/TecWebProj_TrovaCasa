@@ -150,3 +150,7 @@ Route::post('/locatario/messaggio', 'LocatarioController@sendMessaggio')
         ->name('messaggio')->middleware('can:isLocatario');
 
 Route::get('/city/{province}', 'PublicController@getCittà')->name('city')->middleware('can:isLocatario');
+
+
+Route::post('/locatario/opzionato', 'LocatarioController@sendOpzionato')
+        ->name('opzionato.store')->middleware('can:isLocatario');
