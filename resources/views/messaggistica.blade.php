@@ -123,7 +123,7 @@
                     </div>
                 </div>        
                 <div class="col-lg-8">
-                    <iframe id="chatframe" src="" name="chatframe" width="100%" height="300" >   
+                    <iframe id="chatframe" src="" name="chatframe" width="100%" height="500" >   
                     </iframe>
                 </div>
             </div>
