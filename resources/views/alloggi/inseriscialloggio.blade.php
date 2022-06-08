@@ -24,6 +24,183 @@
 
 
 <script type="text/javascript" src="resources/js/app.js"></script>
+
+<script>
+    
+
+window.onload = function () {
+        
+        $("#appform").hide();
+        $("#plform").hide();
+        
+        $("#app").click(function() {
+            $("#appform").show();
+            $("#plform").hide(); });
+        
+        $("#pl").click(function() {
+            $("#plform").show();
+            $("#appform").hide(); });
+       
+    document.getElementById("tip").value =
+                "<?php
+                    if (old('tip')!=null) {
+                         echo old('tip');
+                    } else {
+                         echo isset($_POST['tip']) ? $_POST['tip'] : '';
+                    }
+                ?>";
+    document.getElementById("prezzomin").value =
+            "<?php
+                    if (old('prezzomin')!=null) {
+                         echo old('prezzomin');
+                    } else {
+                         echo isset($_POST['prezzomin']) ? $_POST['prezzomin'] : '';
+                    }
+                ?>";
+    document.getElementById("prezzomax").value =
+            "<?php
+                    if (old('prezzomax')!=null) {
+                         echo old('prezzomax');
+                    } else {
+                         echo isset($_POST['prezzomax']) ? $_POST['prezzomax'] : '';
+                    }
+                ?>";
+    document.getElementById("data_min").value =
+            "<?php
+                    if (old('data_min')!=null) {
+                         echo old('data_min');
+                    } else {
+                         echo isset($_POST['data_min']) ? $_POST['data_min'] : '';
+                    }
+                ?>";
+    document.getElementById("data_max").value =
+            "<?php
+                    if (old('data_max')!=null) {
+                         echo old('data_max');
+                    } else {
+                         echo isset($_POST['data_max']) ? $_POST['data_max'] : '';
+                    }
+                ?>";
+    document.getElementById("superficie").value =
+            "<?php
+                    if (old('superficie')!=null) {
+                         echo old('superficie');
+                    } else {
+                         echo isset($_POST['superficie']) ? $_POST['superficie'] : '';
+                    }
+                ?>";
+    document.getElementById("n_camere").value =
+            "<?php
+                    if (old('n_camere')!=null) {
+                         echo old('n_camere');
+                    } else {
+                         echo isset($_POST['n_camere']) ? $_POST['n_camere'] : '';
+                    }
+                ?>";
+    document.getElementById("n_posti_letto_totali").value =
+            "<?php
+                    if (old('n_posti_letto_totali')!=null) {
+                         echo old('n_posti_letto_totali');
+                    } else {
+                         echo isset($_POST['n_posti_letto_totali']) ? $_POST['n_posti_letto_totali'] : '';
+                    }
+                ?>";
+    document.getElementById("aprov").value =
+            "<?php
+                    if (old('aprov')!=null) {
+                         echo old('aprov');
+                    } else {
+                         echo isset($_POST['aprov']) ? $_POST['aprov'] : '';
+                    }
+                ?>"; 
+    document.getElementById("acittà").value =
+            "<?php
+                    if (old('acittà')!=null) {
+                         echo old('acittà');
+                    } else {
+                         echo isset($_POST['acittà']) ? $_POST['acittà'] : '';
+                    }
+                ?>"; 
+    document.getElementById("plprov").value =
+            "<?php
+                    if (old('plprov')!=null) {
+                         echo old('plprov');
+                    } else {
+                         echo isset($_POST['plprov']) ? $_POST['plprov'] : '';
+                    }
+                ?>"; 
+    document.getElementById("plcittà").value =
+            "<?php
+                    if (old('plcittà')!=null) {
+                         echo old('plcittà');
+                    } else {
+                         echo isset($_POST['plcittà']) ? $_POST['plcittà'] : '';
+                    }
+                ?>"; 
+    document.getElementById("servizi").value =
+            "<?php
+                    if (old('servizi')!=null) {
+                         echo old('servizi');
+                    } else {
+                         echo isset($_POST['servizi[]']) ? $_POST['servizi[]'] : '';
+                    }
+                ?>";        
+};
+</script>
+
+<script>
+    function getCity(cityUrl) {
+    var city;
+    $.ajax({
+        type: "GET",
+        url: cityUrl,
+        data: city,
+        dataType: "json",
+        error: function (data) {
+            if (data.status === 422) {
+                var errMsgs = JSON.parse(data.responseText);
+                $.each(errMsgs, function (id) {
+                    $("#" + id)
+                        .parent()
+                        .find(".errors")
+                        .html(" ");
+                    $("#" + id).after(getErrorHtml(errMsgs[id]));
+                });
+            }
+        },
+        success: function (data) {
+            data.forEach(function (elem) {
+                $("#acittà, #plcittà").append(new Option(elem, elem));
+            });
+        },
+        contentType: false,
+        processData: false
+    });
+}
+</script>
+
+<script>
+    $(function () {
+        $('#aprov, #plprov').append('<option selected disabled>Scegli la provincia</option>');
+        @foreach($province as $provincia)
+        $('#aprov, #plprov').append(new Option("{!!$provincia!!}", "{!!$provincia!!}"));
+        @endforeach
+        $('#aprov').change(function () {
+            var province = $('#aprov option:selected').text();
+            var cityUrl = "{{route('city', '')}}" + "/" + province;
+            $('#acittà').find('option').remove();
+            $('#acittà').append('<option selected disabled>Scegli la città</option>');
+            getCity(cityUrl);
+        });
+        $('#plprov').change(function () {
+            var province = $('#plprov option:selected').text();
+            var cityUrl = "{{route('city', '')}}" + "/" + province;
+            $('#plcittà').find('option').remove();
+            $('#plcittà').append('<option selected disabled>Scegli la città</option>');
+            getCity(cityUrl);
+        });
+    });
+</script>
   <!-- Custom styles -->
   <style>
     #form label.error {
@@ -232,8 +409,34 @@
                                 </ul>
                                 @endif
                             </div>
+                        
+                            <span class="search">
+                                <label for="aprov" class="control">Provincia:</label>
+                                <select name="aprov" id="aprov">
+                                </select>
+                            </span>
+                            <br><br>
+                            <span class="search">
+                                <label for="acitta" class="control">Città:</label>
+                                <select id="acittà" name="acittà" size="1">
+                            </select>
+                            </span>
+                            <br><br>
                             
-                            <div  class="wrap-input  rs1-wrap-input">
+                            <span class="search">
+                                <label for="plprov" class="control">Provincia:</label>
+                                <select name="plprov" id="plprov">
+                                </select>
+                            </span>
+                            <br><br>
+                            <span class="search">
+                                <label for="plcitta" class="control">Città:</label>
+                                <select id="plcittà" name="plcittà" size="1">
+                            </select>
+                            </span>
+                            <br><br>
+                            
+                            <!-- comment     <div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('città', 'Citta', ['class' => 'label-input']) }}
                                 {{ Form::text('città', '', ['class' => 'input', 'id' => 'città']) }}
                                 @if ($errors->first('città'))
@@ -243,7 +446,7 @@
                                     @endforeach
                                 </ul>
                                 @endif
-                            </div>
+                            </div> -->
                             
                             <div style="text-align:center; margin-top: 1em;"> Periodo di disponibilità </div>
                         <div class="row">
@@ -274,7 +477,7 @@
                             </div> 
                         </div>
                             
-                            <div  class="wrap-input  rs1-wrap-input">
+                    <!-- comment        <div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('provincia', 'Provincia', ['class' => 'label-input']) }}
                                 {{ Form::text('provincia', '', ['class' => 'input', 'id' => 'provincia']) }}
                                 @if ($errors->first('provincia'))
@@ -284,7 +487,7 @@
                                     @endforeach
                                 </ul>
                                 @endif
-                            </div>
+                            </div>  -->
                             
                             <div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('superficie', 'Superficie', ['class' => 'label-input']) }}

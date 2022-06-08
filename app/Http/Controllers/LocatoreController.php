@@ -22,12 +22,14 @@ class LocatoreController extends Controller {
     protected $_serviceModel;
     protected $_alloggioModel;
     protected $_houseserviceModel;
+    protected $_offerteModel;
 
     public function __construct() {
         $this->middleware('can:isLocatore');
         $this->_locatoreModel = new Locatore;
         $this->_serviceModel = new Services;
         $this->_alloggioModel = new House;
+        $this->_offerteModel = new Offerte;
        
         $this->_houseserviceModel = new HouseService;
     }
@@ -52,8 +54,10 @@ class LocatoreController extends Controller {
     
     public function createAlloggio() {
         $servizi = $this->_serviceModel->getServizi();
+        $province = $this->_offerteModel->getProvList();
         return view('alloggi.inseriscialloggio')
-                    ->with('servizi', $servizi);
+                    ->with('servizi', $servizi)
+                    ->with('province', $province);
     }
     
     public function storeAlloggio(NuovoAlloggioRequest $request) {
