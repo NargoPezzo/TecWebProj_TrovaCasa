@@ -42,7 +42,7 @@ class NuovoAlloggioRequest extends FormRequest {
             "data_min" => "date",
             "data_max" => "date",
             "età_min" => "numeric|min:0",
-            "età_max" => "numeric|min:0",
+            "età_max" => "numeric|min:0"
         ];
     }
 

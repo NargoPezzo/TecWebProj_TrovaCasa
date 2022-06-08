@@ -43,7 +43,10 @@ class ModificaAlloggioRequest extends FormRequest {
             "servizi"    => '',
             'id' => '',
             "data_min" => "date",
-            "data_max" => "date"
+            "data_max" => "date",
+            "età_min" => "numeric|min:0",
+            "età_max" => "numeric|min:0"
+            
         ];
     }
 

@@ -210,6 +210,25 @@
                                         <br>
                                     </div>
                                 </div>
+                                <div class ="lg-col-3">
+                                    <div class="faq-element">
+                                        <div class="wrap-contact1">
+                                        <label><b>Età Minima:</b></label>
+                                        <br>{{ Form::number('età_min', $house->età_min, ['class' => 'input','id' => 'età_min', 'style'=>'width:5em']) }}
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+                                
+                                <div class ="lg-col-3">
+                                    <div class="faq-element">
+                                        <div class="wrap-contact1">
+                                        <label><b>Età Massima:</b></label>
+                                        <br>{{ Form::number('età_max', $house->età_max, ['class' => 'input','id' => 'età_max', 'style'=>'width:5em']) }}
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
                                 
                                     <div class="faq-element">
                                         <div class="wrap-contact1">
