@@ -73,8 +73,8 @@ class PublicController extends Controller {
         $n_posti_letto_totali = $request->n_posti_letto_totali;
         $servizi = $this->_serviziModel->getServizi();
         
-        Log::info( 'controller');
-        Log::info( $acittà);
+        Log::info('controller');
+        Log::info($acittà);
         /*$regions = $this->eventsList->getRegionList();
         $months = $this->eventsList->getMonthList();
         $events = $this->eventsList->getEventsFiltered($request->year, $request->month, $request->reg,

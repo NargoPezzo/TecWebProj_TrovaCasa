@@ -102,11 +102,8 @@
                 <br><br>    
             @endforeach
            
-    
     <br><br>
             
-
-    
     <div class="type_msg">
             <div class="input_msg_write split2chat">
                 <div>

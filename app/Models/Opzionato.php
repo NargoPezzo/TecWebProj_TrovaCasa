@@ -3,6 +3,8 @@
 namespace app\Models;
 
 use App\Models\Resources\House;
+use App\Models\Resources\Opzione;
+use Illuminate\Support\Facades\Log;
 
 class Opzionato
 {
@@ -23,4 +25,18 @@ class Opzionato
 		}
                 return $_opzionato;
 	}
+        
+    public function assegnazione($locatario_id, $house_id) {
+        $opzione = Opzione::where('locatario_id', $locatario_id)->where('house_id', $house_id)->first();
+        $house = House::where('id', $house_id)->first();
+        Log::info('opzione');
+        Log::info($locatario_id);
+        Log::info($house_id);
+        Log::info(strval($opzione));
+        Log::info(strval($house));
+        $opzione->assegnato = 1;
+        $house->opzionato = 1;
+        $house->save();
+        $opzione->save();
+    }
 }

@@ -45,8 +45,6 @@
     
     input[type='submit']{
     border: 2px solid #ccc;
-    
-    
     } 
     
     form{
@@ -54,7 +52,6 @@
             width: 775px;
             border: 2px solid #ccc;
             padding: 30px;
-            
         }	
 </style>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>

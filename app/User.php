@@ -75,17 +75,25 @@ class User extends Authenticatable {
     }
     
     public function getRichieste($house_id) {
-        $richiedenti = new User();
+
         $richieste = Opzione::select('locatario_id')->where('house_id', $house_id)->get();
         Log::info('richieste');
         Log::info($richieste);
+        $idRichieste = array();
+        
         foreach ($richieste as $richiesta) {
-            $richiedenti = User::where('id', $richiesta->locatario_id)->get();
+            array_push($idRichieste, $richiesta->locatario_id);
         }
+        $richiedenti = User::whereIn('id', $idRichieste)->get();
         Log::info('getRichieste');
         Log::info($richiedenti);
         
         return $richiedenti;
+    }
+    
+    public function getDestById($id) {
+        $destinatario = $this->where('id', '=', $id)->first();
+        return $destinatario->username;
     }
     
 }

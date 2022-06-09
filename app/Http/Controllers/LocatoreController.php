@@ -5,9 +5,12 @@ namespace app\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Resources\House;
 use App\Models\Resources\Services;
+use App\Models\Resources\Opzione;
 use App\Models\Locatore;
+use App\Models\Opzionato;
 use App\User;
 use App\Http\Request\NuovoAlloggioRequest;
+use App\Http\Request\InviaMessaggioRequest;
 use App\Http\Request\ModificaAlloggioRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +24,7 @@ class LocatoreController extends Controller {
     protected $_locatoreModel;
     protected $_serviceModel;
     protected $_alloggioModel;
-    //protected $_opzioneModel;
+    protected $_opzionatoModel;
     protected $_houseserviceModel;
     protected $_offerteModel;
 
@@ -31,7 +34,7 @@ class LocatoreController extends Controller {
         $this->_serviceModel = new Services;
         $this->_alloggioModel = new House;
         $this->_offerteModel = new Offerte;
-        //$this->_opzioneModel = new Opzione;
+        $this->_opzionatoModel = new Opzionato;
         $this->_houseserviceModel = new HouseService;
     }
 
@@ -157,15 +160,11 @@ class LocatoreController extends Controller {
     }
     
     public function assegnaAlloggio($locatario_id, $house_id) {
-        $opzione = Opzione::where('locatario_id', $locatario_id)->where('house_id', $house_id)->first();
-        $house = House::where('id', $house_id);
-        
-        $opzione->assegnato = 1;
-        $house->opzionato = 1;
+        $opzione = $this->_opzionatoModel->assegnazione($locatario_id, $house_id);
 
         Log::info($opzione);
         session() -> flash('message', 'Assegnazione effettuata con successo!');
-        return redirect()->route('offerte');
+        return redirect()->route('gestiscialloggi');
         
     }
 
