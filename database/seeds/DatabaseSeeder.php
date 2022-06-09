@@ -205,7 +205,8 @@ class DatabaseSeeder extends Seeder
             ['id' => 8,  'nome' => 'Balcone'],
             ['id' => 9,  'nome' => 'Asciugatrice'],
             ['id' => 10,  'nome' => 'TV'],
-           
+            ['id' => 11,  'nome' => 'Angolo studio'],
+            
         ]);
         
         DB::table('house_services')->insert([
