@@ -50,7 +50,7 @@ class ModificaLocatoreController extends Controller {
         $user->save();
         
           
-                 return redirect()->route('homelocatore');
+                 return redirect()->route('home');
         
     }
 

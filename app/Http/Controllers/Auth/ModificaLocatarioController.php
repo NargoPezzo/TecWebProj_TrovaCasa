@@ -49,7 +49,7 @@ class ModificaLocatarioController extends Controller {
 
         $user->save();
 
-            return redirect()->route('homelocatario');
+            return redirect()->route('home');
         
     }
 
