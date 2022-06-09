@@ -142,13 +142,13 @@ Auth::routes();
 /*Route::get('/home', 'HomeController@index')->name('home'); ME L'HA AGGIUNTA IL TERMINALEEEEEEEEEE */
 
 
-Route::get('/messaggistica', 'PublicController@showChat')
+Route::get('/messaggistica', 'MessaggiController@showChat')
         ->name('messaggistica');
 
-Route::post('/messaggisticapost', 'PublicController@sendMessaggio')
+Route::post('/messaggisticapost', 'MessaggiController@sendMessaggio')
         ->name('messaggisticapost');
 
-Route::get('/chat/{id}', 'PublicController@showUserChat')
+Route::get('/chat/{id}', 'MessaggiController@showUserChat')
         ->name('chat');
 
 Route::post('/locatario/messaggio', 'LocatarioController@sendMessaggio')

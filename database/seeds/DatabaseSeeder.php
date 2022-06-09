@@ -199,7 +199,7 @@ class DatabaseSeeder extends Seeder
             ['id' => 2,  'nome' => 'Lavatrice'],
             ['id' => 3,  'nome' => 'Wifi'],
             ['id' => 4,  'nome' => 'Posto Auto'],
-            ['id' => 5,  'nome' => 'Asciugatrice'],
+            ['id' => 5,  'nome' => 'S'],
            
         ]);
         
