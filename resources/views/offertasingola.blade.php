@@ -205,11 +205,11 @@
                         @endforeach
                         @else
                             <p>Ancora nessuna richiesta ricevuta per questo alloggio</p>
-                            @endisset
+                        @endisset
                         @endif
                         <br><br>
                     </div>
-                @else    
+                @else
                     <p><b>Alloggio assegnato a ...........................</b></p><br>
                 </div>
                 

@@ -79,9 +79,9 @@ class User extends Authenticatable {
         $richieste = Opzione::select('locatario_id')->where('house_id', $house_id)->get();
         Log::info('richieste');
         Log::info($richieste);
-        
-        $richiedenti = User::where('id', $richiesta->locatario_id)->get();
-        
+        foreach ($richieste as $richiesta) {
+            $richiedenti = User::where('id', $richiesta->locatario_id)->get();
+        }
         Log::info('getRichieste');
         Log::info($richiedenti);
         
