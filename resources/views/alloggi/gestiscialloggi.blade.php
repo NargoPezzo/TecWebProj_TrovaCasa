@@ -353,26 +353,53 @@
                                         
                     </div>
                     <br><br>
-                    <!-- comment  issett() o is_null per check genere  o php o javascript-->
+                    
+                    
+                    
                     <div class="row">    
                         <div class="col-lg-4">
-                        <b>Seleziona sesso:</b> 
-                    <br>
-                    
-                                   <input class="wrap-input-input" type="radio" name="genere" id="genereU1" value="M">
+                            <b>Seleziona sesso:</b>
+                            <br>
+                            @if ( $house->genere == 'M')
+                                @php
+                                $check1 = "checked"
+                                @endphp
+                                <input {{$check1}} class="wrap-input-input" type="radio" name="genere" id="genereU1" value="M">
                                         <label class="wrap-input-label" for="genereU1">
                                             <div class="label-input">
                                                 Uomo 
                                             </div>
                                         </label>
-                                
-                                   <br>
-                                    <input class="wrap-input-input" type="radio" name="genere" id="genereD1" value="F">
+                                <input  class="wrap-input-input" type="radio" name="genere" id="genereD1" value="F">
                                         <label class="wrap-input-label" for="genereD1">
                                             <div class="label-input">
                                                 Donna
                                             </div>
+                                            </label>
+                            @else ( $house->genere == 'F')
+                                @php
+                                $check2 = "checked"
+                                @endphp
+                                <input  class="wrap-input-input" type="radio" name="genere" id="genereU1" value="M">
+                                        <label class="wrap-input-label" for="genereU1">
+                                            <div class="label-input">
+                                                Uomo 
+                                            </div>
                                         </label>
+                                <br>
+                                    <input {{$check2}} class="wrap-input-input" type="radio" name="genere" id="genereD1" value="F">
+                                        <label class="wrap-input-label" for="genereD1">
+                                            <div class="label-input">
+                                                Donna
+                                            </div>
+                                            </label>
+                            @endif
+                        
+                    
+                    
+                                   
+                                
+                                   
                                         @if ($errors->first('genere'))
                                             <ul class="errors">
                                             @foreach ($errors->get('genere') as $message)
