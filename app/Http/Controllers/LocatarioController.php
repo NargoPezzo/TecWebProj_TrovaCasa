@@ -2,7 +2,9 @@
 
 namespace app\Http\Controllers;
 use App\Models\Resources\House;
+use App\Models\Resources\Opzione;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 //use App\Models\Admin;
 
@@ -32,8 +34,6 @@ class LocatarioController extends Controller {
         return view('offertelocatario');
     } */
   
-    
-    
     public function sendMessaggio(NuovoMessaggioRequest $request){
         $messaggio = new Messaggio;
         $request->validated();           
@@ -59,14 +59,15 @@ class LocatarioController extends Controller {
         return redirect()->action('LocatarioController@index');
     }
     
-    public function createOpzione() {
+    public function createOpzione($house_id) {
+        $opzione = new Opzione();
+        $opzione->locatario_id = Auth::id();
+        $opzione->house_id = $house_id;
+        $opzione->save();
         
-        $locatario_id = $this->_locatarioModel->id;
-        $house_id = $this->_houseModel->id;
-        
-        return view('offertasingola')
-                    ->with('locatario_id', $locatario_id)
-                    ->with('house_id', $house_id);
+        session() -> flash('message', 'Richiesta inviata con successo!');
+        return redirect()->route('offerte');
+
     }
     
     public function sendOpzione(OpzioneRequest $request){
@@ -78,5 +79,3 @@ class LocatarioController extends Controller {
         return view('offertasingola');
     }
 }
-
-

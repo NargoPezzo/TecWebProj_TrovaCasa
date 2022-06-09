@@ -21,6 +21,7 @@ class LocatoreController extends Controller {
     protected $_locatoreModel;
     protected $_serviceModel;
     protected $_alloggioModel;
+    //protected $_opzioneModel;
     protected $_houseserviceModel;
     protected $_offerteModel;
 
@@ -30,7 +31,7 @@ class LocatoreController extends Controller {
         $this->_serviceModel = new Services;
         $this->_alloggioModel = new House;
         $this->_offerteModel = new Offerte;
-       
+        //$this->_opzioneModel = new Opzione;
         $this->_houseserviceModel = new HouseService;
     }
 
@@ -142,14 +143,33 @@ class LocatoreController extends Controller {
 
         return redirect()->action('LocatoreController@indexhome');*/
 
-        
-        
     }
     
+    public function createOpzione($house_id) {
+        $opzione = new Opzione();
+        $opzione->locatario_id = Auth::id();
+        $opzione->house_id = $house_id;
+        $opzione->save();
+        
+        session() -> flash('message', 'Richiesta inviata con successo!');
+        return redirect()->route('offerte');
+
+    }
     
+    public function assegnaAlloggio($locatario_id, $house_id) {
+        $opzione = Opzione::where('locatario_id', $locatario_id)->where('house_id', $house_id)->first();
+        $house = House::where('id', $house_id);
+        
+        $opzione->assegnato = 1;
+        $house->opzionato = 1;
 
+        Log::info($opzione);
+        session() -> flash('message', 'Assegnazione effettuata con successo!');
+        return redirect()->route('offerte');
+        
+    }
 
-public function editAlloggio(ModificaAlloggioRequest $request) {
+    public function editAlloggio(ModificaAlloggioRequest $request) {
         
         $alloggio = $this->_alloggioModel->getSingleHouse($request->id);
         $alloggio->titolo = $request->titolo;
@@ -202,7 +222,7 @@ public function editAlloggio(ModificaAlloggioRequest $request) {
         /*House::destroy($id);
         return redirect()->route("");*/
     }
-    
+
     public function deleteFaq($id)
     {
         $faq = $this->_faqsModel->getSingleFaq(urldecode($id));
@@ -210,7 +230,6 @@ public function editAlloggio(ModificaAlloggioRequest $request) {
         session() -> flash('message', 'Eliminazione effettuata con successo!');
         return redirect()->route('faq');
     }
-    
     
     public function sendMessaggio(NuovoMessaggioRequest $request){
         $messaggio = new Messaggio;

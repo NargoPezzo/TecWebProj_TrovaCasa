@@ -94,11 +94,12 @@ Route::get('/admin/stats/search', "AdminController@getStats")
         ->name('admin.stats.search');
 
 // Rotte Offerta singola
-Route::get('/opzionato', 'LocatarioController@createOpzione')
+
+Route::get('/opzionato/{id}', 'LocatarioController@createOpzione')
         ->name('opzionato')->middleware('can:isLocatario');
 
-Route::post('/opzionato', 'LocatarioController@sendOpzione')
-        ->name('opzionato')->middleware('can:isLocatario');
+Route::get('/assegnato/{id}', 'LocatoreController@assegnaAlloggio')
+        ->name('assegnato')->middleware('can:isLocatore');
 
 Route::get('/offertasingola/{id}', 'PublicController@showOfferta')   
         ->name('offertasingola');

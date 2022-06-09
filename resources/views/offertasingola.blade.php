@@ -130,14 +130,16 @@
                         @endif
                         <span><b>Prezzo:</b>  {{ $alloggi->prezzo }} €</span>
                         
+                        @can('isLocatario')
                         @if($alloggi->opzionato == 0)
-                    <p>@include('helpers/buttonimg', ['attrs' => 'imagefrm', 'imgFile' => 'green_button.png']) </p>
+                    
                     <span>Alloggio libero: cosa aspetti?</span>
                     @endif
                     @if($alloggi->opzionato == 1)
-                    <p>@include('helpers/buttonimg', ['attrs' => 'imagefrm', 'imgFile' => 'red_button.png']) </p>
+                    
                     <span>Alloggio già occupato...</span> 
                     @endif
+                    @endcan
 
 
                 </div><br>
@@ -170,7 +172,7 @@
                 <div >
                     <div class="left-content">
                         <div class="col-lg-12"><br><br>
-                            <a href="{{route('opzionato')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Opziona Alloggio</a>
+                            <a href="{{route('opzionato', [$alloggi->id])}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Invia richiesta</a>
                             <a href="{{url('messaggistica')}}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Messaggia il Locatore</a>
                         </div>
                     </div>
@@ -179,6 +181,7 @@
                 @endcan
                 <br><br>
                 @can('isLocatore')
+                @if($alloggi->opzionato == 0)
                 <div class="col-lg-6">
                     <div class="left-content">
                         
@@ -193,7 +196,7 @@
                                     <p>Anagrafica: {{ $richiesta->nome }} {{ $richiesta->cognome }}, genere: {{ $richiesta->genere }}, età: {{ $richiesta->età }}</p><br>
                                 <div class="left-content">
                                 <div class="col-lg-12"><br><br>
-                                    <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Assegna</a>
+                                    <a href="{{route('assegnato', [$richiesta->id], [$alloggi->id])}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Assegna</a>
                                     <a href="{{url('messaggistica')}}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Messaggia il Locatario</a>
                                 </div>
                                 </div>
@@ -202,14 +205,18 @@
                         @endforeach
                         @else
                             <p>Ancora nessuna richiesta ricevuta per questo alloggio</p>
+                            @endisset
                         @endif
                         <br><br>
                     </div>
-                      
+                @else    
+                    <p><b>Alloggio assegnato a ...........................</b></p><br>
                 </div>
-
+                
+                @endif
+                
                 @endcan
-            @endisset
+            
                 
     </section>
     <!-- ***** Product Area Ends ***** -->
