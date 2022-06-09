@@ -36,16 +36,15 @@ class ModificaAlloggioRequest extends FormRequest {
             'n_posti_letto_totali' => 'int',
             'indirizzo' => 'string|max:255',
             'cap' => 'numeric',
-            'città' => 'string|max:255',
-            'provincia' => 'string|max:2',
+            
             'superficie' => 'int',
             'immagine' => 'image|max:1024',
             "servizi"    => '',
             'id' => '',
-            "data_min" => "",
-            "data_max" => "",
-            "età_min" => "numeric",
-            "età_max" => "numeric",
+            "data_min" => 'date|required',
+            "data_max" => 'date|required',
+            "età_min" => '',
+            "età_max" => '',
             "genere" => "string"
             
         ];

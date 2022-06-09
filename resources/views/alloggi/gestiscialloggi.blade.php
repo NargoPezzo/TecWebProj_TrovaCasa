@@ -21,52 +21,9 @@
               });
             });
         </script>
-        <script>
-    function getCity(cityUrl) {
-    var city;
-    $.ajax({
-        type: "GET",
-        url: cityUrl,
-        data: city,
-        dataType: "json",
-        error: function (data) {
-            if (data.status === 422) {
-                var errMsgs = JSON.parse(data.responseText);
-                $.each(errMsgs, function (id) {
-                    $("#" + id)
-                        .parent()
-                        .find(".errors")
-                        .html(" ");
-                    $("#" + id).after(getErrorHtml(errMsgs[id]));
-                });
-            }
-        },
-        success: function (data) {
-            data.forEach(function (elem) {
-                $("#città").append(new Option(elem, elem));
-            });
-        },
-        contentType: false,
-        processData: false
-    });
-}
-</script>
+    
 
-<script>
-    $(function () {
-        $('#prov').append('<option selected disabled>Scegli la provincia</option>');
-        @foreach($province as $provincia)
-        $('#prov').append(new Option("{!!$provincia!!}", "{!!$provincia!!}"));
-        @endforeach
-        $('#prov').change(function () {
-            var province = $('#prov option:selected').text();
-            var cityUrl = "{{route('insertcity', '')}}" + "/" + province;
-            $('#città').find('option').remove();
-            $('#città').append('<option selected disabled>Scegli la città</option>');
-            getCity(cityUrl);
-        });
-    });
-</script>
+
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -217,31 +174,8 @@
                             </div>
                             
                             <div class ="col-lg-5">   
-                                        <span class="search">
-                    <label for="prov" class="control">Provincia:</label>
-                    <select name="prov" id="prov">
-                    </select>
-                                        @if ($errors->first('Provincia'))
-                                                <div class="errors" >
-                                                    @foreach ($errors->get('Provincia') as $message)
-                                                    <p>{{ $message }}</p>
-                                                    @endforeach
-                                                </div>
-                                                @endif
-                </span>
-                <br><br>
-                <span class="search">
-                    <label for="citta" class="control">Città:</label>
-                    <select id="città" name="città" size="1">
-                                            @if ($errors->first('città'))
-                                                <div class="errors" >
-                                                    @foreach ($errors->get('città') as $message)
-                                                    <p>{{ $message }}</p>
-                                                    @endforeach
-                                                </div>
-                                                @endif
-                        
-                </select>
+                    
+            
                                 <label><b>Tipologia</b></label>
                                 <br> {{ Form::select('tipologia', ['appartamento' => 'Appartamento', 'posto_letto_singolo' => 'Posto letto (singolo)', 'posto_letto_doppio' => 'Posto letto (doppio)'], ['class' => 'input','id' => 'tipologia']) }} 
                                             @if ($errors->first('tipologia'))
@@ -368,18 +302,7 @@
                                                 </div>
                                                 @endif
                         </div>
-                        <div class="col-lg-4">
-                            <label><b>Città:</b></label>
-                                <br>{{ Form::text('città', $house->città, ['class' => 'input','id' => 'città', 'style'=>'width:10em', 'required' => '']) }}
-                                                @if ($errors->first('città'))
-                                                <div class="errors" >
-                                                    @foreach ($errors->get('città') as $message)
-                                                    <p>{{ $message }}</p>
-                                                    @endforeach
-                                                </div>
-                                                @endif
                         
-                        </div>
                                         
                     </div>
                     <br>
@@ -478,18 +401,7 @@
                         </div>
                         
                         
-                        <div class="col-lg-12">
-                            <br><br><label><b>Modifica Immagine:</b></label>
-                            <br>{{ Form::image('immagine', $house->immagine, ['class' => 'input','id' => 'immagine', 'style'=>'width:29em', 'required' => '']) }}
-                            <br>
-                                                @if ($errors->first('immagine'))
-                                                <div class="errors" >
-                                                    @foreach ($errors->get('immagine') as $message)
-                                                    <p>{{ $message }}</p>
-                                                    @endforeach
-                                                </div>
-                                                @endif
-                        </div>
+                        
                     </div>
                     <br>
                     
