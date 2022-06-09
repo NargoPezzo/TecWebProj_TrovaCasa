@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Auth;
 
 class LocatarioController extends Controller {
 
-   protected $_locatarioModel;
-    
-   protected $_houseModel;
+    protected $_locatarioModel;
+
+    protected $_houseModel;
     
 
     public function __construct() {

@@ -23,7 +23,6 @@
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
     <style> 
-        
     iframe {
   position:absolute;
   top:-150px;
