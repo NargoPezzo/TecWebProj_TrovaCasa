@@ -59,8 +59,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>La Nostra Missione</h2>
-                        <span>Sei uno studente fuori sede che cerca casa? Non sei solo!</span>
+                        <h2>Sezione Statistiche</h2>
+                        <span>Analizzare non è per tutti</span>
                     </div>
                 </div>
             </div>
@@ -123,17 +123,25 @@
                 <p> Offerte di Alloggio </p>
                 <div class="col-sm-10 ps-3">
                     @if(Route::is('admin.stats.search'))                    
-                    {{$count_rent}}
+                    {{$contatore_alloggi}}
                     @endif
                 </div>
             </div>
             
+            <div class="form-outline row ms-5 mb-4 mt-4 w-25">
+                <p> Offerte di Locazione </p>
+                <div class="col-sm-9 ps-3">
+                    @if(Route::is('admin.stats.search'))
+                    {{$contatore_richieste}}
+                    @endif
+                </div>    
+            </div>
             
            <div class="form-outline row ms-5 mb-4 mt-4 w-25">
                 <p> Alloggi Locati </p>
                 <div class="col-sm-9 ps-3">
                     @if(Route::is('admin.stats.search'))                    
-                    {{$count_assigned}}
+                    {{$contatore_opzionati}}
                     @endif
                 </div>    
             </div> 

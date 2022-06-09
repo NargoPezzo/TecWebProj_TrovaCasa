@@ -96,7 +96,7 @@ class AdminController extends Controller {
     public function getStats(Request $tipologia){
         $this->_alloggi = new House;
         $this->_opzionati = new Opzionato;
-        $tipo = $tipologia->input('type');// BOHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+        $tipo = $tipologia->input('type');
         $data_min = $tipologia->input('start-date'); 
         $data_max = $tipologia->input('end-date');
 
@@ -105,16 +105,16 @@ class AdminController extends Controller {
                 'start-date' => 'date_format:Y-m-d|before:tomorrow',
                 'end-date' => 'date_format:Y-m-d|after:start-date'  
             ]);
-                $count_rent = $this->_alloggi->genera_statistiche1($tipo, $data_min, $data_max);
-              //  $count_request = $this->_opzionati->genera_statistiche2($tipo, $data_min, $data_max);
-                 $count_assigned = $this->_alloggi->genera_statistiche3($tipo, $data_min, $data_max);             
+                $contatore_alloggi = $this->_alloggi->genera_statistiche1($tipo, $data_min, $data_max);
+                $contatore_richieste = $this->_opzionati->genera_statistiche2($tipo, $data_min, $data_max);
+                $contatore_opzionati = $this->_alloggi->genera_statistiche3($tipo, $data_min, $data_max);             
         }
         else{
-            $count_rent = $this->_alloggi->genera_statistiche1($tipo, $data_min, $data_max);
-            //$count_request = $this->_opzionati->genera_statistiche2($tipo, $data_min, $data_max);
-            $count_assigned = $this->_alloggi->genera_statistiche3($tipo, $data_min, $data_max);
+            $contatore_alloggi = $this->_alloggi->genera_statistiche1($tipo, $data_min, $data_max);
+            $contatore_richieste = $this->_opzionati->genera_statistiche2($tipo, $data_min, $data_max);
+            $contatore_opzionati = $this->_alloggi->genera_statistiche3($tipo, $data_min, $data_max);
         }
-        return view('statistiche')->with('count_rent',$count_rent) /*->with('count_request',$count_request)*/ ->with('count_assigned',$count_assigned);
+        return view('statistiche')->with('contatore_alloggi',$contatore_alloggi) ->with('contatore_richieste',$contatore_richieste) ->with('contatore_opzionati',$contatore_opzionati);
     }
     
 public function statistics()
