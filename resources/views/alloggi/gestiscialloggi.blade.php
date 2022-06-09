@@ -353,7 +353,7 @@
                                         
                     </div>
                     <br><br>
-                    
+                    <!-- comment  issett() o is_null per check genere  o php o javascript-->
                     <div class="row">    
                         <div class="col-lg-4">
                         <b>Seleziona sesso:</b> 

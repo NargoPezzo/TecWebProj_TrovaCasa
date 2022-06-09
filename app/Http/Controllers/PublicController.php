@@ -59,7 +59,7 @@ class PublicController extends Controller {
     }
     
     public function showOfferteFiltrate(RicercaOfferteRequest $request) {
-
+        
         $tipologie = $this->_houseModel->getTipologiaList();
         $province = $this->_offerteModel->getProvList();
         $acittà = $request->acittà;
@@ -73,8 +73,18 @@ class PublicController extends Controller {
         $n_posti_letto_totali = $request->n_posti_letto_totali;
         $servizi = $this->_serviziModel->getServizi();
         
-        Log::info( 'controller');
-        Log::info( $acittà);
+        $request_servizi = $request->servizi;
+        if (isset($request_servizi) && is_null($request_servizi[0])) {
+            $request_servizi[0] = 11;
+            
+            
+            
+            
+        }
+        
+        Log::info($servizi);
+        
+       
         /*$regions = $this->eventsList->getRegionList();
         $months = $this->eventsList->getMonthList();
         $events = $this->eventsList->getEventsFiltered($request->year, $request->month, $request->reg,
@@ -88,7 +98,7 @@ class PublicController extends Controller {
 */
         Log::info($data_min);
         
-        $alloggi = $this->_offerteModel->getHousesFiltered($request->tip, $request->aprov, $request->plprov, $acittà, $plcittà, $prezzomin, $prezzomax, $data_min, $data_max, $superficie, $n_camere, $n_posti_letto_totali, $request->servizi);
+        $alloggi = $this->_offerteModel->getHousesFiltered($request->tip, $request->aprov, $request->plprov, $acittà, $plcittà, $prezzomin, $prezzomax, $data_min, $data_max, $superficie, $n_camere, $n_posti_letto_totali, $request_servizi);
         
         return view('offerte')->with('houses', $alloggi)->with('province', $province)->with('acittà', $acittà)->with('plcittà', $plcittà)->with('tipologie', $tipologie)->with('prezzomin', $prezzomin)->with('prezzomax', $prezzomax)
                 ->with('data_min', $data_min)->with('data_max', $data_max)->with('superficie', $superficie)->with('n_camere', $n_camere)->with('n_posti_letto_totali', $n_posti_letto_totali)

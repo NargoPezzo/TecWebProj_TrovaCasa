@@ -405,9 +405,9 @@
     
 
                         <br><br><b><label>Filtri:</label></b><br/>
-        @foreach ($servizi as $servizio)
-            <input type="checkbox" name="servizi[]" value="{{$servizio->nome}}"> {{$servizio->nome}}&nbsp;
-        @endforeach
+                            @foreach ($servizi as $servizio)
+                            <input type="checkbox" name="servizi[]" value="{{$servizio->nome}}"> {{$servizio->nome}}&nbsp;
+                            @endforeach
                     </div>
                 </div>    
                             <!--<div  class="wrap-input  rs1-wrap-input">

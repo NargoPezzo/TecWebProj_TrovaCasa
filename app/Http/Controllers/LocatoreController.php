@@ -171,6 +171,7 @@ class LocatoreController extends Controller {
 
     public function editAlloggio(ModificaAlloggioRequest $request) {
         
+        Log::info($request->id);
         $alloggio = $this->_alloggioModel->getSingleHouse($request->id);
         $alloggio->titolo = $request->titolo;
         $alloggio->prezzo = $request->prezzo;
@@ -180,10 +181,12 @@ class LocatoreController extends Controller {
         $alloggio->n_posti_letto_totali = $request->n_posti_letto_totali;
         $alloggio->indirizzo = $request->indirizzo;
         $alloggio->cap = $request->cap;
-       
+        $alloggio->età_min = $request->età_min;
+        $alloggio->età_max = $request->età_max;
         $alloggio->superficie = $request->superficie;
         $alloggio->data_min = $request->data_min;
         $alloggio->data_max = $request->data_max;
+        $alloggio->genere = $request->genere;
         
         $alloggio->save();
         
@@ -198,7 +201,7 @@ class LocatoreController extends Controller {
             
             
             $houseservice = new HouseService();
-            $houseservice->house_id = $this->_locatoreModel->lastAlloggio();
+            $houseservice->house_id = $alloggio->id;
             $houseservice->services_id = $this->_serviceModel->servizioIdByName($servizio)->id;
              Log::info($houseservice);
             $houseservice->save();

@@ -531,6 +531,8 @@ window.onload = function () {
                     @foreach ($servizi as $servizio)
                     <input name ="servizi[]" id="servizi"type="checkbox" value="{{$servizio->id}}"></input>
                     <label for='servizi[]' class="control">{{$servizio->nome}}</label>
+                    
+                    
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     @endforeach
                 </span>

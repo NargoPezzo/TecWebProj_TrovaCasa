@@ -214,7 +214,7 @@ class DatabaseSeeder extends Seeder
             ['house_id' => 2,  'services_id' => 2,],
             ['house_id' => 3,  'services_id' => 3,],
             ['house_id' => 4,  'services_id' => 3,],
-            ['house_id' => 5,  'services_id' => 4,],
+            ['house_id' => 5,  'services_id' => 11,],
            
         ]);
         

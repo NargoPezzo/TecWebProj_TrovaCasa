@@ -4,6 +4,7 @@ namespace App\Http\Request;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Log;
 
 class RicercaOfferteRequest extends FormRequest {
 
@@ -24,6 +25,7 @@ class RicercaOfferteRequest extends FormRequest {
      * @return array
      */
     public function rules() {
+        
         return [
             'tip' => '',
             'aprov' => '',
@@ -51,6 +53,7 @@ class RicercaOfferteRequest extends FormRequest {
             'immagine' => 'image|max:1024',
             "servizi"    => "array|min:1",*/
         ];
+        
     }
 
 }
