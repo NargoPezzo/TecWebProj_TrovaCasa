@@ -35,11 +35,11 @@
     
 <script>
    
-    var ifrm = document.getElementById('chatframe');
-    ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
-    ifrm.document.open();
-    ifrm.document.write('Seleziona una chat');
-    ifrm.document.close();
+    var chat = document.getElementById('chat');
+    chat = chat.contentWindow || chat.contentDocument.document || chat.contentDocument;
+    chat.document.open();
+    chat.document.write('Seleziona una chat');
+    chat.document.close();
     
 </script>
 
@@ -93,29 +93,20 @@
     </div>
     <!-- ***** Main Banner Area End ***** -->
 
-
-
-
-
-
-
     <br><br>
 <div class="container">
     
-            @isset($chat) 
-            @foreach($chat as $singolachat)
-            
+            @isset($chats) 
+            @foreach($chats as $chat)
                 <div class="col-lg-2">
                     <div class="item">
                         <div class="thumb">
-                        @if($singolachat->user1 == $authuser)
+                        @if($chat->user1 == $authuser)
                             <div> <img src="assets/images/chat-user.png"> </div>
-                            <h5><a href="{{ route('chat', [$singolachat->user2]) }}" target="chatframe"> {{$singolachat->user2}} </a></h5>
-                
+                            <h5><a href="{{ route('chat', [$chat->user2]) }}" target="chat"> {{$chat->user2}} </a></h5>
                         @else
-            
                             <div> <img src="assets/images/chat-user.png"> </div>
-                            <h5><a href="{{ route('chat', [$singolachat->user1]) }}" target="chatframe"> {{$singolachat->user1}} </a></h5>
+                            <h5><a href="{{ route('chat', [$chat->user1]) }}" target="chat"> {{$chat->user1}} </a></h5>
                 
                         @endif
                         </div>
@@ -123,10 +114,9 @@
                 </div>
             @endforeach
             @endisset
-                        
-                                
+                                     
                 <div class="col-lg-8">
-                    <iframe id="chatframe" src="" name="chatframe" width="100%" height="300" >   
+                    <iframe id="chat" src="" name="chat" width="100%" height="300" >   
                     </iframe>
                 </div>
             

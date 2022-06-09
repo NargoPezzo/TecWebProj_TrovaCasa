@@ -122,7 +122,6 @@ class PublicController extends Controller {
                         ->with('faqs', $faqs);
     }
     
-
     public function showChat() {
 
         $chat = $this->_userModel->getChat(Auth()->User()->username);
@@ -130,7 +129,7 @@ class PublicController extends Controller {
         
         return view('messaggistica')
             ->with('authuser', Auth()->User()->username)
-            ->with('chat', $chat)
+            ->with('chats', $chat)
             ->with('messaggi', $messaggi);
     }
     
@@ -162,7 +161,6 @@ class PublicController extends Controller {
                 ->with('authuser', auth()->user()->username)
                 ->with('user', $request->get('destinatario'))
                 ->with('messaggi', $messaggi);
-        
     }
     
     public function getCittà($provincia) {

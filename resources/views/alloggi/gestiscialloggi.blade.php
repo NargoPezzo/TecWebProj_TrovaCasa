@@ -60,7 +60,7 @@
         @endforeach
         $('#prov').change(function () {
             var province = $('#prov option:selected').text();
-            var cityUrl = "{{route('city', '')}}" + "/" + province;
+            var cityUrl = "{{route('insertcity', '')}}" + "/" + province;
             $('#città').find('option').remove();
             $('#città').append('<option selected disabled>Scegli la città</option>');
             getCity(cityUrl);

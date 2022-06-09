@@ -360,7 +360,7 @@ window.onload = function () {
                 </span>
                 <br><br>
                 <span class="search">
-                    <label for="acitta" class="control">Città:</label>
+                    <label for="acittà" class="control">Città:</label>
                     <select id="acittà" name="acittà" size="1">
                 </select>
                 </span>

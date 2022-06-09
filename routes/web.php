@@ -148,7 +148,7 @@ Route::get('/messaggistica', 'PublicController@showChat')
 Route::post('/messaggisticapost', 'PublicController@sendMessaggio')
         ->name('messaggisticapost');
 
-Route::get('/chat/{user}', 'PublicController@showUserChat')
+Route::get('/chat/{id}', 'PublicController@showUserChat')
         ->name('chat');
 
 Route::post('/locatario/messaggio', 'LocatarioController@sendMessaggio')
@@ -156,4 +156,4 @@ Route::post('/locatario/messaggio', 'LocatarioController@sendMessaggio')
 
 Route::get('/city/{province}', 'PublicController@getCittà')->name('city');
 
-Route::get('/city/{province}', 'LocatoreController@getCittà')->name('city');
+Route::get('/insertcity/{province}', 'LocatoreController@getCittà')->name('insertcity');
