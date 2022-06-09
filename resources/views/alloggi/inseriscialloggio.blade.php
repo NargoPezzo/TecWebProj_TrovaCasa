@@ -22,19 +22,131 @@
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
 
-<style>
-    #form label.error {
-        color: red;
-        font-weight: bold;
-    }
-     
-    .main {
-        width: 600px;
-        margin: 0 auto;
-    }
-</style>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="resources/js/app.js"></script>
+
+<script>
+    
+
+window.onload = function () {
+        
+        $("#appform").hide();
+        $("#plform").hide();
+        
+        $("#app").click(function() {
+            $("#appform").show();
+            $("#plform").hide(); });
+        
+        $("#pl").click(function() {
+            $("#plform").show();
+            $("#appform").hide(); });
+       
+    document.getElementById("tip").value =
+                "<?php
+                    if (old('tip')!=null) {
+                         echo old('tip');
+                    } else {
+                         echo isset($_POST['tip']) ? $_POST['tip'] : '';
+                    }
+                ?>";
+    document.getElementById("prezzomin").value =
+            "<?php
+                    if (old('prezzomin')!=null) {
+                         echo old('prezzomin');
+                    } else {
+                         echo isset($_POST['prezzomin']) ? $_POST['prezzomin'] : '';
+                    }
+                ?>";
+    document.getElementById("prezzomax").value =
+            "<?php
+                    if (old('prezzomax')!=null) {
+                         echo old('prezzomax');
+                    } else {
+                         echo isset($_POST['prezzomax']) ? $_POST['prezzomax'] : '';
+                    }
+                ?>";
+    document.getElementById("data_min").value =
+            "<?php
+                    if (old('data_min')!=null) {
+                         echo old('data_min');
+                    } else {
+                         echo isset($_POST['data_min']) ? $_POST['data_min'] : '';
+                    }
+                ?>";
+    document.getElementById("data_max").value =
+            "<?php
+                    if (old('data_max')!=null) {
+                         echo old('data_max');
+                    } else {
+                         echo isset($_POST['data_max']) ? $_POST['data_max'] : '';
+                    }
+                ?>";
+    document.getElementById("superficie").value =
+            "<?php
+                    if (old('superficie')!=null) {
+                         echo old('superficie');
+                    } else {
+                         echo isset($_POST['superficie']) ? $_POST['superficie'] : '';
+                    }
+                ?>";
+    document.getElementById("n_camere").value =
+            "<?php
+                    if (old('n_camere')!=null) {
+                         echo old('n_camere');
+                    } else {
+                         echo isset($_POST['n_camere']) ? $_POST['n_camere'] : '';
+                    }
+                ?>";
+    document.getElementById("n_posti_letto_totali").value =
+            "<?php
+                    if (old('n_posti_letto_totali')!=null) {
+                         echo old('n_posti_letto_totali');
+                    } else {
+                         echo isset($_POST['n_posti_letto_totali']) ? $_POST['n_posti_letto_totali'] : '';
+                    }
+                ?>";
+    document.getElementById("aprov").value =
+            "<?php
+                    if (old('aprov')!=null) {
+                         echo old('aprov');
+                    } else {
+                         echo isset($_POST['aprov']) ? $_POST['aprov'] : '';
+                    }
+                ?>"; 
+    document.getElementById("acittà").value =
+            "<?php
+                    if (old('acittà')!=null) {
+                         echo old('acittà');
+                    } else {
+                         echo isset($_POST['acittà']) ? $_POST['acittà'] : '';
+                    }
+                ?>"; 
+    document.getElementById("plprov").value =
+            "<?php
+                    if (old('plprov')!=null) {
+                         echo old('plprov');
+                    } else {
+                         echo isset($_POST['plprov']) ? $_POST['plprov'] : '';
+                    }
+                ?>"; 
+    document.getElementById("plcittà").value =
+            "<?php
+                    if (old('plcittà')!=null) {
+                         echo old('plcittà');
+                    } else {
+                         echo isset($_POST['plcittà']) ? $_POST['plcittà'] : '';
+                    }
+                ?>"; 
+    document.getElementById("servizi").value =
+            "<?php
+                    if (old('servizi')!=null) {
+                         echo old('servizi');
+                    } else {
+                         echo isset($_POST['servizi[]']) ? $_POST['servizi[]'] : '';
+                    }
+                ?>";        
+};
+</script>
 
 <script>
     function getCity(cityUrl) {
@@ -58,7 +170,7 @@
         },
         success: function (data) {
             data.forEach(function (elem) {
-                $("#città").append(new Option(elem, elem));
+                $("#acittà, #plcittà").append(new Option(elem, elem));
             });
         },
         contentType: false,
@@ -69,21 +181,38 @@
 
 <script>
     $(function () {
-        $('#provincia').append('<option selected disabled>Scegli la provincia</option>');
+        $('#aprov, #plprov').append('<option selected disabled>Scegli la provincia</option>');
         @foreach($province as $provincia)
-        $('#provincia').append(new Option("{!!$provincia!!}", "{!!$provincia!!}"));
+        $('#aprov, #plprov').append(new Option("{!!$provincia!!}", "{!!$provincia!!}"));
         @endforeach
-        $('#provincia').change(function () {
-            var province = $('#provincia option:selected').text();
+        $('#aprov').change(function () {
+            var province = $('#aprov option:selected').text();
             var cityUrl = "{{route('city', '')}}" + "/" + province;
-            $('#città').find('option').remove();
-            $('#città').append('<option selected disabled>Scegli la città</option>');
+            $('#acittà').find('option').remove();
+            $('#acittà').append('<option selected disabled>Scegli la città</option>');
+            getCity(cityUrl);
+        });
+        $('#plprov').change(function () {
+            var province = $('#plprov option:selected').text();
+            var cityUrl = "{{route('city', '')}}" + "/" + province;
+            $('#plcittà').find('option').remove();
+            $('#plcittà').append('<option selected disabled>Scegli la città</option>');
             getCity(cityUrl);
         });
     });
 </script>
   <!-- Custom styles -->
-  
+  <style>
+    #form label.error {
+        color: red;
+        font-weight: bold;
+    }
+     
+    .main {
+        width: 600px;
+        margin: 0 auto;
+    }
+  </style>
     </head>
 
     </head>
@@ -136,11 +265,11 @@
     <br>
         <div class="container">
             <div class="row">
-                <div class="col-lg-5">
+                <div class="col-lg-3">
                         {{ Form::open(array('route' => 'inseriscialloggio.store', 'id' => 'houses', 'files' => true, 'class' => 'contact-form')) }}
                             
-                                <b>{{ Form::label('titolo', 'Titolo:', ['class' => 'label-input']) }}&nbsp;&nbsp;&nbsp;
-                                {{ Form::text('titolo', '', ['class' => 'input', 'id' => 'titolo']) }}
+                        <b>{{ Form::label('titolo', 'Titolo:', ['class' => 'label-input']) }}</b>
+                                {{ Form::text('titolo', '', ['class' => 'input', 'id' => 'titolo', 'style'=>'width:13em']) }}
                                 @if ($errors->first('titolo'))
                                 <ul class="errors">
                                     @foreach ($errors->get('titolo') as $message)
@@ -162,23 +291,27 @@
                                 </ul>
                                 @endif
                             </div>-->
-                <div class ="col-lg-5">   
-                            <span class="search">
-                                <label for="provincia" class="control">Provincia:</label>
-                                <select name="provincia" id="provincia">
+                <div class="col-lg-3">
+                                <b>{{ Form::label('tipologia', 'Tipologia:', ['class' => 'label-input']) }}</b> 
+                                {{ Form::select('tipologia', ['appartamento' => 'Appartamento', 'posto_letto_singolo' => 'Posto letto (singolo)', 'posto_letto_doppio' => 'Posto letto (doppio)'], ['class' => 'input','id' => 'tipologia']) }}
+                </div>
+                            <div class="col-lg-3">
+                                <span class="search">
+                                    <b><label for="plprov" class="control">Provincia:</label></b>
+                                <select name="plprov" id="plprov">
                                 </select>
                             </span>
-                            <br><br>
-                            
+                            <br>
                             <span class="search">
-                                <label for="città" class="control">Città:</label>
-                                <select id="città" name="città" size="1">
+                                <b> <label for="plcitta" class="control">Città:</label></b>
+                                <select id="plcittà" name="plcittà" size="1">
                             </select>
-                                <label><b>Tipologia</b></label>
-                                <br> {{ Form::select('tipologia', ['appartamento' => 'Appartamento', 'posto_letto_singolo' => 'Posto letto (singolo)', 'posto_letto_doppio' => 'Posto letto (doppio)'], ['class' => 'input','id' => 'tipologia']) }} 
-                            </div>
+                            </span>
+                            <br><br>
+                            </div>          
             </div>
-                                {{ Form::label('immagine', 'Immagine:', ['class' => 'label-input']) }}&nbsp;&nbsp;&nbsp;
+            <br><br>
+                                <b>{{ Form::label('immagine', 'Immagine:', ['class' => 'label-input']) }}&nbsp;&nbsp;&nbsp;</b>
                                 {{ Form::file('immagine', ['class' => 'input', 'id' => 'immagine']) }}
                                 @if ($errors->first('immagine'))
                                 <ul class="errors">
@@ -187,11 +320,11 @@
                                     @endforeach
                                 </ul>
                                 @endif
-                            </div>
-                        <br>
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('descrizione', 'Descrizione ', ['class' => 'label-input']) }}
-                                {{ Form::textarea('descrizione', '', ['class' => 'input', 'id' => 'descrizione']) }}
+                            
+                                <br><br>
+                            
+                        <b>{{ Form::label('descrizione', 'Descrizione: ', ['class' => 'label-input']) }}</b><br>
+                                {{ Form::textarea('descrizione', '', ['class' => 'input', 'id' => 'descrizione', 'style'=>'width:35em;height:7em']) }}
                                 @if ($errors->first('descrizione'))
                                 <ul class="errors">
                                     @foreach ($errors->get('descrizione') as $message)
@@ -199,11 +332,13 @@
                                     @endforeach
                                 </ul>
                                 @endif
-                            </div>
+                            
 
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('prezzo', 'Prezzo', ['class' => 'label-input']) }}
-                                {{ Form::text('prezzo', '', ['class' => 'input', 'id' => 'prezzo']) }}€ al mese
+    <br><br>
+        <div class="row">
+            <div class="col-lg-3">
+                                <b>{{ Form::label('prezzo', 'Prezzo:', ['class' => 'label-input']) }}</b>
+                {{ Form::number('prezzo', '', ['class' => 'input', 'id' => 'prezzo','style'=>'width:5em']) }} € al mese
                                 @if ($errors->first('prezzo'))
                                 <ul class="errors">
                                     @foreach ($errors->get('prezzo') as $message)
@@ -211,11 +346,11 @@
                                     @endforeach
                                 </ul>
                                 @endif
-                            </div>
+            </div>
+            <div class="col-lg-3">
                             
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('n_camere', 'Numero Camere', ['class' => 'label-input']) }}
-                                {{ Form::text('n_camere', '', ['class' => 'input', 'id' => 'n_camere']) }}
+                                <b>{{ Form::label('n_camere', 'Numero Camere:', ['class' => 'label-input']) }}</b>
+                                {{ Form::number('n_camere', '', ['class' => 'input', 'id' => 'n_camere', 'style'=>'width:5em']) }}
                                 @if ($errors->first('n_camere'))
                                 <ul class="errors">
                                     @foreach ($errors->get('n_camere') as $message)
@@ -223,11 +358,11 @@
                                     @endforeach
                                 </ul>
                                 @endif
-                            </div>
+            </div>
                             
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('n_posti_letto_totali', 'Numero Posti Letto Totali', ['class' => 'label-input']) }}
-                                {{ Form::text('n_posti_letto_totali', '', ['class' => 'input', 'id' => 'n_posti_letto_totali']) }}
+            <div class="col-lg-3">
+                <b>{{ Form::label('n_posti_letto_totali', 'N° Posti Letto Totali:', ['class' => 'label-input']) }}</b>
+                                {{ Form::number('n_posti_letto_totali', '', ['class' => 'input', 'id' => 'n_posti_letto_totali', 'style'=>'width:5em']) }}
                                 @if ($errors->first('n_posti_letto_totali'))
                                 <ul class="errors">
                                     @foreach ($errors->get('n_posti_letto_totali') as $message)
@@ -235,11 +370,14 @@
                                     @endforeach
                                 </ul>
                                 @endif
-                            </div>
-                        
-                        <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('età_min', 'Età Minima (Facoltativo)', ['class' => 'label-input']) }}
-                                {{ Form::number('età_min', '', ['class' => 'input', 'id' => 'età_min', 'min' => '18']) }}
+            </div>
+        </div>
+    <br><br>
+    <b>Limiti di Età (Facoltativo):</b><br><br>
+        <div class="row">               
+             <div class="col-lg-2"           
+            {{ Form::label('età_min', 'Da:', ['class' => 'label-input']) }} &nbsp;
+                                {{ Form::number('età_min', '', ['class' => 'input', 'id' => 'età_min', 'min' => '18', 'style'=>'width:5em']) }}
                                 @if ($errors->first('età_min'))
                                 <ul class="errors">
                                     @foreach ($errors->get('età_min') as $message)
@@ -247,11 +385,10 @@
                                     @endforeach
                                 </ul>
                                 @endif
-                            </div>
-                        
-                        <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('età_max', 'Età Massima (Facoltativo)', ['class' => 'label-input']) }}
-                                {{ Form::number('età_max', '', ['class' => 'input', 'id' => 'età_max','min' => '18']) }}
+             </div>  
+            <div class="col-lg-2"  
+                                {{ Form::label('età_max', 'A:', ['class' => 'label-input']) }}
+                                {{ Form::number('età_max', '', ['class' => 'input', 'id' => 'età_max','min' => '18', 'style'=>'width:5em']) }}
                                 @if ($errors->first('età_max'))
                                 <ul class="errors">
                                     @foreach ($errors->get('età_max') as $message)
@@ -259,11 +396,14 @@
                                     @endforeach
                                 </ul>
                                 @endif
-                            </div>
-                            
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('indirizzo', 'Indirizzo', ['class' => 'label-input']) }}
-                                {{ Form::text('indirizzo', '', ['class' => 'input', 'id' => 'indirizzo']) }}
+            </div>
+        
+        
+                       
+        
+            <div class="col-lg-3">
+                                <b>{{ Form::label('indirizzo', 'Indirizzo:', ['class' => 'label-input']) }}</b>
+                                {{ Form::text('indirizzo', '', ['class' => 'input', 'id' => 'indirizzo', 'style'=>'width:10em']) }}
                                 @if ($errors->first('indirizzo'))
                                 <ul class="errors">
                                     @foreach ($errors->get('indirizzo') as $message)
@@ -271,11 +411,11 @@
                                     @endforeach
                                 </ul>
                                 @endif
-                            </div>
+            </div>              
+            <div class="col-lg-3">                
                             
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('cap', 'CAP', ['class' => 'label-input']) }}
-                                {{ Form::text('cap', '', ['class' => 'input', 'id' => 'cap']) }}
+                                <b>{{ Form::label('cap', 'CAP:', ['class' => 'label-input']) }}</b>
+                                {{ Form::text('cap', '', ['class' => 'input', 'id' => 'cap','style'=>'width:7em']) }}
                                 @if ($errors->first('cap'))
                                 <ul class="errors">
                                     @foreach ($errors->get('cap') as $message)
@@ -283,11 +423,10 @@
                                     @endforeach
                                 </ul>
                                 @endif
-                            </div>
-                          
+            </div>
+        </div>                    
                             
-                        
-
+                            
                             
                             <!-- comment     <div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('città', 'Citta', ['class' => 'label-input']) }}
@@ -301,10 +440,10 @@
                                 @endif
                             </div> -->
                             
-                            <div style="text-align:center; margin-top: 1em;"> Periodo di disponibilità </div>
+                            <br><br><b>Periodo di disponibilità:</b><br><br> 
                         <div class="row">
-                            <div class="left">
-                                {{ Form::label('data_min', 'Inizio', ['class' =>'label-input']) }}
+                            <div class="col-lg-3">
+                                {{ Form::label('data_min', 'Da:', ['class' =>'label-input']) }}
                                 {{ Form::date('data_min', '', ['class' => 'input', 'id' =>'data_min'])}}
                 
                                 @if ($errors->first('data_min'))
@@ -316,8 +455,8 @@
                                 @endif
                             </div>
                             
-                       <div style="margin-left:2.5em;">
-                                {{ Form::label('data_max', 'Fine', ['class' =>'label-input']) }}
+                       <div class="col-lg-3">
+                                {{ Form::label('data_max', 'A:', ['class' =>'label-input']) }}
                                 {{ Form::date('data_max', '', ['class' => 'input', 'id' =>'data_max'])}}
                 
                                 @if ($errors->first('data_max'))
@@ -327,9 +466,19 @@
                                         @endforeach
                                 </div>
                                 @endif
-                            </div> 
+                        </div> 
+                        <div class="col-lg-3">    
+                            <b>{{ Form::label('superficie', 'Dimensioni:', ['class' => 'label-input']) }}</b>
+                                {{ Form::number('superficie', '', ['class' => 'input', 'id' => 'superficie', 'style'=>'width:5em']) }} mq
+                                @if ($errors->first('superficie'))
+                                <ul class="errors">
+                                    @foreach ($errors->get('superficie') as $message)
+                                    <li>{{ $message }}</li>
+                                    @endforeach
+                                </ul>
+                                @endif
                         </div>
-                            
+                        </div>       
                     <!-- comment        <div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('provincia', 'Provincia', ['class' => 'label-input']) }}
                                 {{ Form::text('provincia', '', ['class' => 'input', 'id' => 'provincia']) }}
@@ -342,17 +491,8 @@
                                 @endif
                             </div>  -->
                             
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('superficie', 'Superficie', ['class' => 'label-input']) }}
-                                {{ Form::text('superficie', '', ['class' => 'input', 'id' => 'superficie']) }}
-                                @if ($errors->first('superficie'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('superficie') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div>
+                            
+                                
                             <label for="gender">
                 <div class="label-input">
                     Seleziona sesso: <br>
@@ -382,12 +522,24 @@
                     @endforeach
                 </ul>
                 @endif
+                
             </div>
+                            
+                            
+                            
+                            
+                            
     
+
         <label>Filtri</label><br/>
         @foreach ($servizi as $servizio)
+        
             <input type="checkbox" name="servizi[]" value="{{$servizio->nome}}"> {{$servizio->nome}}<br/>
         @endforeach
+        
+  
+    
+
                             <!--<div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('discountPerc', 'Sconto (%)', ['class' => 'label-input']) }}
                                 {{ Form::text('discountPerc', '', ['class' => 'input', 'id' => 'discountPerc']) }}
