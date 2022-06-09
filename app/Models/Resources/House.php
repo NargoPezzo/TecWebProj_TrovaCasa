@@ -42,7 +42,7 @@ class House extends Model
     }
     
     public function getServiziList () {
-        $servizi = array('Locale ricreativo', 'Lavatrice', 'Wifi', 'Posto auto', 'Asciugatrice', 'Angolo studio');
+        $servizi = array('Locale ricreativo', 'Lavatrice', 'Wifi', 'Posto auto', 'Bagni', 'Angolo studio');
         return $servizi;
     }
     
