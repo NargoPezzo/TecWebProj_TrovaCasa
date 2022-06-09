@@ -8,7 +8,7 @@
                         </div>
                         <ul>
                             <li><a href="{{ route('dovesiamo') }}">Via Brecce Bianche 138, 60131, Ancona, Italia</a></li>
-                            <li><a href="mailto::info@trovacasa.it">info@trovacasa.it</a></li>
+                            <li><a href="mailto:info@trovacasa.it">info@trovacasa.it</a></li>
                             <li style="color:#FFFFFF">+39 333 4455667</li> 
                         </ul>
                     </div></center>
