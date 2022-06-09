@@ -73,6 +73,7 @@ class PublicController extends Controller {
         $n_posti_letto_totali = $request->n_posti_letto_totali;
         $servizi = $this->_serviziModel->getServizi();
         
+
         $request_servizi = $request->servizi;
         if (isset($request_servizi) && is_null($request_servizi[0])) {
             $request_servizi[0] = 11;
@@ -85,6 +86,7 @@ class PublicController extends Controller {
         Log::info($servizi);
         
        
+
         /*$regions = $this->eventsList->getRegionList();
         $months = $this->eventsList->getMonthList();
         $events = $this->eventsList->getEventsFiltered($request->year, $request->month, $request->reg,
@@ -96,7 +98,7 @@ class PublicController extends Controller {
         return view('list')->with('events', $events)->with('regions', $regions)->with('organizzatori', $organizzatori)
                 ->with('months', $months)->with('OnSales', $EventsOnSales);
 */
-        Log::info($data_min);
+      
         
         $alloggi = $this->_offerteModel->getHousesFiltered($request->tip, $request->aprov, $request->plprov, $acittà, $plcittà, $prezzomin, $prezzomax, $data_min, $data_max, $superficie, $n_camere, $n_posti_letto_totali, $request_servizi);
         

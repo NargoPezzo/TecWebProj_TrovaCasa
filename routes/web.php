@@ -98,7 +98,7 @@ Route::get('/admin/stats/search', "AdminController@getStats")
 Route::get('/opzionato/{id}', 'LocatarioController@createOpzione')
         ->name('opzionato')->middleware('can:isLocatario');
 
-Route::get('/assegnato/{id}', 'LocatoreController@assegnaAlloggio')
+Route::get('/assegnato/{locatario_id}/{house_id}', 'LocatoreController@assegnaAlloggio')
         ->name('assegnato')->middleware('can:isLocatore');
 
 Route::get('/offertasingola/{id}', 'PublicController@showOfferta')   
@@ -152,7 +152,7 @@ Route::get('/chat/{id}', 'MessaggiController@showUserChat')
         ->name('chat');
 
 Route::post('/locatario/messaggio', 'LocatarioController@sendMessaggio')
-        ->name('messaggio')->middleware('can:isLocatario');
+        ->name('messaggialocatore')->middleware('can:isLocatario');
 
 Route::get('/city/{province}', 'PublicController@getCittà')->name('city');
 

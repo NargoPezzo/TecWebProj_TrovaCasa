@@ -2,6 +2,17 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
   <head>
+      
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+            $(document).ready(function(){
+               $('#Myform').hide();
+              $('#Mybtn').click(function(){
+                $('.contact-form, #Myform').slideToggle();
+              });
+            });
+    </script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,6 +34,10 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/lightbox.css')}}">
 
+
+
+    
+    
     </head>
     
     <body>
@@ -169,12 +184,29 @@
                 </div>
                 @can('isLocatario')
                 @if($alloggi->opzionato == 0)
-                <div >
                     <div class="left-content">
                         <div class="col-lg-12"><br><br>
                             <a href="{{route('opzionato', [$alloggi->id])}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Invia richiesta</a>
-                            <a href="{{url('messaggistica')}}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Messaggia il Locatore</a>
-                        </div>
+                            <a id="Mybtn" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Messaggia il Locatore</a>
+
+                                    {{ Form::open(array('route' => 'messaggialocatore', 'class' => 'contact-form', 'id' => 'Myform')) }}            
+                                    {{ Form::token() }} 
+
+                                    {{ Form::label('testo', 'Scrivi qui il tuo messaggio', ['class' => 'label']) }}
+                                    {{ Form::textarea('testo', '', ['class' => 'input', 'id' => 'testo', 'placeholder' => 'Riuscirai a convincerlo?']) }}
+                                   
+                                    @if ($errors->first('testo'))
+                                        <div class="errors" >
+                                            @foreach ($errors->get('testo') as $message)
+                                            <p>{{ $message }}</p>
+                                            @endforeach
+                                        </div>
+                                    @endif
+
+                                    {{ Form::hidden('destinatario', $alloggi->locatore_id, ['id' => 'destinatario']) }}
+
+                                    {{ Form::submit('Invia', ['class' => 'button ourblue', 'id' => 'send']) }}
+                                    {{ Form::close() }}
                     </div>
                 </div>   
                 @endif
@@ -196,7 +228,7 @@
                                     <p>Anagrafica: {{ $richiesta->nome }} {{ $richiesta->cognome }}, genere: {{ $richiesta->genere }}, età: {{ $richiesta->età }}</p><br>
                                 <div class="left-content">
                                 <div class="col-lg-12"><br><br>
-                                    <a href="{{route('assegnato', [$richiesta->id], [$alloggi->id])}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Assegna</a>
+                                    <a href="{{route('assegnato', ['locatario_id' => $richiesta->id, 'house_id' => $alloggi->id])}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Assegna</a>
                                     <a href="{{url('messaggistica')}}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Messaggia il Locatario</a>
                                 </div>
                                 </div>
@@ -210,7 +242,7 @@
                         <br><br>
                     </div>
                 @else
-                    <p><b>Alloggio assegnato a ...........................</b></p><br>
+                    <p><b>Alloggio già assegnato.</b></p><br>
                 </div>
                 
                 @endif

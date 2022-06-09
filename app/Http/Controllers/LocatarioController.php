@@ -3,8 +3,11 @@
 namespace app\Http\Controllers;
 use App\Models\Resources\House;
 use App\Models\Resources\Opzione;
+use App\Models\Resources\Messaggio;
 use App\User;
+use App\Http\Request\InviaMessaggioRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 //use App\Models\Admin;
 
@@ -34,13 +37,15 @@ class LocatarioController extends Controller {
         return view('offertelocatario');
     } */
   
-    public function sendMessaggio(NuovoMessaggioRequest $request){
+    public function sendMessaggio(InviaMessaggioRequest $request){
         $messaggio = new Messaggio;
         $request->validated();           
         
         $user = auth()->user();                
         $messaggio->mittente = $user->username;
-        $messaggio->destinatario = $request->get('destinatario');
+        Log::info($request->get('destinatario'));
+        
+        $messaggio->destinatario = $this->_locatarioModel->getDestById($request->get('destinatario'));
         $messaggio->testo = $request->get('testo');       
         $messaggio->dataOraInvio = date("Y-m-d H:i:s"); 
         
@@ -56,7 +61,7 @@ class LocatarioController extends Controller {
             $chat->save();
         }
         
-        return redirect()->action('LocatarioController@index');
+        return redirect()->route('messaggistica');
     }
     
     public function createOpzione($house_id) {
