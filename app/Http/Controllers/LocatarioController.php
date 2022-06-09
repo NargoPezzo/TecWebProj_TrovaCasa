@@ -1,9 +1,11 @@
 <?php
 
 namespace app\Http\Controllers;
+
 use App\Models\Resources\House;
 use App\Models\Resources\Opzione;
 use App\Models\Resources\Messaggio;
+use App\Models\Resources\Chat;
 use App\User;
 use App\Http\Request\InviaMessaggioRequest;
 use Illuminate\Support\Facades\Auth;
@@ -13,14 +15,14 @@ use Illuminate\Support\Facades\Log;
 
 class LocatarioController extends Controller {
 
-    protected $_locatarioModel;
+    protected $_userModel;
 
     protected $_houseModel;
     
 
     public function __construct() {
         $this->middleware('can:isLocatario');
-        $this->_locatarioModel = new User;
+        $this->_userModel = new User;
         $this->_houseModel = new House;
     }
 
@@ -30,13 +32,11 @@ class LocatarioController extends Controller {
                 return view('home')
                 ->with('alloggi', $alloggi);
     }
-    
-    
-    
+
    /* public function indexoffertelocatario() {   POTREBBE ESSERE INUTILE
         return view('offertelocatario');
     } */
-  
+
     public function sendMessaggio(InviaMessaggioRequest $request){
         $messaggio = new Messaggio;
         $request->validated();           
@@ -45,25 +45,30 @@ class LocatarioController extends Controller {
         $messaggio->mittente = $user->username;
         Log::info($request->get('destinatario'));
         
-        $messaggio->destinatario = $this->_locatarioModel->getDestById($request->get('destinatario'));
+        $messaggio->destinatario = $this->_userModel->getDestById($request->get('destinatario'));
         $messaggio->testo = $request->get('testo');       
         $messaggio->dataOraInvio = date("Y-m-d H:i:s"); 
         
         $messaggio->save();
         
-        $chat = $this->_locatarioModel->getChat($user->username, $request->get('destinatario'));
+        $chat = $this->_userModel->getSingleChat($user->username, $messaggio->destinatario);
+        
+        Log::info('chatLocatario');
+        Log::info($chat);
         
         if(!$chat) {
             $chat = new Chat();
             $chat->user1 = $user->username;
-            $chat->user2 = $request->get('destinatario');
+            $chat->user2 = $messaggio->destinatario;
             
             $chat->save();
         }
         
+        Log::info($chat);
+        
         return redirect()->route('messaggistica');
     }
-    
+
     public function createOpzione($house_id) {
         $opzione = new Opzione();
         $opzione->locatario_id = Auth::id();

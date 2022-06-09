@@ -154,6 +154,9 @@ Route::get('/chat/{id}', 'MessaggiController@showUserChat')
 Route::post('/locatario/messaggio', 'LocatarioController@sendMessaggio')
         ->name('messaggialocatore')->middleware('can:isLocatario');
 
+Route::post('/locatore/messaggio', 'LocatoreController@sendMessaggio')
+        ->name('messaggialocatario')->middleware('can:isLocatore');
+
 Route::get('/city/{province}', 'PublicController@getCittà')->name('city');
 
 Route::get('/insertcity/{province}', 'LocatoreController@getCittà')->name('insertcity');

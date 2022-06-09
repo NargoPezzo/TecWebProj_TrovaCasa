@@ -296,22 +296,6 @@
                             </div>
         </div>                    
 
-
-
-
-
-                            <!-- comment     <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('città', 'Citta', ['class' => 'label-input']) }}
-                                {{ Form::text('città', '', ['class' => 'input', 'id' => 'città']) }}
-                                @if ($errors->first('città'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('città') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div> -->
-
                             <br><br><b>Periodo di disponibilità:</b><br><br> 
                         <div class="row">
                             <div class="col-lg-3">
@@ -351,17 +335,6 @@
                                 @endif
                         </div>
                         </div>       
-                    <!-- comment        <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('provincia', 'Provincia', ['class' => 'label-input']) }}
-                                {{ Form::text('provincia', '', ['class' => 'input', 'id' => 'provincia']) }}
-                                @if ($errors->first('provincia'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('provincia') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div>  -->
 
                 <div class="row">
                     <div class="col-lg-3">
@@ -410,21 +383,6 @@
                             @endforeach
                     </div>
                 </div>    
-                            <!--<div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('discountPerc', 'Sconto (%)', ['class' => 'label-input']) }}
-                                {{ Form::text('discountPerc', '', ['class' => 'input', 'id' => 'discountPerc']) }}
-                                @if ($errors->first('discountPerc'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('discountPerc') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div>
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('discounted', 'In Sconto', ['class' => 'label-input']) }}
-                                {{ Form::select('discounted', ['1' => 'Si', '0' => 'No'], 1, ['class' => 'input','id' => 'discounted']) }}
-                            </div>-->
 
                             <br><br><div class="container-form-btn">                
                             {{ Form::submit('Aggiungi Alloggio', ['class' => 'form-btn1']) }}

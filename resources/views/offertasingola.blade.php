@@ -7,11 +7,18 @@
 
     <script>
             $(document).ready(function(){
-               $('#Myform').hide();
-              $('#Mybtn').click(function(){
-                $('.contact-form, #Myform').slideToggle();
+                $('.contact-form, #Toreform').hide();
+                $('.contact-form, #Tarioform').hide();
+                
+                $('.btn btn-secondary btn-lg active, #Torebtn').click(function(){
+                $('.contact-form, #Toreform').slideToggle();
+              });
+              
+                $('.btn btn-secondary btn-lg active, #Tariobtn').click(function(){
+                $('.contact-form, #Tarioform').slideToggle();
               });
             });
+
     </script>
 
     <meta charset="utf-8">
@@ -187,9 +194,9 @@
                     <div class="left-content">
                         <div class="col-lg-12"><br><br>
                             <a href="{{route('opzionato', [$alloggi->id])}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Invia richiesta</a>
-                            <a id="Mybtn" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Messaggia il Locatore</a>
+                            <a id="Tariobtn" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Messaggia il Locatore</a>
 
-                                    {{ Form::open(array('route' => 'messaggialocatore', 'class' => 'contact-form', 'id' => 'Myform')) }}            
+                                    {{ Form::open(array('route' => 'messaggialocatore', 'class' => 'contact-form', 'id' => 'Tarioform')) }}            
                                     {{ Form::token() }} 
 
                                     {{ Form::label('testo', 'Scrivi qui il tuo messaggio', ['class' => 'label']) }}
@@ -229,7 +236,26 @@
                                 <div class="left-content">
                                 <div class="col-lg-12"><br><br>
                                     <a href="{{route('assegnato', ['locatario_id' => $richiesta->id, 'house_id' => $alloggi->id])}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Assegna</a>
-                                    <a href="{{url('messaggistica')}}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Messaggia il Locatario</a>
+                                    <a id="Torebtn" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Invia un messaggio a {{ $richiesta->nome }}</a>
+
+                                    {{ Form::open(array('route' => 'messaggialocatario', 'class' => 'contact-form', 'id' => 'Toreform')) }}            
+                                    {{ Form::token() }} 
+
+                                    {{ Form::label('testo', 'Scrivi qui il tuo messaggio', ['class' => 'label']) }}
+                                    {{ Form::textarea('testo', '', ['class' => 'input', 'id' => 'testo', 'placeholder' => 'Cosa vuoi dirgli?']) }}
+                                   
+                                    @if ($errors->first('testo'))
+                                        <div class="errors" >
+                                            @foreach ($errors->get('testo') as $message)
+                                            <p>{{ $message }}</p>
+                                            @endforeach
+                                        </div>
+                                    @endif
+
+                                    {{ Form::hidden('destinatario', $richiesta->id, ['id' => 'destinatario']) }}
+
+                                    {{ Form::submit('Invia', ['class' => 'button ourblue', 'id' => 'send']) }}
+                                    {{ Form::close() }}
                                 </div>
                                 </div>
                                 </li>

@@ -84,7 +84,7 @@
                 <div class="col-lg-12">
                     <div class="inner-content">
                         <h2>Sezione messaggistica</h2>
-                        <span>Nel cuore degli studenti</span>
+                        <span>Più veloci di un piccione viaggiatore</span>
                     </div>
                 </div>
             </div>

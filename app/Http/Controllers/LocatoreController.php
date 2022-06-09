@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Resources\House;
 use App\Models\Resources\Services;
 use App\Models\Resources\Opzione;
+use App\Models\Resources\Messaggio;
 use App\Models\Locatore;
 use App\Models\Opzionato;
 use App\User;
@@ -31,6 +32,7 @@ class LocatoreController extends Controller {
     public function __construct() {
         $this->middleware('can:isLocatore');
         $this->_locatoreModel = new Locatore;
+        $this->_userModel = new User;
         $this->_serviceModel = new Services;
         $this->_alloggioModel = new House;
         $this->_offerteModel = new Offerte;
@@ -232,34 +234,34 @@ class LocatoreController extends Controller {
         return redirect()->route('faq');
     }
     
-    public function sendMessaggio(NuovoMessaggioRequest $request){
+    public function sendMessaggio(InviaMessaggioRequest $request){
         $messaggio = new Messaggio;
-        $request->validated();
+        $request->validated();           
         
-        $user = auth()->user();
+        $user = auth()->user();                
         $messaggio->mittente = $user->username;
-        $messaggio->destinatario = $request->get('destinatario');
+        Log::info($request->get('destinatario'));
+        
+        $messaggio->destinatario = $this->_userModel->getDestById($request->get('destinatario'));
         $messaggio->testo = $request->get('testo');       
         $messaggio->dataOraInvio = date("Y-m-d H:i:s"); 
         
         $messaggio->save();
         
-        $chat = $this->_userModel->getChat(auth()->user()->username);
-        $messaggi = $this->_userModel->getMessaggi($chat);
+        $chat = $this->_userModel->getChat($user->username, $messaggio->destinatario);
         
-        if($request->ajax()) {
-       
-            return view('elenco-messaggi')
-                ->with('authuser', auth()->user()->username)
-                ->with('chat', $chat)
-                ->with('messaggi', $messaggi);
+        Log::info('chatLocatore');
+        Log::info($chat);
+        
+        if(!$chat) {
+            $chat = new Chat();
+            $chat->user1 = $user->username;
+            $chat->user2 = $messaggio->destinatario;
+            
+            $chat->save();
         }
-        
-        return view('messaggistica')
-                ->with('authuser', auth()->user()->username)
-                ->with('chat', $chat)
-                ->with('messaggi', $messaggi);
-        
+        Log::info($chat);
+        return redirect()->route('messaggistica');
     }
     
     public function getCittà($provincia) {
@@ -272,4 +274,6 @@ class LocatoreController extends Controller {
         }
         return response()->json($response);
     }
+    
+    
 }
