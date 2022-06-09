@@ -179,8 +179,7 @@ class LocatoreController extends Controller {
         $alloggio->n_posti_letto_totali = $request->n_posti_letto_totali;
         $alloggio->indirizzo = $request->indirizzo;
         $alloggio->cap = $request->cap;
-        $alloggio->città = $request->città;
-        $alloggio->provincia = $request->provincia;
+       
         $alloggio->superficie = $request->superficie;
         $alloggio->data_min = $request->data_min;
         $alloggio->data_max = $request->data_max;
