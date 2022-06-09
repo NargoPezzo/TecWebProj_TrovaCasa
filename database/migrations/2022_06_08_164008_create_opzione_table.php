@@ -19,6 +19,7 @@ class CreateOpzioneTable extends Migration
             $table->foreign('locatario_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('house_id')->index();
             $table->foreign('house_id')->references('id')->on('houses')->onDelete('cascade');
+            $table->boolean('assegnato')->default(0);
             $table->timestamps();
         });
     }
