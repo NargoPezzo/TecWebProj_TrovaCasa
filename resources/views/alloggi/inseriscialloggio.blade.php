@@ -69,12 +69,12 @@
 
 <script>
     $(function () {
-        $('#prov').append('<option selected disabled>Scegli la provincia</option>');
+        $('#provincia').append('<option selected disabled>Scegli la provincia</option>');
         @foreach($province as $provincia)
-        $('#prov').append(new Option("{!!$provincia!!}", "{!!$provincia!!}"));
+        $('#provincia').append(new Option("{!!$provincia!!}", "{!!$provincia!!}"));
         @endforeach
-        $('#prov').change(function () {
-            var province = $('#prov option:selected').text();
+        $('#provincia').change(function () {
+            var province = $('#provincia option:selected').text();
             var cityUrl = "{{route('city', '')}}" + "/" + province;
             $('#città').find('option').remove();
             $('#città').append('<option selected disabled>Scegli la città</option>');
@@ -164,8 +164,8 @@
                             </div>-->
                 <div class ="col-lg-5">   
                             <span class="search">
-                                <label for="prov" class="control">Provincia:</label>
-                                <select name="prov" id="prov">
+                                <label for="provincia" class="control">Provincia:</label>
+                                <select name="provincia" id="provincia">
                                 </select>
                             </span>
                             <br><br>
