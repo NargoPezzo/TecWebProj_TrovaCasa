@@ -208,7 +208,7 @@
         <div class="row">
             <div class="col-lg-3">
                                 <b>{{ Form::label('prezzo', 'Prezzo:', ['class' => 'label-input']) }}</b>
-                {{ Form::number('prezzo', '', ['class' => 'input', 'id' => 'prezzo','style'=>'width:5em']) }} € al mese
+                {{ Form::number('prezzo', '', ['class' => 'input', 'id' => 'prezzo','min' => '0','style'=>'width:5em']) }} € al mese
                                 @if ($errors->first('prezzo'))
                                 <ul class="errors">
                                     @foreach ($errors->get('prezzo') as $message)
@@ -220,7 +220,7 @@
             <div class="col-lg-3">
 
                                 <b>{{ Form::label('n_camere', 'Numero Camere:', ['class' => 'label-input']) }}</b>
-                                {{ Form::number('n_camere', '', ['class' => 'input', 'id' => 'n_camere', 'style'=>'width:5em']) }}
+                                {{ Form::number('n_camere', '', ['class' => 'input', 'id' => 'n_camere','min' => '0', 'style'=>'width:5em']) }}
                                 @if ($errors->first('n_camere'))
                                 <ul class="errors">
                                     @foreach ($errors->get('n_camere') as $message)
@@ -232,7 +232,7 @@
 
             <div class="col-lg-3">
                  <b>{{ Form::label('n_posti_letto_totali', 'N° Posti Letto Totali:', ['class' => 'label-input']) }} </b>
-                                {{ Form::number('n_posti_letto_totali', '', ['class' => 'input', 'id' => 'n_posti_letto_totali', 'style'=>'width:5em']) }}
+                                {{ Form::number('n_posti_letto_totali', '', ['class' => 'input', 'id' => 'n_posti_letto_totali','min' => '0', 'style'=>'width:5em']) }}
                                 @if ($errors->first('n_posti_letto_totali'))
                                 <ul class="errors">
                                     @foreach ($errors->get('n_posti_letto_totali') as $message)

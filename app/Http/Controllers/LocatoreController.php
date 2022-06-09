@@ -87,7 +87,7 @@ class LocatoreController extends Controller {
     
         
         
-        
+    if  (!empty($request->servizi)){    
         foreach($request->servizi as $servizio){
           
             $houseservice = new HouseService();
@@ -95,7 +95,7 @@ class LocatoreController extends Controller {
             $houseservice->services_id = $this->_serviceModel->servizioIdByName($servizio)->id;
              Log::info($houseservice);
             $houseservice->save();
-  
+            }
        
         }
 

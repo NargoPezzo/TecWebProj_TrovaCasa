@@ -39,10 +39,10 @@ class NuovoAlloggioRequest extends FormRequest {
             'superficie' => 'required|int',
             'immagine' => 'image|max:1024',
             "servizi"    => "array|min:1",
-            "data_min" => "date",
-            "data_max" => "date",
-            "età_min" => "numeric",
-            "età_max" => "numeric",
+            "data_min" => 'date|required',
+            "data_max" => 'date|required',
+            "età_min" => '',
+            "età_max" => '',
             "genere" => "string"
         ];
     }
