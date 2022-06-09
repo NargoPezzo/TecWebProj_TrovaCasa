@@ -171,7 +171,7 @@
                     <div class="left-content">
                         <div class="col-lg-12"><br><br>
                             <a href="{{route('opzionato')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Opziona Alloggio</a>
-                            <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Messaggia il Locatore</a>
+                            <a href="{{url('messaggistica')}}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Messaggia il Locatore</a>
                         </div>
                     </div>
                 </div>   

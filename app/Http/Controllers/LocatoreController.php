@@ -165,18 +165,15 @@ public function editAlloggio(ModificaAlloggioRequest $request) {
         $alloggio->superficie = $request->superficie;
         $alloggio->data_min = $request->data_min;
         $alloggio->data_max = $request->data_max;
-         
-            //'immagine' => 'image|max:1024',
-            //"servizi"    => '',
+        
         $alloggio->save();
         
-        //eliminare i servizi della casa e riaghgiungerle sotto
+        //eliminare i servizi della casa e riaggiungerle sotto
         
         
         $this->_houseserviceModel->deleteHouseServizioById($alloggio->id);
         
-        
-        //LE RIGHE SOPRA SONO DI PROVA PER CANCELLARE
+
      if (!empty($request->servizi)) {   
         foreach($request->servizi as $servizio){
             
