@@ -101,7 +101,7 @@
                             <span><b>Data di inserimento:</b>  {{ $alloggi->data_inserimento }} </span> 
 
                         @if ($alloggi->data_min != null)
-                            <span><b>Disponibile da:</b>  {{ $alloggi->data_min }} </span> <
+                            <span><b>Disponibile da:</b>  {{ $alloggi->data_min }} </span> 
                         @endif
 
                         @if ($alloggi->data_max != null)
