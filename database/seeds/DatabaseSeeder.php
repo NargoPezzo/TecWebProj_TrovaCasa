@@ -269,15 +269,24 @@ class DatabaseSeeder extends Seeder
             "Vorrei sapere quanto dista l' Università dall' abitazione che hai messo in vendita", 'dataOraInvio' => date("Y-m-d H:i:s")],
             ['destinatario' => 'alexalex', 'mittente' => 'eliaelia', 'testo' =>
             "Dovrebbe distare circa 5 minuti con l' autobus o 10 minuti a piedi", 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'lorelore', 'mittente' => 'lariolario', 'testo' =>
+            'Buongiorno, ho visto il tuo annuncio, volevo chiederti alcune informazioni.', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'lariolario', 'mittente' => 'lorelore', 'testo' =>
+            "Ciao, chiedi pure", 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'lorelore', 'mittente' => 'lariolario', 'testo' =>
+            "Vorrei sapere quanto dista l' Università dall' abitazione che hai messo in vendita", 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'lariolario', 'mittente' => 'lorelore', 'testo' =>
+            "Dovrebbe distare circa 5 minuti con l' autobus o 10 minuti a piedi", 'dataOraInvio' => date("Y-m-d H:i:s")],
              ]);
         
         
             DB::table('chat')->insert([
             ['user1' => 'alexalex', 'user2' => 'eliaelia'],
-            ['user1' => 'lorelore', 'user2' => 'alexalex']
-            ]);
-                            
+            ['user1' => 'lorelore', 'user2' => 'alexalex'],
+            ['user1' => 'lorelore', 'user2' => 'lariolario'],
+            /*['user1' => 'eliaelia', 'user2' => 'lariolario'],*/
+            ]);   
+            
             }
-
+            
 }
-

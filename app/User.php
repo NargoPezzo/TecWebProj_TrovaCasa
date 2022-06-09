@@ -47,19 +47,26 @@ class User extends Authenticatable {
     }
     
     public function getChat($user) {
+
         return Chat::where('user1', $user)
                 ->orWhere('user2', $user)->get();
     }
     
-    public function getMessaggi($chat) {
+    public function getSingleChat($user1, $user2) {
+
+        return Chat::where('user1', $user1)->where('user2',$user2)->get()->first();
+
+    }
+    
+    public function getMessaggi($chats) {
         
         $messaggi=array();
         
-        foreach($chat as $singolachat) {
-            array_push($messaggi, (Messaggio::where('mittente', $singolachat->user1)
-                                   ->orWhere('destinatario', $singolachat->user1)
-                                    ->where('mittente', $singolachat->user2)
-                                     ->orWhere('destinatario', $singolachat->user2)->get()));
+        foreach($chats as $chat) {
+            array_push($messaggi, (Messaggio::where('mittente', $chat->user1)
+                                   ->orWhere('destinatario', $chat->user1)
+                                    ->where('mittente', $chat->user2)
+                                     ->orWhere('destinatario', $chat->user2)->get()));
         }
         return $messaggi;
         
@@ -71,7 +78,6 @@ class User extends Authenticatable {
         
         return Messaggio::where('mittente', $authuser)->where('destinatario', $user)
                 ->orWhere('destinatario', $authuser)->where('mittente', $user)->get();
-
     }
     
     public function getRichieste($house_id) {
