@@ -16,4 +16,5 @@ class Locatore extends User {
         $maxValue = House::max('id');
         return $maxValue;
     }
+    
 }

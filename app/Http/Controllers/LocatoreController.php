@@ -166,8 +166,9 @@ class LocatoreController extends Controller {
 
         Log::info($opzione);
         session() -> flash('message', 'Assegnazione effettuata con successo!');
-        return redirect()->route('gestiscialloggi');
         
+        return redirect()->route('gestiscialloggi');
+
     }
 
     public function editAlloggio(ModificaAlloggioRequest $request) {

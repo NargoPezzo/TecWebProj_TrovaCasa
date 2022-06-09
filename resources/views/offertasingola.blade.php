@@ -222,22 +222,22 @@
                 @can('isLocatore')
                 @if($alloggi->opzionato == 0)
                 <div class="col-lg-6">
-                    <div class="left-content">
+                    <div class="center">
                         
                         <h4 class="title">Richieste ricevute per questo alloggio:</h4><br>
-                        
+ 
                         @isset($richieste)
                         @if(!empty($richieste))
+                        <a id="Torebtn" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Messaggia i locatari</a><br><br>
                         @foreach ($richieste as $richiesta) 
                             <ul>
                                 <li>
                                     <p>Richiedente: <b>{{ $richiesta->username }}</b></p><br>
                                     <p>Anagrafica: {{ $richiesta->nome }} {{ $richiesta->cognome }}, genere: {{ $richiesta->genere }}, età: {{ $richiesta->età }}</p><br>
                                 <div class="left-content">
-                                <div class="col-lg-12"><br><br>
+                                <div class="col-lg-12">
                                     <a href="{{route('assegnato', ['locatario_id' => $richiesta->id, 'house_id' => $alloggi->id])}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Assegna</a>
-                                    <a id="Torebtn" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Invia un messaggio a {{ $richiesta->nome }}</a>
-
+                                    
                                     {{ Form::open(array('route' => 'messaggialocatario', 'class' => 'contact-form', 'id' => 'Toreform')) }}            
                                     {{ Form::token() }} 
 
@@ -259,7 +259,7 @@
                                 </div>
                                 </div>
                                 </li>
-                            </ul>
+                            </ul><br><br>
                         @endforeach
                         @else
                             <p>Ancora nessuna richiesta ricevuta per questo alloggio</p>
@@ -274,7 +274,7 @@
                 @endif
                 
                 @endcan
-            
+@endisset()
                 
     </section>
     <!-- ***** Product Area Ends ***** -->
@@ -284,7 +284,7 @@
         @include('layouts/footer')
     </footer>
     
-@endisset()
+
 
 
     <!-- jQuery -->
