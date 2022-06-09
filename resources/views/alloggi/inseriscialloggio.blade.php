@@ -136,11 +136,11 @@
     <br>
         <div class="container">
             <div class="row">
-                <div class="col-lg-5">
+                <div class="col-lg-3">
                         {{ Form::open(array('route' => 'inseriscialloggio.store', 'id' => 'houses', 'files' => true, 'class' => 'contact-form')) }}
 
-                                <b>{{ Form::label('titolo', 'Titolo:', ['class' => 'label-input']) }}&nbsp;&nbsp;&nbsp;
-                                {{ Form::text('titolo', '', ['class' => 'input', 'id' => 'titolo']) }}
+                        <b>{{ Form::label('titolo', 'Titolo:', ['class' => 'label-input']) }}</b>
+                                {{ Form::text('titolo', '', ['class' => 'input', 'id' => 'titolo', 'style'=>'width:13em']) }}
                                 @if ($errors->first('titolo'))
                                 <ul class="errors">
                                     @foreach ($errors->get('titolo') as $message)
@@ -162,23 +162,26 @@
                                 </ul>
                                 @endif
                             </div>-->
-                <div class ="col-lg-5">   
+                <div class="col-lg-3">
+                                <b>{{ Form::label('tipologia', 'Tipologia:', ['class' => 'label-input']) }}</b> 
+                                {{ Form::select('tipologia', ['appartamento' => 'Appartamento', 'posto_letto_singolo' => 'Posto letto (singolo)', 'posto_letto_doppio' => 'Posto letto (doppio)'], ['class' => 'input','id' => 'tipologia']) }}
+                </div>
+                            <div class="col-lg-3">
                             <span class="search">
-                                <label for="provincia" class="control">Provincia:</label>
+                                <b><label for="provincia" class="control">Provincia:</label></b>
                                 <select name="provincia" id="provincia">
                                 </select>
                             </span>
-                            <br><br>
-
+                            <br>
                             <span class="search">
-                                <label for="città" class="control">Città:</label>
+                                <b><label for="città" class="control">Città:</label></b>
                                 <select id="città" name="città" size="1">
                             </select>
-                                <label><b>Tipologia</b></label>
-                                <br> {{ Form::select('tipologia', ['appartamento' => 'Appartamento', 'posto_letto_singolo' => 'Posto letto (singolo)', 'posto_letto_doppio' => 'Posto letto (doppio)'], ['class' => 'input','id' => 'tipologia']) }} 
+                            </span>
+                            <br><br>
                             </div>
             </div>
-                                {{ Form::label('immagine', 'Immagine:', ['class' => 'label-input']) }}&nbsp;&nbsp;&nbsp;
+            <b>{{ Form::label('immagine', 'Immagine:', ['class' => 'label-input']) }}&nbsp;&nbsp;&nbsp;</b>
                                 {{ Form::file('immagine', ['class' => 'input', 'id' => 'immagine']) }}
                                 @if ($errors->first('immagine'))
                                 <ul class="errors">
@@ -187,11 +190,11 @@
                                     @endforeach
                                 </ul>
                                 @endif
-                            </div>
-                        <br>
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('descrizione', 'Descrizione ', ['class' => 'label-input']) }}
-                                {{ Form::textarea('descrizione', '', ['class' => 'input', 'id' => 'descrizione']) }}
+                            
+                                <br><br>
+                            
+                        <b>{{ Form::label('descrizione', 'Descrizione: ', ['class' => 'label-input']) }}</b><br>
+                                {{ Form::textarea('descrizione', '', ['class' => 'input', 'id' => 'descrizione', 'style'=>'width:35em;height:7em']) }}
                                 @if ($errors->first('descrizione'))
                                 <ul class="errors">
                                     @foreach ($errors->get('descrizione') as $message)
@@ -199,11 +202,13 @@
                                     @endforeach
                                 </ul>
                                 @endif
-                            </div>
 
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('prezzo', 'Prezzo', ['class' => 'label-input']) }}
-                                {{ Form::text('prezzo', '', ['class' => 'input', 'id' => 'prezzo']) }}€ al mese
+
+    <br><br>
+        <div class="row">
+            <div class="col-lg-3">
+                                <b>{{ Form::label('prezzo', 'Prezzo:', ['class' => 'label-input']) }}</b>
+                {{ Form::number('prezzo', '', ['class' => 'input', 'id' => 'prezzo','style'=>'width:5em']) }} € al mese
                                 @if ($errors->first('prezzo'))
                                 <ul class="errors">
                                     @foreach ($errors->get('prezzo') as $message)
@@ -212,10 +217,10 @@
                                 </ul>
                                 @endif
                             </div>
+            <div class="col-lg-3">
 
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('n_camere', 'Numero Camere', ['class' => 'label-input']) }}
-                                {{ Form::text('n_camere', '', ['class' => 'input', 'id' => 'n_camere']) }}
+                                <b>{{ Form::label('n_camere', 'Numero Camere:', ['class' => 'label-input']) }}</b>
+                                {{ Form::number('n_camere', '', ['class' => 'input', 'id' => 'n_camere', 'style'=>'width:5em']) }}
                                 @if ($errors->first('n_camere'))
                                 <ul class="errors">
                                     @foreach ($errors->get('n_camere') as $message)
@@ -225,9 +230,9 @@
                                 @endif
                             </div>
 
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('n_posti_letto_totali', 'Numero Posti Letto Totali', ['class' => 'label-input']) }}
-                                {{ Form::text('n_posti_letto_totali', '', ['class' => 'input', 'id' => 'n_posti_letto_totali']) }}
+            <div class="col-lg-3">
+                 <b>{{ Form::label('n_posti_letto_totali', 'N° Posti Letto Totali:', ['class' => 'label-input']) }} </b>
+                                {{ Form::number('n_posti_letto_totali', '', ['class' => 'input', 'id' => 'n_posti_letto_totali', 'style'=>'width:5em']) }}
                                 @if ($errors->first('n_posti_letto_totali'))
                                 <ul class="errors">
                                     @foreach ($errors->get('n_posti_letto_totali') as $message)
@@ -236,10 +241,13 @@
                                 </ul>
                                 @endif
                             </div>
-
-                        <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('età_min', 'Età Minima (Facoltativo)', ['class' => 'label-input']) }}
-                                {{ Form::number('età_min', '', ['class' => 'input', 'id' => 'età_min', 'min' => '18']) }}
+        </div>
+    <br><br>
+    <b>Limiti di Età (Facoltativo):</b><br><br>
+        <div class="row">               
+             <div class="col-lg-2"           
+            {{ Form::label('età_min', 'Da:', ['class' => 'label-input']) }} &nbsp;
+                                {{ Form::number('età_min', '', ['class' => 'input', 'id' => 'età_min', 'min' => '18', 'style'=>'width:5em']) }} anni
                                 @if ($errors->first('età_min'))
                                 <ul class="errors">
                                     @foreach ($errors->get('età_min') as $message)
@@ -248,10 +256,9 @@
                                 </ul>
                                 @endif
                             </div>
-
-                        <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('età_max', 'Età Massima (Facoltativo)', ['class' => 'label-input']) }}
-                                {{ Form::number('età_max', '', ['class' => 'input', 'id' => 'età_max','min' => '18']) }}
+            <div class="col-lg-2"  
+                                {{ Form::label('età_max', 'A:', ['class' => 'label-input']) }} 
+                                {{ Form::number('età_max', '', ['class' => 'input', 'id' => 'età_max','min' => '18', 'style'=>'width:5em']) }} anni
                                 @if ($errors->first('età_max'))
                                 <ul class="errors">
                                     @foreach ($errors->get('età_max') as $message)
@@ -261,9 +268,12 @@
                                 @endif
                             </div>
 
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('indirizzo', 'Indirizzo', ['class' => 'label-input']) }}
-                                {{ Form::text('indirizzo', '', ['class' => 'input', 'id' => 'indirizzo']) }}
+        
+                       
+        
+            <div class="col-lg-3">
+                                <b>{{ Form::label('indirizzo', 'Indirizzo:', ['class' => 'label-input']) }}</b>
+                                {{ Form::text('indirizzo', '', ['class' => 'input', 'id' => 'indirizzo', 'style'=>'width:10em']) }}
                                 @if ($errors->first('indirizzo'))
                                 <ul class="errors">
                                     @foreach ($errors->get('indirizzo') as $message)
@@ -272,10 +282,10 @@
                                 </ul>
                                 @endif
                             </div>
+            <div class="col-lg-3">                
 
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('cap', 'CAP', ['class' => 'label-input']) }}
-                                {{ Form::text('cap', '', ['class' => 'input', 'id' => 'cap']) }}
+                                <b>{{ Form::label('cap', 'CAP:', ['class' => 'label-input']) }}</b>
+                                {{ Form::text('cap', '', ['class' => 'input', 'id' => 'cap','style'=>'width:7em']) }}
                                 @if ($errors->first('cap'))
                                 <ul class="errors">
                                     @foreach ($errors->get('cap') as $message)
@@ -284,6 +294,7 @@
                                 </ul>
                                 @endif
                             </div>
+        </div>                    
 
 
 
@@ -301,10 +312,10 @@
                                 @endif
                             </div> -->
 
-                            <div style="text-align:center; margin-top: 1em;"> Periodo di disponibilità </div>
+                            <br><br><b>Periodo di disponibilità:</b><br><br> 
                         <div class="row">
-                            <div class="left">
-                                {{ Form::label('data_min', 'Inizio', ['class' =>'label-input']) }}
+                            <div class="col-lg-3">
+                                {{ Form::label('data_min', 'Da:', ['class' =>'label-input']) }}
                                 {{ Form::date('data_min', '', ['class' => 'input', 'id' =>'data_min'])}}
 
                                 @if ($errors->first('data_min'))
@@ -316,8 +327,8 @@
                                 @endif
                             </div>
 
-                       <div style="margin-left:2.5em;">
-                                {{ Form::label('data_max', 'Fine', ['class' =>'label-input']) }}
+                       <div class="col-lg-3">
+                                {{ Form::label('data_max', 'A:', ['class' =>'label-input']) }}
                                 {{ Form::date('data_max', '', ['class' => 'input', 'id' =>'data_max'])}}
 
                                 @if ($errors->first('data_max'))
@@ -328,8 +339,18 @@
                                 </div>
                                 @endif
                             </div> 
+                        <div class="col-lg-3">    
+                            <b>{{ Form::label('superficie', 'Dimensioni:', ['class' => 'label-input']) }}</b>
+                                {{ Form::number('superficie', '', ['class' => 'input', 'id' => 'superficie', 'style'=>'width:5em']) }} mq
+                                @if ($errors->first('superficie'))
+                                <ul class="errors">
+                                    @foreach ($errors->get('superficie') as $message)
+                                    <li>{{ $message }}</li>
+                                    @endforeach
+                                </ul>
+                                @endif
                         </div>
-
+                        </div>       
                     <!-- comment        <div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('provincia', 'Provincia', ['class' => 'label-input']) }}
                                 {{ Form::text('provincia', '', ['class' => 'input', 'id' => 'provincia']) }}
@@ -342,36 +363,28 @@
                                 @endif
                             </div>  -->
 
-                            <div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('superficie', 'Superficie', ['class' => 'label-input']) }}
-                                {{ Form::text('superficie', '', ['class' => 'input', 'id' => 'superficie']) }}
-                                @if ($errors->first('superficie'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('superficie') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                    <br><br>       
                             <label for="gender">
-                <div class="label-input">
-                    Seleziona sesso: <br>
-                </div>
+                
+                                <b> Preferenza di sesso: </b><br>
+                
             </label>
 
-            <div class="wrap-input">
-                <input class="wrap-input-input" type="radio" name="genere" id="genereU1" value="M">
-                    <label class="wrap-input-label" for="genereU1">
-                        <div class="label-input">
+            
+                <br><input type="radio" name="genere" id="genereU1" value="M">
+                    <label for="genereU1">
+                        <div>
                         Uomo 
                         </div>
                     </label>
-            </div>
+            
 
-            <div class="wrap-input">
-                <input class="wrap-input-input" type="radio" name="genere" id="genereD1" value="F">
+            
+                <br><input class="wrap-input-input" type="radio" name="genere" id="genereD1" value="F">
                     <label class="wrap-input-label" for="genereD1">
-                        <div class="label-input">
+                        <div>
                         Donna
                         </div>
                     </label>
@@ -382,12 +395,21 @@
                     @endforeach
                 </ul>
                 @endif
+                
             </div>
 
-        <label>Filtri</label><br/>
+                    <div class="col-lg-9">               
+                            
+                            
+                            
+    
+
+                        <br><br><b><label>Filtri:</label></b><br/>
         @foreach ($servizi as $servizio)
-            <input type="checkbox" name="servizi[]" value="{{$servizio->nome}}"> {{$servizio->nome}}<br/>
+            <input type="checkbox" name="servizi[]" value="{{$servizio->nome}}"> {{$servizio->nome}}&nbsp;
         @endforeach
+                    </div>
+                </div>    
                             <!--<div  class="wrap-input  rs1-wrap-input">
                                 {{ Form::label('discountPerc', 'Sconto (%)', ['class' => 'label-input']) }}
                                 {{ Form::text('discountPerc', '', ['class' => 'input', 'id' => 'discountPerc']) }}
@@ -404,9 +426,10 @@
                                 {{ Form::select('discounted', ['1' => 'Si', '0' => 'No'], 1, ['class' => 'input','id' => 'discounted']) }}
                             </div>-->
 
-                            <div class="container-form-btn">                
+                            <br><br><div class="container-form-btn">                
                             {{ Form::submit('Aggiungi Alloggio', ['class' => 'form-btn1']) }}
                             {{ Form::close() }}
+                            
                             <button type="reset">Reset</button>
                             </div>
                         </div>
