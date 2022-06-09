@@ -83,7 +83,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>Messaggistica</h2>
+                        <h2>Sezione messaggistica</h2>
                         <span>Nel cuore degli studenti</span>
                     </div>
                 </div>
