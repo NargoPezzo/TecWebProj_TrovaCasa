@@ -70,21 +70,24 @@
 
 @if (auth()->user('admin'))
 {{Form::open(array('route' => 'admin.stats.search', 'id' => 'filter-form', 'files' => false, 'method'=>'GET' )) }}
-    <div class='d-flex justify-content-center align-center'>
-        <div class="container d-flex justify-content-center border row border-secondary rounded align-center mt-5 pe-5 align-items-center">
-            <div class ="form-outline row ms-2 mb-4 mt-4 w-25">
-                {{ Form::label('type', 'Tipologia', ['class' => 'col-sm-2 col-form-label', 'for'=>'type']) }}
-                <div class="col-sm-10 ps-3">
+    <div class="container">
+        <div class="row  justify-content-center  align-center align-items-center">
+        
+            <div class ="col-lg-1">
+                {{ Form::label('type', 'Tipo:', ['for'=>'type']) }}
+            </div>
+            <div class ="col-lg-2">
                 {{ Form::select('type', ['alloggio' => 'alloggio', 'appartamento' => "appartamento", 'posto_letto' => "posto letto"], old("type"), ['class' => 'form-control ms-5']) }}
                 </div>
             </div>
             
             
-            <div class="form-outline row ms-5 mb-4 mt-4 w-25">
-                {{ Form::label('start-date', 'Inizio', ['class' => 'col-sm-3 col-form-label', 'for' => 'start-date']) }}
-                <div class="col-sm-9 ps-3">
-                {{ Form::date('start-date', "", ['value' => null, 'class' => 'form-control ms-6']) }}
-                </div>
+            
+            <div class="col-lg-3">
+                {{ Form::label('start-date', 'Da:', ['class' => 'col-sm-3 col-form-label', 'for' => 'start-date']) }}
+                
+                {{ Form::date('start-date', "", ['value' => null]) }}
+                
                     @if ($errors->first('start-date'))
                     <div class="d-flex justify-content-center">
                         <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
@@ -96,12 +99,13 @@
                     @endif         
             </div>
 
-            <div class="form-outline row ms-3 mb-4 mt-4 w-25">
-                {{ Form::label('end-date', 'Fine', ['class' => 'col-sm-3 col-form-label', 'for' => 'end-date']) }}
-                <div class="col-sm-9 ps-3">
-                {{ Form::date('end-date', "", ['value' => null, 'class' => 'form-control ms-6']) }}
+            <div class="col-lg-3">
+                {{ Form::label('end-date', 'A:', ['class' => 'col-sm-3 col-form-label', 'for' => 'end-date']) }}
+                
+                {{ Form::date('end-date', "", ['value' => null]) }}
+                
                 </div>
-            </div>
+            <div class="col-lg-2">
                   @if ($errors->first('end-date'))
                     <div class="d-flex justify-content-center">
                         <div class="errors alert alert-danger d-flex col-sm-5 justify-content-center mt-3 pt-0 pb-0">
@@ -117,9 +121,10 @@
         </div>
     </div> 
     {{Form::close()}}
-    <div class='d-flex justify-content-center align-center'>
-        <div class="container d-flex justify-content-center border row border-secondary rounded align-center mt-5 pe-5 align-items-center">
-            <div class ="form-outline row ms-2 mb-4 mt-4 w-25">
+    <br><br><br>
+    <div class="container">
+        <div class="justify-content-center row align-center align-items-center">
+            <div class ="col-lg-5">
                 <p> Offerte di Alloggio </p>
                 <div class="col-sm-10 ps-3">
                     @if(Route::is('admin.stats.search'))                    
@@ -181,7 +186,23 @@
     <!-- Global Init -->
     <script src="{{ asset('assets/js/custom.js')}}"></script>
 
-    
+    <script>
+
+        $(function() {
+            var selectedClass = "";
+            $("p").click(function(){
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+              $("."+selectedClass).fadeIn();
+              $("#portfolio").fadeTo(50, 1);
+            }, 500);
+                
+            });
+        });
+
+    </script>
 
     </body>
     
