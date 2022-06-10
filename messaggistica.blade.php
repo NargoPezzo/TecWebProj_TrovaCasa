@@ -9,7 +9,8 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>TrovaCasa.it - @yield('title', 'Dove Siamo')</title>
+    <title>TrovaCasa.it - @yield('title', 'Messaggi')</title>
+
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
@@ -21,8 +22,29 @@
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
+    <style> 
+    iframe {
+  position:absolute;
+  top:-150px;
+  left:200px;
+  width:100%;
+}
+    </style>
 
-    </head>
+    
+<script>
+   
+    var chat = document.getElementById('chat');
+    chat = chat.contentWindow || chat.contentDocument.document || chat.contentDocument;
+    chat.document.open();
+    chat.document.write('Seleziona una chat');
+    chat.document.close();
+    
+</script>
+
+
+    
+</head>
     
     <body>
     
@@ -44,7 +66,9 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         
-                        @include('layouts/navpublic')
+                        <ul>
+                            @include('layouts/navpublic')
+                        </ul>        
                         
                     </nav>
                 </div>
@@ -52,15 +76,15 @@
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-
+    
     <!-- ***** Main Banner Area Start ***** -->
     <div class="page-heading about-page-heading" id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>Dove Siamo</h2>
-                        <span>Nel cuore degli studenti</span>
+                        <h2>Sezione messaggistica</h2>
+                        <span>Più veloci di un piccione viaggiatore</span>
                     </div>
                 </div>
             </div>
@@ -68,37 +92,41 @@
     </div>
     <!-- ***** Main Banner Area End ***** -->
 
-    <!-- ***** About Area Starts ***** -->
-    <div class="about-us">
-        <div class="contact-us">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="mapouter"><div class="gmap_canvas"><iframe width="500" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=via%20brecce%20bianche%2012&t=&z=11&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://putlocker-is.org">putlocker</a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:500px;}</style><a href="https://www.embedgooglemap.net">google map in wordpress</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:500px;}</style></div></div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="right-content">
-                        <h4>Dove puoi trovarci</h4>
-                        <span>All'interno del cuore di ogni studente fuorisede che cerca un alloggio ci siamo noi; altrimenti ci puoi trovare nella nostra sede situata presso la facoltà di ingegneria delle Marche, in via Brecce Bianche 12 in provincia di Ancona.</span>
-                        
-                        <p>Telefono: +39 333 4455667</p>
-                        <p>Email: <a href="mailto:info@trovacasa.it">info@trovacasa.it</a></p>
-                       
+    <br><br>
+<div class="container">
+    
+            @isset($chats) 
+            @foreach($chats as $chat)
+                <div class="col-lg-2">
+                    <div class="item">
+                        <div class="thumb">
+                        @if($chat->user1 == $authuser)
+                            <div> <img src="assets/images/chat-user.png"> </div>
+                            <h5><a href="{{ route('chat', [$chat->user2]) }}" target="chat"> {{$chat->user2}} </a></h5>
+                        @else
+                            <div> <img src="assets/images/chat-user.png"> </div>
+                            <h5><a href="{{ route('chat', [$chat->user1]) }}" target="chat"> {{$chat->user1}} </a></h5>
+                
+                        @endif
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-   </div>
-    <!-- ***** About Area Ends ***** -->
+            @endforeach
+            @endisset
+                                     
+                <div class="col-lg-8">
+                    <iframe id="chat" src="" name="chat" width="100%" height="300" >   
+                    </iframe>
+                </div>
+            
+</div>            
 
-    
+    <br><br><br><br><br>
 
-    
 
-    <!-- ***** Footer Start ***** -->
+ <!-- ***** Footer Start ***** -->
     <footer>
-       @include('layouts/footer')
+        @include('layouts/footer')
     </footer>
     
 
@@ -124,8 +152,24 @@
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
 
-    
+    <script>
+
+        $(function() {
+            var selectedClass = "";
+            $("p").click(function(){
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+              $("."+selectedClass).fadeIn();
+              $("#portfolio").fadeTo(50, 1);
+            }, 500);
+                
+            });
+        });
+
+    </script>
 
   </body>
-
 </html>
+

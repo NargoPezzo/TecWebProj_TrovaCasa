@@ -86,7 +86,7 @@
                            <h3> "Sto da Dio, ma l' affitto è altino." </h3>
                             <p>- Luca, 21 anni, che si è affidato a Booking piuttosto che a noi. </p>
                         </div>
-                        <p>Il nostro sito garantisce le migliori inserzioni per studenti ai prezzi più bassi dell' intera penisola. I contratti sono stipulati in modo rapido ed efficiente. Soddisfatti o rimborsati? Macchè, solo soddisfatti. </p>
+                        <p>Il nostro sito garantisce le migliori inserzioni per studenti ai prezzi più bassi di tutte le Marche. I contratti sono stipulati in modo rapido ed efficiente. Soddisfatti o rimborsati? Macchè, solo soddisfatti. </p>
                         <ul>
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -107,7 +107,7 @@
                 <div class="col-lg-12">
                     <div class="section-heading">
                         <h2>Il Nostro Team</h2>
-                        <span>Details to details is what makes Hexashop different from the other themes.</span>
+                        <span>Tipo i Tre Moschettieri, che anche loro invece di tre erano quattro.</span>
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -148,7 +148,7 @@
                         </div>
                         <div class="down-content">
                             <h4>Andrea Visi</h4>
-                            <span>DB Manager</span>
+                            <span>Database Manager</span>
                         </div>
                     </div>
                 </div>
@@ -186,7 +186,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <img src="assets/images/team-member-03.jpg">
+                            <img src="assets/images/team-member-04.jpg">
                         </div>
                         <div class="down-content">
                             <h4>Elia Vaccarini</h4>
@@ -228,23 +228,7 @@
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
 
-    <script>
-
-        $(function() {
-            var selectedClass = "";
-            $("p").click(function(){
-            selectedClass = $(this).attr("data-rel");
-            $("#portfolio").fadeTo(50, 0.1);
-                $("#portfolio div").not("."+selectedClass).fadeOut();
-            setTimeout(function() {
-              $("."+selectedClass).fadeIn();
-              $("#portfolio").fadeTo(50, 1);
-            }, 500);
-                
-            });
-        });
-
-    </script>
+    <
 
   </body>
 
