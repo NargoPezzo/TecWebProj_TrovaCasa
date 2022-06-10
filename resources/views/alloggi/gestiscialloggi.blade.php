@@ -129,7 +129,7 @@
                 <div class="col-lg-4">
                     <div class="item">
                         <div class="thumb">
-                            @can('isLocatore') <!--OCCHIELLO: visualizza richieste?-->
+                            @can('isLocatore') 
                             <div class="hover-content">
                                 <ul>
                                     <li><a href="{{url('offertasingola/'.$house->id)}}"><i class="fa fa-eye"></i></a></li>

@@ -146,35 +146,7 @@ class DatabaseSeeder extends Seeder
         ]);
         
 
-/*          DB::table('product')->insert([
-            ['name' => 'NetBook Modello2', 'catId' => 5,
-                'descShort' => 'Caratteristiche NetBook2', 'descLong' => self::DESCPROD,
-                'price' => 219.34, 'discountPerc' => 12, 'discounted' => 0, 'image' => ''],
-            ['name' => 'HardDisk Modello2', 'catId' => 6,
-                'descShort' => 'Caratteristiche HardDisk2', 'descLong' => self::DESCPROD,
-                'price' => 86.37, 'discountPerc' => 15, 'discounted' => 1, 'image' => 'Italy.gif'],
-            ['name' => 'Desktop Modello1', 'catId' => 3,
-                'descShort' => 'Caratteristiche Desktop1', 'descLong' => self::DESCPROD,
-                'price' => 1230.49, 'discountPerc' => 25, 'discounted' => 1, 'image' => 'Brazil.gif'],
-            ['name' => 'Laptop Modello1', 'catId' => 4,
-                'descShort' => 'Caratteristiche Laptop1', 'descLong' => self::DESCPROD,
-                'price' => 455.37, 'discountPerc' => 17, 'discounted' => 1, 'image' => ''],
-            ['name' => 'Laptop Modello2', 'catId' => 4,
-                'descShort' => 'Caratteristiche Laptop1', 'descLong' => self::DESCPROD,
-                'price' => 1889.67, 'discountPerc' => 15, 'discounted' => 1, 'image' => 'Argentina.gif'],
-            ['name' => 'Netbook Modello3', 'catId' => 5,
-                'descShort' => 'Caratteristiche NetBook3', 'descLong' => self::DESCPROD,
-                'price' => 259.99, 'discountPerc' => 17, 'discounted' => 0, 'image' => 'Red Apple.gif'],
-            ['name' => 'Laptop Modello3', 'catId' => 4,
-                'descShort' => 'Caratteristiche Laptop3', 'descLong' => self::DESCPROD,
-                'price' => 998.99, 'discountPerc' => 23, 'discounted' => 1, 'image' => 'UK.gif'],
-            ['name' => 'HardDisk Modello1', 'catId' => 6,
-                'descShort' => 'Caratteristiche HardDisk1', 'descLong' => self::DESCPROD,
-                'price' => 88.93, 'discountPerc' => 5, 'discounted' => 0, 'image' => 'USA.gif'],
-            ['name' => 'HardDisk Modello4', 'catId' => 6,
-                'descShort' => 'Caratteristiche HardDisk4', 'descLong' => self::DESCPROD,
-                'price' => 78.66, 'discountPerc' => 7, 'discounted' => 01, 'image' => 'Ukraine.gif']
-        ]);*/
+
         
         DB::table('faqs')->insert([
             ['id' => 1, 'domanda' => 'Di cosa tratta questo sito?', 'risposta' =>"Il nostro sito è classificabile come un sito dedicato agli annunci d'affitto"],
@@ -184,16 +156,7 @@ class DatabaseSeeder extends Seeder
             ['id' => 5, 'domanda' => 'Come funziona il motore di ricerca "TrovaCasa.it"?', 'risposta' =>'Il motore di ricerca "TrovaCasa.it" presente sulle pagine del sito si appoggia al database creato appositamente per voi.'],
             ['id' => 6, 'domanda' => 'Posso pubblicizzare i miei servizi tramite il vostro sito?', 'risposta' =>'Contattateci in privato per publlicità e/o collaborazioni'],
             ]);
-/*        
-        DB::table('category')->insert([
-            ['catId' => 1, 'name' => 'Computer', 'parId' => 0, 'desc' => 'Desktop, Laptop, Netbook'],
-            ['catId' => 2, 'name' => 'Periferiche', 'parId' => 0, 'desc' => 'Hard Disk, Tastiere, Mouse'],
-            ['catId' => 3, 'name' => 'Desktop', 'parId' => 1, 'desc' => 'Descrizione dei Prodotti Desktop'],
-            ['catId' => 4, 'name' => 'Laptop', 'parId' => 1, 'desc' => 'Descrizione dei Prodotti Laptop'],
-            ['catId' => 5, 'name' => 'NetBook', 'parId' => 1, 'desc' => 'Descrizione dei Prodotti Netbook'],
-            ['catId' => 6, 'name' => 'HardDisk', 'parId' => 2, 'desc' => 'Descrizione dei Dischi Rigidi'],
-        ]);
- */
+
         DB::table('services')->insert([
             ['id' => 1,  'nome' => 'Locale ricreativo'],
             ['id' => 2,  'nome' => 'Lavatrice'],
@@ -226,40 +189,7 @@ class DatabaseSeeder extends Seeder
             ['locatario_id' => 4,  'house_id' => 4,],
            
         ]);
- /* 
-
-        DB::table('product')->insert([
-            ['name' => 'NetBook Modello2', 'catId' => 5,
-                'descShort' => 'Caratteristiche NetBook2', 'descLong' => self::DESCPROD,
-                'price' => 219.34, 'discountPerc' => 12, 'discounted' => 0, 'image' => ''],
-            ['name' => 'HardDisk Modello2', 'catId' => 6,
-                'descShort' => 'Caratteristiche HardDisk2', 'descLong' => self::DESCPROD,
-                'price' => 86.37, 'discountPerc' => 15, 'discounted' => 1, 'image' => 'Italy.gif'],
-            ['name' => 'Desktop Modello1', 'catId' => 3,
-                'descShort' => 'Caratteristiche Desktop1', 'descLong' => self::DESCPROD,
-                'price' => 1230.49, 'discountPerc' => 25, 'discounted' => 1, 'image' => 'Brazil.gif'],
-            ['name' => 'Laptop Modello1', 'catId' => 4,
-                'descShort' => 'Caratteristiche Laptop1', 'descLong' => self::DESCPROD,
-                'price' => 455.37, 'discountPerc' => 17, 'discounted' => 1, 'image' => ''],
-            ['name' => 'Laptop Modello2', 'catId' => 4,
-                'descShort' => 'Caratteristiche Laptop1', 'descLong' => self::DESCPROD,
-                'price' => 1889.67, 'discountPerc' => 15, 'discounted' => 1, 'image' => 'Argentina.gif'],
-            ['name' => 'Netbook Modello3', 'catId' => 5,
-                'descShort' => 'Caratteristiche NetBook3', 'descLong' => self::DESCPROD,
-                'price' => 259.99, 'discountPerc' => 17, 'discounted' => 0, 'image' => 'Red Apple.gif'],
-            ['name' => 'Laptop Modello3', 'catId' => 4,
-                'descShort' => 'Caratteristiche Laptop3', 'descLong' => self::DESCPROD,
-                'price' => 998.99, 'discountPerc' => 23, 'discounted' => 1, 'image' => 'UK.gif'],
-            ['name' => 'HardDisk Modello1', 'catId' => 6,
-                'descShort' => 'Caratteristiche HardDisk1', 'descLong' => self::DESCPROD,
-                'price' => 88.93, 'discountPerc' => 5, 'discounted' => 0, 'image' => 'USA.gif'],
-            ['name' => 'HardDisk Modello4', 'catId' => 6,
-                'descShort' => 'Caratteristiche HardDisk4', 'descLong' => self::DESCPROD,
-                'price' => 78.66, 'discountPerc' => 7, 'discounted' => 01, 'image' => 'Ukraine.gif']
-        ]);*/
-
-                
-            /* messaggio(destinatario, mittente, testo, dataOraInvio)*/
+ 
             DB::table('messaggi')->insert([
             ['destinatario' => 'eliaelia', 'mittente' => 'alexalex', 'testo' =>
             'Buongiorno, ho visto il tuo annuncio, volevo chiederti alcune informazioni.', 'dataOraInvio' => date("Y-m-d H:i:s")],

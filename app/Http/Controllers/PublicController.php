@@ -39,16 +39,6 @@ class PublicController extends Controller {
     
     public function showOfferte() {
         
-/*      //Appartamenti
-        $appartamenti = $this->_offerteModel->getAppartamenti();
-        
-        //Posti Letto Singoli
-        $postiLettoSingoli = $this->_offerteModel->getPostiLettoSingoli();
-        
-        //Posti Letto Doppi
-        $postiLettoDoppi = $this->_offerteModel->getPostiLettoDoppi();*/
-        
-        
         $tipologie = $this->_houseModel->getTipologiaList();
         $province = $this->_offerteModel->getProvList();
         $servizi = $this->_serviziModel->getServizi();
@@ -82,23 +72,7 @@ class PublicController extends Controller {
             
             
         }
-        
-        Log::info($servizi);
-        
-       
 
-        /*$regions = $this->eventsList->getRegionList();
-        $months = $this->eventsList->getMonthList();
-        $events = $this->eventsList->getEventsFiltered($request->year, $request->month, $request->reg,
-                $request->org, $request->desc);
-        $EventsOnSales = array();
-        foreach ($events as $event){
-           $EventsOnSales[$event->id] = $this->eventsList->checkOnSale($event);
-        }
-        return view('list')->with('events', $events)->with('regions', $regions)->with('organizzatori', $organizzatori)
-                ->with('months', $months)->with('OnSales', $EventsOnSales);
-*/
-      
         
         $alloggi = $this->_offerteModel->getHousesFiltered($request->tip, $request->aprov, $request->plprov, $acittà, $plcittà, $prezzomin, $prezzomax, $data_min, $data_max, $superficie, $n_camere, $n_posti_letto_totali, $request_servizi);
         
@@ -127,7 +101,6 @@ class PublicController extends Controller {
     
     public function showFaqs() {
         
-        //Faqs
         $faqs = $this->_faqsModel->getFaqs();
         
         return view('faqs.faq')

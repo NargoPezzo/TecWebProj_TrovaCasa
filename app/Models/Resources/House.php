@@ -60,17 +60,10 @@ class House extends Model
         $houses = House::orderby('data_inserimento', 'desc')->paginate(9);
         return $houses;
     }
-    
-  /*  public function locatore() {
-        
-    return $this->belongsTo(User::Class, 'locatore_id'); // specify the column which stores the author in posts table
-}*/
-    public function getHousesFiltered($tipologia = null, $prezzomin = null, $prezzomax = null/*$anno = null, $mese = null, $regione = null, $organizzazione = null, $descrizione = null*/) {
-        /*$data = null;
-        if ((isset($anno)) && (isset($mese))) {
-            $data = $anno . '-' . $this->chooseMonthNumber($mese);
-        }*/
-        $filters = array("tipologia" => $tipologia, "prezzomin" => $prezzomin, "prezzomax" => $prezzomax /*data" => $data, "regione" => $regione, "organizzazione" => $organizzazione, "descrizione" => $descrizione*/);
+
+    public function getHousesFiltered($tipologia = null, $prezzomin = null, $prezzomax = null) {
+      
+        $filters = array("tipologia" => $tipologia, "prezzomin" => $prezzomin, "prezzomax" => $prezzomax );
 
         //Controllo quali filtri sono stati settati
         foreach ($filters as $key => $value) {
@@ -92,18 +85,6 @@ class House extends Model
                 case "prezzomax":
                     $queryFilters[] = ["prezzo", "<", $prezzomax];
                     break;
-                /*case "data":
-                    $queryFilters[] = ["data", "LIKE", "%" . strval($data) . "%"];
-                    break;
-                case "regione":
-                    $queryFilters[] = ["regione", "LIKE", strval($regione)];
-                    break;
-                case "organizzazione":
-                    $queryFilters[] = ["nomeorganizzatore", "LIKE", strval($organizzazione)];
-                    break;
-                case "descrizione":
-                    $queryFilters[] = ["descrizione", "LIKE", "%" . strval($descrizione) . "%"];
-                    break;*/
                 default;
             }
         }
@@ -115,7 +96,7 @@ class House extends Model
 
         //Caso in cui sia presente almeno un filtro
         else {
-            $houses = House::where($queryFilters)/*->whereDate('data', '>=', $this->today)*/;
+            $houses = House::where($queryFilters);
         }
 
         return $houses->paginate(9);

@@ -17,7 +17,5 @@ class HouseService extends Model
     
     public function deleteHouseServizioById($id){
         $houseservizio = HouseService::where(["house_id"=>$id])->delete('service_id');
-        
-        
     }
 }

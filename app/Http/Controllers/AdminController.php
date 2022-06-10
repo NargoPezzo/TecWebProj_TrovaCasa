@@ -18,14 +18,13 @@ use App\Models\Rented;
 
 class AdminController extends Controller {
 
- //   protected $_adminModel;
+
     protected $_faqsModel;
 
     public function __construct() {
         $this->middleware('can:isAdmin');
         $this->_faqsModel = new Faqs;
         $this->_faqModel = new Faq;
-//        $this->_adminModel = new Admin;
     }
 
     public function index() {
@@ -51,7 +50,6 @@ class AdminController extends Controller {
         $faq = new Faq;
         $faq->fill($request->validated());
         $faq->save();
-        //return view('faq');
         return redirect()->route('faq');
     }
     
@@ -68,7 +66,6 @@ class AdminController extends Controller {
     public function saveFaq(ModificaFaqRequest $request) {
 
         $faq = $this->_faqModel->getSingleFaq($request->id);
-        //$faq = getSingleFaq($request->id);
 
         $validated = $request->validated();
 

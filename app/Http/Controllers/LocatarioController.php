@@ -33,39 +33,22 @@ class LocatarioController extends Controller {
                 ->with('alloggi', $alloggi);
     }
 
-   /* public function indexoffertelocatario() {   POTREBBE ESSERE INUTILE
-        return view('offertelocatario');
-    } */
-
     public function sendMessaggio(InviaMessaggioRequest $request){
-        $messaggio = new Messaggio;
+        $message = new Messaggio;
         $request->validated();           
-        
         $user = auth()->user();                
-        $messaggio->mittente = $user->username;
-        Log::info($request->get('destinatario'));
-        
-        $messaggio->destinatario = $this->_userModel->getDestById($request->get('destinatario'));
-        $messaggio->testo = $request->get('testo');       
-        $messaggio->dataOraInvio = date("Y-m-d H:i:s"); 
-        
-        $messaggio->save();
-        
-        $chat = $this->_userModel->getSingleChat($user->username, $messaggio->destinatario);
-        
-        Log::info('chatLocatario');
-        Log::info($chat);
-        
+        $message->mittente = $user->username;
+        $message->destinatario = $this->_userModel->getDestById($request->get('destinatario'));
+        $message->testo = $request->get('testo');       
+        $message->dataOraInvio = date("Y-m-d H:i:s"); 
+        $message->save();
+        $chat = $this->_userModel->getSingleChat($user->username, $message->destinatario);
         if(!$chat) {
             $chat = new Chat();
             $chat->user1 = $user->username;
-            $chat->user2 = $messaggio->destinatario;
-            
+            $chat->user2 = $message->destinatario;
             $chat->save();
         }
-        
-        Log::info($chat);
-        
         return redirect()->route('messaggistica');
     }
 

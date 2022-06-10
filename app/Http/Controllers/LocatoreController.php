@@ -50,7 +50,6 @@ class LocatoreController extends Controller {
     
     public function getMyAlloggi() {
         $id = Auth::id();
-    //  $alloggi = House::where('locatore_id', $id) -> get();
         $servizi = $this->_serviceModel->getServizi();
         $alloggi=$this->_locatoreModel->getAlloggi($id);
         $province = $this->_offerteModel->getProvList();
@@ -84,10 +83,7 @@ class LocatoreController extends Controller {
         $alloggio->fill($request->validated());
 
         $alloggio->immagine = $imageName;
-        
-        
-        //$servizi = Services::find([3, 4]); al posto di 3,4 carico l'array che viene dal form
-        // $alloggio->servizi()->attach($servizi);
+ 
         $alloggio->save();
     
         
@@ -113,40 +109,6 @@ class LocatoreController extends Controller {
         
         return redirect()->action('LocatoreController@index');
         
-        
-        
-        /*$faq = new Faq;
-        $faq->fill($request->validated());
-        
-        $faq->save();
-
-        return redirect()->action('AdminController@index');
-        
-        $request->locatore_id = Auth::User()->id;
-        
-        Log::info('$request');
-        
-        if ($request->hasFile('immagine')) {
-            $image = $request->file('immagine');
-            $imageName = $image->getClientOriginalName();
-            Log::info($imageName);
-        } else {
-            $imageName = NULL;
-        }
-        
-        $inputs = $request->all();
-       
-        $alloggi = House::Create($inputs);
-        
-        $alloggi->immagine = $imageName;
-        $alloggi->save();
-        
-        if (!is_null($imageName)) {
-            $destinationPath = public_path() . '/images/products';
-            $image->move($destinationPath, $imageName);
-        }
-
-        return redirect()->action('LocatoreController@indexhome');*/
 
     }
     
@@ -192,9 +154,6 @@ class LocatoreController extends Controller {
         
         $alloggio->save();
         
-        //eliminare i servizi della casa e riaggiungerle sotto
-        
-        
         $this->_houseserviceModel->deleteHouseServizioById($alloggio->id);
         
 
@@ -219,12 +178,10 @@ class LocatoreController extends Controller {
         
         $alloggio = $this->_alloggioModel->getSingleHouse(urldecode($id));
         
-        //$alloggio = House::find($id);
         $alloggio -> delete();
         session() -> flash('message', 'Eliminazione effettuata con successo!');
         return redirect()->route('gestiscialloggi');
-        /*House::destroy($id);
-        return redirect()->route("");*/
+
     }
 
     public function deleteFaq($id)
@@ -241,7 +198,6 @@ class LocatoreController extends Controller {
         
         $user = auth()->user();                
         $messaggio->mittente = $user->username;
-        Log::info($request->get('destinatario'));
         
         $messaggio->destinatario = $this->_userModel->getDestById($request->get('destinatario'));
         $messaggio->testo = $request->get('testo');       
@@ -251,9 +207,6 @@ class LocatoreController extends Controller {
         
         $chat = $this->_userModel->getChat($user->username, $messaggio->destinatario);
         
-        Log::info('chatLocatore');
-        Log::info($chat);
-        
         if(!$chat) {
             $chat = new Chat();
             $chat->user1 = $user->username;
@@ -261,7 +214,6 @@ class LocatoreController extends Controller {
             
             $chat->save();
         }
-        Log::info($chat);
         return redirect()->route('messaggistica');
     }
     

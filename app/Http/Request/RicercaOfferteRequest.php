@@ -40,18 +40,6 @@ class RicercaOfferteRequest extends FormRequest {
             'n_camere' => '',
             'n_posti_letto_totali' => '',
             'servizi' => '',
-            //'titolo' => 'string|max:50',
-            /*'prezzo' => 'numeric|min:0',
-            //'descrizione' => 'string|max:2500',
-            
-            
-            'indirizzo' => 'string|max:255',
-            'città' => 'string|max:255|required_with:indirizzo',
-            'cap' => 'numeric|max:5',
-            'provincia' => 'string|max:2',
-            
-            'immagine' => 'image|max:1024',
-            "servizi"    => "array|min:1",*/
         ];
         
     }

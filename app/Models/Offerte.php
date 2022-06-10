@@ -11,23 +11,6 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 
 class Offerte {
-
-/*    public function getAppartamenti() {
-        return House::where('n_camere', '>', 0)
-                ->get();
-    }
-    
-    public function getPostiLettoSingoli() {
-        return House::where('n_camere', 0)
-                -> where('tipologia', 'singolo')
-                -> get();
-    }
-    
-    public function getPostiLettoDoppi() {
-        return House::where('n_camere', 0)
-                -> where('tipologia', 'doppio')
-                -> get();
-    }*/
     
     public function getAlloggi() {
         $alloggi = House::paginate(6);
@@ -40,10 +23,7 @@ class Offerte {
     
     
     public function getHousesFiltered($tipologia = null, $aprovincia = null, $plprovincia = null, $acittà = null, $plcittà = null,$prezzomin = null, $prezzomax = null, $data_min = null, $data_max = null, $superficie = null, $n_camere = null, $n_posti_letto_totali = null, $servizi = null/*$anno = null, $mese = null, $regione = null, $organizzazione = null, $descrizione = null*/) {
-        /*$data = null;
-        if ((isset($anno)) && (isset($mese))) {
-            $data = $anno . '-' . $this->chooseMonthNumber($mese);
-        }*/
+       
         $today = Carbon::now()->toDateString();
         
         $filters = array("tipologia" => $tipologia, "aprovincia" => $aprovincia, "plprovincia" => $plprovincia, "acittà" => $acittà, "plcittà" => $plcittà,"prezzomin" => $prezzomin, "prezzomax" => $prezzomax, "data_min" => $data_min, "data_max" => $data_max, "superficie" => $superficie,
@@ -121,19 +101,7 @@ class Offerte {
                 case "n_posti_letto_totali":
                     $queryFilters[] = ["n_posti_letto_totali", "=", $n_posti_letto_totali];
                     break;
-                
-                /*case "data":
-                    $queryFilters[] = ["data", "LIKE", "%" . strval($data) . "%"];
-                    break;
-                case "regione":
-                    $queryFilters[] = ["regione", "LIKE", strval($regione)];
-                    break;
-                case "organizzazione":
-                    $queryFilters[] = ["nomeorganizzatore", "LIKE", strval($organizzazione)];
-                    break;
-                case "descrizione":
-                    $queryFilters[] = ["descrizione", "LIKE", "%" . strval($descrizione) . "%"];
-                    break;*/
+
                 default;
             }
         }
