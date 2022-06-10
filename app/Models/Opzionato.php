@@ -26,7 +26,7 @@ class Opzionato
             {
                 $data_min = date("Y-m-d",strtotime($data_min));
                 $data_max = date("Y-m-d",strtotime($data_max));
-                $_richieste = House::join('houses', 'houses.id','=','opzione.house_id')->whereRaw(' tipologia like "%'. $tipo .'%" and houses.data_inserimento between "'. $data_min. '" and "'.$data_max .'" and opzione.house_id IS NOT NULL')->count();
+                $_richieste = Opzione::join('houses', 'houses.id','=','opzione.house_id')->whereRaw(' tipologia like "%'. $tipo .'%" and houses.data_inserimento between "'. $data_min. '" and "'.$data_max .'" and opzione.house_id IS NOT NULL')->count();
             }
             
             return $_richieste;
