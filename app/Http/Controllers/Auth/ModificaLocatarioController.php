@@ -42,7 +42,7 @@ class ModificaLocatarioController extends Controller {
             } else
                 throw new HttpResponseException(response('{"oldpassword":["Password errata!"]}', Response::HTTP_UNPROCESSABLE_ENTITY));
         }
-
+        
         $user->nome = $validated['nome'];
         $user->cognome = $validated['cognome'];
         $user->età = $validated['età'];
