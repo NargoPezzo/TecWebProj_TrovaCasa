@@ -150,18 +150,6 @@
                                 @endif
                 </div>
 
-                            <!--<div  class="wrap-input  rs1-wrap-input">
-                                {{ Form::label('locatoreId', 'ID', ['class' => 'label-input']) }}
-                                {{ Form::text('locatoreId', '', ['class' => 'input', 'id' => 'locatoreId']) }}
-                             
-                                @if ($errors->first('locatoreId'))
-                                <ul class="errors">
-                                    @foreach ($errors->get('locatoreId') as $message)
-                                    <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
-                            </div>-->
                 <div class="col-lg-3">
                                 <b>{{ Form::label('tipologia', 'Tipologia:', ['class' => 'label-input']) }}</b> 
                                 {{ Form::select('tipologia', ['appartamento' => 'Appartamento', 'posto_letto_singolo' => 'Posto letto (singolo)', 'posto_letto_doppio' => 'Posto letto (doppio)'], ['class' => 'input','id' => 'tipologia']) }}
@@ -245,7 +233,7 @@
     <br><br>
     <b>Limiti di Età (Facoltativo):</b><br><br>
         <div class="row">               
-             <div class="col-lg-2"           
+             <div class="col-lg-2">           
             {{ Form::label('età_min', 'Da:', ['class' => 'label-input']) }} &nbsp;
                                 {{ Form::number('età_min', '', ['class' => 'input', 'id' => 'età_min', 'min' => '18', 'style'=>'width:5em']) }} anni
                                 @if ($errors->first('età_min'))
@@ -256,7 +244,7 @@
                                 </ul>
                                 @endif
                             </div>
-            <div class="col-lg-2"  
+            <div class="col-lg-2">
                                 {{ Form::label('età_max', 'A:', ['class' => 'label-input']) }} 
                                 {{ Form::number('età_max', '', ['class' => 'input', 'id' => 'età_max','min' => '18', 'style'=>'width:5em']) }} anni
                                 @if ($errors->first('età_max'))
@@ -273,7 +261,7 @@
         
             <div class="col-lg-3">
                                 <b>{{ Form::label('indirizzo', 'Indirizzo:', ['class' => 'label-input']) }}</b>
-                                {{ Form::text('indirizzo', '', ['class' => 'input', 'id' => 'indirizzo', 'style'=>'width:10em']) }}
+                                {{ Form::text('indirizzo', '', ['class' => 'input', 'id' => 'indirizzo', 'min' => '0', 'style'=>'width:10em']) }}
                                 @if ($errors->first('indirizzo'))
                                 <ul class="errors">
                                     @foreach ($errors->get('indirizzo') as $message)
@@ -285,7 +273,7 @@
             <div class="col-lg-3">                
 
                                 <b>{{ Form::label('cap', 'CAP:', ['class' => 'label-input']) }}</b>
-                                {{ Form::text('cap', '', ['class' => 'input', 'id' => 'cap','style'=>'width:7em']) }}
+                                {{ Form::number('cap', '', ['class' => 'input', 'id' => 'cap','style'=>'width:7em']) }}
                                 @if ($errors->first('cap'))
                                 <ul class="errors">
                                     @foreach ($errors->get('cap') as $message)
@@ -294,7 +282,7 @@
                                 </ul>
                                 @endif
                             </div>
-        </div>                    
+                        </div>                    
 
                             <br><br><b>Periodo di disponibilità:</b><br><br> 
                         <div class="row">
@@ -309,6 +297,8 @@
                                         @endforeach
                                 </div>
                                 @endif
+                    </div>
+                                
                             </div>
 
                        <div class="col-lg-3">
@@ -334,7 +324,7 @@
                                 </ul>
                                 @endif
                         </div>
-                        </div>       
+                            
 
                 <div class="row">
                     <div class="col-lg-3">
