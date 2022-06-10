@@ -205,6 +205,9 @@
 @endcan
 
 
+<p>Link alla documentazione fornita dai creatori del sito: <a href="./documentation.pdf" target="blank""><b>documentation</b></a>
+
+
             
         </div>
     </div>
