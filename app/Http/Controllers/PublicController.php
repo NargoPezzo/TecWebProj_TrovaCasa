@@ -12,7 +12,7 @@ use App\Http\Request\RicercaOfferteRequest;
 use App\Http\Request\InviaMessaggioRequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Auth;gveggd
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class PublicController extends Controller {
