@@ -94,10 +94,9 @@ class LocatoreController extends Controller {
             $houseservice = new HouseService();
             $houseservice->house_id = $this->_locatoreModel->lastAlloggio();
             $houseservice->services_id = $this->_serviceModel->servizioIdByName($servizio)->id;
-             Log::info($houseservice);
             $houseservice->save();
             }
-       
+        
         }
 
         if (!is_null($imageName)) {

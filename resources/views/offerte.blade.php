@@ -433,7 +433,6 @@ window.onload = function () {
                 </span>
                 <br><br><br>
                 <input type="submit" class="btn btn-inverse" style="vertical-align: super" value="Filtra i risultati:">
-                <button type="reset" class="btn btn-inverse" style="vertical-align: super">Reset</button>
                 @if ($errors->first('tipologia'))
                 <ul class="errors">
                     @foreach ($errors->get('tipologia') as $message)
@@ -529,12 +528,13 @@ window.onload = function () {
                     @foreach ($servizi as $servizio)
                     <input name ="servizi[]" id="servizi"type="checkbox" value="{{$servizio->id}}"></input>
                     <label for='servizi[]' class="control">{{$servizio->nome}}</label>
+                    
+                    
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     @endforeach
                 </span>
                 <br><br><br>
                 <input type="submit" class="btn btn-inverse" style="vertical-align: super" value="Filtra i risultati:">
-                <button type="reset" class="btn btn-inverse" style="vertical-align: super">Reset</button>
                 @if ($errors->first('tipologia'))
                 <ul class="errors">
                     @foreach ($errors->get('tipologia') as $message)

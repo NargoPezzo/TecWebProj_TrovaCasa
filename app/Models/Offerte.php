@@ -22,12 +22,11 @@ class Offerte {
     }
     
     
-    public function getHousesFiltered($tipologia = null, $aprovincia = null, $plprovincia = null, $acittà = null, $plcittà = null,$prezzomin = null, $prezzomax = null, $data_min = null, $data_max = null, $superficie = null, $n_camere = null, $n_posti_letto_totali = null, $servizi = null/*$anno = null, $mese = null, $regione = null, $organizzazione = null, $descrizione = null*/) {
+    public function getHousesFiltered($tipologia = null, $aprovincia = null, $plprovincia = null, $acittà = null, $plcittà = null, $prezzomin = null, $prezzomax = null, $data_min = null, $data_max = null, $superficie = null, $n_camere = null, $n_posti_letto_totali = null, $servizi = null) {
        
         $today = Carbon::now()->toDateString();
-        
         $filters = array("tipologia" => $tipologia, "aprovincia" => $aprovincia, "plprovincia" => $plprovincia, "acittà" => $acittà, "plcittà" => $plcittà,"prezzomin" => $prezzomin, "prezzomax" => $prezzomax, "data_min" => $data_min, "data_max" => $data_max, "superficie" => $superficie,
-            "n_camere" => $n_camere, "n_posti_letto_totali" => $n_posti_letto_totali, "servizi" => $servizi /*data" => $data, "regione" => $regione, "organizzazione" => $organizzazione, "descrizione" => $descrizione*/);
+            "n_camere" => $n_camere, "n_posti_letto_totali" => $n_posti_letto_totali, "servizi" => $servizi);
 
         //Controllo quali filtri sono stati settati
         foreach ($filters as $key => $value) {
@@ -36,6 +35,7 @@ class Offerte {
             }
         }
 
+        //Filtraggio per servizi
         if (array_key_exists('servizi', $filters)) {
             $allalloggi = array();
             $size = sizeof($servizi);
@@ -51,15 +51,12 @@ class Offerte {
                     }
                 }
             }
-            Log::info($allalloggi);
             foreach ($allalloggi as $key => $value) {
                 if ($value != $size) {
                     unset($allalloggi[$key]);
                 }
             }
         }
-        Log::info('model');
-        Log::info($acittà);
 
         //Creo l'array sul quale verrà fatta la query
         $queryFilters = [];
@@ -113,12 +110,13 @@ class Offerte {
             $houses = House::where('id', '>', 0)->orderBy('id');
         }
 
-        //Caso in cui sia presente almeno un filtro
+        //Caso in cui sia presente almeno un filtro legato ai servizi
         else if (isset($allalloggi)){
             $houses = House::where($queryFilters)->whereIn("id", array_keys($allalloggi));
 
         }
         
+        //Caso in cui sia presente almeno un filtro
         else {
             $houses = House::where($queryFilters);
         }

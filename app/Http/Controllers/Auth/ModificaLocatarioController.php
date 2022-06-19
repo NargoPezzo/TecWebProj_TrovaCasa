@@ -39,7 +39,7 @@ class ModificaLocatarioController extends Controller {
         if ($request['oldpassword'] != null && $validated['password'] != null) {
             if (Hash::check($request['oldpassword'], $user->password)) {
                 $user->password = Hash::make($validated['password']);
-            } else
+            } else 
                 throw new HttpResponseException(response('{"oldpassword":["Password errata!"]}', Response::HTTP_UNPROCESSABLE_ENTITY));
         }
         

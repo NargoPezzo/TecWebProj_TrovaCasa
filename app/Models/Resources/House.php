@@ -36,6 +36,7 @@ class House extends Model
         return House::where('id', $id)->first();
     }
     
+    //Funzioni per ricerche filtrate
     public function getTipologiaList () {
         $tipologie = array('Appartamento', 'Posto letto singolo', 'Posto letto doppio');
         return $tipologie;
@@ -51,12 +52,13 @@ class House extends Model
         return $houses;
     }
     
+    //Not used
     public function getHousesByPrezzo ($prezzomin, $prezzomax) {
         $houses = House::where('tipologia', $tipologia);
         return $houses;
     }
     
-        public function getAlloggiByDate(){
+    public function getAlloggiByDate(){
         $houses = House::orderby('data_inserimento', 'desc')->paginate(9);
         return $houses;
     }
@@ -101,6 +103,7 @@ class House extends Model
 
         return $houses->paginate(9);
     }
+    
     
     
     public function genera_statistiche1($tipologia, $data_min, $data_max){

@@ -11,7 +11,7 @@ class Opzionato
     protected $_opzionato;
     
     public function genera_statistiche2($tipo, $data_min, $data_max){
-		 $_alloggio = new House;
+            $_alloggio = new House;
             if ($tipo == 'alloggio')
             {
                 $tipo = '';
@@ -32,17 +32,10 @@ class Opzionato
             return $_richieste;
 	}
         
-        
-    
-        
+
     public function assegnazione($locatario_id, $house_id) {
         $opzione = Opzione::where('locatario_id', $locatario_id)->where('house_id', $house_id)->first();
         $house = House::where('id', $house_id)->first();
-        Log::info('opzione');
-        Log::info($locatario_id);
-        Log::info($house_id);
-        Log::info(strval($opzione));
-        Log::info(strval($house));
         $opzione->assegnato = 1;
         $house->opzionato = 1;
         $house->save();
