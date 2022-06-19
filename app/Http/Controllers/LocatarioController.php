@@ -64,7 +64,6 @@ class LocatarioController extends Controller {
     }
     
     public function sendOpzione(OpzioneRequest $request){
-        Log::info($request);
         $opzione = new Opzione;
         $opzione->fill($request->validated());
         $opzione->save();

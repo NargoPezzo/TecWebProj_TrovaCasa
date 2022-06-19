@@ -116,7 +116,7 @@ class Offerte {
 
         }
         
-        //Caso in cui sia presente almeno un filtro
+        //Caso in cui sia presente almeno un filtro // se non ci sono i servizi nei filtri
         else {
             $houses = House::where($queryFilters);
         }
