@@ -111,6 +111,7 @@ class LocatoreController extends Controller {
 
     }
     
+    //Used in Locatario
     public function createOpzione($house_id) {
         $opzione = new Opzione();
         $opzione->locatario_id = Auth::id();
