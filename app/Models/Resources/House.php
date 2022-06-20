@@ -62,7 +62,8 @@ class House extends Model
         $houses = House::orderby('data_inserimento', 'desc')->paginate(9);
         return $houses;
     }
-
+    
+    //non utilizziamo, usata in offerte
     public function getHousesFiltered($tipologia = null, $prezzomin = null, $prezzomax = null) {
       
         $filters = array("tipologia" => $tipologia, "prezzomin" => $prezzomin, "prezzomax" => $prezzomax );
