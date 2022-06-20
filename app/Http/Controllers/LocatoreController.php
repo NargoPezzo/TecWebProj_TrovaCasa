@@ -83,7 +83,7 @@ class LocatoreController extends Controller {
         $alloggio->fill($request->validated());
 
         $alloggio->immagine = $imageName;
- 
+
         $alloggio->save();
     
         

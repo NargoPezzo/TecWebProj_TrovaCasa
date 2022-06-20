@@ -36,7 +36,6 @@ class ModificaAlloggioRequest extends FormRequest {
             'n_posti_letto_totali' => 'int',
             'indirizzo' => 'string|max:255',
             'cap' => 'numeric',
-            
             'superficie' => 'int',
             'immagine' => 'image|max:1024',
             "servizi"    => '',

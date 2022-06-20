@@ -47,16 +47,15 @@
     border: 2px solid #ccc;
     } 
     
-    form{
+    form {
             display: none;
             width: 775px;
             border: 2px solid #ccc;
             padding: 30px;
-        }	
+        }
 </style>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <script>
-    
 
 window.onload = function () {
         
@@ -71,7 +70,7 @@ window.onload = function () {
             $("#plform").show();
             $("#appform").hide(); });
        
-    document.getElementById("tip").value =
+   document.getElementById("tip").value =
                 "<?php
                     if (old('tip')!=null) {
                          echo old('tip');
@@ -339,7 +338,7 @@ window.onload = function () {
             <button id="app" class="button button1">Appartamento</button>
             <button id="pl" class="button button2">Posto Letto</button><br><br><br>
 
-            <form method="post" id="appform" name="search" enctype="multipart/form-data"
+            essd cvv<form method="post" id="appform" name="search" enctype="multipart/form-data"
                 action="{{route('offerte.search')}}">
                 @csrf
                 <span class="search">

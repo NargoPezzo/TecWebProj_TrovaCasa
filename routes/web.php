@@ -134,12 +134,12 @@ Route::post('modificafaq', 'AdminController@editFaq')
         ->name('modificafaq')->middleware('can:isAdmin');
 
 /*
-Route::get('/offertelocatario', 'LocatarioController@indexoffertelocatario')   POTREBBE ESSERE INUTILE
+Route::get('/offertelocatario', 'LocatarioController@indexoffertelocatario')  
         ->name('offertelocatario')->middleware('can:isLocatario');  */
 
 Auth::routes();
 
-/*Route::get('/home', 'HomeController@index')->name('home'); ME L'HA AGGIUNTA IL TERMINALEEEEEEEEEE */
+/*Route::get('/home', 'HomeController@index')->name('home');*/
 
 
 Route::get('/messaggistica', 'MessaggiController@showChat')

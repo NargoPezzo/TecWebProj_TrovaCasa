@@ -36,7 +36,7 @@ class LocatarioController extends Controller {
     public function sendMessaggio(InviaMessaggioRequest $request){
         $message = new Messaggio;
         $request->validated();           
-        $user = auth()->user();                
+        $user = auth()->user();
         $message->mittente = $user->username;
         $message->destinatario = $this->_userModel->getDestById($request->get('destinatario'));
         $message->testo = $request->get('testo');       
@@ -63,6 +63,7 @@ class LocatarioController extends Controller {
 
     }
     
+    //Not used
     public function sendOpzione(OpzioneRequest $request){
         $opzione = new Opzione;
         $opzione->fill($request->validated());

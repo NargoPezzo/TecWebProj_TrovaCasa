@@ -28,7 +28,7 @@
             border: 1px solid #B8B8B8;
             height: auto;
             max-width: 300px;
-             border-radius: 20px;
+            border-radius: 20px;
             
             display:block;
             padding:14px
